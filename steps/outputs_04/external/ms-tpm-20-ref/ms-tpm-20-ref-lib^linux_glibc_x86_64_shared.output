@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/ms-tpm-20-ref/ms-tpm-20-ref-lib/linux_glibc_x86_64_shared/ms-tpm-20-ref-lib.so
+out/soong/.intermediates/external/ms-tpm-20-ref/ms-tpm-20-ref-lib/linux_glibc_x86_64_shared/ms-tpm-20-ref-lib.so.toc
+out/soong/host/linux-x86/lib64/ms-tpm-20-ref-lib.so

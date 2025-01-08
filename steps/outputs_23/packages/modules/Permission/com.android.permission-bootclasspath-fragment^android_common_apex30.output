@@ -1,4 +1,5 @@
 out/soong/.intermediates/packages/modules/Permission/com.android.permission-bootclasspath-fragment/android_common_apex30/bootclasspath.pb
 out/soong/.intermediates/packages/modules/Permission/com.android.permission-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-permission-s.jar
 out/soong/.intermediates/packages/modules/Permission/com.android.permission-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-permission.jar
+out/soong/.intermediates/packages/modules/Permission/com.android.permission-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/Permission/com.android.permission-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv

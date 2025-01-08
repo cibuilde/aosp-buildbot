@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/libwebm/libwebm_mkvmuxer/linux_glibc_x86_64_static/obj/external/libwebm/mkvmuxer/mkvmuxer.o
+out/soong/.intermediates/external/libwebm/libwebm_mkvmuxer/linux_glibc_x86_64_static/obj/external/libwebm/mkvmuxer/mkvmuxerutil.o
+out/soong/.intermediates/external/libwebm/libwebm_mkvmuxer/linux_glibc_x86_64_static/obj/external/libwebm/mkvmuxer/mkvwriter.o

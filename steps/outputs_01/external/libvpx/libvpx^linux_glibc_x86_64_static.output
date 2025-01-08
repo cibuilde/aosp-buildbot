@@ -1,3 +1,4 @@
+out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_static/libvpx.a
 out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_static/obj/external/libvpx/config/x86_64/vpx_config.o
 out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_static/obj/external/libvpx/libvpx/vp8/common/alloccommon.o
 out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_static/obj/external/libvpx/libvpx/vp8/common/blockd.o

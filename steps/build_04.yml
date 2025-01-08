@@ -294,6 +294,10 @@ jobs:
         key: external_libtextclassifier@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libusb.tar.zst
+        key: external_libusb@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libvpx.tar.zst
         key: external_libvpx@${{ env.branch }}
     - uses: actions/cache@v4
@@ -342,12 +346,20 @@ jobs:
         key: external_modp_b64@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_ms-tpm-20-ref.tar.zst
+        key: external_ms-tpm-20-ref@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_nanopb-c.tar.zst
         key: external_nanopb-c@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_one-true-awk.tar.zst
         key: external_one-true-awk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_openscreen.tar.zst
+        key: external_openscreen@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_pcre.tar.zst
@@ -624,6 +636,10 @@ jobs:
       with:
         path: cache/external_wayland.tar.zst
         key: external_wayland@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_wayland-protocols.tar.zst
+        key: external_wayland-protocols@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_webrtc.tar.zst

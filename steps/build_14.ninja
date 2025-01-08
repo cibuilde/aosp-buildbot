@@ -74,6 +74,10 @@ include ninja/frameworks/rs/libRSDriver^android_x86_x86_64_shared.ninja
 include ninja/frameworks/rs/libRS_internal^android_x86_64_shared.ninja
 include ninja/frameworks/rs/libRS_internal^android_x86_x86_64_shared.ninja
 include ninja/packages/inputmethods/LatinIME/common/latinime-common^android_common.ninja
+include ninja/packages/modules/adb/adb^linux_glibc_x86_64.ninja
+include ninja/packages/modules/adb/bin2c_fastdeployagent^android_common.ninja
+include ninja/packages/modules/adb/fastdeploy/deployagent^android_common.ninja
+include ninja/packages/modules/adb/fastdeploy/deployagent_lib^android_common.ninja
 include ninja/system/apex/apexd/sysprop/com.android.sysprop.apex^android_common.ninja
 include ninja/system/core/init/sysprop/com.android.sysprop.init^android_common.ninja
 include ninja/system/libsysprop/srcs/PlatformProperties^android_common.ninja
@@ -87,7 +91,7 @@ build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/c
 
 build com.android.conscrypt,android_common_com.android.conscrypt_image: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_manifest.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_pubkey out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/com.android.conscrypt.apex
 
-build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
+build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/all-flags.csv out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
 
 build external_conscrypt-targets: phony com.android.conscrypt,android_common_com.android.conscrypt_image com.android.conscrypt-bootclasspath-fragment,android_common_apex29 conscrypt,android_common_apex29
 
@@ -238,6 +242,16 @@ build frameworks_rs-targets: phony libRSCpuRef,android_x86_64_shared libRSCpuRef
 build latinime-common,android_common: phony out/soong/.intermediates/packages/inputmethods/LatinIME/common/latinime-common/android_common/combined/latinime-common.jar out/soong/.intermediates/packages/inputmethods/LatinIME/common/latinime-common/android_common/turbine-combined/latinime-common.jar
 
 build packages_inputmethods_LatinIME-targets: phony latinime-common,android_common
+
+build adb,linux_glibc_x86_64: phony out/soong/.intermediates/packages/modules/adb/adb/linux_glibc_x86_64/adb out/soong/host/linux-x86/bin/adb
+
+build bin2c_fastdeployagent,android_common: phony out/soong/.intermediates/packages/modules/adb/bin2c_fastdeployagent/android_common/gen/deployagent.inc
+
+build deployagent_lib,android_common: phony out/soong/.intermediates/packages/modules/adb/fastdeploy/deployagent_lib/android_common/combined/deployagent_lib.jar out/soong/.intermediates/packages/modules/adb/fastdeploy/deployagent_lib/android_common/turbine-combined/deployagent_lib.jar
+
+build deployagent,android_common: phony out/soong/.intermediates/packages/modules/adb/fastdeploy/deployagent/android_common/dex/deployagent.jar
+
+build packages_modules_adb-targets: phony adb,linux_glibc_x86_64 bin2c_fastdeployagent,android_common deployagent,android_common deployagent_lib,android_common
 
 build com.android.sysprop.apex,android_common: phony out/soong/.intermediates/system/apex/apexd/sysprop/com.android.sysprop.apex/android_common/javac/com.android.sysprop.apex.jar out/soong/.intermediates/system/apex/apexd/sysprop/com.android.sysprop.apex/android_common/turbine-combined/com.android.sysprop.apex.jar
 

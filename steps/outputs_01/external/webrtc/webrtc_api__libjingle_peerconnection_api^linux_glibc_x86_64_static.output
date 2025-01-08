@@ -1,0 +1,14 @@
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/adaptation/resource.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/candidate.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/data_channel_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/dtls_transport_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/jsep.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/jsep_ice_candidate.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/neteq/neteq.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/peer_connection_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/proxy.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/rtp_receiver_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/rtp_sender_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/rtp_transceiver_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/sctp_transport_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_api__libjingle_peerconnection_api/linux_glibc_x86_64_static/obj/external/webrtc/api/stats_types.o

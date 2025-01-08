@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_08 Projects: 78 Targets: 582
+##### Tag: android12-gsi_08 Projects: 79 Targets: 582
 
 ###### **bionic**: 1
 `com.android.runtime^android_common_com.android.runtime_image`
@@ -6,8 +6,8 @@
 `applypatch^android_vendor.31_x86_64`
 ###### **device/generic/goldfish-opengl**: 2
 `libandroidemu^android_vendor.31_x86_64_shared` `libandroidemu^android_vendor.31_x86_x86_64_shared`
-###### **device/google/cuttlefish**: 7
-`android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64` `bt_vhci_forwarder^android_vendor.31_x86_64` `cvd-host_package^linux_glibc_x86_64` `libcuttlefish_device_config^android_vendor.31_x86_64_shared` `libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared` `setup_wifi^android_vendor.31_x86_64` `vsoc_input_service^android_vendor.31_x86_64`
+###### **device/google/cuttlefish**: 6
+`android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64` `bt_vhci_forwarder^android_vendor.31_x86_64` `libcuttlefish_device_config^android_vendor.31_x86_64_shared` `libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared` `setup_wifi^android_vendor.31_x86_64` `vsoc_input_service^android_vendor.31_x86_64`
 ###### **external/android-clat**: 1
 `clatd^android_x86_64`
 ###### **external/crosvm**: 6
@@ -122,6 +122,8 @@
 `apex_aidl_interface-java^android_common`
 ###### **system/bpf**: 3
 `bpfloader^android_x86_64` `libbpf_android^android_x86_64_shared` `libbpf_android^android_x86_x86_64_shared`
+###### **system/bt**: 1
+`root-canal^linux_glibc_x86_64`
 ###### **system/core**: 8
 `debuggerd^android_x86_64` `libdebuggerd_client^android_x86_64_shared` `libdebuggerd_client^android_x86_x86_64_shared` `libutilscallstack^android_vendor.31_x86_64_shared` `libutilscallstack^android_vendor.31_x86_x86_64_shared` `libutilscallstack^android_x86_64_shared` `libutilscallstack^android_x86_x86_64_shared` `run-as^android_x86_64`
 ###### **system/extras**: 12

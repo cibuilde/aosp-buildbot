@@ -498,10 +498,12 @@ include ninja/external/libchrome/libmojo_jni_registration_headers^.ninja
 include ninja/external/libevent/libevent^linux_glibc_x86_64_shared.ninja
 include ninja/external/libffi/ffi_header^.ninja
 include ninja/external/libffi/libffi^android_x86_64_static_apex10000.ninja
+include ninja/external/libffi/libffi^linux_glibc_x86_64_static.ninja
 include ninja/external/libjpeg-turbo/libjpeg^linux_glibc_x86_64_shared.ninja
 include ninja/external/libnl/libnl^linux_glibc_x86_64_shared.ninja
 include ninja/external/libopus/libopus^linux_glibc_x86_64_shared.ninja
 include ninja/external/libvpx/libvpx^linux_glibc_x86_64_shared.ninja
+include ninja/external/libwebm/libwebm_mkvmuxer^linux_glibc_x86_64_shared.ninja
 include ninja/external/llvm/lib/Analysis/libLLVMAnalysis^android_x86_64_static.ninja
 include ninja/external/llvm/lib/AsmParser/libLLVMAsmParser^android_x86_64_static.ninja
 include ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_x86_64_static.ninja
@@ -662,6 +664,7 @@ include ninja/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_
 include ninja/external/testng/testng-generated-srcs^.ninja
 include ninja/external/wayland/wayland_core_client_protocol_headers^.ninja
 include ninja/external/wayland/wayland_core_protocol_sources_static^.ninja
+include ninja/external/wayland/wayland_core_server_protocol_headers^.ninja
 include ninja/external/wayland/wayland_scanner^linux_glibc_x86_64.ninja
 include ninja/external/zlib/libz.ndk^android_x86_64_sdk_shared_21.ninja
 include ninja/external/zlib/libz.ndk^android_x86_64_sdk_shared_22.ninja
@@ -1129,6 +1132,7 @@ include ninja/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_
 include ninja/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_current.ninja
 include ninja/packages/modules/Virtualization/microdroid/microdroid_uboot_env^android_x86_64.ninja
 include ninja/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^.ninja
+include ninja/packages/modules/adb/bin2c_fastdeployagentscript^.ninja
 include ninja/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_current.ninja
 include ninja/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_current.ninja
 include ninja/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current.ninja
@@ -2553,7 +2557,9 @@ build ffi_header,: phony out/soong/.intermediates/external/libffi/ffi_header/gen
 
 build libffi,android_x86_64_static_apex10000: phony out/soong/.intermediates/external/libffi/libffi/android_x86_64_static_apex10000/libffi.a
 
-build external_libffi-targets: phony ffi_header, libffi,android_x86_64_static_apex10000
+build libffi,linux_glibc_x86_64_static: phony out/soong/.intermediates/external/libffi/libffi/linux_glibc_x86_64_static/libffi.a
+
+build external_libffi-targets: phony ffi_header, libffi,android_x86_64_static_apex10000 libffi,linux_glibc_x86_64_static
 
 build libjpeg,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_shared/libjpeg.so out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_shared/libjpeg.so.toc out/soong/host/linux-x86/lib64/libjpeg.so
 
@@ -2563,13 +2569,17 @@ build libnl,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/l
 
 build external_libnl-targets: phony libnl,linux_glibc_x86_64_shared
 
-build libopus,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_shared/libopus.so out/soong/host/linux-x86/lib64/libopus.so
+build libopus,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_shared/libopus.so out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_shared/libopus.so.toc out/soong/host/linux-x86/lib64/libopus.so
 
 build external_libopus-targets: phony libopus,linux_glibc_x86_64_shared
 
-build libvpx,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_shared/libvpx.so out/soong/host/linux-x86/lib64/libvpx.so
+build libvpx,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_shared/libvpx.so out/soong/.intermediates/external/libvpx/libvpx/linux_glibc_x86_64_shared/libvpx.so.toc out/soong/host/linux-x86/lib64/libvpx.so
 
 build external_libvpx-targets: phony libvpx,linux_glibc_x86_64_shared
+
+build libwebm_mkvmuxer,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libwebm/libwebm_mkvmuxer/linux_glibc_x86_64_shared/libwebm_mkvmuxer.so out/soong/.intermediates/external/libwebm/libwebm_mkvmuxer/linux_glibc_x86_64_shared/libwebm_mkvmuxer.so.toc out/soong/host/linux-x86/lib64/libwebm_mkvmuxer.so
+
+build external_libwebm-targets: phony libwebm_mkvmuxer,linux_glibc_x86_64_shared
 
 build llvm-gen-attributes,: phony out/soong/.intermediates/external/llvm/llvm-gen-attributes/gen/llvm/IR/Attributes.inc
 
@@ -2955,11 +2965,13 @@ build external_testng-targets: phony testng-generated-srcs,
 
 build wayland_core_client_protocol_headers,: phony out/soong/.intermediates/external/wayland/wayland_core_client_protocol_headers/gen/wayland-client-protocol.h
 
+build wayland_core_server_protocol_headers,: phony out/soong/.intermediates/external/wayland/wayland_core_server_protocol_headers/gen/wayland-server-protocol.h
+
 build wayland_scanner,linux_glibc_x86_64: phony out/soong/.intermediates/external/wayland/wayland_scanner/linux_glibc_x86_64/wayland_scanner out/soong/host/linux-x86/bin/wayland_scanner
 
 build wayland_core_protocol_sources_static,: phony out/soong/.intermediates/external/wayland/wayland_core_protocol_sources_static/gen/wayland-protocol.c
 
-build external_wayland-targets: phony wayland_core_client_protocol_headers, wayland_core_protocol_sources_static, wayland_scanner,linux_glibc_x86_64
+build external_wayland-targets: phony wayland_core_client_protocol_headers, wayland_core_protocol_sources_static, wayland_core_server_protocol_headers, wayland_scanner,linux_glibc_x86_64
 
 build libz,android_x86_64_shared_current: phony out/soong/.intermediates/external/zlib/libz/android_x86_64_shared_current/libz.so out/soong/.intermediates/external/zlib/libz/android_x86_64_shared_current/libz.so.toc
 
@@ -3921,6 +3933,8 @@ build microdroid_uboot_env_gen_x86_64,: phony out/soong/.intermediates/packages/
 
 build packages_modules_Virtualization-targets: phony microdroid_uboot_env,android_x86_64 microdroid_uboot_env_gen_x86_64,
 
+build bin2c_fastdeployagentscript,: phony out/soong/.intermediates/packages/modules/adb/bin2c_fastdeployagentscript/gen/deployagentscript.inc
+
 build libadbconnection_client,android_x86_64_shared_current: phony out/soong/.intermediates/packages/modules/adb/libs/adbconnection/libadbconnection_client/android_x86_64_shared_current/libadbconnection_client.so out/soong/.intermediates/packages/modules/adb/libs/adbconnection/libadbconnection_client/android_x86_64_shared_current/libadbconnection_client.so.toc
 
 build libadbconnection_client,android_x86_x86_64_shared_current: phony out/soong/.intermediates/packages/modules/adb/libs/adbconnection/libadbconnection_client/android_x86_x86_64_shared_current/libadbconnection_client.so out/soong/.intermediates/packages/modules/adb/libs/adbconnection/libadbconnection_client/android_x86_x86_64_shared_current/libadbconnection_client.so.toc
@@ -3935,7 +3949,7 @@ build libadb_pairing_connection,android_x86_64_shared_current: phony out/soong/.
 
 build libadb_pairing_connection,android_x86_x86_64_shared_current: phony out/soong/.intermediates/packages/modules/adb/pairing_connection/libadb_pairing_connection/android_x86_x86_64_shared_current/libadb_pairing_connection.so out/soong/.intermediates/packages/modules/adb/pairing_connection/libadb_pairing_connection/android_x86_x86_64_shared_current/libadb_pairing_connection.so.toc
 
-build packages_modules_adb-targets: phony libadb_pairing_connection,android_x86_64_shared_current libadb_pairing_connection,android_x86_x86_64_shared_current libadb_pairing_server,android_x86_64_shared_current libadb_pairing_server,android_x86_x86_64_shared_current libadbconnection_client,android_x86_64_shared_current libadbconnection_client,android_x86_x86_64_shared_current libadbd_fs,android_x86_64_shared_current
+build packages_modules_adb-targets: phony bin2c_fastdeployagentscript, libadb_pairing_connection,android_x86_64_shared_current libadb_pairing_connection,android_x86_x86_64_shared_current libadb_pairing_server,android_x86_64_shared_current libadb_pairing_server,android_x86_x86_64_shared_current libadbconnection_client,android_x86_64_shared_current libadbconnection_client,android_x86_x86_64_shared_current libadbd_fs,android_x86_64_shared_current
 
 build android-car-last-released-api,: phony out/soong/.intermediates/packages/services/Car/car-lib/android-car-last-released-api/gen/last-released-api.txt
 

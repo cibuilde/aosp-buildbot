@@ -32,7 +32,7 @@ build framework-appsearch,android_common_apex10000: phony out/soong/.intermediat
 
 build updatable-media,android_common_apex29: phony out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/hiddenapi/updatable-media.jar
 
-build platform-bootclasspath,android_common: phony out/soong/hiddenapi/hiddenapi-flags.csv out/soong/vsoc_x86_64/dex_bootjars_input/ext.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework-graphics.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework.jar out/soong/vsoc_x86_64/updatable_bootjars/framework-appsearch.jar out/soong/vsoc_x86_64/updatable_bootjars/updatable-media.jar
+build platform-bootclasspath,android_common: phony out/soong/hiddenapi/hiddenapi-flags.csv out/soong/hiddenapi/hiddenapi-flags.csv.valid out/soong/vsoc_x86_64/dex_bootjars_input/ext.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework-graphics.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework.jar out/soong/vsoc_x86_64/updatable_bootjars/framework-appsearch.jar out/soong/vsoc_x86_64/updatable_bootjars/updatable-media.jar
 
 build framework-graphics,android_common: phony out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/hiddenapi/framework-graphics.jar
 

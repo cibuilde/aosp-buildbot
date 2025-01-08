@@ -10,7 +10,6 @@ include ninja/bionic/apex/com.android.runtime^android_common_com.android.runtime
 include ninja/bootable/recovery/applypatch/applypatch^android_vendor.31_x86_64.ninja
 include ninja/device/generic/goldfish-opengl/android-emu/libandroidemu^android_vendor.31_x86_64_shared.ninja
 include ninja/device/generic/goldfish-opengl/android-emu/libandroidemu^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/device/google/cuttlefish/build/cvd-host_package^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared.ninja
 include ninja/device/google/cuttlefish/guest/commands/bt_vhci_forwarder/bt_vhci_forwarder^android_vendor.31_x86_64.ninja
@@ -478,6 +477,7 @@ include ninja/system/apex/apexd/apex_aidl_interface-java^android_common^08.ninja
 include ninja/system/bpf/bpfloader/bpfloader^android_x86_64.ninja
 include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_64_shared.ninja
 include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_x86_64_shared.ninja
+include ninja/system/bt/vendor_libs/test_vendor_lib/root-canal^linux_glibc_x86_64.ninja
 include ninja/system/core/debuggerd/debuggerd^android_x86_64.ninja
 include ninja/system/core/debuggerd/libdebuggerd_client^android_x86_64_shared.ninja
 include ninja/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_shared.ninja
@@ -605,8 +605,6 @@ build libandroidemu,android_vendor.31_x86_x86_64_shared: phony out/soong/.interm
 
 build device_generic_goldfish-opengl-targets: phony libandroidemu,android_vendor.31_x86_64_shared libandroidemu,android_vendor.31_x86_x86_64_shared
 
-build cvd-host_package,linux_glibc_x86_64: phony out/soong/host/linux-x86/cvd-host_package.tar.gz
-
 build libcuttlefish_device_config,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_64_shared/libcuttlefish_device_config.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_64_shared/libcuttlefish_device_config.so.toc
 
 build libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_x86_64_shared/libcuttlefish_device_config.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_x86_64_shared/libcuttlefish_device_config.so.toc
@@ -619,7 +617,7 @@ build vsoc_input_service,android_vendor.31_x86_64: phony out/soong/.intermediate
 
 build android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish/android_vendor.31_x86_64/android.hardware.health.storage-service.cuttlefish
 
-build device_google_cuttlefish-targets: phony android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64 bt_vhci_forwarder,android_vendor.31_x86_64 cvd-host_package,linux_glibc_x86_64 libcuttlefish_device_config,android_vendor.31_x86_64_shared libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared setup_wifi,android_vendor.31_x86_64 vsoc_input_service,android_vendor.31_x86_64
+build device_google_cuttlefish-targets: phony android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64 bt_vhci_forwarder,android_vendor.31_x86_64 libcuttlefish_device_config,android_vendor.31_x86_64_shared libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared setup_wifi,android_vendor.31_x86_64 vsoc_input_service,android_vendor.31_x86_64
 
 build clatd,android_x86_64: phony out/soong/.intermediates/external/android-clat/clatd/android_x86_64/clatd
 
@@ -1655,6 +1653,10 @@ build libbpf_android,android_x86_x86_64_shared: phony out/soong/.intermediates/s
 
 build system_bpf-targets: phony bpfloader,android_x86_64 libbpf_android,android_x86_64_shared libbpf_android,android_x86_x86_64_shared
 
+build root-canal,linux_glibc_x86_64: phony out/soong/.intermediates/system/bt/vendor_libs/test_vendor_lib/root-canal/linux_glibc_x86_64/root-canal out/soong/host/linux-x86/bin/root-canal
+
+build system_bt-targets: phony root-canal,linux_glibc_x86_64
+
 build libdebuggerd_client,android_x86_64_shared: phony out/soong/.intermediates/system/core/debuggerd/libdebuggerd_client/android_x86_64_shared/libdebuggerd_client.so out/soong/.intermediates/system/core/debuggerd/libdebuggerd_client/android_x86_64_shared/libdebuggerd_client.so.toc
 
 build libdebuggerd_client,android_x86_x86_64_shared: phony out/soong/.intermediates/system/core/debuggerd/libdebuggerd_client/android_x86_x86_64_shared/libdebuggerd_client.so out/soong/.intermediates/system/core/debuggerd/libdebuggerd_client/android_x86_x86_64_shared/libdebuggerd_client.so.toc
@@ -1911,6 +1913,7 @@ build stub-annotations,android_common: phony out/soong/.intermediates/tools/meta
 
 build tools_metalava-targets: phony stub-annotations,android_common
 
+build out/soong/.intermediates/external/libchrome/libchrome-include/gen/genrule-phony: phony
 build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_cpp_gen_headers/gen/genrule-phony: phony
 build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_zero_gen_headers/gen/genrule-phony: phony
 build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_ftrace_zero_gen_headers/gen/genrule-phony: phony

@@ -46,6 +46,10 @@ jobs:
         key: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_brotli.tar.zst
+        key: external_brotli@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_cblas.tar.zst
         key: external_cblas@${{ env.branch }}
     - uses: actions/cache@v4
@@ -154,8 +158,24 @@ jobs:
         key: external_libpng@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libusb.tar.zst
+        key: external_libusb@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libxml2.tar.zst
         key: external_libxml2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lz4.tar.zst
+        key: external_lz4@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_mdnsresponder.tar.zst
+        key: external_mdnsresponder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_openscreen.tar.zst
+        key: external_openscreen@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_pdfium.tar.zst
@@ -212,6 +232,10 @@ jobs:
       with:
         path: cache/external_zlib.tar.zst
         key: external_zlib@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zstd.tar.zst
+        key: external_zstd@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst
@@ -304,6 +328,10 @@ jobs:
       with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst
+        key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst

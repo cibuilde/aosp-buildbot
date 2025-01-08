@@ -153,6 +153,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libsc
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/bt/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static/addition_copy_files.output
 
+echo "building libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libscriptedbeaconpayload-protos-lite,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/bt/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libbt-rootcanal-types^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-rootcanal-types,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/types/libbt-rootcanal-types^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbt-rootcanal-types^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/types/libbt-rootcanal-types^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbt-rootcanal-types^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/types/libbt-rootcanal-types^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/types/libbt-rootcanal-types^linux_glibc_x86_64_static/addition_copy_files.output
+
 
 rm -rf out
 

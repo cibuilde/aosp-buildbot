@@ -15,6 +15,7 @@ fi
 
 echo "Preparing for external/libchrome"
 
+clone_depth_platform build/soong
 clone_depth_platform external/libchrome
 clone_depth_platform external/libcxx
 clone_depth_platform external/libevent
@@ -45,6 +46,10 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_libchr
 du -ah -d1 external_libchrome*.tar.zst | sort -h
 
 
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libchrome.tar.zst" ]; then
   echo "Compressing external/libchrome -> external_libchrome.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libchrome.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libchrome/ .

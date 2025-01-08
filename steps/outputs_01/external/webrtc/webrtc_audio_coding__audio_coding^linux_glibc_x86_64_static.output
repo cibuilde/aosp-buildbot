@@ -1,0 +1,7 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/api/neteq/neteq.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/acm2/acm_receiver.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/acm2/acm_remixing.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/acm2/acm_resampler.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/acm2/audio_coding_module.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/acm2/call_statistics.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__audio_coding/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/neteq/default_neteq_factory.o

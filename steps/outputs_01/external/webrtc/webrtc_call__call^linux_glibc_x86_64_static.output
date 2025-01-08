@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/webrtc/webrtc_call__call/linux_glibc_x86_64_static/obj/external/webrtc/call/call.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call/linux_glibc_x86_64_static/obj/external/webrtc/call/call_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call/linux_glibc_x86_64_static/obj/external/webrtc/call/degraded_call.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call/linux_glibc_x86_64_static/obj/external/webrtc/call/flexfec_receive_stream_impl.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call/linux_glibc_x86_64_static/obj/external/webrtc/call/receive_time_calculator.o

@@ -49,6 +49,7 @@ include ninja/build/make/tools/signapk/signapk^linux_glibc_common.ninja
 include ninja/build/make/tools/signapk/signapk^linux_glibc_x86_64.ninja
 include ninja/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3.ninja
 include ninja/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.ninja
+include ninja/build/soong/scripts/hiddenapi/verify_overlaps^linux_glibc_x86_64_PY3.ninja
 include ninja/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared_apex10000.ninja
 include ninja/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^linux_glibc_x86_64_shared.ninja
@@ -76,9 +77,14 @@ include ninja/device/google/cuttlefish/host/commands/run_cvd/run_cvd^linux_glibc
 include ninja/device/google/cuttlefish/host/commands/stop_cvd/stop_cvd^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/commands/tombstone_receiver/tombstone_receiver^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/frontend/adb_connector/adb_connector^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc^linux_glibc_x86_64_static.ninja
+include ninja/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/libs/allocd/allocd^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server^linux_glibc_x86_64_static.ninja
 include ninja/external/auto/common/auto_common^linux_glibc_common.ninja
 include ninja/external/auto/service/auto_service_plugin^linux_glibc_common.ninja
 include ninja/external/auto/value/auto_value_extension^linux_glibc_common.ninja
@@ -251,6 +257,12 @@ include ninja/external/tinyalsa/tinyhostless^android_x86_64.ninja
 include ninja/external/tinyalsa/tinymix^android_x86_64.ninja
 include ninja/external/tinyalsa/tinypcminfo^android_x86_64.ninja
 include ninja/external/tinyalsa/tinyplay^android_x86_64.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-esys^linux_glibc_x86_64_shared.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-mu^linux_glibc_x86_64_shared.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-rc^linux_glibc_x86_64_shared.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-sys^linux_glibc_x86_64_shared.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-tcti^linux_glibc_x86_64_shared.ninja
+include ninja/external/tpm2-tss/tpm2-tss2-util^linux_glibc_x86_64_shared.ninja
 include ninja/external/vm_tools/p9/wire_format_derive/libwire_format_derive^linux_glibc_x86_64.ninja
 include ninja/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static.ninja
 include ninja/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static.ninja
@@ -1154,7 +1166,9 @@ build conv_linker_config,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/
 
 build generate_hiddenapi_lists,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/generate_hiddenapi_lists
 
-build build_soong-targets: phony conv_linker_config,linux_glibc_x86_64_PY3 generate_hiddenapi_lists,linux_glibc_x86_64_PY3
+build verify_overlaps,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/verify_overlaps
+
+build build_soong-targets: phony conv_linker_config,linux_glibc_x86_64_PY3 generate_hiddenapi_lists,linux_glibc_x86_64_PY3 verify_overlaps,linux_glibc_x86_64_PY3
 
 build libgfxstream_backend,android_x86_64_shared_apex10000: phony out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared_apex10000/libgfxstream_backend.so.toc
 
@@ -1166,7 +1180,7 @@ build libcuttlefish_device_config,linux_glibc_x86_64_shared: phony out/soong/.in
 
 build libcuttlefish_fs,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_fs.so
 
-build libcuttlefish_security,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so out/soong/host/linux-x86/lib64/libcuttlefish_security.so
+build libcuttlefish_security,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_security.so
 
 build libcuttlefish_utils,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils/linux_glibc_x86_64_shared/libcuttlefish_utils.so out/soong/.intermediates/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils/linux_glibc_x86_64_shared/libcuttlefish_utils.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_utils.so
 
@@ -1212,13 +1226,23 @@ build tombstone_receiver,linux_glibc_x86_64: phony out/soong/.intermediates/devi
 
 build adb_connector,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/adb_connector/adb_connector/linux_glibc_x86_64/adb_connector out/soong/host/linux-x86/bin/adb_connector
 
+build vnc_server,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/vnc_server/vnc_server/linux_glibc_x86_64/vnc_server out/soong/host/linux-x86/bin/vnc_server
+
+build libcuttlefish_webrtc,linux_glibc_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc/linux_glibc_x86_64_static/libcuttlefish_webrtc.a
+
+build webRTC,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/webrtc/webRTC/linux_glibc_x86_64/webRTC out/soong/host/linux-x86/bin/webRTC
+
+build webrtc_operator,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator/linux_glibc_x86_64/webrtc_operator out/soong/host/linux-x86/bin/webrtc_operator
+
 build libcuttlefish_allocd_utils,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils/linux_glibc_x86_64_shared/libcuttlefish_allocd_utils.so out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils/linux_glibc_x86_64_shared/libcuttlefish_allocd_utils.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_allocd_utils.so
 
 build allocd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/allocd/linux_glibc_x86_64/allocd out/soong/host/linux-x86/bin/allocd
 
 build allocd_client,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/allocd_client/linux_glibc_x86_64/allocd_client out/soong/host/linux-x86/bin/allocd_client
 
-build device_google_cuttlefish-targets: phony GnssGrpcProxyStub_cc, GnssGrpcProxyStub_h, adb_connector,linux_glibc_x86_64 adbshell,linux_glibc_x86_64 allocd,linux_glibc_x86_64 allocd_client,linux_glibc_x86_64 bt_connector,linux_glibc_x86_64 config_server,linux_glibc_x86_64 console_forwarder,linux_glibc_x86_64 cvd_status,linux_glibc_x86_64 gnss_grpc_proxy,linux_glibc_x86_64 kernel_log_monitor,linux_glibc_x86_64 launch_cvd,linux_glibc_x86_64 libcuttlefish_allocd_utils,linux_glibc_x86_64_shared libcuttlefish_device_config,linux_glibc_x86_64_shared libcuttlefish_fs,linux_glibc_x86_64_shared libcuttlefish_kernel_log_monitor_utils,linux_glibc_x86_64_shared libcuttlefish_security,linux_glibc_x86_64_shared libcuttlefish_utils,linux_glibc_x86_64_shared log_tee,linux_glibc_x86_64 logcat_receiver,linux_glibc_x86_64 metrics,linux_glibc_x86_64 modem_simulator,linux_glibc_x86_64 powerwash_cvd,linux_glibc_x86_64 restart_cvd,linux_glibc_x86_64 run_cvd,linux_glibc_x86_64 socket_vsock_proxy,linux_glibc_x86_64 stop_cvd,linux_glibc_x86_64 tombstone_receiver,linux_glibc_x86_64
+build libcuttlefish_wayland_server,linux_glibc_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server/linux_glibc_x86_64_static/libcuttlefish_wayland_server.a
+
+build device_google_cuttlefish-targets: phony GnssGrpcProxyStub_cc, GnssGrpcProxyStub_h, adb_connector,linux_glibc_x86_64 adbshell,linux_glibc_x86_64 allocd,linux_glibc_x86_64 allocd_client,linux_glibc_x86_64 bt_connector,linux_glibc_x86_64 config_server,linux_glibc_x86_64 console_forwarder,linux_glibc_x86_64 cvd_status,linux_glibc_x86_64 gnss_grpc_proxy,linux_glibc_x86_64 kernel_log_monitor,linux_glibc_x86_64 launch_cvd,linux_glibc_x86_64 libcuttlefish_allocd_utils,linux_glibc_x86_64_shared libcuttlefish_device_config,linux_glibc_x86_64_shared libcuttlefish_fs,linux_glibc_x86_64_shared libcuttlefish_kernel_log_monitor_utils,linux_glibc_x86_64_shared libcuttlefish_security,linux_glibc_x86_64_shared libcuttlefish_utils,linux_glibc_x86_64_shared libcuttlefish_wayland_server,linux_glibc_x86_64_static libcuttlefish_webrtc,linux_glibc_x86_64_static log_tee,linux_glibc_x86_64 logcat_receiver,linux_glibc_x86_64 metrics,linux_glibc_x86_64 modem_simulator,linux_glibc_x86_64 powerwash_cvd,linux_glibc_x86_64 restart_cvd,linux_glibc_x86_64 run_cvd,linux_glibc_x86_64 socket_vsock_proxy,linux_glibc_x86_64 stop_cvd,linux_glibc_x86_64 tombstone_receiver,linux_glibc_x86_64 vnc_server,linux_glibc_x86_64 webRTC,linux_glibc_x86_64 webrtc_operator,linux_glibc_x86_64
 
 build auto_common,linux_glibc_common: phony out/soong/.intermediates/external/auto/common/auto_common/linux_glibc_common/javac/auto_common.jar
 
@@ -1420,7 +1444,7 @@ build libcap,android_x86_x86_64_shared: phony out/soong/.intermediates/external/
 
 build external_libcap-targets: phony libcap,android_x86_64_shared libcap,android_x86_64_shared_apex10000 libcap,android_x86_64_shared_apex29 libcap,android_x86_x86_64_shared
 
-build libchrome,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libchrome/libchrome/linux_glibc_x86_64_shared/libchrome.so out/soong/host/linux-x86/lib64/libchrome.so
+build libchrome,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libchrome/libchrome/linux_glibc_x86_64_shared/libchrome.so out/soong/.intermediates/external/libchrome/libchrome/linux_glibc_x86_64_shared/libchrome.so.toc out/soong/host/linux-x86/lib64/libchrome.so
 
 build external_libchrome-targets: phony libchrome,linux_glibc_x86_64_shared
 
@@ -1715,6 +1739,20 @@ build tinyhostless,android_x86_64: phony out/soong/.intermediates/external/tinya
 build tinypcminfo,android_x86_64: phony out/soong/.intermediates/external/tinyalsa/tinypcminfo/android_x86_64/tinypcminfo
 
 build external_tinyalsa-targets: phony libtinyalsa,android_x86_64_shared libtinyalsa,android_x86_x86_64_shared tinycap,android_x86_64 tinyhostless,android_x86_64 tinymix,android_x86_64 tinypcminfo,android_x86_64 tinyplay,android_x86_64
+
+build tpm2-tss2-util,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-util/linux_glibc_x86_64_shared/tpm2-tss2-util.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-util/linux_glibc_x86_64_shared/tpm2-tss2-util.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-util.so
+
+build tpm2-tss2-tcti,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-tcti/linux_glibc_x86_64_shared/tpm2-tss2-tcti.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-tcti/linux_glibc_x86_64_shared/tpm2-tss2-tcti.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-tcti.so
+
+build tpm2-tss2-rc,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-rc/linux_glibc_x86_64_shared/tpm2-tss2-rc.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-rc/linux_glibc_x86_64_shared/tpm2-tss2-rc.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-rc.so
+
+build tpm2-tss2-esys,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-esys/linux_glibc_x86_64_shared/tpm2-tss2-esys.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-esys/linux_glibc_x86_64_shared/tpm2-tss2-esys.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-esys.so
+
+build tpm2-tss2-sys,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-sys/linux_glibc_x86_64_shared/tpm2-tss2-sys.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-sys/linux_glibc_x86_64_shared/tpm2-tss2-sys.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-sys.so
+
+build tpm2-tss2-mu,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_shared/tpm2-tss2-mu.so out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_shared/tpm2-tss2-mu.so.toc out/soong/host/linux-x86/lib64/tpm2-tss2-mu.so
+
+build external_tpm2-tss-targets: phony tpm2-tss2-esys,linux_glibc_x86_64_shared tpm2-tss2-mu,linux_glibc_x86_64_shared tpm2-tss2-rc,linux_glibc_x86_64_shared tpm2-tss2-sys,linux_glibc_x86_64_shared tpm2-tss2-tcti,linux_glibc_x86_64_shared tpm2-tss2-util,linux_glibc_x86_64_shared
 
 build libwire_format_derive,linux_glibc_x86_64: phony out/soong/.intermediates/external/vm_tools/p9/wire_format_derive/libwire_format_derive/linux_glibc_x86_64/libwire_format_derive.so
 

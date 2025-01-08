@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_02 Projects: 50 Targets: 155
+##### Tag: android12-gsi_02 Projects: 51 Targets: 156
 
 ###### **bionic**: 6
 `libm^android_recovery_x86_64_static` `libm^android_vendor_ramdisk_x86_64_static` `libm^android_x86_64_static_apex10000` `libm^android_x86_64_static` `libm^android_x86_x86_64_static_apex10000` `libm^android_x86_x86_64_static`
@@ -84,6 +84,8 @@
 `libwhich^linux_glibc_x86_64_rlib_rlib-std`
 ###### **external/selinux**: 4
 `libselinux^android_x86_64_static` `libselinux^linux_glibc_x86_64_shared` `libselinux^linux_glibc_x86_64_static` `sefcontext_compile^linux_glibc_x86_64`
+###### **external/webrtc**: 1
+`libwebrtc^linux_glibc_x86_64_static`
 ###### **frameworks/base**: 1
 `libandroidfw^linux_glibc_x86_64_static`
 ###### **packages/modules/Virtualization**: 1

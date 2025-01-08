@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__g711/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/g711/audio_decoder_pcm.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__g711/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/g711/audio_encoder_pcm.o

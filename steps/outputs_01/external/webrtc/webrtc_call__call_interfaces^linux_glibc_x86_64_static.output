@@ -1,0 +1,8 @@
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/api/adaptation/resource.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/api/neteq/neteq.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/audio_receive_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/audio_send_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/audio_state.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/call_config.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/flexfec_receive_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_call__call_interfaces/linux_glibc_x86_64_static/obj/external/webrtc/call/syncable.o

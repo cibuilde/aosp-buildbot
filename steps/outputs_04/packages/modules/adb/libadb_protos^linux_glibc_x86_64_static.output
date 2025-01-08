@@ -1,0 +1,4 @@
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/linux_glibc_x86_64_static/gen/proto/packages/modules/adb/proto/adb_known_hosts.pb.h
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/linux_glibc_x86_64_static/gen/proto/packages/modules/adb/proto/key_type.pb.h
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/linux_glibc_x86_64_static/gen/proto/packages/modules/adb/proto/pairing.pb.h
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/linux_glibc_x86_64_static/libadb_protos.a

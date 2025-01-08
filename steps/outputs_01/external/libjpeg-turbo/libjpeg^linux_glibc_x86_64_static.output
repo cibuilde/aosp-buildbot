@@ -1,3 +1,4 @@
+out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_static/libjpeg.a
 out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_static/obj/external/libjpeg-turbo/jaricom.o
 out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_static/obj/external/libjpeg-turbo/jcapimin.o
 out/soong/.intermediates/external/libjpeg-turbo/libjpeg/linux_glibc_x86_64_static/obj/external/libjpeg-turbo/jcapistd.o

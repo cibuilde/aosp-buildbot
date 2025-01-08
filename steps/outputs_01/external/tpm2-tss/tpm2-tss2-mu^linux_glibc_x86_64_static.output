@@ -1,0 +1,7 @@
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/base-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpm2b-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpma-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpml-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpms-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpmt-types.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-mu/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/tss2-mu/tpmu-types.o

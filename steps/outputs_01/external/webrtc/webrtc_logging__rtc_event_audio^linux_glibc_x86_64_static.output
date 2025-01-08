@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_audio/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_audio_network_adaptation.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_audio/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_audio_playout.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_audio/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_audio_receive_stream_config.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_audio/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_audio_send_stream_config.o

@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_agc2__fixed_digital/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/fixed_digital_level_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_agc2__fixed_digital/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/interpolated_gain_curve.o
+out/soong/.intermediates/external/webrtc/webrtc_agc2__fixed_digital/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/limiter.o

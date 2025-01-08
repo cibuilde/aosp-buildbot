@@ -1,7 +1,9 @@
-##### Tag: android12-gsi_15 Projects: 12 Targets: 26
+##### Tag: android12-gsi_15 Projects: 13 Targets: 27
 
 ###### **art**: 2
 `art-bootclasspath-fragment^android_common_apex31` `com.android.art^android_common_com.android.art_image`
+###### **device/google/cuttlefish**: 1
+`cvd-host_package^linux_glibc_x86_64`
 ###### **external/neven**: 2
 `libFFTEm^android_x86_64_shared` `libFFTEm^android_x86_x86_64_shared`
 ###### **frameworks/av**: 4

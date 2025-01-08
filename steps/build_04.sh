@@ -210,6 +210,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/minijail
 tar xf $GITHUB_WORKSPACE/external_minijail-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/minijail/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_ms-tpm-20-ref.tar.zst --output external_ms-tpm-20-ref-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/ms-tpm-20-ref
+tar xf $GITHUB_WORKSPACE/external_ms-tpm-20-ref-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/ms-tpm-20-ref/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_one-true-awk.tar.zst --output external_one-true-awk-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/one-true-awk
 tar xf $GITHUB_WORKSPACE/external_one-true-awk-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/one-true-awk/
@@ -636,6 +640,7 @@ time source steps/build_04/external_mdnsresponder.sh
 time source steps/build_04/external_mesa3d.sh
 time source steps/build_04/external_minijail.sh
 time source steps/build_04/external_mksh.sh
+time source steps/build_04/external_ms-tpm-20-ref.sh
 time source steps/build_04/external_nanopb-c.sh
 time source steps/build_04/external_one-true-awk.sh
 time source steps/build_04/external_pcre.sh
@@ -666,6 +671,7 @@ time source steps/build_04/external_tinyxml2.sh
 time source steps/build_04/external_toybox.sh
 time source steps/build_04/external_tremolo.sh
 time source steps/build_04/external_wayland.sh
+time source steps/build_04/external_wayland-protocols.sh
 time source steps/build_04/external_webrtc.sh
 time source steps/build_04/external_zlib.sh
 time source steps/build_04/frameworks_av.sh

@@ -1,0 +1,7 @@
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/api/adaptation/resource.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/encode_usage_resource.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/overuse_frame_detector.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/quality_rampup_experiment_helper.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/quality_scaler_resource.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/video_stream_encoder_resource.o
+out/soong/.intermediates/external/webrtc/webrtc_adaptation__video_adaptation/linux_glibc_x86_64_static/obj/external/webrtc/video/adaptation/video_stream_encoder_resource_manager.o

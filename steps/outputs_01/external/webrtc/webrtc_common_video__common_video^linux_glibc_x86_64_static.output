@@ -1,0 +1,12 @@
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/bitrate_adjuster.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/frame_rate_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/h264/h264_bitstream_parser.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/h264/h264_common.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/h264/pps_parser.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/h264/sps_parser.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/h264/sps_vui_rewriter.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/i420_buffer_pool.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/incoming_video_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/libyuv/webrtc_libyuv.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/video_frame_buffer.o
+out/soong/.intermediates/external/webrtc/webrtc_common_video__common_video/linux_glibc_x86_64_static/obj/external/webrtc/common_video/video_render_frames.o

@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/util/denoiser_filter.o
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/util/denoiser_filter_c.o
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/util/denoiser_filter_sse2.o
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/util/noise_estimation.o
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/util/skin_detection.o
+out/soong/.intermediates/external/webrtc/webrtc_video_processing__video_processing/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_processing/video_denoiser.o

@@ -1,3 +1,4 @@
+out/soong/.intermediates/external/libyuv/files/libyuv/linux_glibc_x86_64_static/libyuv.a
 out/soong/.intermediates/external/libyuv/files/libyuv/linux_glibc_x86_64_static/obj/external/libyuv/files/source/compare.o
 out/soong/.intermediates/external/libyuv/files/libyuv/linux_glibc_x86_64_static/obj/external/libyuv/files/source/compare_common.o
 out/soong/.intermediates/external/libyuv/files/libyuv/linux_glibc_x86_64_static/obj/external/libyuv/files/source/compare_gcc.o

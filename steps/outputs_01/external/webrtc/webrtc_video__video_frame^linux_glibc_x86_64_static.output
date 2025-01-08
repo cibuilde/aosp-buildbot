@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_video__video_frame/linux_glibc_x86_64_static/obj/external/webrtc/api/video/video_frame.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_frame/linux_glibc_x86_64_static/obj/external/webrtc/api/video/video_frame_buffer.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_frame/linux_glibc_x86_64_static/obj/external/webrtc/api/video/video_source_interface.o

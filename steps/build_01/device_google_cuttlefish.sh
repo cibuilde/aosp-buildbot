@@ -20,11 +20,14 @@ clone_depth_platform bootable/recovery
 clone_depth device/google/cuttlefish
 clone_depth_platform external/boringssl
 clone_depth_platform external/fmtlib
+clone_depth_platform external/freetype
 clone_depth_platform external/gflags
 clone_depth_platform external/icu
 clone_depth_platform external/jsoncpp
+clone_depth_platform external/libcap
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/libwebsockets
 clone_depth_platform external/vulkan-headers
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
@@ -41,7 +44,14 @@ clone_depth_platform system/keymaster
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
+clone_depth_platform system/teeui
 
+
+echo "building libcuttlefish_confui^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_confui,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/confui/libcuttlefish_confui^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_confui^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/confui/libcuttlefish_confui^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_confui^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/confui/libcuttlefish_confui^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/confui/libcuttlefish_confui^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libcuttlefish_fs^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_fs,linux_glibc_x86_64_static
@@ -91,29 +101,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/mode
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/iccprofile_for_sim0_for_CtsCarrierApiTestCases.xml_host^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/modem_simulator/iccprofile_for_sim0_for_CtsCarrierApiTestCases.xml_host^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/iccprofile_for_sim0_for_CtsCarrierApiTestCases.xml_host^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/modem_simulator/iccprofile_for_sim0_for_CtsCarrierApiTestCases.xml_host^linux_glibc_common $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/modem_simulator/iccprofile_for_sim0_for_CtsCarrierApiTestCases.xml_host^linux_glibc_common/addition_copy_files.output
 
-echo "building secure_env^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja secure_env,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/secure_env/secure_env^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/secure_env^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/secure_env/secure_env^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/secure_env^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/secure_env/secure_env^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/secure_env/secure_env^linux_glibc_x86_64/addition_copy_files.output
-
 echo "building tapsetiff^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja tapsetiff,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/tapsetiff/tapsetiff^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/tapsetiff^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/tapsetiff/tapsetiff^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/tapsetiff^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/tapsetiff/tapsetiff^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/tapsetiff/tapsetiff^linux_glibc_x86_64/addition_copy_files.output
-
-echo "building vnc_server^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vnc_server,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/vnc_server^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/vnc_server^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64/addition_copy_files.output
-
-echo "building webRTC^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja webRTC,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webRTC^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webRTC^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building webrtc_controls.js^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja webrtc_controls.js,linux_glibc_common
@@ -150,12 +142,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_trusted.pem^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webrtc_trusted.pem^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_trusted.pem^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webrtc_trusted.pem^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_trusted.pem^linux_glibc_common $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_trusted.pem^linux_glibc_common/addition_copy_files.output
-
-echo "building webrtc_operator^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja webrtc_operator,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webrtc_operator^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/webrtc_operator^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building webrtc_index.html^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja webrtc_index.html,linux_glibc_common
@@ -199,11 +185,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/l
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_allocd_utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_allocd_utils^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_static/addition_copy_files.output
 
+echo "building libcuttlefish_audio_connector^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_audio_connector,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/audio_connector/libcuttlefish_audio_connector^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_audio_connector^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/audio_connector/libcuttlefish_audio_connector^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_audio_connector^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/audio_connector/libcuttlefish_audio_connector^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/audio_connector/libcuttlefish_audio_connector^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libcuttlefish_host_config^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_host_config,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/config/libcuttlefish_host_config^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_host_config^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/config/libcuttlefish_host_config^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_host_config^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/config/libcuttlefish_host_config^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/config/libcuttlefish_host_config^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libcuttlefish_confui_host^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_confui_host,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/confui/libcuttlefish_confui_host^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_confui_host^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/confui/libcuttlefish_confui_host^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_confui_host^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/confui/libcuttlefish_confui_host^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/confui/libcuttlefish_confui_host^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libcuttlefish_graphics_detector^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_graphics_detector,linux_glibc_x86_64_static
@@ -211,11 +209,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/graphics
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_graphics_detector^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/graphics_detector/libcuttlefish_graphics_detector^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_graphics_detector^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/graphics_detector/libcuttlefish_graphics_detector^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/graphics_detector/libcuttlefish_graphics_detector^linux_glibc_x86_64_static/addition_copy_files.output
 
+echo "building libcuttlefish_screen_connector^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_screen_connector,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/screen_connector/libcuttlefish_screen_connector^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_screen_connector^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/screen_connector/libcuttlefish_screen_connector^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_screen_connector^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/screen_connector/libcuttlefish_screen_connector^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/screen_connector/libcuttlefish_screen_connector^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libcuttlefish_vm_manager^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_vm_manager,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/vm_manager/libcuttlefish_vm_manager^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_vm_manager^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/vm_manager/libcuttlefish_vm_manager^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_vm_manager^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/vm_manager/libcuttlefish_vm_manager^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/vm_manager/libcuttlefish_vm_manager^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libcuttlefish_host_websocket^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcuttlefish_host_websocket,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/websocket/libcuttlefish_host_websocket^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_host_websocket^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/websocket/libcuttlefish_host_websocket^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/libcuttlefish_host_websocket^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/websocket/libcuttlefish_host_websocket^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/websocket/libcuttlefish_host_websocket^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building librecovery_ui_cuttlefish^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui_cuttlefish,android_x86_64_static
@@ -277,6 +287,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_freetype.tar.zst" ]; then
+  echo "Compressing external/freetype -> external_freetype.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_freetype.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/freetype/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_gflags.tar.zst" ]; then
   echo "Compressing external/gflags -> external_gflags.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_gflags.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/gflags/ .
@@ -289,6 +303,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_jsoncpp.tar.zst" ]; then
   echo "Compressing external/jsoncpp -> external_jsoncpp.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_jsoncpp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/jsoncpp/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcap.tar.zst" ]; then
+  echo "Compressing external/libcap -> external_libcap.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcap.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcap/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
@@ -296,6 +314,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libwebsockets.tar.zst" ]; then
+  echo "Compressing external/libwebsockets -> external_libwebsockets.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libwebsockets.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libwebsockets/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst" ]; then
   echo "Compressing external/vulkan-headers -> external_vulkan-headers.tar.zst"
@@ -360,6 +382,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_teeui.tar.zst" ]; then
+  echo "Compressing system/teeui -> system_teeui.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_teeui.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/teeui/ .
 fi
 
 

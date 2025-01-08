@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_05 Projects: 132 Targets: 1053
+##### Tag: android12-gsi_05 Projects: 133 Targets: 1065
 
 ###### **art**: 12
 `art-apex-cache-info^` `dalvikvm^android_x86_64_apex31` `dalvikvm^android_x86_x86_64_apex31` `libartpalette^android_x86_64_shared_apex31` `libartpalette^android_x86_x86_64_shared_apex31` `libartpalette^linux_glibc_x86_64_shared` `libnativebridge^android_x86_64_shared_apex31` `libnativebridge^android_x86_x86_64_shared_apex31` `libperfetto_hprof^android_x86_64_static_apex31` `libperfetto_hprof^android_x86_x86_64_static_apex31` `libsigchain^android_x86_64_shared_apex31` `libsigchain^android_x86_x86_64_shared_apex31`
@@ -8,12 +8,12 @@
 `libminadbd_services^android_recovery_x86_64_static` `librecovery_utils^android_recovery_x86_64_static` `librecovery_utils^android_x86_64_static`
 ###### **build/make**: 6
 `build_image^linux_glibc_x86_64_PY2` `build_super_image^linux_glibc_x86_64_PY2` `signapk^linux_glibc_common` `signapk^linux_glibc_x86_64` `sparse_img^linux_glibc_x86_64_PY2` `verity_utils^linux_glibc_x86_64_PY2`
-###### **build/soong**: 2
-`conv_linker_config^linux_glibc_x86_64_PY3` `generate_hiddenapi_lists^linux_glibc_x86_64_PY3`
+###### **build/soong**: 3
+`conv_linker_config^linux_glibc_x86_64_PY3` `generate_hiddenapi_lists^linux_glibc_x86_64_PY3` `verify_overlaps^linux_glibc_x86_64_PY3`
 ###### **device/generic/vulkan-cereal**: 1
 `libgfxstream_backend^android_x86_64_shared_apex10000`
-###### **device/google/cuttlefish**: 29
-`GnssGrpcProxyStub_cc^` `GnssGrpcProxyStub_h^` `adb_connector^linux_glibc_x86_64` `adbshell^linux_glibc_x86_64` `allocd^linux_glibc_x86_64` `allocd_client^linux_glibc_x86_64` `bt_connector^linux_glibc_x86_64` `config_server^linux_glibc_x86_64` `console_forwarder^linux_glibc_x86_64` `cvd_status^linux_glibc_x86_64` `gnss_grpc_proxy^linux_glibc_x86_64` `kernel_log_monitor^linux_glibc_x86_64` `launch_cvd^linux_glibc_x86_64` `libcuttlefish_allocd_utils^linux_glibc_x86_64_shared` `libcuttlefish_device_config^linux_glibc_x86_64_shared` `libcuttlefish_fs^linux_glibc_x86_64_shared` `libcuttlefish_kernel_log_monitor_utils^linux_glibc_x86_64_shared` `libcuttlefish_security^linux_glibc_x86_64_shared` `libcuttlefish_utils^linux_glibc_x86_64_shared` `log_tee^linux_glibc_x86_64` `logcat_receiver^linux_glibc_x86_64` `metrics^linux_glibc_x86_64` `modem_simulator^linux_glibc_x86_64` `powerwash_cvd^linux_glibc_x86_64` `restart_cvd^linux_glibc_x86_64` `run_cvd^linux_glibc_x86_64` `socket_vsock_proxy^linux_glibc_x86_64` `stop_cvd^linux_glibc_x86_64` `tombstone_receiver^linux_glibc_x86_64`
+###### **device/google/cuttlefish**: 34
+`GnssGrpcProxyStub_cc^` `GnssGrpcProxyStub_h^` `adb_connector^linux_glibc_x86_64` `adbshell^linux_glibc_x86_64` `allocd^linux_glibc_x86_64` `allocd_client^linux_glibc_x86_64` `bt_connector^linux_glibc_x86_64` `config_server^linux_glibc_x86_64` `console_forwarder^linux_glibc_x86_64` `cvd_status^linux_glibc_x86_64` `gnss_grpc_proxy^linux_glibc_x86_64` `kernel_log_monitor^linux_glibc_x86_64` `launch_cvd^linux_glibc_x86_64` `libcuttlefish_allocd_utils^linux_glibc_x86_64_shared` `libcuttlefish_device_config^linux_glibc_x86_64_shared` `libcuttlefish_fs^linux_glibc_x86_64_shared` `libcuttlefish_kernel_log_monitor_utils^linux_glibc_x86_64_shared` `libcuttlefish_security^linux_glibc_x86_64_shared` `libcuttlefish_utils^linux_glibc_x86_64_shared` `libcuttlefish_wayland_server^linux_glibc_x86_64_static` `libcuttlefish_webrtc^linux_glibc_x86_64_static` `log_tee^linux_glibc_x86_64` `logcat_receiver^linux_glibc_x86_64` `metrics^linux_glibc_x86_64` `modem_simulator^linux_glibc_x86_64` `powerwash_cvd^linux_glibc_x86_64` `restart_cvd^linux_glibc_x86_64` `run_cvd^linux_glibc_x86_64` `socket_vsock_proxy^linux_glibc_x86_64` `stop_cvd^linux_glibc_x86_64` `tombstone_receiver^linux_glibc_x86_64` `vnc_server^linux_glibc_x86_64` `webRTC^linux_glibc_x86_64` `webrtc_operator^linux_glibc_x86_64`
 ###### **external/auto**: 3
 `auto_common^linux_glibc_common` `auto_service_plugin^linux_glibc_common` `auto_value_extension^linux_glibc_common`
 ###### **external/avb**: 1
@@ -166,6 +166,8 @@
 `tflite_support^android_x86_64_sdk_static_apex30`
 ###### **external/tinyalsa**: 7
 `libtinyalsa^android_x86_64_shared` `libtinyalsa^android_x86_x86_64_shared` `tinycap^android_x86_64` `tinyhostless^android_x86_64` `tinymix^android_x86_64` `tinypcminfo^android_x86_64` `tinyplay^android_x86_64`
+###### **external/tpm2-tss**: 6
+`tpm2-tss2-esys^linux_glibc_x86_64_shared` `tpm2-tss2-mu^linux_glibc_x86_64_shared` `tpm2-tss2-rc^linux_glibc_x86_64_shared` `tpm2-tss2-sys^linux_glibc_x86_64_shared` `tpm2-tss2-tcti^linux_glibc_x86_64_shared` `tpm2-tss2-util^linux_glibc_x86_64_shared`
 ###### **external/vm_tools/p9**: 1
 `libwire_format_derive^linux_glibc_x86_64`
 ###### **external/webrtc**: 2

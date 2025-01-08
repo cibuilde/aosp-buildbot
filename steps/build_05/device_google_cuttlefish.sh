@@ -19,17 +19,37 @@ clone_depth_platform art
 clone_depth_platform build/soong
 clone_depth device/google/cuttlefish
 clone_depth_platform external/boringssl
+clone_depth_platform external/crosvm
 clone_depth_platform external/fmtlib
+clone_depth_platform external/freetype
 clone_depth_platform external/gflags
 clone_depth_platform external/grpc-grpc
 clone_depth_platform external/icu
 clone_depth_platform external/jsoncpp
+clone_depth_platform external/libaom
+clone_depth_platform external/libcap
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/libdrm
+clone_depth_platform external/libevent
+clone_depth_platform external/libffi
+clone_depth_platform external/libjpeg-turbo
 clone_depth_platform external/libnl
+clone_depth_platform external/libopus
+clone_depth_platform external/libsrtp2
+clone_depth_platform external/libvpx
+clone_depth_platform external/libwebm
+clone_depth_platform external/libwebsockets
 clone_depth_platform external/libxml2
+clone_depth_platform external/libyuv
+clone_depth_platform external/pffft
 clone_depth_platform external/protobuf
+clone_depth_platform external/rnnoise
 clone_depth_platform external/tinyxml2
+clone_depth_platform external/usrsctp
+clone_depth_platform external/wayland
+clone_depth_platform external/wayland-protocols
+clone_depth_platform external/webrtc
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -43,16 +63,27 @@ clone_depth_platform system/keymaster
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
+clone_depth_platform system/teeui
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/common/libs/confui/libcuttlefish_confui^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/common/libs/security/libcuttlefish_security^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/audio_connector/libcuttlefish_audio_connector^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/config/libcuttlefish_host_config^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/confui/libcuttlefish_confui_host^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/screen_connector/libcuttlefish_screen_connector^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/vm_manager/libcuttlefish_vm_manager^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/websocket/libcuttlefish_host_websocket^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/gpu_display/gpu_display_server_protocol_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/gpu_display/libwayland_crosvm_gpu_display_extension_server_protocols^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/freetype/libft2.nodep^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/gflags/libgflags^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc++_unsecure^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/protoc-gen-grpc-cpp-plugin^linux_glibc_x86_64/ .
@@ -60,18 +91,53 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsoncpp/libjsoncpp^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsoncpp/libjsoncpp^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libaom/libaom^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/libcap^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libdrm/libdrm^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libevent/libevent^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libffi/ffi_header^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libffi/libffi^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libnl/libnl^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libopus/libopus^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libopus/libopus^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libsrtp2/libsrtp2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libvpx/libvpx^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libvpx/libvpx^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libwebm/libwebm_mkvmuxer^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libwebsockets/libwebsockets^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libxml2/libxml2^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotoc^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland-protocols/wayland_extension_server_protocol_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland-protocols/libwayland_extension_server_protocols^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/wayland_core_server_protocol_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/libwayland_server^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/libwebrtc^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_flags^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_hash^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_numeric^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_status^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_strings^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_synchronization^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_time^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_types^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_base^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_container^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/third_party/abseil-cpp/libwebrtc_absl_debugging^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/gatekeeper/libgatekeeper^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymaster_messages^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/teeui/libteeui/libteeui^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/teeui/libteeui/prebuilt/localization/libteeui_localization^linux_glibc_x86_64_static/ .
 
 echo "building socket_vsock_proxy^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja socket_vsock_proxy,linux_glibc_x86_64
@@ -229,6 +295,30 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/adb_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/adb_connector^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/adb_connector/adb_connector^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/adb_connector^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/adb_connector/adb_connector^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/adb_connector/adb_connector^linux_glibc_x86_64/addition_copy_files.output
 
+echo "building vnc_server^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja vnc_server,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/vnc_server^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/vnc_server^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/vnc_server/vnc_server^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building libcuttlefish_webrtc^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcuttlefish_webrtc,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/libcuttlefish_webrtc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/libcuttlefish_webrtc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/libcuttlefish_webrtc^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building webRTC^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webRTC,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/webRTC^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/webRTC^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc/webRTC^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building webrtc_operator^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_operator,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/webrtc_operator^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/webrtc_operator^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/frontend/webrtc_operator/webrtc_operator^linux_glibc_x86_64/addition_copy_files.output
+
 echo "building libcuttlefish_allocd_utils^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcuttlefish_allocd_utils,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_shared
@@ -246,6 +336,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/allocd_client^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/allocd_client^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building libcuttlefish_wayland_server^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcuttlefish_wayland_server,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/libcuttlefish_wayland_server^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/device/google/cuttlefish/libcuttlefish_wayland_server^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/wayland/libcuttlefish_wayland_server^linux_glibc_x86_64_static/addition_copy_files.output
 
 
 rm -rf out
@@ -273,9 +369,17 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.zst" ]; then
   echo "Compressing external/boringssl -> external_boringssl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_boringssl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_crosvm.tar.zst" ]; then
+  echo "Compressing external/crosvm -> external_crosvm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_crosvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/crosvm/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_freetype.tar.zst" ]; then
+  echo "Compressing external/freetype -> external_freetype.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_freetype.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/freetype/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_gflags.tar.zst" ]; then
   echo "Compressing external/gflags -> external_gflags.tar.zst"
@@ -293,6 +397,14 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_jsoncpp.tar.zst" ]; then
   echo "Compressing external/jsoncpp -> external_jsoncpp.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_jsoncpp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/jsoncpp/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libaom.tar.zst" ]; then
+  echo "Compressing external/libaom -> external_libaom.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libaom.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libaom/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcap.tar.zst" ]; then
+  echo "Compressing external/libcap -> external_libcap.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcap.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcap/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
@@ -301,21 +413,85 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libdrm.tar.zst" ]; then
+  echo "Compressing external/libdrm -> external_libdrm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libdrm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libdrm/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libevent.tar.zst" ]; then
+  echo "Compressing external/libevent -> external_libevent.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libevent.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libevent/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libffi.tar.zst" ]; then
+  echo "Compressing external/libffi -> external_libffi.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libffi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libffi/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst" ]; then
+  echo "Compressing external/libjpeg-turbo -> external_libjpeg-turbo.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libjpeg-turbo/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libnl.tar.zst" ]; then
   echo "Compressing external/libnl -> external_libnl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libnl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libnl/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libopus.tar.zst" ]; then
+  echo "Compressing external/libopus -> external_libopus.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libopus.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libopus/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libsrtp2.tar.zst" ]; then
+  echo "Compressing external/libsrtp2 -> external_libsrtp2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libsrtp2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libsrtp2/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libvpx.tar.zst" ]; then
+  echo "Compressing external/libvpx -> external_libvpx.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libvpx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libvpx/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libwebm.tar.zst" ]; then
+  echo "Compressing external/libwebm -> external_libwebm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libwebm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libwebm/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libwebsockets.tar.zst" ]; then
+  echo "Compressing external/libwebsockets -> external_libwebsockets.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libwebsockets.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libwebsockets/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libxml2.tar.zst" ]; then
   echo "Compressing external/libxml2 -> external_libxml2.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libxml2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libxml2/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libyuv.tar.zst" ]; then
+  echo "Compressing external/libyuv -> external_libyuv.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libyuv.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libyuv/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_pffft.tar.zst" ]; then
+  echo "Compressing external/pffft -> external_pffft.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_pffft.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/pffft/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
   echo "Compressing external/protobuf -> external_protobuf.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rnnoise.tar.zst" ]; then
+  echo "Compressing external/rnnoise -> external_rnnoise.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rnnoise.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rnnoise/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_tinyxml2.tar.zst" ]; then
   echo "Compressing external/tinyxml2 -> external_tinyxml2.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_tinyxml2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/tinyxml2/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_usrsctp.tar.zst" ]; then
+  echo "Compressing external/usrsctp -> external_usrsctp.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_usrsctp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/usrsctp/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_wayland.tar.zst" ]; then
+  echo "Compressing external/wayland -> external_wayland.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_wayland.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/wayland/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_wayland-protocols.tar.zst" ]; then
+  echo "Compressing external/wayland-protocols -> external_wayland-protocols.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_wayland-protocols.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/wayland-protocols/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_webrtc.tar.zst" ]; then
+  echo "Compressing external/webrtc -> external_webrtc.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_webrtc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/webrtc/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
@@ -368,6 +544,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_teeui.tar.zst" ]; then
+  echo "Compressing system/teeui -> system_teeui.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_teeui.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/teeui/ .
 fi
 
 

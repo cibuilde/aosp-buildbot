@@ -27,6 +27,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/adb
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -46,11 +47,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building adb^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja adb,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adb^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/adb^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adb^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/adb^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adb^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adb^linux_glibc_x86_64/addition_copy_files.output
+echo "building libadb_sysdeps^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_sysdeps,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libadbd^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbd,android_recovery_x86_64_static
@@ -124,6 +125,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
+echo "building libadb_pairing_auth^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_pairing_auth,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libadb_tls_connection^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x86_64_static
@@ -141,6 +148,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libadb_tls_connection^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^linux_glibc_x86_64_static/addition_copy_files.output
 
 
 rm -rf out
@@ -199,6 +212,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst" ]; then
   echo "Compressing packages/modules/adb -> packages_modules_adb.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/adb/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

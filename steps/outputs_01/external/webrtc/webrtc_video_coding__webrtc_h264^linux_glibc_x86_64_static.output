@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_h264/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/h264/h264.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_h264/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/h264/h264_color_space.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_h264/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_h264/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/h264/h264_encoder_impl.o

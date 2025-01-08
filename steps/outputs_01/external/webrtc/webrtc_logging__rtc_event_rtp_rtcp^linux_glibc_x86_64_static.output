@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_rtp_rtcp/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_rtcp_packet_incoming.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_rtp_rtcp/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_rtcp_packet_outgoing.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_rtp_rtcp/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_rtp_packet_incoming.o
+out/soong/.intermediates/external/webrtc/webrtc_logging__rtc_event_rtp_rtcp/linux_glibc_x86_64_static/obj/external/webrtc/logging/rtc_event_log/events/rtc_event_rtp_packet_outgoing.o

@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator_interface.o
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/bitrate_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/probe_bitrate_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/robust_throughput_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_goog_cc__estimators/linux_glibc_x86_64_static/obj/external/webrtc/modules/congestion_controller/goog_cc/trendline_estimator.o

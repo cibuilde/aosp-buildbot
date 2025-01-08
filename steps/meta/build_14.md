@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_14 Projects: 18 Targets: 69
+##### Tag: android12-gsi_14 Projects: 19 Targets: 73
 
 ###### **external/bouncycastle**: 1
 `bouncycastle^android_common_apex31`
@@ -30,6 +30,8 @@
 `libRSCpuRef^android_x86_64_shared` `libRSCpuRef^android_x86_x86_64_shared` `libRSDriver^android_x86_64_shared` `libRSDriver^android_x86_x86_64_shared` `libRS_internal^android_x86_64_shared` `libRS_internal^android_x86_x86_64_shared`
 ###### **packages/inputmethods/LatinIME**: 1
 `latinime-common^android_common`
+###### **packages/modules/adb**: 4
+`adb^linux_glibc_x86_64` `bin2c_fastdeployagent^android_common` `deployagent^android_common` `deployagent_lib^android_common`
 ###### **system/apex**: 1
 `com.android.sysprop.apex^android_common`
 ###### **system/core**: 1

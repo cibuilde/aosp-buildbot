@@ -1,0 +1,8 @@
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/sdp_video_format.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/video_codec.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/video_decoder.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/video_decoder_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/video_encoder.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/video_encoder_config.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/vp8_frame_config.o
+out/soong/.intermediates/external/webrtc/webrtc_video_codecs__video_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/video_codecs/vp8_temporal_layers.o

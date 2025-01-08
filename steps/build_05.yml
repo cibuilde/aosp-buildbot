@@ -174,6 +174,10 @@ jobs:
         key: external_fmtlib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_freetype.tar.zst
+        key: external_freetype@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_fsck_msdos.tar.zst
         key: external_fsck_msdos@${{ env.branch }}
     - uses: actions/cache@v4
@@ -250,6 +254,10 @@ jobs:
         key: external_junit@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libaom.tar.zst
+        key: external_libaom@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libavc.tar.zst
         key: external_libavc@${{ env.branch }}
     - uses: actions/cache@v4
@@ -288,6 +296,10 @@ jobs:
       with:
         path: cache/external_libexif.tar.zst
         key: external_libexif@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libffi.tar.zst
+        key: external_libffi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libfuse.tar.zst
@@ -334,6 +346,10 @@ jobs:
         key: external_libpng@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libsrtp2.tar.zst
+        key: external_libsrtp2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libtextclassifier.tar.zst
         key: external_libtextclassifier@${{ env.branch }}
     - uses: actions/cache@v4
@@ -344,6 +360,14 @@ jobs:
       with:
         path: cache/external_libvpx.tar.zst
         key: external_libvpx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libwebm.tar.zst
+        key: external_libwebm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libwebsockets.tar.zst
+        key: external_libwebsockets@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libxml2.tar.zst
@@ -402,6 +426,10 @@ jobs:
         key: external_perfetto@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_pffft.tar.zst
+        key: external_pffft@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_piex.tar.zst
         key: external_piex@${{ env.branch }}
     - uses: actions/cache@v4
@@ -428,6 +456,10 @@ jobs:
       with:
         path: cache/external_python_six.tar.zst
         key: external_python_six@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rnnoise.tar.zst
+        key: external_rnnoise@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_ahash.tar.zst
@@ -738,12 +770,28 @@ jobs:
         key: external_tinyxml2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_tpm2-tss.tar.zst
+        key: external_tpm2-tss@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_tremolo.tar.zst
         key: external_tremolo@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_usrsctp.tar.zst
+        key: external_usrsctp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_vm_tools_p9.tar.zst
         key: external_vm_tools_p9@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_wayland.tar.zst
+        key: external_wayland@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_wayland-protocols.tar.zst
+        key: external_wayland-protocols@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_webrtc.tar.zst
@@ -1000,6 +1048,10 @@ jobs:
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_teeui.tar.zst
+        key: system_teeui@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_tools_aidl.tar.zst

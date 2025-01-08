@@ -137,6 +137,7 @@ include ninja/external/selinux/libselinux/libselinux^android_x86_64_static.ninja
 include ninja/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared.ninja
 include ninja/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static.ninja
 include ninja/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64.ninja
+include ninja/external/webrtc/libwebrtc^linux_glibc_x86_64_static.ninja
 include ninja/frameworks/base/libs/androidfw/libandroidfw^linux_glibc_x86_64_static.ninja
 include ninja/packages/modules/Virtualization/microdroid/microdroid_bootloader^android_x86_64.ninja
 include ninja/system/bt/gd/rust/hci/libbt_hci_custom_types^android_x86_64_rlib_rlib-std.ninja
@@ -507,6 +508,10 @@ build libselinux,linux_glibc_x86_64_static: phony out/soong/.intermediates/exter
 build sefcontext_compile,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/sefcontext_compile
 
 build external_selinux-targets: phony libselinux,android_x86_64_static libselinux,linux_glibc_x86_64_shared libselinux,linux_glibc_x86_64_static sefcontext_compile,linux_glibc_x86_64
+
+build libwebrtc,linux_glibc_x86_64_static: phony out/soong/.intermediates/external/webrtc/libwebrtc/linux_glibc_x86_64_static/libwebrtc.a
+
+build external_webrtc-targets: phony libwebrtc,linux_glibc_x86_64_static
 
 build libandroidfw,linux_glibc_x86_64_static: phony out/soong/.intermediates/frameworks/base/libs/androidfw/libandroidfw/linux_glibc_x86_64_static/libandroidfw.a
 

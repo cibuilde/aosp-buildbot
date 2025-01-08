@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_03 Projects: 122 Targets: 1468
+##### Tag: android12-gsi_03 Projects: 123 Targets: 1472
 
 ###### **art**: 43
 `art-odrefresh-operator-srcs^` `art_compiler_operator_srcs^` `art_dex2oat_operator_srcs^` `art_libartbase_operator_srcs^` `art_operator_srcs^` `art_perfetto_hprof_operator_srcs^` `cpp-define-generator-asm-support^android_x86_64_apex31` `cpp-define-generator-asm-support^android_x86_x86_64_apex31` `cpp-define-generator-asm-support^linux_glibc_x86_64` `dex2oatd^linux_glibc_x86_64` `dexfile_operator_srcs^` `generate_operator_out^linux_glibc_x86_64_PY2` `hiddenapi^linux_glibc_x86_64` `libadbconnection^android_x86_64_static_apex31` `libadbconnection^android_x86_x86_64_static_apex31` `libart-dex2oat^android_x86_64_static_lto-thin_apex31` `libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31` `libart_mterp.x86^` `libart_mterp.x86_64^` `libart_mterp.x86_64ng^` `libartbase^android_x86_64_static_apex31` `libartbase^android_x86_x86_64_static_apex31` `libartbase^linux_glibc_x86_64_static` `libartbased^linux_glibc_x86_64_static` `libartd-compiler^linux_glibc_x86_64_static` `libartd-dex2oat^linux_glibc_x86_64_static` `libartd^linux_glibc_x86_64_static` `libdex2oatd_static^linux_glibc_x86_64_static` `libdexfile^android_x86_64_static_apex31` `libdexfile^android_x86_x86_64_static_apex31` `libdexfile^linux_glibc_x86_64_static` `libdexfiled^linux_glibc_x86_64_static` `libnativeloader^android_x86_64_shared_current` `libnativeloader^android_x86_x86_64_shared_current` `libopenjdkjvm^android_x86_64_static_apex31` `libopenjdkjvm^android_x86_x86_64_static_apex31` `libopenjdkjvmti^android_x86_64_static_apex31` `libopenjdkjvmti^android_x86_x86_64_static_apex31` `libprofman_static^linux_glibc_x86_64_static` `libsigchain^android_x86_64_shared_current` `libsigchain^android_x86_x86_64_shared_current` `profman^linux_glibc_x86_64` `veridex^linux_glibc_x86_64`
@@ -94,8 +94,8 @@
 `jni_generator^linux_glibc_x86_64_PY2` `jni_registration_generator^linux_glibc_x86_64_PY2` `libchrome-include^` `libchrome^android_recovery_x86_64_static` `libchrome^android_x86_64_static` `libchrome^android_x86_x86_64_static` `libchrome^linux_glibc_x86_64_static` `libmojo_jni_headers^` `libmojo_jni_registration_headers^`
 ###### **external/libevent**: 1
 `libevent^linux_glibc_x86_64_shared`
-###### **external/libffi**: 2
-`ffi_header^` `libffi^android_x86_64_static_apex10000`
+###### **external/libffi**: 3
+`ffi_header^` `libffi^android_x86_64_static_apex10000` `libffi^linux_glibc_x86_64_static`
 ###### **external/libjpeg-turbo**: 1
 `libjpeg^linux_glibc_x86_64_shared`
 ###### **external/libnl**: 1
@@ -104,6 +104,8 @@
 `libopus^linux_glibc_x86_64_shared`
 ###### **external/libvpx**: 1
 `libvpx^linux_glibc_x86_64_shared`
+###### **external/libwebm**: 1
+`libwebm_mkvmuxer^linux_glibc_x86_64_shared`
 ###### **external/llvm**: 66
 `libLLVMAArch64AsmParser^android_x86_64_static` `libLLVMAArch64AsmPrinter^android_x86_64_static` `libLLVMAArch64CodeGen^android_x86_64_static` `libLLVMAArch64Desc^android_x86_64_static` `libLLVMAArch64Disassembler^android_x86_64_static` `libLLVMAArch64Info^android_x86_64_static` `libLLVMAArch64Utils^android_x86_64_static` `libLLVMARMAsmParser^android_x86_64_static` `libLLVMARMAsmPrinter^android_x86_64_static` `libLLVMARMCodeGen^android_x86_64_static` `libLLVMARMDesc^android_x86_64_static` `libLLVMARMDisassembler^android_x86_64_static` `libLLVMARMInfo^android_x86_64_static` `libLLVMAnalysis^android_x86_64_static` `libLLVMAsmParser^android_x86_64_static` `libLLVMAsmPrinter^android_x86_64_static` `libLLVMBitReader^android_x86_64_static` `libLLVMBitReader^android_x86_x86_64_static` `libLLVMBitWriter^android_x86_64_static` `libLLVMCodeGen^android_x86_64_static` `libLLVMCore^android_x86_64_static` `libLLVMCore^android_x86_x86_64_static` `libLLVMDebugInfoCodeView^android_x86_64_static` `libLLVMDebugInfoDWARF^android_x86_64_static` `libLLVMDebugInfoPDB^android_x86_64_static` `libLLVMExecutionEngine^android_x86_64_static` `libLLVMGlobalISel^android_x86_64_static` `libLLVMIRReader^android_x86_64_static` `libLLVMInstCombine^android_x86_64_static` `libLLVMInstrumentation^android_x86_64_static` `libLLVMLTO^android_x86_64_static` `libLLVMLibDriver^android_x86_64_static` `libLLVMLinker^android_x86_64_static` `libLLVMMCDisassembler^android_x86_64_static` `libLLVMMCJIT^android_x86_64_static` `libLLVMMCParser^android_x86_64_static` `libLLVMMC^android_x86_64_static` `libLLVMObject^android_x86_64_static` `libLLVMOption^android_x86_64_static` `libLLVMOrcJIT^android_x86_64_static` `libLLVMProfileDataCoverage^android_x86_64_static` `libLLVMProfileData^android_x86_64_static` `libLLVMRuntimeDyld^android_x86_64_static` `libLLVMScalarOpts^android_x86_64_static` `libLLVMSelectionDAG^android_x86_64_static` `libLLVMSymbolize^android_x86_64_static` `libLLVMTarget^android_x86_64_static` `libLLVMTransformObjCARC^android_x86_64_static` `libLLVMTransformUtils^android_x86_64_static` `libLLVMVectorize^android_x86_64_static` `libLLVMX86AsmParser^android_x86_64_static` `libLLVMX86AsmPrinter^android_x86_64_static` `libLLVMX86CodeGen^android_x86_64_static` `libLLVMX86Desc^android_x86_64_static` `libLLVMX86Disassembler^android_x86_64_static` `libLLVMX86Info^android_x86_64_static` `libLLVMX86Utils^android_x86_64_static` `libLLVMipo^android_x86_64_static` `llvm-gen-aarch64^` `llvm-gen-arm^` `llvm-gen-attributes^` `llvm-gen-core^` `llvm-gen-intrinsics^` `llvm-gen-libdriver^` `llvm-gen-x86^` `llvm-tblgen^linux_glibc_x86_64`
 ###### **external/lz4**: 1
@@ -170,8 +172,8 @@
 `commit_header^` `swiftshader_spvtools_generate_grammar_tables^` `swiftshader_spvtools_generate_registry_tables^` `swiftshader_spvtools_update_build_version^`
 ###### **external/testng**: 1
 `testng-generated-srcs^`
-###### **external/wayland**: 3
-`wayland_core_client_protocol_headers^` `wayland_core_protocol_sources_static^` `wayland_scanner^linux_glibc_x86_64`
+###### **external/wayland**: 4
+`wayland_core_client_protocol_headers^` `wayland_core_protocol_sources_static^` `wayland_core_server_protocol_headers^` `wayland_scanner^linux_glibc_x86_64`
 ###### **external/zlib**: 33
 `libz.ndk^android_x86_64_sdk_shared_21` `libz.ndk^android_x86_64_sdk_shared_22` `libz.ndk^android_x86_64_sdk_shared_23` `libz.ndk^android_x86_64_sdk_shared_24` `libz.ndk^android_x86_64_sdk_shared_25` `libz.ndk^android_x86_64_sdk_shared_26` `libz.ndk^android_x86_64_sdk_shared_27` `libz.ndk^android_x86_64_sdk_shared_28` `libz.ndk^android_x86_64_sdk_shared_29` `libz.ndk^android_x86_64_sdk_shared_30` `libz.ndk^android_x86_64_sdk_shared_31` `libz.ndk^android_x86_64_sdk_shared_REL` `libz.ndk^android_x86_64_sdk_shared_current` `libz.ndk^android_x86_x86_64_sdk_shared_16` `libz.ndk^android_x86_x86_64_sdk_shared_17` `libz.ndk^android_x86_x86_64_sdk_shared_18` `libz.ndk^android_x86_x86_64_sdk_shared_19` `libz.ndk^android_x86_x86_64_sdk_shared_20` `libz.ndk^android_x86_x86_64_sdk_shared_21` `libz.ndk^android_x86_x86_64_sdk_shared_22` `libz.ndk^android_x86_x86_64_sdk_shared_23` `libz.ndk^android_x86_x86_64_sdk_shared_24` `libz.ndk^android_x86_x86_64_sdk_shared_25` `libz.ndk^android_x86_x86_64_sdk_shared_26` `libz.ndk^android_x86_x86_64_sdk_shared_27` `libz.ndk^android_x86_x86_64_sdk_shared_28` `libz.ndk^android_x86_x86_64_sdk_shared_29` `libz.ndk^android_x86_x86_64_sdk_shared_30` `libz.ndk^android_x86_x86_64_sdk_shared_31` `libz.ndk^android_x86_x86_64_sdk_shared_REL` `libz.ndk^android_x86_x86_64_sdk_shared_current` `libz^android_x86_64_shared_current` `libz^android_x86_x86_64_shared_current`
 ###### **external/zxing**: 1
@@ -202,8 +204,8 @@
 `libstatspull^android_x86_64_shared_current` `libstatspull^android_x86_x86_64_shared_current` `libstatssocket^android_x86_64_shared_30` `libstatssocket^android_x86_64_shared_current` `libstatssocket^android_x86_x86_64_shared_current`
 ###### **packages/modules/Virtualization**: 2
 `microdroid_uboot_env^android_x86_64` `microdroid_uboot_env_gen_x86_64^`
-###### **packages/modules/adb**: 7
-`libadb_pairing_connection^android_x86_64_shared_current` `libadb_pairing_connection^android_x86_x86_64_shared_current` `libadb_pairing_server^android_x86_64_shared_current` `libadb_pairing_server^android_x86_x86_64_shared_current` `libadbconnection_client^android_x86_64_shared_current` `libadbconnection_client^android_x86_x86_64_shared_current` `libadbd_fs^android_x86_64_shared_current`
+###### **packages/modules/adb**: 8
+`bin2c_fastdeployagentscript^` `libadb_pairing_connection^android_x86_64_shared_current` `libadb_pairing_connection^android_x86_x86_64_shared_current` `libadb_pairing_server^android_x86_64_shared_current` `libadb_pairing_server^android_x86_x86_64_shared_current` `libadbconnection_client^android_x86_64_shared_current` `libadbconnection_client^android_x86_x86_64_shared_current` `libadbd_fs^android_x86_64_shared_current`
 ###### **packages/services/Car**: 2
 `android-car-last-released-api^` `android-car-last-released-system-api^`
 ###### **prebuilts/gradle-plugin**: 1

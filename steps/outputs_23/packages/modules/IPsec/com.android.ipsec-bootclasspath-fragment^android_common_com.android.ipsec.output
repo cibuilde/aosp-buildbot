@@ -1,3 +1,4 @@
 out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/bootclasspath.pb
 out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/hiddenapi-modular/encoded/android.net.ipsec.ike.jar
+out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/modular-hiddenapi/annotation-flags.csv

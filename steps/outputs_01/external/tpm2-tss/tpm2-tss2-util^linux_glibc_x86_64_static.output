@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-util/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/util/io.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-util/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/util/key-value-parse.o
+out/soong/.intermediates/external/tpm2-tss/tpm2-tss2-util/linux_glibc_x86_64_static/obj/external/tpm2-tss/src/util/log.o

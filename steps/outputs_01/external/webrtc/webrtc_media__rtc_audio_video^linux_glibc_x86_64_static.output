@@ -1,0 +1,9 @@
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/adm_helpers.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/payload_type_mapper.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/simulcast.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/unhandled_packets_buffer.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/webrtc_media_engine.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/webrtc_video_engine.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/webrtc_voice_engine.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_capture/linux/device_info_linux.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_audio_video/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_capture/linux/video_capture_linux.o

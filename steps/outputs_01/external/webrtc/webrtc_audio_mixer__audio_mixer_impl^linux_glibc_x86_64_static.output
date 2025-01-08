@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_mixer__audio_mixer_impl/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_mixer/audio_mixer_impl.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_mixer__audio_mixer_impl/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_mixer/default_output_rate_calculator.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_mixer__audio_mixer_impl/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_mixer/frame_combiner.o

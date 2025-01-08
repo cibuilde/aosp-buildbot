@@ -1,0 +1,13 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/api/neteq/neteq.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/audio_level.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/audio_receive_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/audio_send_stream.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/audio_state.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/audio_transport_impl.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/channel_receive.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/channel_receive_frame_transformer_delegate.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/channel_send.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/channel_send_frame_transformer_delegate.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/null_audio_poller.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/audio/remix_resample.o
+out/soong/.intermediates/external/webrtc/webrtc_audio__audio/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/rms_level.o

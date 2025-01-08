@@ -1,2 +1,3 @@
 out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so
+out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so.toc
 out/soong/host/linux-x86/lib64/libcuttlefish_security.so

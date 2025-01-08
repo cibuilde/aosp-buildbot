@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_server_protocol_headers/gen/aura-shell.h
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_server_protocol_headers/gen/linux-dmabuf-unstable-v1.h
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_server_protocol_headers/gen/viewporter.h
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_server_protocol_headers/gen/virtio-gpu-metadata-v1.h

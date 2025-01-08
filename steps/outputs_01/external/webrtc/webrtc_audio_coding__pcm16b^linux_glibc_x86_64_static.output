@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__pcm16b/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/pcm16b/audio_decoder_pcm16b.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__pcm16b/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/pcm16b/audio_encoder_pcm16b.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__pcm16b/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/pcm16b/pcm16b_common.o

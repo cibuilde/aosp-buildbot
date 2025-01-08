@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_video__video_rtp_headers/linux_glibc_x86_64_static/obj/external/webrtc/api/video/color_space.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_rtp_headers/linux_glibc_x86_64_static/obj/external/webrtc/api/video/hdr_metadata.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_rtp_headers/linux_glibc_x86_64_static/obj/external/webrtc/api/video/video_content_type.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_rtp_headers/linux_glibc_x86_64_static/obj/external/webrtc/api/video/video_timing.o

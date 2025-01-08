@@ -70,6 +70,10 @@ jobs:
         key: external_grpc-grpc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libaom.tar.zst
+        key: external_libaom@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libcxx.tar.zst
         key: external_libcxx@${{ env.branch }}
     - uses: actions/cache@v4
@@ -82,8 +86,28 @@ jobs:
         key: external_libdrm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libevent.tar.zst
+        key: external_libevent@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libopus.tar.zst
+        key: external_libopus@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libpng.tar.zst
         key: external_libpng@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libsrtp2.tar.zst
+        key: external_libsrtp2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libvpx.tar.zst
+        key: external_libvpx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libyuv.tar.zst
+        key: external_libyuv@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_nanopb-c.tar.zst
@@ -92,6 +116,14 @@ jobs:
       with:
         path: cache/external_pcre.tar.zst
         key: external_pcre@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_pffft.tar.zst
+        key: external_pffft@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rnnoise.tar.zst
+        key: external_rnnoise@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_aho-corasick.tar.zst
@@ -272,6 +304,14 @@ jobs:
       with:
         path: cache/external_tinyxml2.tar.zst
         key: external_tinyxml2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_usrsctp.tar.zst
+        key: external_usrsctp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_webrtc.tar.zst
+        key: external_webrtc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_zlib.tar.zst

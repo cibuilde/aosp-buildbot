@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_internal_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/fake_video_codec_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_internal_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/internal_decoder_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_internal_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/internal_encoder_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_internal_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/media/engine/multiplex_codec_factory.o

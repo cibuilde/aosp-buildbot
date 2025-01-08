@@ -154,6 +154,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libvpx
 tar xf $GITHUB_WORKSPACE/external_libvpx-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libvpx/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libwebm.tar.zst --output external_libwebm-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libwebm
+tar xf $GITHUB_WORKSPACE/external_libwebm-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libwebm/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_llvm.tar.zst --output external_llvm-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/llvm
 tar xf $GITHUB_WORKSPACE/external_llvm-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/llvm/
@@ -387,6 +391,7 @@ time source steps/build_03/external_libjpeg-turbo.sh
 time source steps/build_03/external_libnl.sh
 time source steps/build_03/external_libopus.sh
 time source steps/build_03/external_libvpx.sh
+time source steps/build_03/external_libwebm.sh
 time source steps/build_03/external_llvm.sh
 time source steps/build_03/external_lz4.sh
 time source steps/build_03/external_mime-support.sh

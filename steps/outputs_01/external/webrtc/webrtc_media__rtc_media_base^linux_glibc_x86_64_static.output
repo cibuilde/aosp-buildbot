@@ -1,0 +1,15 @@
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/api/transport/stun.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/adapted_video_track_source.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/codec.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/media_channel.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/media_constants.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/media_engine.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/rid_description.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/rtp_data_engine.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/rtp_utils.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/stream_params.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/turn_utils.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/video_adapter.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/video_broadcaster.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/video_common.o
+out/soong/.intermediates/external/webrtc/webrtc_media__rtc_media_base/linux_glibc_x86_64_static/obj/external/webrtc/media/base/video_source_base.o

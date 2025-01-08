@@ -1,3 +1,4 @@
+out/soong/.intermediates/external/libevent/libevent/linux_glibc_x86_64_static/libevent.a
 out/soong/.intermediates/external/libevent/libevent/linux_glibc_x86_64_static/obj/external/libevent/buffer.o
 out/soong/.intermediates/external/libevent/libevent/linux_glibc_x86_64_static/obj/external/libevent/bufferevent.o
 out/soong/.intermediates/external/libevent/libevent/linux_glibc_x86_64_static/obj/external/libevent/bufferevent_filter.o

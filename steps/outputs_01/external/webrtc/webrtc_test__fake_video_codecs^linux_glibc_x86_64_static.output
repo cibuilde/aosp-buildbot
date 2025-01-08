@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/webrtc/webrtc_test__fake_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/test/configurable_frame_size_encoder.o
+out/soong/.intermediates/external/webrtc/webrtc_test__fake_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/test/fake_decoder.o
+out/soong/.intermediates/external/webrtc/webrtc_test__fake_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/test/fake_encoder.o
+out/soong/.intermediates/external/webrtc/webrtc_test__fake_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/test/fake_vp8_decoder.o
+out/soong/.intermediates/external/webrtc/webrtc_test__fake_video_codecs/linux_glibc_x86_64_static/obj/external/webrtc/test/fake_vp8_encoder.o

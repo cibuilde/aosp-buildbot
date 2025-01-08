@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/bitrate_prober.o
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/paced_sender.o
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/pacing_controller.o
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/packet_router.o
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/round_robin_packet_queue.o
+out/soong/.intermediates/external/webrtc/webrtc_pacing__pacing/linux_glibc_x86_64_static/obj/external/webrtc/modules/pacing/task_queue_paced_sender.o

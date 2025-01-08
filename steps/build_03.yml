@@ -298,6 +298,10 @@ jobs:
         key: external_libvpx@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libwebm.tar.zst
+        key: external_libwebm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libxml2.tar.zst
         key: external_libxml2@${{ env.branch }}
     - uses: actions/cache@v4

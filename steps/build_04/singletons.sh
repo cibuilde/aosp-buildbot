@@ -68,6 +68,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc.ndk^android_x86_x86_64_
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc.ndk^android_x86_x86_64_sdk_shared_31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc.ndk^android_x86_x86_64_sdk_shared_REL/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc.ndk^android_x86_x86_64_sdk_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_64_sdk_shared_21/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_64_sdk_shared_22/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_64_sdk_shared_23/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_64_sdk_shared_24/ .
@@ -98,6 +99,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_x86_64_sdk_shared_31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_x86_64_sdk_shared_REL/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++.ndk^android_x86_x86_64_sdk_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.ndk^android_x86_64_sdk_shared_21/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.ndk^android_x86_64_sdk_shared_22/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.ndk^android_x86_64_sdk_shared_23/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.ndk^android_x86_64_sdk_shared_24/ .
@@ -306,6 +308,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroi
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_REL/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_21/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_22/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_23/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_24/ .
@@ -619,6 +622,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/module_ndk_libs/libnativeh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog_ndk_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_21/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_22/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_23/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_24/ .

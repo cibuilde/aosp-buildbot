@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_aecm__aecm_core/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/aecm/aecm_core.o
+out/soong/.intermediates/external/webrtc/webrtc_aecm__aecm_core/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/aecm/aecm_core_c.o
+out/soong/.intermediates/external/webrtc/webrtc_aecm__aecm_core/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_processing/aecm/echo_control_mobile.o

@@ -1,3 +1,4 @@
 out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb
 out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar
+out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv

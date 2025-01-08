@@ -206,6 +206,10 @@ jobs:
         key: external_golang-protobuf@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_google-breakpad.tar.zst
+        key: external_google-breakpad@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_google-fonts_carrois-gothic-sc.tar.zst
         key: external_google-fonts_carrois-gothic-sc@${{ env.branch }}
     - uses: actions/cache@v4
@@ -274,8 +278,16 @@ jobs:
         key: external_kmod@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libaom.tar.zst
+        key: external_libaom@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libavc.tar.zst
         key: external_libavc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcap.tar.zst
+        key: external_libcap@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcppbor.tar.zst
@@ -346,8 +358,16 @@ jobs:
         key: external_libpng@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libsrtp2.tar.zst
+        key: external_libsrtp2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libtextclassifier.tar.zst
         key: external_libtextclassifier@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libusb.tar.zst
+        key: external_libusb@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libutf.tar.zst
@@ -356,6 +376,14 @@ jobs:
       with:
         path: cache/external_libvpx.tar.zst
         key: external_libvpx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libwebm.tar.zst
+        key: external_libwebm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libwebsockets.tar.zst
+        key: external_libwebsockets@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libxml2.tar.zst
@@ -398,6 +426,10 @@ jobs:
         key: external_modp_b64@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_ms-tpm-20-ref.tar.zst
+        key: external_ms-tpm-20-ref@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_nanopb-c.tar.zst
         key: external_nanopb-c@${{ env.branch }}
     - uses: actions/cache@v4
@@ -412,6 +444,10 @@ jobs:
       with:
         path: cache/external_oj-libjdwp.tar.zst
         key: external_oj-libjdwp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_openscreen.tar.zst
+        key: external_openscreen@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_parameter-framework.tar.zst
@@ -430,6 +466,10 @@ jobs:
         key: external_perfetto@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_pffft.tar.zst
+        key: external_pffft@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_piex.tar.zst
         key: external_piex@${{ env.branch }}
     - uses: actions/cache@v4
@@ -440,6 +480,10 @@ jobs:
       with:
         path: cache/external_python_cpython2.tar.zst
         key: external_python_cpython2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rnnoise.tar.zst
+        key: external_rnnoise@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_roboto-fonts.tar.zst
@@ -594,8 +638,16 @@ jobs:
         key: external_tinyxml2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_tpm2-tss.tar.zst
+        key: external_tpm2-tss@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_tremolo.tar.zst
         key: external_tremolo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_usrsctp.tar.zst
+        key: external_usrsctp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_virglrenderer.tar.zst
@@ -612,6 +664,10 @@ jobs:
       with:
         path: cache/external_webp.tar.zst
         key: external_webp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_webrtc.tar.zst
+        key: external_webrtc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_xz-embedded.tar.zst
@@ -948,6 +1004,10 @@ jobs:
       with:
         path: cache/system_server_configurable_flags.tar.zst
         key: system_server_configurable_flags@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_teeui.tar.zst
+        key: system_teeui@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_timezone.tar.zst

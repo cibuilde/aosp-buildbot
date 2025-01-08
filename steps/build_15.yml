@@ -34,8 +34,28 @@ jobs:
         key: dalvik@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/device_google_cuttlefish.tar.zst
+        key: device_google_cuttlefish@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish_prebuilts.tar.zst
+        key: device_google_cuttlefish_prebuilts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish_vmm.tar.zst
+        key: device_google_cuttlefish_vmm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_apache-xml.tar.zst
         key: external_apache-xml@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_avb.tar.zst
+        key: external_avb@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_boringssl.tar.zst
+        key: external_boringssl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_bouncycastle.tar.zst
@@ -46,6 +66,18 @@ jobs:
         key: external_compiler-rt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_crosvm.tar.zst
+        key: external_crosvm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_e2fsprogs.tar.zst
+        key: external_e2fsprogs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_f2fs-tools.tar.zst
+        key: external_f2fs-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_fmtlib.tar.zst
         key: external_fmtlib@${{ env.branch }}
     - uses: actions/cache@v4
@@ -54,8 +86,24 @@ jobs:
         key: external_giflib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_grpc-grpc.tar.zst
+        key: external_grpc-grpc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_icu.tar.zst
         key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsoncpp.tar.zst
+        key: external_jsoncpp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libchrome.tar.zst
+        key: external_libchrome@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcppbor.tar.zst
+        key: external_libcppbor@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcxx.tar.zst
@@ -66,16 +114,64 @@ jobs:
         key: external_libcxxabi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libevent.tar.zst
+        key: external_libevent@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libgsm.tar.zst
         key: external_libgsm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libjpeg-turbo.tar.zst
+        key: external_libjpeg-turbo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libnl.tar.zst
+        key: external_libnl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libopus.tar.zst
+        key: external_libopus@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libphonenumber.tar.zst
         key: external_libphonenumber@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libvpx.tar.zst
+        key: external_libvpx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libwebm.tar.zst
+        key: external_libwebm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libxml2.tar.zst
+        key: external_libxml2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libyuv.tar.zst
+        key: external_libyuv@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lz4.tar.zst
+        key: external_lz4@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lzma.tar.zst
+        key: external_lzma@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_ms-tpm-20-ref.tar.zst
+        key: external_ms-tpm-20-ref@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_neven.tar.zst
         key: external_neven@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_newfs_msdos.tar.zst
+        key: external_newfs_msdos@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_okhttp.tar.zst
@@ -90,8 +186,24 @@ jobs:
         key: external_rappor@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_sqlite.tar.zst
+        key: external_sqlite@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_tagsoup.tar.zst
         key: external_tagsoup@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_toybox.tar.zst
+        key: external_toybox@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_tpm2-tss.tar.zst
+        key: external_tpm2-tss@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zlib.tar.zst
+        key: external_zlib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst
@@ -162,6 +274,10 @@ jobs:
         key: packages_modules_RuntimeI18n@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_adb.tar.zst
+        key: packages_modules_adb@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
@@ -190,6 +306,18 @@ jobs:
         key: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_extras.tar.zst
+        key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gatekeeper.tar.zst
+        key: system_gatekeeper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_keymaster.tar.zst
+        key: system_keymaster@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_libbase.tar.zst
         key: system_libbase@${{ env.branch }}
     - uses: actions/cache@v4
@@ -206,6 +334,10 @@ jobs:
         key: system_libhwbinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_libziparchive.tar.zst
+        key: system_libziparchive@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_logging.tar.zst
         key: system_logging@${{ env.branch }}
     - uses: actions/cache@v4
@@ -216,6 +348,10 @@ jobs:
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_tools_mkbootimg.tar.zst
+        key: system_tools_mkbootimg@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_unwinding.tar.zst

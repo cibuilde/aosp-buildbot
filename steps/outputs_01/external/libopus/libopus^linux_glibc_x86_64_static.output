@@ -1,3 +1,4 @@
+out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_static/libopus.a
 out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_static/obj/external/libopus/celt/bands.o
 out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_static/obj/external/libopus/celt/celt.o
 out/soong/.intermediates/external/libopus/libopus/linux_glibc_x86_64_static/obj/external/libopus/celt/celt_decoder.o

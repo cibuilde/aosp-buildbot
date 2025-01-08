@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/api/adaptation/resource.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/video/encoder_bitrate_adjuster.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/video/encoder_overshoot_detector.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/video/frame_encode_metadata_writer.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/video/video_source_sink_controller.o
+out/soong/.intermediates/external/webrtc/webrtc_video__video_stream_encoder_impl/linux_glibc_x86_64_static/obj/external/webrtc/video/video_stream_encoder.o

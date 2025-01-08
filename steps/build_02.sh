@@ -70,6 +70,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/pcre
 tar xf $GITHUB_WORKSPACE/external_pcre-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/pcre/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pffft.tar.zst --output external_pffft-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/pffft
+tar xf $GITHUB_WORKSPACE/external_pffft-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/pffft/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rnnoise.tar.zst --output external_rnnoise-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rnnoise
+tar xf $GITHUB_WORKSPACE/external_rnnoise-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rnnoise/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_bitflags.tar.zst --output external_rust_crates_bitflags-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags
 tar xf $GITHUB_WORKSPACE/external_rust_crates_bitflags-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags/
@@ -113,6 +121,14 @@ tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-xid-01.tar.zst -C $GITHUB_
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_selinux.tar.zst --output external_selinux-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/selinux
 tar xf $GITHUB_WORKSPACE/external_selinux-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/selinux/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_usrsctp.tar.zst --output external_usrsctp-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/usrsctp
+tar xf $GITHUB_WORKSPACE/external_usrsctp-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/usrsctp/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_webrtc.tar.zst --output external_webrtc-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/webrtc
+tar xf $GITHUB_WORKSPACE/external_webrtc-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/webrtc/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst --output external_zlib-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/zlib
@@ -189,6 +205,7 @@ time source steps/build_02/external_rust_crates_slab.sh
 time source steps/build_02/external_rust_crates_smallvec.sh
 time source steps/build_02/external_rust_crates_which.sh
 time source steps/build_02/external_selinux.sh
+time source steps/build_02/external_webrtc.sh
 time source steps/build_02/frameworks_base.sh
 time source steps/build_02/packages_modules_Virtualization.sh
 time source steps/build_02/system_bt.sh

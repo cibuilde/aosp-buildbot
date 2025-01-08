@@ -64,6 +64,7 @@ include ninja/device/google/cuttlefish/guest/hals/ril/reference-libril/libril-mo
 include ninja/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_static.ninja
 include ninja/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_static.ninja
 include ninja/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/host/commands/secure_env/secure_env^linux_glibc_x86_64.ninja
 include ninja/external/avb/avbctl^android_x86_64.ninja
 include ninja/external/crosvm/acpi_tables/libacpi_tables^android_x86_64_rlib_rlib-std_apex10000.ninja
 include ninja/external/crosvm/assertions/libassertions^android_x86_64_dylib.ninja
@@ -488,7 +489,9 @@ build libcuttlefish-ril-2,android_vendor.31_x86_x86_64_static: phony out/soong/.
 
 build libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/android_vendor.31_x86_64_shared/libcuttlefish_kernel_log_monitor_utils.so out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/android_vendor.31_x86_64_shared/libcuttlefish_kernel_log_monitor_utils.so.toc
 
-build device_google_cuttlefish-targets: phony cuttlefish_net,android_vendor.31_x86_64_shared libcuttlefish-ril-2,android_vendor.31_x86_64_static libcuttlefish-ril-2,android_vendor.31_x86_x86_64_static libcuttlefish_device_config_proto,android_vendor.31_x86_64_shared libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_shared libcuttlefish_fs,android_vendor.31_x86_64_shared libcuttlefish_fs,android_vendor.31_x86_x86_64_shared libcuttlefish_fs,android_x86_64_shared libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_shared libcuttlefish_utils,android_vendor.31_x86_64_shared libcuttlefish_utils,android_vendor.31_x86_x86_64_shared libcuttlefish_utils,android_x86_64_shared libril-modem-lib,android_vendor.31_x86_64_static libril-modem-lib,android_vendor.31_x86_x86_64_static rename_netiface,android_vendor.31_x86_64 socket_vsock_proxy,android_vendor.31_x86_64
+build secure_env,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/secure_env/secure_env/linux_glibc_x86_64/secure_env out/soong/host/linux-x86/bin/secure_env
+
+build device_google_cuttlefish-targets: phony cuttlefish_net,android_vendor.31_x86_64_shared libcuttlefish-ril-2,android_vendor.31_x86_64_static libcuttlefish-ril-2,android_vendor.31_x86_x86_64_static libcuttlefish_device_config_proto,android_vendor.31_x86_64_shared libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_shared libcuttlefish_fs,android_vendor.31_x86_64_shared libcuttlefish_fs,android_vendor.31_x86_x86_64_shared libcuttlefish_fs,android_x86_64_shared libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_shared libcuttlefish_utils,android_vendor.31_x86_64_shared libcuttlefish_utils,android_vendor.31_x86_x86_64_shared libcuttlefish_utils,android_x86_64_shared libril-modem-lib,android_vendor.31_x86_64_static libril-modem-lib,android_vendor.31_x86_x86_64_static rename_netiface,android_vendor.31_x86_64 secure_env,linux_glibc_x86_64 socket_vsock_proxy,android_vendor.31_x86_64
 
 build avbctl,android_x86_64: phony out/soong/.intermediates/external/avb/avbctl/android_x86_64/avbctl
 
@@ -1222,7 +1225,7 @@ build libbacktrace,android_x86_64_shared: phony out/soong/.intermediates/system/
 
 build libbacktrace,android_x86_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_x86_x86_64_shared/libbacktrace.so out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_x86_x86_64_shared/libbacktrace.so.toc
 
-build libbacktrace,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_shared/libbacktrace.so out/soong/host/linux-x86/lib64/libbacktrace.so
+build libbacktrace,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_shared/libbacktrace.so out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_shared/libbacktrace.so.toc out/soong/host/linux-x86/lib64/libbacktrace.so
 
 build libunwindstack,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_recovery_x86_64_shared/libunwindstack.so out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_recovery_x86_64_shared/libunwindstack.so.toc
 

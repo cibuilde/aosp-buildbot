@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_codecs__audio_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/audio_codecs/audio_codec_pair_id.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_codecs__audio_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/audio_codecs/audio_decoder.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_codecs__audio_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/audio_codecs/audio_encoder.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_codecs__audio_codecs_api/linux_glibc_x86_64_static/obj/external/webrtc/api/audio_codecs/audio_format.o

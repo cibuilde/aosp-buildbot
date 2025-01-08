@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/webrtc/webrtc_call__rtp_receiver/linux_glibc_x86_64_static/obj/external/webrtc/call/rtp_demuxer.o
+out/soong/.intermediates/external/webrtc/webrtc_call__rtp_receiver/linux_glibc_x86_64_static/obj/external/webrtc/call/rtp_stream_receiver_controller.o
+out/soong/.intermediates/external/webrtc/webrtc_call__rtp_receiver/linux_glibc_x86_64_static/obj/external/webrtc/call/rtx_receive_stream.o

@@ -1,4 +1,5 @@
 out/soong/hiddenapi/hiddenapi-flags.csv
+out/soong/hiddenapi/hiddenapi-flags.csv.valid
 out/soong/vsoc_x86_64/dex_bootjars_input/ext.jar
 out/soong/vsoc_x86_64/dex_bootjars_input/framework-graphics.jar
 out/soong/vsoc_x86_64/dex_bootjars_input/framework.jar

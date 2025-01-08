@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__webrtc_opus/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/opus/audio_decoder_opus.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__webrtc_opus/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/opus/audio_encoder_opus.o

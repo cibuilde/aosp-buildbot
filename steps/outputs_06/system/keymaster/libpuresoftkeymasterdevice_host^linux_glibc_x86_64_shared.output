@@ -1,2 +1,3 @@
 out/soong/.intermediates/system/keymaster/libpuresoftkeymasterdevice_host/linux_glibc_x86_64_shared/libpuresoftkeymasterdevice_host.so
+out/soong/.intermediates/system/keymaster/libpuresoftkeymasterdevice_host/linux_glibc_x86_64_shared/libpuresoftkeymasterdevice_host.so.toc
 out/soong/host/linux-x86/lib64/libpuresoftkeymasterdevice_host.so

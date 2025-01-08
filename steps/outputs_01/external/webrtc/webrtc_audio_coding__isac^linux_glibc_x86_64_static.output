@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/audio_decoder_isac.o
+out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac/linux_glibc_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/audio_encoder_isac.o

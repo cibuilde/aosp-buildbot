@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_multiplex/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/multiplex/augmented_video_frame_buffer.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_multiplex/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/multiplex/multiplex_decoder_adapter.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_multiplex/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/multiplex/multiplex_encoded_image_packer.o
+out/soong/.intermediates/external/webrtc/webrtc_video_coding__webrtc_multiplex/linux_glibc_x86_64_static/obj/external/webrtc/modules/video_coding/codecs/multiplex/multiplex_encoder_adapter.o

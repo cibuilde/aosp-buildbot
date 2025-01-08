@@ -250,6 +250,10 @@ jobs:
         key: external_minijail@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_ms-tpm-20-ref.tar.zst
+        key: external_ms-tpm-20-ref@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_nanopb-c.tar.zst
         key: external_nanopb-c@${{ env.branch }}
     - uses: actions/cache@v4
@@ -466,6 +470,10 @@ jobs:
         key: external_rust_cxx@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_scrypt.tar.zst
+        key: external_scrypt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_selinux.tar.zst
         key: external_selinux@${{ env.branch }}
     - uses: actions/cache@v4
@@ -484,6 +492,10 @@ jobs:
       with:
         path: cache/external_tflite-support.tar.zst
         key: external_tflite-support@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_tpm2-tss.tar.zst
+        key: external_tpm2-tss@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_turbine.tar.zst
@@ -644,6 +656,10 @@ jobs:
       with:
         path: cache/system_extras.tar.zst
         key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gatekeeper.tar.zst
+        key: system_gatekeeper@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_gsid.tar.zst
