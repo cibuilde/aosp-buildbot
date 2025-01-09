@@ -138,3 +138,32 @@ function clean_out_intermediates() {
     find out/soong/.intermediates/prebuiltlibs -maxdepth 1 -mindepth 1 ! -name 'bionic' -type d -exec rm -rf {} +
   fi
 }
+
+# Function to download release with retries
+download_with_retries() {
+  local tag="$1"
+  local pattern="$2"
+  local output="$3"
+  local max_attempts=10
+  local attempt=4
+
+  while [ $attempt -le $max_attempts ]; do
+    # Run the gh release download command
+    gh release download "$tag" --pattern "$pattern" --output "$output"
+
+    # Check if the command was successful
+    if [ $? -eq 0 ]; then
+        echo "Download $tag:$pattern successful."
+        return 0  # Exit the function successfully
+    else
+        echo "Download $tag:$pattern failed, retrying in $attempt seconds..."
+        sleep $attempt
+    fi
+
+    # Increment attempt count
+    attempt=$((attempt + 2))
+  done
+
+  echo "Download failed after $max_attempts attempts."
+  return 1  # Exit the function with failure
+}
