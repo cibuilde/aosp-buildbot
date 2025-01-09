@@ -2,3 +2,4 @@ out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi-bootclasspa
 out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-wifi.jar
 out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv
+out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/stub-flags.csv

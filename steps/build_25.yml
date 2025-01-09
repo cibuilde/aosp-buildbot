@@ -6,6 +6,7 @@ on:
 env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+permissions: write-all
 jobs:
   build_25:
     runs-on: ubuntu-22.04

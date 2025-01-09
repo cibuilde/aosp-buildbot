@@ -6,6 +6,7 @@ out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_commo
 out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/okhttp.jar
 out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/modular-hiddenapi/annotation-flags.csv
+out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/modular-hiddenapi/stub-flags.csv
 out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.art
 out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.oat
 out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.vdex

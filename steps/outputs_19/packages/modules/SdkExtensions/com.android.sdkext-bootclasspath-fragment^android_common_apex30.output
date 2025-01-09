@@ -2,3 +2,4 @@ out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootc
 out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-sdkextensions.jar
 out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv
+out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/stub-flags.csv

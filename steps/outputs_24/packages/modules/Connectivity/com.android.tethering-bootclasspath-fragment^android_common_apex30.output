@@ -3,3 +3,4 @@ out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.androi
 out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-tethering.jar
 out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/stub-flags.csv

@@ -147,6 +147,7 @@ download_with_retries() {
   local max_attempts=10
   local attempt=4
 
+  set +e
   while [ $attempt -le $max_attempts ]; do
     # Run the gh release download command
     gh release download "$tag" --pattern "$pattern" --output "$output"
@@ -154,6 +155,7 @@ download_with_retries() {
     # Check if the command was successful
     if [ $? -eq 0 ]; then
         echo "Download $tag:$pattern successful."
+        set -e
         return 0  # Exit the function successfully
     else
         echo "Download $tag:$pattern failed, retrying in $attempt seconds..."
@@ -165,5 +167,6 @@ download_with_retries() {
   done
 
   echo "Download failed after $max_attempts attempts."
+  set -e
   return 1  # Exit the function with failure
 }

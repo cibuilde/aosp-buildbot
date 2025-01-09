@@ -2,3 +2,4 @@ out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling
 out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling-bootclasspath-fragment/android_common_apex10000/hiddenapi-modular/encoded/framework-scheduling.jar
 out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/all-flags.csv
 out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/annotation-flags.csv
+out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/stub-flags.csv
