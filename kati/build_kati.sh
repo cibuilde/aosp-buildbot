@@ -9,6 +9,7 @@ mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.
 mkdir -p kati
 tar xf $GITHUB_WORKSPACE/kati.tar.zst -C kati
 
+source $GITHUB_WORKSPACE/download_soong_exports.sh
 source $GITHUB_WORKSPACE/rsync_soong_outputs.sh
 
 clone_depth_platform bionic
