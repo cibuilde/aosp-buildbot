@@ -1,3 +1,5 @@
+DOWNLOADS=$GITHUB_WORKSPACE/downloads
+
 rsync -a -r $DOWNLOADS/aosp/adbconnection/libadbconnection^android_x86_64_shared_apex31 .
 rsync -a -r $DOWNLOADS/aosp/adbconnection/libadbconnection^android_x86_x86_64_shared_apex31 .
 rsync -a -r $DOWNLOADS/aosp/build/apex/com.android.art^android_common_com.android.art_image .
