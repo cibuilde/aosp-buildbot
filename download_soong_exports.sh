@@ -65,6 +65,7 @@ tar --zstd -xf $DOWNLOADS/art-05.tar.zst -C $DOWNLOADS/aosp/art "./sigchainlib/l
 tar --zstd -xf $DOWNLOADS/art-05.tar.zst -C $DOWNLOADS/aosp/art "./sigchainlib/libsigchain^android_x86_x86_64_shared_apex31/out/soong/.intermediates/art/sigchainlib/libsigchain/android_x86_x86_64_shared_apex31/libsigchain.so"
 tar --zstd -xf $DOWNLOADS/art-03.tar.zst -C $DOWNLOADS/aosp/art "./tools/veridex/veridex^linux_glibc_x86_64/out/soong/host/linux-x86/bin/veridex"
 tar --zstd -xf $DOWNLOADS/art-01.tar.zst -C $DOWNLOADS/aosp/art "./tools/veridex/veridex-appcompat^linux_glibc_x86_64/out/soong/.intermediates/art/tools/veridex/veridex-appcompat/linux_glibc_x86_64/appcompat.sh"
+rm -rf art*.tar.zst
 
 
 download_with_retries android12-gsi_01 bionic.tar.zst $DOWNLOADS/bionic-01.tar.zst
@@ -272,6 +273,7 @@ tar --zstd -xf $DOWNLOADS/bionic-01.tar.zst -C $DOWNLOADS/aosp/bionic "./linker/
 tar --zstd -xf $DOWNLOADS/bionic-01.tar.zst -C $DOWNLOADS/aosp/bionic "./linker/ld-android^android_vendor_ramdisk_x86_64_shared/out/soong/.intermediates/bionic/linker/ld-android/android_vendor_ramdisk_x86_64_shared/ld-android.so"
 tar --zstd -xf $DOWNLOADS/bionic-01.tar.zst -C $DOWNLOADS/aosp/bionic "./linker/ld-android^android_x86_64_shared/out/soong/.intermediates/bionic/linker/ld-android/android_x86_64_shared/ld-android.so"
 tar --zstd -xf $DOWNLOADS/bionic-01.tar.zst -C $DOWNLOADS/aosp/bionic "./linker/ld-android^android_x86_x86_64_shared/out/soong/.intermediates/bionic/linker/ld-android/android_x86_x86_64_shared/ld-android.so"
+rm -rf bionic*.tar.zst
 
 
 download_with_retries android12-gsi_01 bootable_recovery.tar.zst $DOWNLOADS/bootable_recovery-01.tar.zst
@@ -300,6 +302,7 @@ tar --zstd -xf $DOWNLOADS/bootable_recovery-07.tar.zst -C $DOWNLOADS/aosp/bootab
 tar --zstd -xf $DOWNLOADS/bootable_recovery-07.tar.zst -C $DOWNLOADS/aosp/bootable/recovery "./recovery_ui/librecovery_ui^android_recovery_x86_64_shared/out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_shared/librecovery_ui.so" "./recovery_ui/librecovery_ui^android_recovery_x86_64_shared/out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_shared/librecovery_ui.so.toc"
 tar --zstd -xf $DOWNLOADS/bootable_recovery-10.tar.zst -C $DOWNLOADS/aosp/bootable/recovery "./uncrypt/uncrypt^android_x86_64/out/soong/.intermediates/bootable/recovery/uncrypt/uncrypt/android_x86_64/uncrypt"
 tar --zstd -xf $DOWNLOADS/bootable_recovery-11.tar.zst -C $DOWNLOADS/aosp/bootable/recovery "./update_verifier/update_verifier^android_x86_64/out/soong/.intermediates/bootable/recovery/update_verifier/update_verifier/android_x86_64/update_verifier"
+rm -rf bootable_recovery*.tar.zst
 
 
 download_with_retries android12-gsi_01 build_make.tar.zst $DOWNLOADS/build_make-01.tar.zst
@@ -326,6 +329,7 @@ tar --zstd -xf $DOWNLOADS/build_make-05.tar.zst -C $DOWNLOADS/aosp/build/make ".
 tar --zstd -xf $DOWNLOADS/build_make-05.tar.zst -C $DOWNLOADS/aosp/build/make "./tools/releasetools/build_super_image^linux_glibc_x86_64_PY2/out/soong/host/linux-x86/bin/build_super_image"
 tar --zstd -xf $DOWNLOADS/build_make-05.tar.zst -C $DOWNLOADS/aosp/build/make "./tools/signapk/signapk^linux_glibc_common/out/soong/.intermediates/build/make/tools/signapk/signapk/linux_glibc_common/combined/signapk.jar" "./tools/signapk/signapk^linux_glibc_common/out/soong/host/linux-x86/framework/signapk.jar"
 tar --zstd -xf $DOWNLOADS/build_make-05.tar.zst -C $DOWNLOADS/aosp/build/make "./tools/signapk/signapk^linux_glibc_x86_64/out/soong/host/linux-x86/bin/signapk"
+rm -rf build_make*.tar.zst
 
 
 download_with_retries android12-gsi_01 build_soong.tar.zst $DOWNLOADS/build_soong-01.tar.zst
@@ -345,6 +349,7 @@ tar --zstd -xf $DOWNLOADS/build_soong-02.tar.zst -C $DOWNLOADS/aosp/build/soong 
 tar --zstd -xf $DOWNLOADS/build_soong-05.tar.zst -C $DOWNLOADS/aosp/build/soong "./scripts/conv_linker_config^linux_glibc_x86_64_PY3/out/soong/host/linux-x86/bin/conv_linker_config"
 tar --zstd -xf $DOWNLOADS/build_soong-02.tar.zst -C $DOWNLOADS/aosp/build/soong "./scripts/manifest_check^linux_glibc_x86_64_PY2/out/soong/host/linux-x86/bin/manifest_check"
 tar --zstd -xf $DOWNLOADS/build_soong-02.tar.zst -C $DOWNLOADS/aosp/build/soong "./zip/cmd/soong_zip^linux_glibc_x86_64/out/soong/host/linux-x86/bin/soong_zip"
+rm -rf build_soong*.tar.zst
 
 
 download_with_retries android12-gsi_10 device_generic_goldfish.tar.zst $DOWNLOADS/device_generic_goldfish-10.tar.zst
@@ -353,6 +358,7 @@ tar --zstd -xf $DOWNLOADS/device_generic_goldfish-10.tar.zst -C $DOWNLOADS/aosp/
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-10.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish "./audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu/android_vendor.31_x86_x86_64_shared/android.hardware.audio.legacy@6.0-impl.ranchu.so"
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-10.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish "./audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared/out/soong/.intermediates/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu/android_vendor.31_x86_64_shared/android.hardware.audio@6.0-impl.ranchu.so"
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-10.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish "./audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu/android_vendor.31_x86_x86_64_shared/android.hardware.audio@6.0-impl.ranchu.so"
+rm -rf device_generic_goldfish*.tar.zst
 
 
 download_with_retries android12-gsi_04 device_generic_goldfish-opengl.tar.zst $DOWNLOADS/device_generic_goldfish-opengl-04.tar.zst
@@ -368,6 +374,7 @@ tar --zstd -xf $DOWNLOADS/device_generic_goldfish-opengl-04.tar.zst -C $DOWNLOAD
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-opengl-04.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish-opengl "./shared/GoldfishAddressSpace/libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/device/generic/goldfish-opengl/shared/GoldfishAddressSpace/libGoldfishAddressSpace/android_vendor.31_x86_x86_64_static/libGoldfishAddressSpace.a"
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-opengl-04.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish-opengl "./shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_64_static/out/soong/.intermediates/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu/android_vendor.31_x86_64_static/libqemupipe.ranchu.a"
 tar --zstd -xf $DOWNLOADS/device_generic_goldfish-opengl-04.tar.zst -C $DOWNLOADS/aosp/device/generic/goldfish-opengl "./shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu/android_vendor.31_x86_x86_64_static/libqemupipe.ranchu.a"
+rm -rf device_generic_goldfish-opengl*.tar.zst
 
 
 download_with_retries android12-gsi_01 device_generic_vulkan-cereal.tar.zst $DOWNLOADS/device_generic_vulkan-cereal-01.tar.zst
@@ -375,6 +382,7 @@ download_with_retries android12-gsi_05 device_generic_vulkan-cereal.tar.zst $DOW
 download_with_retries android12-gsi_11 device_generic_vulkan-cereal.tar.zst $DOWNLOADS/device_generic_vulkan-cereal-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/device/generic/vulkan-cereal
 tar --zstd -xf $DOWNLOADS/device_generic_vulkan-cereal-11.tar.zst -C $DOWNLOADS/aosp/device/generic/vulkan-cereal "./stream-servers/libgfxstream_backend^android_x86_64_shared/out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared/libgfxstream_backend.so"
+rm -rf device_generic_vulkan-cereal*.tar.zst
 
 
 download_with_retries android12-gsi_01 device_google_cuttlefish.tar.zst $DOWNLOADS/device_google_cuttlefish-01.tar.zst
@@ -388,7 +396,6 @@ download_with_retries android12-gsi_11 device_google_cuttlefish.tar.zst $DOWNLOA
 download_with_retries android12-gsi_15 device_google_cuttlefish.tar.zst $DOWNLOADS/device_google_cuttlefish-15.tar.zst
 download_with_retries android12-gsi_32 device_google_cuttlefish.tar.zst $DOWNLOADS/device_google_cuttlefish-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/device/google/cuttlefish
-tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-15.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./build/cvd-host_package^linux_glibc_x86_64/out/soong/host/linux-x86/cvd-host_package.tar.gz"
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-07.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./common/frontend/socket_vsock_proxy/socket_vsock_proxy^android_vendor.31_x86_64/out/soong/.intermediates/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy/android_vendor.31_x86_64/socket_vsock_proxy"
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-07.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_shared/out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_64_shared/libcuttlefish_device_config_proto.so" "./common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_shared/out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_64_shared/libcuttlefish_device_config_proto.so.toc"
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-04.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static/out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_64_static/gen/proto/device/google/cuttlefish/common/libs/device_config/device_config.pb.h"
@@ -423,11 +430,13 @@ tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-11.tar.zst -C $DOWNLOADS/aosp
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-07.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_shared/out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/android_vendor.31_x86_64_shared/libcuttlefish_kernel_log_monitor_utils.so"
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-06.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./host/commands/mk_cdisk/mk_cdisk^android_x86_64_apex10000/out/soong/.intermediates/device/google/cuttlefish/host/commands/mk_cdisk/mk_cdisk/android_x86_64_apex10000/mk_cdisk"
 tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-01.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish "./recovery/librecovery_ui_cuttlefish^android_x86_64_static/out/soong/.intermediates/device/google/cuttlefish/recovery/librecovery_ui_cuttlefish/android_x86_64_static/librecovery_ui_cuttlefish.a"
+rm -rf device_google_cuttlefish*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_android-clat.tar.zst $DOWNLOADS/external_android-clat-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/android-clat
 tar --zstd -xf $DOWNLOADS/external_android-clat-08.tar.zst -C $DOWNLOADS/aosp/external/android-clat "./clatd^android_x86_64/out/soong/.intermediates/external/android-clat/clatd/android_x86_64/clatd"
+rm -rf external_android-clat*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_angle.tar.zst $DOWNLOADS/external_angle-01.tar.zst
@@ -440,6 +449,7 @@ tar --zstd -xf $DOWNLOADS/external_angle-11.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_angle-11.tar.zst -C $DOWNLOADS/aosp/external/angle "./libGLESv1_CM_angle^android_x86_x86_64_shared/out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/libGLESv1_CM_angle.so"
 tar --zstd -xf $DOWNLOADS/external_angle-11.tar.zst -C $DOWNLOADS/aosp/external/angle "./libGLESv2_angle^android_x86_64_shared/out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_64_shared/libGLESv2_angle.so"
 tar --zstd -xf $DOWNLOADS/external_angle-11.tar.zst -C $DOWNLOADS/aosp/external/angle "./libGLESv2_angle^android_x86_x86_64_shared/out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_x86_64_shared/libGLESv2_angle.so"
+rm -rf external_angle*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_apache-http.tar.zst $DOWNLOADS/external_apache-http-01.tar.zst
@@ -450,12 +460,14 @@ tar --zstd -xf $DOWNLOADS/external_apache-http-25.tar.zst -C $DOWNLOADS/aosp/ext
 tar --zstd -xf $DOWNLOADS/external_apache-http-25.tar.zst -C $DOWNLOADS/aosp/external/apache-http "./org.apache.http.legacy.stubs^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy.stubs/android_common/turbine-combined/org.apache.http.legacy.stubs.jar"
 tar --zstd -xf $DOWNLOADS/external_apache-http-01.tar.zst -C $DOWNLOADS/aosp/external/apache-http "./org.apache.http.legacy.xml^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy.xml/android_common/org.apache.http.legacy.xml"
 tar --zstd -xf $DOWNLOADS/external_apache-http-31.tar.zst -C $DOWNLOADS/aosp/external/apache-http "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/aligned/org.apache.http.legacy.jar" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/dexpreopt.config" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.odex" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.vdex" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.odex" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.vdex" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/profile.prof" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/javac/org.apache.http.legacy.jar" "./org.apache.http.legacy^android_common/out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/turbine-combined/org.apache.http.legacy.jar"
+rm -rf external_apache-http*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_apache-xml.tar.zst $DOWNLOADS/external_apache-xml-03.tar.zst
 download_with_retries android12-gsi_11 external_apache-xml.tar.zst $DOWNLOADS/external_apache-xml-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/apache-xml
 tar --zstd -xf $DOWNLOADS/external_apache-xml-11.tar.zst -C $DOWNLOADS/aosp/external/apache-xml "./apache-xml^android_common_apex31/out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar" "./apache-xml^android_common_apex31/out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar"
+rm -rf external_apache-xml*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_auto.tar.zst $DOWNLOADS/external_auto-03.tar.zst
@@ -467,6 +479,7 @@ tar --zstd -xf $DOWNLOADS/external_auto-05.tar.zst -C $DOWNLOADS/aosp/external/a
 tar --zstd -xf $DOWNLOADS/external_auto-03.tar.zst -C $DOWNLOADS/aosp/external/auto "./service/auto_service_annotations^linux_glibc_common/out/soong/.intermediates/external/auto/service/auto_service_annotations/linux_glibc_common/javac/auto_service_annotations.jar"
 tar --zstd -xf $DOWNLOADS/external_auto-13.tar.zst -C $DOWNLOADS/aosp/external/auto "./value/auto_value_annotations^android_common/out/soong/.intermediates/external/auto/value/auto_value_annotations/android_common/turbine-combined/auto_value_annotations.jar"
 tar --zstd -xf $DOWNLOADS/external_auto-06.tar.zst -C $DOWNLOADS/aosp/external/auto "./value/auto_value_plugin^linux_glibc_common/out/soong/.intermediates/external/auto/value/auto_value_plugin/linux_glibc_common/withres/auto_value_plugin.jar"
+rm -rf external_auto*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_avb.tar.zst $DOWNLOADS/external_avb-01.tar.zst
@@ -476,12 +489,14 @@ mkdir -p $DOWNLOADS/aosp/external/avb
 tar --zstd -xf $DOWNLOADS/external_avb-05.tar.zst -C $DOWNLOADS/aosp/external/avb "./avbtool^linux_glibc_x86_64_PY3/out/soong/host/linux-x86/bin/avbtool"
 tar --zstd -xf $DOWNLOADS/external_avb-01.tar.zst -C $DOWNLOADS/aosp/external/avb "./libavb^android_x86_64_static/out/soong/.intermediates/external/avb/libavb/android_x86_64_static/libavb.a"
 tar --zstd -xf $DOWNLOADS/external_avb-07.tar.zst -C $DOWNLOADS/aosp/external/avb "./avbctl^android_x86_64/out/soong/.intermediates/external/avb/avbctl/android_x86_64/avbctl"
+rm -rf external_avb*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_bc.tar.zst $DOWNLOADS/external_bc-03.tar.zst
 download_with_retries android12-gsi_04 external_bc.tar.zst $DOWNLOADS/external_bc-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/bc
 tar --zstd -xf $DOWNLOADS/external_bc-04.tar.zst -C $DOWNLOADS/aosp/external/bc "./bc^android_x86_64/out/soong/.intermediates/external/bc/bc/android_x86_64/bc"
+rm -rf external_bc*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_bcc.tar.zst $DOWNLOADS/external_bcc-01.tar.zst
@@ -489,6 +504,7 @@ download_with_retries android12-gsi_05 external_bcc.tar.zst $DOWNLOADS/external_
 mkdir -p $DOWNLOADS/aosp/external/bcc
 tar --zstd -xf $DOWNLOADS/external_bcc-05.tar.zst -C $DOWNLOADS/aosp/external/bcc "./libbpf^android_x86_64_shared/out/soong/.intermediates/external/bcc/libbpf/android_x86_64_shared/libbpf.so"
 tar --zstd -xf $DOWNLOADS/external_bcc-05.tar.zst -C $DOWNLOADS/aosp/external/bcc "./libbpf^android_x86_x86_64_shared/out/soong/.intermediates/external/bcc/libbpf/android_x86_x86_64_shared/libbpf.so"
+rm -rf external_bcc*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_boringssl.tar.zst $DOWNLOADS/external_boringssl-01.tar.zst
@@ -522,6 +538,7 @@ tar --zstd -xf $DOWNLOADS/external_boringssl-05.tar.zst -C $DOWNLOADS/aosp/exter
 tar --zstd -xf $DOWNLOADS/external_boringssl-05.tar.zst -C $DOWNLOADS/aosp/external/boringssl "./selftest/boringssl_self_test^android_x86_x86_64_apex29/out/soong/.intermediates/external/boringssl/selftest/boringssl_self_test/android_x86_x86_64_apex29/boringssl_self_test32"
 tar --zstd -xf $DOWNLOADS/external_boringssl-06.tar.zst -C $DOWNLOADS/aosp/external/boringssl "./selftest/boringssl_self_test_vendor^android_vendor.31_x86_64/out/soong/.intermediates/external/boringssl/selftest/boringssl_self_test_vendor/android_vendor.31_x86_64/boringssl_self_test64"
 tar --zstd -xf $DOWNLOADS/external_boringssl-06.tar.zst -C $DOWNLOADS/aosp/external/boringssl "./selftest/boringssl_self_test_vendor^android_vendor.31_x86_x86_64/out/soong/.intermediates/external/boringssl/selftest/boringssl_self_test_vendor/android_vendor.31_x86_x86_64/boringssl_self_test32"
+rm -rf external_boringssl*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_bouncycastle.tar.zst $DOWNLOADS/external_bouncycastle-03.tar.zst
@@ -529,6 +546,7 @@ download_with_retries android12-gsi_13 external_bouncycastle.tar.zst $DOWNLOADS/
 download_with_retries android12-gsi_14 external_bouncycastle.tar.zst $DOWNLOADS/external_bouncycastle-14.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/bouncycastle
 tar --zstd -xf $DOWNLOADS/external_bouncycastle-14.tar.zst -C $DOWNLOADS/aosp/external/bouncycastle "./bouncycastle^android_common_apex31/out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/javac/bouncycastle.jar" "./bouncycastle^android_common_apex31/out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar"
+rm -rf external_bouncycastle*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_brotli.tar.zst $DOWNLOADS/external_brotli-01.tar.zst
@@ -537,6 +555,7 @@ download_with_retries android12-gsi_04 external_brotli.tar.zst $DOWNLOADS/extern
 download_with_retries android12-gsi_23 external_brotli.tar.zst $DOWNLOADS/external_brotli-23.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/brotli
 tar --zstd -xf $DOWNLOADS/external_brotli-03.tar.zst -C $DOWNLOADS/aosp/external/brotli "./brotli^linux_glibc_x86_64/out/soong/host/linux-x86/bin/brotli"
+rm -rf external_brotli*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_bsdiff.tar.zst $DOWNLOADS/external_bsdiff-01.tar.zst
@@ -544,12 +563,14 @@ download_with_retries android12-gsi_03 external_bsdiff.tar.zst $DOWNLOADS/extern
 download_with_retries android12-gsi_04 external_bsdiff.tar.zst $DOWNLOADS/external_bsdiff-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/bsdiff
 tar --zstd -xf $DOWNLOADS/external_bsdiff-03.tar.zst -C $DOWNLOADS/aosp/external/bsdiff "./bsdiff^linux_glibc_x86_64/out/soong/host/linux-x86/bin/bsdiff"
+rm -rf external_bsdiff*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_bzip2.tar.zst $DOWNLOADS/external_bzip2-01.tar.zst
 download_with_retries android12-gsi_04 external_bzip2.tar.zst $DOWNLOADS/external_bzip2-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/bzip2
 tar --zstd -xf $DOWNLOADS/external_bzip2-04.tar.zst -C $DOWNLOADS/aosp/external/bzip2 "./bzip2^android_x86_64/out/soong/.intermediates/external/bzip2/bzip2/android_x86_64/bzip2"
+rm -rf external_bzip2*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_cblas.tar.zst $DOWNLOADS/external_cblas-05.tar.zst
@@ -559,11 +580,13 @@ tar --zstd -xf $DOWNLOADS/external_cblas-06.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_cblas-06.tar.zst -C $DOWNLOADS/aosp/external/cblas "./libblas^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/cblas/libblas/android_vendor.31_x86_x86_64_shared/libblas.so"
 tar --zstd -xf $DOWNLOADS/external_cblas-05.tar.zst -C $DOWNLOADS/aosp/external/cblas "./libblas^android_x86_64_shared/out/soong/.intermediates/external/cblas/libblas/android_x86_64_shared/libblas.so"
 tar --zstd -xf $DOWNLOADS/external_cblas-05.tar.zst -C $DOWNLOADS/aosp/external/cblas "./libblas^android_x86_x86_64_shared/out/soong/.intermediates/external/cblas/libblas/android_x86_x86_64_shared/libblas.so"
+rm -rf external_cblas*.tar.zst
 
 
 download_with_retries android12-gsi_32 external_chromium-webview.tar.zst $DOWNLOADS/external_chromium-webview-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/chromium-webview
 tar --zstd -xf $DOWNLOADS/external_chromium-webview-32.tar.zst -C $DOWNLOADS/aosp/external/chromium-webview "./webview^android_common/out/soong/.intermediates/external/chromium-webview/webview/android_common/dexpreopt/oat/x86_64/package.odex" "./webview^android_common/out/soong/.intermediates/external/chromium-webview/webview/android_common/dexpreopt/oat/x86_64/package.vdex" "./webview^android_common/out/soong/.intermediates/external/chromium-webview/webview/android_common/signed/webview.apk"
+rm -rf external_chromium-webview*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_cn-cbor.tar.zst $DOWNLOADS/external_cn-cbor-04.tar.zst
@@ -571,6 +594,7 @@ download_with_retries android12-gsi_06 external_cn-cbor.tar.zst $DOWNLOADS/exter
 mkdir -p $DOWNLOADS/aosp/external/cn-cbor
 tar --zstd -xf $DOWNLOADS/external_cn-cbor-06.tar.zst -C $DOWNLOADS/aosp/external/cn-cbor "./libcn-cbor^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/cn-cbor/libcn-cbor/android_vendor.31_x86_64_shared/libcn-cbor.so"
 tar --zstd -xf $DOWNLOADS/external_cn-cbor-06.tar.zst -C $DOWNLOADS/aosp/external/cn-cbor "./libcn-cbor^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/cn-cbor/libcn-cbor/android_vendor.31_x86_x86_64_shared/libcn-cbor.so"
+rm -rf external_cn-cbor*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_compiler-rt.tar.zst $DOWNLOADS/external_compiler-rt-01.tar.zst
@@ -581,6 +605,7 @@ tar --zstd -xf $DOWNLOADS/external_compiler-rt-04.tar.zst -C $DOWNLOADS/aosp/ext
 tar --zstd -xf $DOWNLOADS/external_compiler-rt-04.tar.zst -C $DOWNLOADS/aosp/external/compiler-rt "./libcompiler_rt^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/compiler-rt/libcompiler_rt/android_vendor.31_x86_x86_64_shared/libcompiler_rt.so"
 tar --zstd -xf $DOWNLOADS/external_compiler-rt-06.tar.zst -C $DOWNLOADS/aosp/external/compiler-rt "./libcompiler_rt^android_x86_64_shared/out/soong/.intermediates/external/compiler-rt/libcompiler_rt/android_x86_64_shared/libcompiler_rt.so"
 tar --zstd -xf $DOWNLOADS/external_compiler-rt-06.tar.zst -C $DOWNLOADS/aosp/external/compiler-rt "./libcompiler_rt^android_x86_x86_64_shared/out/soong/.intermediates/external/compiler-rt/libcompiler_rt/android_x86_x86_64_shared/libcompiler_rt.so"
+rm -rf external_compiler-rt*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_conscrypt.tar.zst $DOWNLOADS/external_conscrypt-01.tar.zst
@@ -599,6 +624,7 @@ tar --zstd -xf $DOWNLOADS/external_conscrypt-05.tar.zst -C $DOWNLOADS/aosp/exter
 tar --zstd -xf $DOWNLOADS/external_conscrypt-01.tar.zst -C $DOWNLOADS/aosp/external/conscrypt "./apex/com.android.conscrypt.ld.config.txt^android_x86_64/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt.ld.config.txt/android_x86_64/ld.config.txt"
 tar --zstd -xf $DOWNLOADS/external_conscrypt-14.tar.zst -C $DOWNLOADS/aosp/external/conscrypt "./apex/com.android.conscrypt^android_common_com.android.conscrypt_image/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_manifest.pb" "./apex/com.android.conscrypt^android_common_com.android.conscrypt_image/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_pubkey" "./apex/com.android.conscrypt^android_common_com.android.conscrypt_image/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/com.android.conscrypt.apex"
 tar --zstd -xf $DOWNLOADS/external_conscrypt-14.tar.zst -C $DOWNLOADS/aosp/external/conscrypt "./apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb" "./apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29/out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar"
+rm -rf external_conscrypt*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_crosvm.tar.zst $DOWNLOADS/external_crosvm-01.tar.zst
@@ -644,6 +670,7 @@ tar --zstd -xf $DOWNLOADS/external_crosvm-07.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_crosvm-09.tar.zst -C $DOWNLOADS/aosp/external/crosvm "./sys_util/libsys_util^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/sys_util/libsys_util/android_x86_64_dylib/libsys_util.dylib.so" "./sys_util/libsys_util^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/sys_util/libsys_util/android_x86_64_dylib/stripped/libsys_util.dylib.so"
 tar --zstd -xf $DOWNLOADS/external_crosvm-07.tar.zst -C $DOWNLOADS/aosp/external/crosvm "./syscall_defines/libsyscall_defines^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/syscall_defines/libsyscall_defines/android_x86_64_dylib/libsyscall_defines.dylib.so" "./syscall_defines/libsyscall_defines^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/syscall_defines/libsyscall_defines/android_x86_64_dylib/stripped/libsyscall_defines.dylib.so"
 tar --zstd -xf $DOWNLOADS/external_crosvm-08.tar.zst -C $DOWNLOADS/aosp/external/crosvm "./tempfile/libtempfile^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/tempfile/libtempfile/android_x86_64_dylib/libtempfile.dylib.so" "./tempfile/libtempfile^android_x86_64_dylib/out/soong/.intermediates/external/crosvm/tempfile/libtempfile/android_x86_64_dylib/stripped/libtempfile.dylib.so"
+rm -rf external_crosvm*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_curl.tar.zst $DOWNLOADS/external_curl-01.tar.zst
@@ -654,6 +681,7 @@ mkdir -p $DOWNLOADS/aosp/external/curl
 tar --zstd -xf $DOWNLOADS/external_curl-07.tar.zst -C $DOWNLOADS/aosp/external/curl "./libcurl^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/curl/libcurl/android_vendor.31_x86_64_shared/libcurl.so"
 tar --zstd -xf $DOWNLOADS/external_curl-07.tar.zst -C $DOWNLOADS/aosp/external/curl "./libcurl^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/curl/libcurl/android_vendor.31_x86_x86_64_shared/libcurl.so"
 tar --zstd -xf $DOWNLOADS/external_curl-05.tar.zst -C $DOWNLOADS/aosp/external/curl "./libcurl^android_x86_64_shared/out/soong/.intermediates/external/curl/libcurl/android_x86_64_shared/libcurl.so"
+rm -rf external_curl*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_dng_sdk.tar.zst $DOWNLOADS/external_dng_sdk-01.tar.zst
@@ -661,11 +689,13 @@ download_with_retries android12-gsi_06 external_dng_sdk.tar.zst $DOWNLOADS/exter
 mkdir -p $DOWNLOADS/aosp/external/dng_sdk
 tar --zstd -xf $DOWNLOADS/external_dng_sdk-06.tar.zst -C $DOWNLOADS/aosp/external/dng_sdk "./libdng_sdk^android_x86_64_shared/out/soong/.intermediates/external/dng_sdk/libdng_sdk/android_x86_64_shared/libdng_sdk.so"
 tar --zstd -xf $DOWNLOADS/external_dng_sdk-06.tar.zst -C $DOWNLOADS/aosp/external/dng_sdk "./libdng_sdk^android_x86_x86_64_shared/out/soong/.intermediates/external/dng_sdk/libdng_sdk/android_x86_x86_64_shared/libdng_sdk.so"
+rm -rf external_dng_sdk*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_dnsmasq.tar.zst $DOWNLOADS/external_dnsmasq-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/dnsmasq
 tar --zstd -xf $DOWNLOADS/external_dnsmasq-08.tar.zst -C $DOWNLOADS/aosp/external/dnsmasq "./src/dnsmasq^android_x86_64/out/soong/.intermediates/external/dnsmasq/src/dnsmasq/android_x86_64/dnsmasq"
+rm -rf external_dnsmasq*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_drm_hwcomposer.tar.zst $DOWNLOADS/external_drm_hwcomposer-04.tar.zst
@@ -673,18 +703,21 @@ download_with_retries android12-gsi_11 external_drm_hwcomposer.tar.zst $DOWNLOAD
 mkdir -p $DOWNLOADS/aosp/external/drm_hwcomposer
 tar --zstd -xf $DOWNLOADS/external_drm_hwcomposer-11.tar.zst -C $DOWNLOADS/aosp/external/drm_hwcomposer "./hwcomposer.drm^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_64_shared/hwcomposer.drm.so"
 tar --zstd -xf $DOWNLOADS/external_drm_hwcomposer-11.tar.zst -C $DOWNLOADS/aosp/external/drm_hwcomposer "./hwcomposer.drm^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_x86_64_shared/hwcomposer.drm.so"
+rm -rf external_drm_hwcomposer*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_dtc.tar.zst $DOWNLOADS/external_dtc-01.tar.zst
 download_with_retries android12-gsi_05 external_dtc.tar.zst $DOWNLOADS/external_dtc-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/dtc
 tar --zstd -xf $DOWNLOADS/external_dtc-05.tar.zst -C $DOWNLOADS/aosp/external/dtc "./libfdt/libfdt^android_x86_64_shared/out/soong/.intermediates/external/dtc/libfdt/libfdt/android_x86_64_shared/libfdt.so"
+rm -rf external_dtc*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_dynamic_depth.tar.zst $DOWNLOADS/external_dynamic_depth-01.tar.zst
 download_with_retries android12-gsi_07 external_dynamic_depth.tar.zst $DOWNLOADS/external_dynamic_depth-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/dynamic_depth
 tar --zstd -xf $DOWNLOADS/external_dynamic_depth-07.tar.zst -C $DOWNLOADS/aosp/external/dynamic_depth "./libdynamic_depth^android_x86_64_shared/out/soong/.intermediates/external/dynamic_depth/libdynamic_depth/android_x86_64_shared/libdynamic_depth.so"
+rm -rf external_dynamic_depth*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_e2fsprogs.tar.zst $DOWNLOADS/external_e2fsprogs-01.tar.zst
@@ -737,6 +770,7 @@ tar --zstd -xf $DOWNLOADS/external_e2fsprogs-08.tar.zst -C $DOWNLOADS/aosp/exter
 tar --zstd -xf $DOWNLOADS/external_e2fsprogs-08.tar.zst -C $DOWNLOADS/aosp/external/e2fsprogs "./misc/mke2fs^android_x86_64/out/soong/.intermediates/external/e2fsprogs/misc/mke2fs/android_x86_64/mke2fs"
 tar --zstd -xf $DOWNLOADS/external_e2fsprogs-03.tar.zst -C $DOWNLOADS/aosp/external/e2fsprogs "./misc/mke2fs^linux_glibc_x86_64/out/soong/host/linux-x86/bin/mke2fs"
 tar --zstd -xf $DOWNLOADS/external_e2fsprogs-08.tar.zst -C $DOWNLOADS/aosp/external/e2fsprogs "./resize/resize2fs^android_x86_64/out/soong/.intermediates/external/e2fsprogs/resize/resize2fs/android_x86_64/resize2fs"
+rm -rf external_e2fsprogs*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_erofs-utils.tar.zst $DOWNLOADS/external_erofs-utils-01.tar.zst
@@ -745,6 +779,7 @@ download_with_retries android12-gsi_06 external_erofs-utils.tar.zst $DOWNLOADS/e
 mkdir -p $DOWNLOADS/aosp/external/erofs-utils
 tar --zstd -xf $DOWNLOADS/external_erofs-utils-01.tar.zst -C $DOWNLOADS/aosp/external/erofs-utils "./mkerofsimage.sh^linux_glibc_x86_64/out/soong/.intermediates/external/erofs-utils/mkerofsimage.sh/linux_glibc_x86_64/mkerofsimage.sh"
 tar --zstd -xf $DOWNLOADS/external_erofs-utils-06.tar.zst -C $DOWNLOADS/aosp/external/erofs-utils "./mkfs.erofs^linux_glibc_x86_64/out/soong/host/linux-x86/bin/mkfs.erofs"
+rm -rf external_erofs-utils*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_expat.tar.zst $DOWNLOADS/external_expat-01.tar.zst
@@ -758,6 +793,7 @@ tar --zstd -xf $DOWNLOADS/external_expat-04.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_expat-04.tar.zst -C $DOWNLOADS/aosp/external/expat "./libexpat^android_x86_64_shared_apex31/out/soong/.intermediates/external/expat/libexpat/android_x86_64_shared_apex31/libexpat.so"
 tar --zstd -xf $DOWNLOADS/external_expat-04.tar.zst -C $DOWNLOADS/aosp/external/expat "./libexpat^android_x86_x86_64_shared/out/soong/.intermediates/external/expat/libexpat/android_x86_x86_64_shared/libexpat.so"
 tar --zstd -xf $DOWNLOADS/external_expat-04.tar.zst -C $DOWNLOADS/aosp/external/expat "./libexpat^android_x86_x86_64_shared_apex31/out/soong/.intermediates/external/expat/libexpat/android_x86_x86_64_shared_apex31/libexpat.so"
+rm -rf external_expat*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_f2fs-tools.tar.zst $DOWNLOADS/external_f2fs-tools-01.tar.zst
@@ -773,11 +809,13 @@ tar --zstd -xf $DOWNLOADS/external_f2fs-tools-06.tar.zst -C $DOWNLOADS/aosp/exte
 tar --zstd -xf $DOWNLOADS/external_f2fs-tools-08.tar.zst -C $DOWNLOADS/aosp/external/f2fs-tools "./sload_f2fs^android_recovery_x86_64/out/soong/.intermediates/external/f2fs-tools/sload_f2fs/android_recovery_x86_64/sload_f2fs"
 tar --zstd -xf $DOWNLOADS/external_f2fs-tools-08.tar.zst -C $DOWNLOADS/aosp/external/f2fs-tools "./sload_f2fs^android_x86_64/out/soong/.intermediates/external/f2fs-tools/sload_f2fs/android_x86_64/sload_f2fs"
 tar --zstd -xf $DOWNLOADS/external_f2fs-tools-03.tar.zst -C $DOWNLOADS/aosp/external/f2fs-tools "./sload_f2fs^linux_glibc_x86_64/out/soong/host/linux-x86/bin/sload_f2fs"
+rm -rf external_f2fs-tools*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_fec.tar.zst $DOWNLOADS/external_fec-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/fec
 tar --zstd -xf $DOWNLOADS/external_fec-01.tar.zst -C $DOWNLOADS/aosp/external/fec "./libfec_rs^android_x86_64_static/out/soong/.intermediates/external/fec/libfec_rs/android_x86_64_static/libfec_rs.a"
+rm -rf external_fec*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_flatbuffers.tar.zst $DOWNLOADS/external_flatbuffers-01.tar.zst
@@ -786,6 +824,7 @@ download_with_retries android12-gsi_05 external_flatbuffers.tar.zst $DOWNLOADS/e
 mkdir -p $DOWNLOADS/aosp/external/flatbuffers
 tar --zstd -xf $DOWNLOADS/external_flatbuffers-05.tar.zst -C $DOWNLOADS/aosp/external/flatbuffers "./libflatbuffers-cpp^android_x86_64_shared/out/soong/.intermediates/external/flatbuffers/libflatbuffers-cpp/android_x86_64_shared/libflatbuffers-cpp.so"
 tar --zstd -xf $DOWNLOADS/external_flatbuffers-05.tar.zst -C $DOWNLOADS/aosp/external/flatbuffers "./libflatbuffers-cpp^android_x86_x86_64_shared/out/soong/.intermediates/external/flatbuffers/libflatbuffers-cpp/android_x86_x86_64_shared/libflatbuffers-cpp.so"
+rm -rf external_flatbuffers*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_freetype.tar.zst $DOWNLOADS/external_freetype-01.tar.zst
@@ -794,43 +833,51 @@ download_with_retries android12-gsi_06 external_freetype.tar.zst $DOWNLOADS/exte
 mkdir -p $DOWNLOADS/aosp/external/freetype
 tar --zstd -xf $DOWNLOADS/external_freetype-06.tar.zst -C $DOWNLOADS/aosp/external/freetype "./libft2^android_x86_64_shared/out/soong/.intermediates/external/freetype/libft2/android_x86_64_shared/libft2.so"
 tar --zstd -xf $DOWNLOADS/external_freetype-06.tar.zst -C $DOWNLOADS/aosp/external/freetype "./libft2^android_x86_x86_64_shared/out/soong/.intermediates/external/freetype/libft2/android_x86_x86_64_shared/libft2.so"
+rm -rf external_freetype*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_fsck_msdos.tar.zst $DOWNLOADS/external_fsck_msdos-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/fsck_msdos
 tar --zstd -xf $DOWNLOADS/external_fsck_msdos-05.tar.zst -C $DOWNLOADS/aosp/external/fsck_msdos "./fsck_msdos^android_x86_64/out/soong/.intermediates/external/fsck_msdos/fsck_msdos/android_x86_64/fsck_msdos"
+rm -rf external_fsck_msdos*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_fsverity-utils.tar.zst $DOWNLOADS/external_fsverity-utils-01.tar.zst
 download_with_retries android12-gsi_05 external_fsverity-utils.tar.zst $DOWNLOADS/external_fsverity-utils-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/fsverity-utils
 tar --zstd -xf $DOWNLOADS/external_fsverity-utils-05.tar.zst -C $DOWNLOADS/aosp/external/fsverity-utils "./libfsverity^android_x86_64_shared/out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_shared/libfsverity.so"
+rm -rf external_fsverity-utils*.tar.zst
 
 
 download_with_retries android12-gsi_24 external_glide.tar.zst $DOWNLOADS/external_glide-24.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/glide
 tar --zstd -xf $DOWNLOADS/external_glide-24.tar.zst -C $DOWNLOADS/aosp/external/glide "./glide^android_common/out/soong/.intermediates/external/glide/glide/android_common/combined/glide.jar" "./glide^android_common/out/soong/.intermediates/external/glide/glide/android_common/turbine-combined/glide.jar"
+rm -rf external_glide*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fonts_carrois-gothic-sc.tar.zst $DOWNLOADS/external_google-fonts_carrois-gothic-sc-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/google-fonts/carrois-gothic-sc
 tar --zstd -xf $DOWNLOADS/external_google-fonts_carrois-gothic-sc-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/carrois-gothic-sc "./CarroisGothicSC-Regular.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/carrois-gothic-sc/CarroisGothicSC-Regular.ttf/android_x86_64/CarroisGothicSC-Regular.ttf"
+rm -rf external_google-fonts_carrois-gothic-sc*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fonts_coming-soon.tar.zst $DOWNLOADS/external_google-fonts_coming-soon-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/google-fonts/coming-soon
 tar --zstd -xf $DOWNLOADS/external_google-fonts_coming-soon-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/coming-soon "./ComingSoon.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/coming-soon/ComingSoon.ttf/android_x86_64/ComingSoon.ttf"
+rm -rf external_google-fonts_coming-soon*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fonts_cutive-mono.tar.zst $DOWNLOADS/external_google-fonts_cutive-mono-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/google-fonts/cutive-mono
 tar --zstd -xf $DOWNLOADS/external_google-fonts_cutive-mono-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/cutive-mono "./CutiveMono.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/cutive-mono/CutiveMono.ttf/android_x86_64/CutiveMono.ttf"
+rm -rf external_google-fonts_cutive-mono*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fonts_dancing-script.tar.zst $DOWNLOADS/external_google-fonts_dancing-script-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/google-fonts/dancing-script
 tar --zstd -xf $DOWNLOADS/external_google-fonts_dancing-script-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/dancing-script "./DancingScript-Regular.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/dancing-script/DancingScript-Regular.ttf/android_x86_64/DancingScript-Regular.ttf"
 tar --zstd -xf $DOWNLOADS/external_google-fonts_dancing-script-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/dancing-script "./DancingScript-Bold.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/dancing-script/DancingScript-Bold.ttf/android_x86_64/DancingScript-Bold.ttf"
+rm -rf external_google-fonts_dancing-script*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fonts_source-sans-pro.tar.zst $DOWNLOADS/external_google-fonts_source-sans-pro-01.tar.zst
@@ -841,18 +888,21 @@ tar --zstd -xf $DOWNLOADS/external_google-fonts_source-sans-pro-01.tar.zst -C $D
 tar --zstd -xf $DOWNLOADS/external_google-fonts_source-sans-pro-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/source-sans-pro "./SourceSansPro-SemiBoldItalic.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/source-sans-pro/SourceSansPro-SemiBoldItalic.ttf/android_x86_64/SourceSansPro-SemiBoldItalic.ttf"
 tar --zstd -xf $DOWNLOADS/external_google-fonts_source-sans-pro-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/source-sans-pro "./SourceSansPro-Bold.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/source-sans-pro/SourceSansPro-Bold.ttf/android_x86_64/SourceSansPro-Bold.ttf"
 tar --zstd -xf $DOWNLOADS/external_google-fonts_source-sans-pro-01.tar.zst -C $DOWNLOADS/aosp/external/google-fonts/source-sans-pro "./SourceSansPro-BoldItalic.ttf^android_x86_64/out/soong/.intermediates/external/google-fonts/source-sans-pro/SourceSansPro-BoldItalic.ttf/android_x86_64/SourceSansPro-BoldItalic.ttf"
+rm -rf external_google-fonts_source-sans-pro*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_google-fruit.tar.zst $DOWNLOADS/external_google-fruit-01.tar.zst
 download_with_retries android12-gsi_05 external_google-fruit.tar.zst $DOWNLOADS/external_google-fruit-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/google-fruit
 tar --zstd -xf $DOWNLOADS/external_google-fruit-05.tar.zst -C $DOWNLOADS/aosp/external/google-fruit "./libfruit^android_x86_64_shared/out/soong/.intermediates/external/google-fruit/libfruit/android_x86_64_shared/libfruit.so"
+rm -rf external_google-fruit*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_gptfdisk.tar.zst $DOWNLOADS/external_gptfdisk-01.tar.zst
 download_with_retries android12-gsi_06 external_gptfdisk.tar.zst $DOWNLOADS/external_gptfdisk-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/gptfdisk
 tar --zstd -xf $DOWNLOADS/external_gptfdisk-06.tar.zst -C $DOWNLOADS/aosp/external/gptfdisk "./sgdisk^android_x86_64/out/soong/.intermediates/external/gptfdisk/sgdisk/android_x86_64/sgdisk"
+rm -rf external_gptfdisk*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_grpc-grpc.tar.zst $DOWNLOADS/external_grpc-grpc-01.tar.zst
@@ -862,6 +912,7 @@ download_with_retries android12-gsi_06 external_grpc-grpc.tar.zst $DOWNLOADS/ext
 mkdir -p $DOWNLOADS/aosp/external/grpc-grpc
 tar --zstd -xf $DOWNLOADS/external_grpc-grpc-06.tar.zst -C $DOWNLOADS/aosp/external/grpc-grpc "./libgrpc++^android_x86_64_shared/out/soong/.intermediates/external/grpc-grpc/libgrpc++/android_x86_64_shared/libgrpc++.so"
 tar --zstd -xf $DOWNLOADS/external_grpc-grpc-06.tar.zst -C $DOWNLOADS/aosp/external/grpc-grpc "./libgrpc++^android_x86_x86_64_shared/out/soong/.intermediates/external/grpc-grpc/libgrpc++/android_x86_x86_64_shared/libgrpc++.so"
+rm -rf external_grpc-grpc*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_guava.tar.zst $DOWNLOADS/external_guava-03.tar.zst
@@ -870,6 +921,7 @@ download_with_retries android12-gsi_13 external_guava.tar.zst $DOWNLOADS/externa
 mkdir -p $DOWNLOADS/aosp/external/guava
 tar --zstd -xf $DOWNLOADS/external_guava-04.tar.zst -C $DOWNLOADS/aosp/external/guava "./guava-android-host^linux_glibc_common/out/soong/.intermediates/external/guava/guava-android-host/linux_glibc_common/combined/guava-android-host.jar"
 tar --zstd -xf $DOWNLOADS/external_guava-04.tar.zst -C $DOWNLOADS/aosp/external/guava "./guava^android_common/out/soong/.intermediates/external/guava/guava/android_common/turbine-combined/guava.jar"
+rm -rf external_guava*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_harfbuzz_ng.tar.zst $DOWNLOADS/external_harfbuzz_ng-01.tar.zst
@@ -877,6 +929,7 @@ download_with_retries android12-gsi_08 external_harfbuzz_ng.tar.zst $DOWNLOADS/e
 mkdir -p $DOWNLOADS/aosp/external/harfbuzz_ng
 tar --zstd -xf $DOWNLOADS/external_harfbuzz_ng-08.tar.zst -C $DOWNLOADS/aosp/external/harfbuzz_ng "./libharfbuzz_ng^android_x86_64_shared/out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_64_shared/libharfbuzz_ng.so"
 tar --zstd -xf $DOWNLOADS/external_harfbuzz_ng-08.tar.zst -C $DOWNLOADS/aosp/external/harfbuzz_ng "./libharfbuzz_ng^android_x86_x86_64_shared/out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_x86_64_shared/libharfbuzz_ng.so"
+rm -rf external_harfbuzz_ng*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_icing.tar.zst $DOWNLOADS/external_icing-04.tar.zst
@@ -885,6 +938,7 @@ download_with_retries android12-gsi_14 external_icing.tar.zst $DOWNLOADS/externa
 download_with_retries android12-gsi_23 external_icing.tar.zst $DOWNLOADS/external_icing-23.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/icing
 tar --zstd -xf $DOWNLOADS/external_icing-06.tar.zst -C $DOWNLOADS/aosp/external/icing "./libicing^android_x86_64_shared_apex10000/out/soong/.intermediates/external/icing/libicing/android_x86_64_shared_apex10000/libicing.so"
+rm -rf external_icing*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_icu.tar.zst $DOWNLOADS/external_icu-01.tar.zst
@@ -918,17 +972,20 @@ tar --zstd -xf $DOWNLOADS/external_icu-03.tar.zst -C $DOWNLOADS/aosp/external/ic
 tar --zstd -xf $DOWNLOADS/external_icu-03.tar.zst -C $DOWNLOADS/aosp/external/icu "./libicu/libicu.ndk^android_x86_x86_64_sdk_shared_current/out/soong/.intermediates/external/icu/libicu/libicu.ndk/android_x86_x86_64_sdk_shared_current/libicu.so"
 tar --zstd -xf $DOWNLOADS/external_icu-06.tar.zst -C $DOWNLOADS/aosp/external/icu "./libicu/libicu^android_x86_64_shared_apex10000/out/soong/.intermediates/external/icu/libicu/libicu/android_x86_64_shared_apex10000/libicu.so"
 tar --zstd -xf $DOWNLOADS/external_icu-06.tar.zst -C $DOWNLOADS/aosp/external/icu "./libicu/libicu^android_x86_x86_64_shared_apex10000/out/soong/.intermediates/external/icu/libicu/libicu/android_x86_x86_64_shared_apex10000/libicu.so"
+rm -rf external_icu*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_image_io.tar.zst $DOWNLOADS/external_image_io-01.tar.zst
 download_with_retries android12-gsi_05 external_image_io.tar.zst $DOWNLOADS/external_image_io-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/image_io
 tar --zstd -xf $DOWNLOADS/external_image_io-05.tar.zst -C $DOWNLOADS/aosp/external/image_io "./libimage_io^android_x86_64_shared/out/soong/.intermediates/external/image_io/libimage_io/android_x86_64_shared/libimage_io.so"
+rm -rf external_image_io*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_iperf3.tar.zst $DOWNLOADS/external_iperf3-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/iperf3
 tar --zstd -xf $DOWNLOADS/external_iperf3-05.tar.zst -C $DOWNLOADS/aosp/external/iperf3 "./iperf3^android_x86_64/out/soong/.intermediates/external/iperf3/iperf3/android_x86_64/iperf3"
+rm -rf external_iperf3*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_iproute2.tar.zst $DOWNLOADS/external_iproute2-05.tar.zst
@@ -941,12 +998,14 @@ tar --zstd -xf $DOWNLOADS/external_iproute2-05.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_iproute2-05.tar.zst -C $DOWNLOADS/aosp/external/iproute2 "./lib/libnetlink^android_x86_x86_64_shared/out/soong/.intermediates/external/iproute2/lib/libnetlink/android_x86_x86_64_shared/libnetlink.so"
 tar --zstd -xf $DOWNLOADS/external_iproute2-08.tar.zst -C $DOWNLOADS/aosp/external/iproute2 "./misc/ss^android_x86_64/out/soong/.intermediates/external/iproute2/misc/ss/android_x86_64/ss"
 tar --zstd -xf $DOWNLOADS/external_iproute2-05.tar.zst -C $DOWNLOADS/aosp/external/iproute2 "./tc/tc^android_x86_64/out/soong/.intermediates/external/iproute2/tc/tc/android_x86_64/tc"
+rm -rf external_iproute2*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_ipsec-tools.tar.zst $DOWNLOADS/external_ipsec-tools-01.tar.zst
 download_with_retries android12-gsi_12 external_ipsec-tools.tar.zst $DOWNLOADS/external_ipsec-tools-12.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/ipsec-tools
 tar --zstd -xf $DOWNLOADS/external_ipsec-tools-12.tar.zst -C $DOWNLOADS/aosp/external/ipsec-tools "./racoon^android_x86_64/out/soong/.intermediates/external/ipsec-tools/racoon/android_x86_64/racoon"
+rm -rf external_ipsec-tools*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_iptables.tar.zst $DOWNLOADS/external_iptables-01.tar.zst
@@ -955,6 +1014,7 @@ download_with_retries android12-gsi_05 external_iptables.tar.zst $DOWNLOADS/exte
 mkdir -p $DOWNLOADS/aosp/external/iptables
 tar --zstd -xf $DOWNLOADS/external_iptables-01.tar.zst -C $DOWNLOADS/aosp/external/iptables "./iptables/xtables.lock^android_x86_64/out/soong/.intermediates/external/iptables/iptables/xtables.lock/android_x86_64/xtables.lock"
 tar --zstd -xf $DOWNLOADS/external_iptables-05.tar.zst -C $DOWNLOADS/aosp/external/iptables "./iptables/iptables^android_x86_64/out/soong/.intermediates/external/iptables/iptables/iptables/android_x86_64/iptables"
+rm -rf external_iptables*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_iputils.tar.zst $DOWNLOADS/external_iputils-05.tar.zst
@@ -965,12 +1025,14 @@ tar --zstd -xf $DOWNLOADS/external_iputils-05.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_iputils-05.tar.zst -C $DOWNLOADS/aosp/external/iputils "./tracepath6^android_x86_64/out/soong/.intermediates/external/iputils/tracepath6/android_x86_64/tracepath6"
 tar --zstd -xf $DOWNLOADS/external_iputils-05.tar.zst -C $DOWNLOADS/aosp/external/iputils "./traceroute6^android_x86_64/out/soong/.intermediates/external/iputils/traceroute6/android_x86_64/traceroute6"
 tar --zstd -xf $DOWNLOADS/external_iputils-05.tar.zst -C $DOWNLOADS/aosp/external/iputils "./arping^android_x86_64/out/soong/.intermediates/external/iputils/arping/android_x86_64/arping"
+rm -rf external_iputils*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_iw.tar.zst $DOWNLOADS/external_iw-03.tar.zst
 download_with_retries android12-gsi_06 external_iw.tar.zst $DOWNLOADS/external_iw-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/iw
 tar --zstd -xf $DOWNLOADS/external_iw-06.tar.zst -C $DOWNLOADS/aosp/external/iw "./iw^android_x86_64/out/soong/.intermediates/external/iw/iw/android_x86_64/iw"
+rm -rf external_iw*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_jsoncpp.tar.zst $DOWNLOADS/external_jsoncpp-01.tar.zst
@@ -983,23 +1045,27 @@ tar --zstd -xf $DOWNLOADS/external_jsoncpp-05.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_jsoncpp-06.tar.zst -C $DOWNLOADS/aosp/external/jsoncpp "./libjsoncpp^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/jsoncpp/libjsoncpp/android_vendor.31_x86_64_shared/libjsoncpp.so"
 tar --zstd -xf $DOWNLOADS/external_jsoncpp-06.tar.zst -C $DOWNLOADS/aosp/external/jsoncpp "./libjsoncpp^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/jsoncpp/libjsoncpp/android_vendor.31_x86_x86_64_shared/libjsoncpp.so"
 tar --zstd -xf $DOWNLOADS/external_jsoncpp-05.tar.zst -C $DOWNLOADS/aosp/external/jsoncpp "./libjsoncpp^android_x86_64_shared/out/soong/.intermediates/external/jsoncpp/libjsoncpp/android_x86_64_shared/libjsoncpp.so"
+rm -rf external_jsoncpp*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_jsr305.tar.zst $DOWNLOADS/external_jsr305-03.tar.zst
 download_with_retries android12-gsi_13 external_jsr305.tar.zst $DOWNLOADS/external_jsr305-13.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/jsr305
 tar --zstd -xf $DOWNLOADS/external_jsr305-13.tar.zst -C $DOWNLOADS/aosp/external/jsr305 "./jsr305^android_common/out/soong/.intermediates/external/jsr305/jsr305/android_common/javac/jsr305.jar" "./jsr305^android_common/out/soong/.intermediates/external/jsr305/jsr305/android_common/turbine-combined/jsr305.jar"
+rm -rf external_jsr305*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_kmod.tar.zst $DOWNLOADS/external_kmod-01.tar.zst
 download_with_retries android12-gsi_03 external_kmod.tar.zst $DOWNLOADS/external_kmod-03.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/kmod
 tar --zstd -xf $DOWNLOADS/external_kmod-03.tar.zst -C $DOWNLOADS/aosp/external/kmod "./depmod^linux_glibc_x86_64/out/soong/host/linux-x86/bin/depmod"
+rm -rf external_kmod*.tar.zst
 
 
 download_with_retries android12-gsi_24 external_libbackup.tar.zst $DOWNLOADS/external_libbackup-24.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/libbackup
 tar --zstd -xf $DOWNLOADS/external_libbackup-24.tar.zst -C $DOWNLOADS/aosp/external/libbackup "./libbackup^android_common/out/soong/.intermediates/external/libbackup/libbackup/android_common/combined/libbackup.jar" "./libbackup^android_common/out/soong/.intermediates/external/libbackup/libbackup/android_common/turbine-combined/libbackup.jar"
+rm -rf external_libbackup*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_libbrillo.tar.zst $DOWNLOADS/external_libbrillo-04.tar.zst
@@ -1008,6 +1074,7 @@ mkdir -p $DOWNLOADS/aosp/external/libbrillo
 tar --zstd -xf $DOWNLOADS/external_libbrillo-09.tar.zst -C $DOWNLOADS/aosp/external/libbrillo "./libbrillo^android_x86_64_shared/out/soong/.intermediates/external/libbrillo/libbrillo/android_x86_64_shared/libbrillo.so"
 tar --zstd -xf $DOWNLOADS/external_libbrillo-09.tar.zst -C $DOWNLOADS/aosp/external/libbrillo "./libbrillo-binder^android_x86_64_shared/out/soong/.intermediates/external/libbrillo/libbrillo-binder/android_x86_64_shared/libbrillo-binder.so"
 tar --zstd -xf $DOWNLOADS/external_libbrillo-09.tar.zst -C $DOWNLOADS/aosp/external/libbrillo "./libbrillo-stream^android_x86_64_shared/out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_shared/libbrillo-stream.so"
+rm -rf external_libbrillo*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_libcap.tar.zst $DOWNLOADS/external_libcap-03.tar.zst
@@ -1021,6 +1088,7 @@ tar --zstd -xf $DOWNLOADS/external_libcap-05.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_libcap-05.tar.zst -C $DOWNLOADS/aosp/external/libcap "./libcap^android_x86_64_shared_apex29/out/soong/.intermediates/external/libcap/libcap/android_x86_64_shared_apex29/libcap.so"
 tar --zstd -xf $DOWNLOADS/external_libcap-03.tar.zst -C $DOWNLOADS/aosp/external/libcap "./libcap^android_x86_64_static/out/soong/.intermediates/external/libcap/libcap/android_x86_64_static/libcap.a"
 tar --zstd -xf $DOWNLOADS/external_libcap-05.tar.zst -C $DOWNLOADS/aosp/external/libcap "./libcap^android_x86_x86_64_shared/out/soong/.intermediates/external/libcap/libcap/android_x86_x86_64_shared/libcap.so"
+rm -rf external_libcap*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_libchrome.tar.zst $DOWNLOADS/external_libchrome-03.tar.zst
@@ -1029,6 +1097,7 @@ download_with_retries android12-gsi_08 external_libchrome.tar.zst $DOWNLOADS/ext
 mkdir -p $DOWNLOADS/aosp/external/libchrome
 tar --zstd -xf $DOWNLOADS/external_libchrome-08.tar.zst -C $DOWNLOADS/aosp/external/libchrome "./libchrome^android_x86_64_shared/out/soong/.intermediates/external/libchrome/libchrome/android_x86_64_shared/libchrome.so"
 tar --zstd -xf $DOWNLOADS/external_libchrome-08.tar.zst -C $DOWNLOADS/aosp/external/libchrome "./libchrome^android_x86_x86_64_shared/out/soong/.intermediates/external/libchrome/libchrome/android_x86_x86_64_shared/libchrome.so"
+rm -rf external_libchrome*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libcppbor.tar.zst $DOWNLOADS/external_libcppbor-01.tar.zst
@@ -1038,11 +1107,13 @@ download_with_retries android12-gsi_07 external_libcppbor.tar.zst $DOWNLOADS/ext
 mkdir -p $DOWNLOADS/aosp/external/libcppbor
 tar --zstd -xf $DOWNLOADS/external_libcppbor-07.tar.zst -C $DOWNLOADS/aosp/external/libcppbor "./libcppbor_external^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/libcppbor/libcppbor_external/android_vendor.31_x86_64_shared/libcppbor_external.so"
 tar --zstd -xf $DOWNLOADS/external_libcppbor-07.tar.zst -C $DOWNLOADS/aosp/external/libcppbor "./libcppbor_external^android_x86_64_shared/out/soong/.intermediates/external/libcppbor/libcppbor_external/android_x86_64_shared/libcppbor_external.so"
+rm -rf external_libcppbor*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_libcups.tar.zst $DOWNLOADS/external_libcups-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/libcups
 tar --zstd -xf $DOWNLOADS/external_libcups-06.tar.zst -C $DOWNLOADS/aosp/external/libcups "./libcups^android_x86_64_shared/out/soong/.intermediates/external/libcups/libcups/android_x86_64_shared/libcups.so"
+rm -rf external_libcups*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libcxx.tar.zst $DOWNLOADS/external_libcxx-01.tar.zst
@@ -1066,6 +1137,7 @@ tar --zstd -xf $DOWNLOADS/external_libcxx-02.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_libcxx-02.tar.zst -C $DOWNLOADS/aosp/external/libcxx "./libc++^linux_glibc_x86_shared/out/soong/host/linux-x86/lib/libc++.so"
 tar --zstd -xf $DOWNLOADS/external_libcxx-01.tar.zst -C $DOWNLOADS/aosp/external/libcxx "./libc++fs^android_x86_64_static/out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a"
 tar --zstd -xf $DOWNLOADS/external_libcxx-02.tar.zst -C $DOWNLOADS/aosp/external/libcxx "./libc++_static^android_x86_64_static/out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a"
+rm -rf external_libcxx*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libcxxabi.tar.zst $DOWNLOADS/external_libcxxabi-01.tar.zst
@@ -1075,6 +1147,7 @@ tar --zstd -xf $DOWNLOADS/external_libcxxabi-04.tar.zst -C $DOWNLOADS/aosp/exter
 tar --zstd -xf $DOWNLOADS/external_libcxxabi-04.tar.zst -C $DOWNLOADS/aosp/external/libcxxabi "./libc++demangle^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a"
 tar --zstd -xf $DOWNLOADS/external_libcxxabi-01.tar.zst -C $DOWNLOADS/aosp/external/libcxxabi "./libc++demangle^android_x86_64_static/out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a"
 tar --zstd -xf $DOWNLOADS/external_libcxxabi-01.tar.zst -C $DOWNLOADS/aosp/external/libcxxabi "./libc++demangle^android_x86_x86_64_static/out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a"
+rm -rf external_libcxxabi*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libdrm.tar.zst $DOWNLOADS/external_libdrm-01.tar.zst
@@ -1086,6 +1159,7 @@ tar --zstd -xf $DOWNLOADS/external_libdrm-06.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_libdrm-06.tar.zst -C $DOWNLOADS/aosp/external/libdrm "./libdrm^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libdrm/libdrm/android_vendor.31_x86_x86_64_shared/libdrm.so" "./libdrm^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libdrm/libdrm/android_vendor.31_x86_x86_64_shared/libdrm.so.toc"
 tar --zstd -xf $DOWNLOADS/external_libdrm-05.tar.zst -C $DOWNLOADS/aosp/external/libdrm "./libdrm^android_x86_64_shared/out/soong/.intermediates/external/libdrm/libdrm/android_x86_64_shared/libdrm.so"
 tar --zstd -xf $DOWNLOADS/external_libdrm-05.tar.zst -C $DOWNLOADS/aosp/external/libdrm "./libdrm^android_x86_x86_64_shared/out/soong/.intermediates/external/libdrm/libdrm/android_x86_x86_64_shared/libdrm.so"
+rm -rf external_libdrm*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libevent.tar.zst $DOWNLOADS/external_libevent-01.tar.zst
@@ -1098,6 +1172,7 @@ tar --zstd -xf $DOWNLOADS/external_libevent-06.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_libevent-06.tar.zst -C $DOWNLOADS/aosp/external/libevent "./libevent^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libevent/libevent/android_vendor.31_x86_x86_64_shared/libevent.so"
 tar --zstd -xf $DOWNLOADS/external_libevent-05.tar.zst -C $DOWNLOADS/aosp/external/libevent "./libevent^android_x86_64_shared/out/soong/.intermediates/external/libevent/libevent/android_x86_64_shared/libevent.so"
 tar --zstd -xf $DOWNLOADS/external_libevent-05.tar.zst -C $DOWNLOADS/aosp/external/libevent "./libevent^android_x86_x86_64_shared/out/soong/.intermediates/external/libevent/libevent/android_x86_x86_64_shared/libevent.so"
+rm -rf external_libevent*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_libexif.tar.zst $DOWNLOADS/external_libexif-06.tar.zst
@@ -1105,12 +1180,14 @@ mkdir -p $DOWNLOADS/aosp/external/libexif
 tar --zstd -xf $DOWNLOADS/external_libexif-06.tar.zst -C $DOWNLOADS/aosp/external/libexif "./libexif^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/libexif/libexif/android_vendor.31_x86_64_shared/libexif.so"
 tar --zstd -xf $DOWNLOADS/external_libexif-06.tar.zst -C $DOWNLOADS/aosp/external/libexif "./libexif^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libexif/libexif/android_vendor.31_x86_x86_64_shared/libexif.so"
 tar --zstd -xf $DOWNLOADS/external_libexif-06.tar.zst -C $DOWNLOADS/aosp/external/libexif "./libexif^android_x86_64_shared/out/soong/.intermediates/external/libexif/libexif/android_x86_64_shared/libexif.so"
+rm -rf external_libexif*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_libfuse.tar.zst $DOWNLOADS/external_libfuse-05.tar.zst
 download_with_retries android12-gsi_06 external_libfuse.tar.zst $DOWNLOADS/external_libfuse-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/libfuse
 tar --zstd -xf $DOWNLOADS/external_libfuse-06.tar.zst -C $DOWNLOADS/aosp/external/libfuse "./libfuse^android_x86_64_sdk_shared_apex30/out/soong/.intermediates/external/libfuse/libfuse/android_x86_64_sdk_shared_apex30/unstripped/libfuse.so"
+rm -rf external_libfuse*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libjpeg-turbo.tar.zst $DOWNLOADS/external_libjpeg-turbo-01.tar.zst
@@ -1124,6 +1201,7 @@ tar --zstd -xf $DOWNLOADS/external_libjpeg-turbo-06.tar.zst -C $DOWNLOADS/aosp/e
 tar --zstd -xf $DOWNLOADS/external_libjpeg-turbo-05.tar.zst -C $DOWNLOADS/aosp/external/libjpeg-turbo "./libjpeg^android_x86_64_shared/out/soong/.intermediates/external/libjpeg-turbo/libjpeg/android_x86_64_shared/libjpeg.so"
 tar --zstd -xf $DOWNLOADS/external_libjpeg-turbo-05.tar.zst -C $DOWNLOADS/aosp/external/libjpeg-turbo "./libjpeg^android_x86_x86_64_shared/out/soong/.intermediates/external/libjpeg-turbo/libjpeg/android_x86_x86_64_shared/libjpeg.so"
 tar --zstd -xf $DOWNLOADS/external_libjpeg-turbo-05.tar.zst -C $DOWNLOADS/aosp/external/libjpeg-turbo "./libjpeg_static_ndk^android_x86_64_sdk_static/out/soong/.intermediates/external/libjpeg-turbo/libjpeg_static_ndk/android_x86_64_sdk_static/libjpeg_static_ndk.a"
+rm -rf external_libjpeg-turbo*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_libldac.tar.zst $DOWNLOADS/external_libldac-05.tar.zst
@@ -1137,6 +1215,7 @@ tar --zstd -xf $DOWNLOADS/external_libldac-06.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_libldac-06.tar.zst -C $DOWNLOADS/aosp/external/libldac "./libldacBT_abr^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libldac/libldacBT_abr/android_vendor.31_x86_x86_64_shared/libldacBT_abr.so"
 tar --zstd -xf $DOWNLOADS/external_libldac-05.tar.zst -C $DOWNLOADS/aosp/external/libldac "./libldacBT_abr^android_x86_64_shared/out/soong/.intermediates/external/libldac/libldacBT_abr/android_x86_64_shared/libldacBT_abr.so"
 tar --zstd -xf $DOWNLOADS/external_libldac-05.tar.zst -C $DOWNLOADS/aosp/external/libldac "./libldacBT_abr^android_x86_x86_64_shared/out/soong/.intermediates/external/libldac/libldacBT_abr/android_x86_x86_64_shared/libldacBT_abr.so"
+rm -rf external_libldac*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libnl.tar.zst $DOWNLOADS/external_libnl-01.tar.zst
@@ -1149,6 +1228,7 @@ tar --zstd -xf $DOWNLOADS/external_libnl-06.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_libnl-06.tar.zst -C $DOWNLOADS/aosp/external/libnl "./libnl^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libnl/libnl/android_vendor.31_x86_x86_64_shared/libnl.so"
 tar --zstd -xf $DOWNLOADS/external_libnl-05.tar.zst -C $DOWNLOADS/aosp/external/libnl "./libnl^android_x86_64_shared/out/soong/.intermediates/external/libnl/libnl/android_x86_64_shared/libnl.so"
 tar --zstd -xf $DOWNLOADS/external_libnl-05.tar.zst -C $DOWNLOADS/aosp/external/libnl "./libnl^android_x86_x86_64_shared/out/soong/.intermediates/external/libnl/libnl/android_x86_x86_64_shared/libnl.so"
+rm -rf external_libnl*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libopus.tar.zst $DOWNLOADS/external_libopus-01.tar.zst
@@ -1159,18 +1239,21 @@ download_with_retries android12-gsi_06 external_libopus.tar.zst $DOWNLOADS/exter
 mkdir -p $DOWNLOADS/aosp/external/libopus
 tar --zstd -xf $DOWNLOADS/external_libopus-06.tar.zst -C $DOWNLOADS/aosp/external/libopus "./libopus^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libopus/libopus/android_vendor.31_x86_x86_64_shared/libopus.so"
 tar --zstd -xf $DOWNLOADS/external_libopus-05.tar.zst -C $DOWNLOADS/aosp/external/libopus "./libopus^android_x86_64_shared_apex29/out/soong/.intermediates/external/libopus/libopus/android_x86_64_shared_apex29/libopus.so"
+rm -rf external_libopus*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libpcap.tar.zst $DOWNLOADS/external_libpcap-01.tar.zst
 download_with_retries android12-gsi_05 external_libpcap.tar.zst $DOWNLOADS/external_libpcap-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/libpcap
 tar --zstd -xf $DOWNLOADS/external_libpcap-05.tar.zst -C $DOWNLOADS/aosp/external/libpcap "./libpcap^android_x86_64_shared/out/soong/.intermediates/external/libpcap/libpcap/android_x86_64_shared/libpcap.so"
+rm -rf external_libpcap*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_libphonenumber.tar.zst $DOWNLOADS/external_libphonenumber-08.tar.zst
 download_with_retries android12-gsi_14 external_libphonenumber.tar.zst $DOWNLOADS/external_libphonenumber-14.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/libphonenumber
 tar --zstd -xf $DOWNLOADS/external_libphonenumber-08.tar.zst -C $DOWNLOADS/aosp/external/libphonenumber "./libphonenumber^android_common/out/soong/.intermediates/external/libphonenumber/libphonenumber/android_common/turbine-combined/libphonenumber.jar" "./libphonenumber^android_common/out/soong/.intermediates/external/libphonenumber/libphonenumber/android_common/withres/libphonenumber.jar"
+rm -rf external_libphonenumber*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libpng.tar.zst $DOWNLOADS/external_libpng-01.tar.zst
@@ -1183,6 +1266,7 @@ tar --zstd -xf $DOWNLOADS/external_libpng-06.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_libpng-06.tar.zst -C $DOWNLOADS/aosp/external/libpng "./libpng^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libpng/libpng/android_vendor.31_x86_x86_64_shared/libpng.so"
 tar --zstd -xf $DOWNLOADS/external_libpng-05.tar.zst -C $DOWNLOADS/aosp/external/libpng "./libpng^android_x86_64_shared/out/soong/.intermediates/external/libpng/libpng/android_x86_64_shared/libpng.so"
 tar --zstd -xf $DOWNLOADS/external_libpng-05.tar.zst -C $DOWNLOADS/aosp/external/libpng "./libpng^android_x86_x86_64_shared/out/soong/.intermediates/external/libpng/libpng/android_x86_x86_64_shared/libpng.so"
+rm -rf external_libpng*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libtextclassifier.tar.zst $DOWNLOADS/external_libtextclassifier-01.tar.zst
@@ -1194,6 +1278,7 @@ download_with_retries android12-gsi_23 external_libtextclassifier.tar.zst $DOWNL
 mkdir -p $DOWNLOADS/aosp/external/libtextclassifier
 tar --zstd -xf $DOWNLOADS/external_libtextclassifier-07.tar.zst -C $DOWNLOADS/aosp/external/libtextclassifier "./native/libtextclassifier^android_x86_64_sdk_shared_apex30/out/soong/.intermediates/external/libtextclassifier/native/libtextclassifier/android_x86_64_sdk_shared_apex30/unstripped/libtextclassifier.so"
 tar --zstd -xf $DOWNLOADS/external_libtextclassifier-06.tar.zst -C $DOWNLOADS/aosp/external/libtextclassifier "./native/libtextclassifier_hash^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/libtextclassifier/native/libtextclassifier_hash/android_vendor.31_x86_64_shared/libtextclassifier_hash.so"
+rm -rf external_libtextclassifier*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libvpx.tar.zst $DOWNLOADS/external_libvpx-01.tar.zst
@@ -1204,6 +1289,7 @@ download_with_retries android12-gsi_06 external_libvpx.tar.zst $DOWNLOADS/extern
 mkdir -p $DOWNLOADS/aosp/external/libvpx
 tar --zstd -xf $DOWNLOADS/external_libvpx-06.tar.zst -C $DOWNLOADS/aosp/external/libvpx "./libvpx^android_vendor.31_x86_x86_64_shared_cfi/out/soong/.intermediates/external/libvpx/libvpx/android_vendor.31_x86_x86_64_shared_cfi/libvpx.so"
 tar --zstd -xf $DOWNLOADS/external_libvpx-05.tar.zst -C $DOWNLOADS/aosp/external/libvpx "./libvpx^android_x86_64_shared_cfi_apex29/out/soong/.intermediates/external/libvpx/libvpx/android_x86_64_shared_cfi_apex29/libvpx.so"
+rm -rf external_libvpx*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libxml2.tar.zst $DOWNLOADS/external_libxml2-01.tar.zst
@@ -1214,6 +1300,7 @@ tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/external/libxml2 "./libxml2^android_x86_64_shared/out/soong/.intermediates/external/libxml2/libxml2/android_x86_64_shared/libxml2.so"
 tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/external/libxml2 "./libxml2^android_x86_x86_64_shared/out/soong/.intermediates/external/libxml2/libxml2/android_x86_x86_64_shared/libxml2.so"
 tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/external/libxml2 "./xmllint^linux_glibc_x86_64/out/soong/host/linux-x86/bin/xmllint"
+rm -rf external_libxml2*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_libyuv.tar.zst $DOWNLOADS/external_libyuv-01.tar.zst
@@ -1226,6 +1313,7 @@ tar --zstd -xf $DOWNLOADS/external_libyuv-04.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_libyuv-07.tar.zst -C $DOWNLOADS/aosp/external/libyuv "./files/libyuv^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_64_shared/libyuv.so"
 tar --zstd -xf $DOWNLOADS/external_libyuv-07.tar.zst -C $DOWNLOADS/aosp/external/libyuv "./files/libyuv^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_shared/libyuv.so"
 tar --zstd -xf $DOWNLOADS/external_libyuv-06.tar.zst -C $DOWNLOADS/aosp/external/libyuv "./files/libyuv^android_x86_64_shared/out/soong/.intermediates/external/libyuv/files/libyuv/android_x86_64_shared/libyuv.so"
+rm -rf external_libyuv*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_llvm.tar.zst $DOWNLOADS/external_llvm-01.tar.zst
@@ -1234,6 +1322,7 @@ download_with_retries android12-gsi_04 external_llvm.tar.zst $DOWNLOADS/external
 download_with_retries android12-gsi_05 external_llvm.tar.zst $DOWNLOADS/external_llvm-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/llvm
 tar --zstd -xf $DOWNLOADS/external_llvm-05.tar.zst -C $DOWNLOADS/aosp/external/llvm "./libLLVM_android^android_x86_64_shared/out/soong/.intermediates/external/llvm/libLLVM_android/android_x86_64_shared/libLLVM_android.so"
+rm -rf external_llvm*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_lz4.tar.zst $DOWNLOADS/external_lz4-01.tar.zst
@@ -1250,6 +1339,7 @@ tar --zstd -xf $DOWNLOADS/external_lz4-05.tar.zst -C $DOWNLOADS/aosp/external/lz
 tar --zstd -xf $DOWNLOADS/external_lz4-05.tar.zst -C $DOWNLOADS/aosp/external/lz4 "./lib/liblz4^android_x86_x86_64_shared/out/soong/.intermediates/external/lz4/lib/liblz4/android_x86_x86_64_shared/liblz4.so"
 tar --zstd -xf $DOWNLOADS/external_lz4-05.tar.zst -C $DOWNLOADS/aosp/external/lz4 "./lib/liblz4^android_x86_x86_64_shared_apex31/out/soong/.intermediates/external/lz4/lib/liblz4/android_x86_x86_64_shared_apex31/liblz4.so"
 tar --zstd -xf $DOWNLOADS/external_lz4-03.tar.zst -C $DOWNLOADS/aosp/external/lz4 "./programs/lz4^linux_glibc_x86_64/out/soong/host/linux-x86/bin/lz4"
+rm -rf external_lz4*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_lzma.tar.zst $DOWNLOADS/external_lzma-01.tar.zst
@@ -1263,6 +1353,7 @@ tar --zstd -xf $DOWNLOADS/external_lzma-04.tar.zst -C $DOWNLOADS/aosp/external/l
 tar --zstd -xf $DOWNLOADS/external_lzma-01.tar.zst -C $DOWNLOADS/aosp/external/lzma "./C/liblzma^android_x86_64_static/out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_static/liblzma.a"
 tar --zstd -xf $DOWNLOADS/external_lzma-04.tar.zst -C $DOWNLOADS/aosp/external/lzma "./C/liblzma^android_x86_x86_64_shared/out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_shared/liblzma.so"
 tar --zstd -xf $DOWNLOADS/external_lzma-04.tar.zst -C $DOWNLOADS/aosp/external/lzma "./C/liblzma^android_x86_x86_64_shared_apex31/out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_shared_apex31/liblzma.so"
+rm -rf external_lzma*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_mdnsresponder.tar.zst $DOWNLOADS/external_mdnsresponder-01.tar.zst
@@ -1272,12 +1363,14 @@ mkdir -p $DOWNLOADS/aosp/external/mdnsresponder
 tar --zstd -xf $DOWNLOADS/external_mdnsresponder-04.tar.zst -C $DOWNLOADS/aosp/external/mdnsresponder "./mdnsd^android_x86_64/out/soong/.intermediates/external/mdnsresponder/mdnsd/android_x86_64/mdnsd"
 tar --zstd -xf $DOWNLOADS/external_mdnsresponder-06.tar.zst -C $DOWNLOADS/aosp/external/mdnsresponder "./libmdnssd^android_x86_64_shared/out/soong/.intermediates/external/mdnsresponder/libmdnssd/android_x86_64_shared/libmdnssd.so"
 tar --zstd -xf $DOWNLOADS/external_mdnsresponder-06.tar.zst -C $DOWNLOADS/aosp/external/mdnsresponder "./libmdnssd^android_x86_x86_64_shared/out/soong/.intermediates/external/mdnsresponder/libmdnssd/android_x86_x86_64_shared/libmdnssd.so"
+rm -rf external_mdnsresponder*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_mesa3d.tar.zst $DOWNLOADS/external_mesa3d-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/mesa3d
 tar --zstd -xf $DOWNLOADS/external_mesa3d-04.tar.zst -C $DOWNLOADS/aosp/external/mesa3d "./src/mesa/libmesa_sse41^android_vendor.31_x86_64_static/out/soong/.intermediates/external/mesa3d/src/mesa/libmesa_sse41/android_vendor.31_x86_64_static/libmesa_sse41.a"
 tar --zstd -xf $DOWNLOADS/external_mesa3d-04.tar.zst -C $DOWNLOADS/aosp/external/mesa3d "./src/mesa/libmesa_sse41^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/external/mesa3d/src/mesa/libmesa_sse41/android_vendor.31_x86_x86_64_static/libmesa_sse41.a"
+rm -rf external_mesa3d*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_minigbm.tar.zst $DOWNLOADS/external_minigbm-01.tar.zst
@@ -1289,6 +1382,7 @@ tar --zstd -xf $DOWNLOADS/external_minigbm-08.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_minigbm-11.tar.zst -C $DOWNLOADS/aosp/external/minigbm "./cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so"
 tar --zstd -xf $DOWNLOADS/external_minigbm-11.tar.zst -C $DOWNLOADS/aosp/external/minigbm "./cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so"
 tar --zstd -xf $DOWNLOADS/external_minigbm-11.tar.zst -C $DOWNLOADS/aosp/external/minigbm "./cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm^android_vendor.31_x86_64/out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm/android_vendor.31_x86_64/android.hardware.graphics.allocator@4.0-service.minigbm"
+rm -rf external_minigbm*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_minijail.tar.zst $DOWNLOADS/external_minijail-01.tar.zst
@@ -1301,6 +1395,7 @@ tar --zstd -xf $DOWNLOADS/external_minijail-07.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_minijail-07.tar.zst -C $DOWNLOADS/aosp/external/minijail "./libminijail^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/minijail/libminijail/android_vendor.31_x86_x86_64_shared/libminijail.so"
 tar --zstd -xf $DOWNLOADS/external_minijail-06.tar.zst -C $DOWNLOADS/aosp/external/minijail "./libminijail^android_x86_64_shared/out/soong/.intermediates/external/minijail/libminijail/android_x86_64_shared/libminijail.so"
 tar --zstd -xf $DOWNLOADS/external_minijail-06.tar.zst -C $DOWNLOADS/aosp/external/minijail "./libminijail^android_x86_64_shared_apex29/out/soong/.intermediates/external/minijail/libminijail/android_x86_64_shared_apex29/libminijail.so"
+rm -rf external_minijail*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_mksh.tar.zst $DOWNLOADS/external_mksh-01.tar.zst
@@ -1311,11 +1406,13 @@ tar --zstd -xf $DOWNLOADS/external_mksh-04.tar.zst -C $DOWNLOADS/aosp/external/m
 tar --zstd -xf $DOWNLOADS/external_mksh-04.tar.zst -C $DOWNLOADS/aosp/external/mksh "./sh_vendor^android_vendor.31_x86_64/out/soong/.intermediates/external/mksh/sh_vendor/android_vendor.31_x86_64/sh"
 tar --zstd -xf $DOWNLOADS/external_mksh-01.tar.zst -C $DOWNLOADS/aosp/external/mksh "./mkshrc^android_x86_64/out/soong/.intermediates/external/mksh/mkshrc/android_x86_64/mkshrc"
 tar --zstd -xf $DOWNLOADS/external_mksh-01.tar.zst -C $DOWNLOADS/aosp/external/mksh "./mkshrc_vendor^android_x86_64/out/soong/.intermediates/external/mksh/mkshrc_vendor/android_x86_64/mkshrc"
+rm -rf external_mksh*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_mtpd.tar.zst $DOWNLOADS/external_mtpd-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/mtpd
 tar --zstd -xf $DOWNLOADS/external_mtpd-08.tar.zst -C $DOWNLOADS/aosp/external/mtpd "./mtpd^android_x86_64/out/soong/.intermediates/external/mtpd/mtpd/android_x86_64/mtpd"
+rm -rf external_mtpd*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_nanopb-c.tar.zst $DOWNLOADS/external_nanopb-c-01.tar.zst
@@ -1324,6 +1421,7 @@ download_with_retries android12-gsi_05 external_nanopb-c.tar.zst $DOWNLOADS/exte
 mkdir -p $DOWNLOADS/aosp/external/nanopb-c
 tar --zstd -xf $DOWNLOADS/external_nanopb-c-04.tar.zst -C $DOWNLOADS/aosp/external/nanopb-c "./libprotobuf-c-nano-enable_malloc-32bit^android_vendor.31_x86_64_static/out/soong/.intermediates/external/nanopb-c/libprotobuf-c-nano-enable_malloc-32bit/android_vendor.31_x86_64_static/libprotobuf-c-nano-enable_malloc-32bit.a"
 tar --zstd -xf $DOWNLOADS/external_nanopb-c-04.tar.zst -C $DOWNLOADS/aosp/external/nanopb-c "./libprotobuf-c-nano-enable_malloc-32bit^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/external/nanopb-c/libprotobuf-c-nano-enable_malloc-32bit/android_vendor.31_x86_x86_64_static/libprotobuf-c-nano-enable_malloc-32bit.a"
+rm -rf external_nanopb-c*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_neven.tar.zst $DOWNLOADS/external_neven-01.tar.zst
@@ -1333,12 +1431,14 @@ tar --zstd -xf $DOWNLOADS/external_neven-01.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_neven-01.tar.zst -C $DOWNLOADS/aosp/external/neven "./RFFstd_501.bmd^android_x86_64/out/soong/.intermediates/external/neven/RFFstd_501.bmd/android_x86_64/RFFstd_501.bmd"
 tar --zstd -xf $DOWNLOADS/external_neven-15.tar.zst -C $DOWNLOADS/aosp/external/neven "./libFFTEm^android_x86_64_shared/out/soong/.intermediates/external/neven/libFFTEm/android_x86_64_shared/libFFTEm.so"
 tar --zstd -xf $DOWNLOADS/external_neven-15.tar.zst -C $DOWNLOADS/aosp/external/neven "./libFFTEm^android_x86_x86_64_shared/out/soong/.intermediates/external/neven/libFFTEm/android_x86_x86_64_shared/libFFTEm.so"
+rm -rf external_neven*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_newfs_msdos.tar.zst $DOWNLOADS/external_newfs_msdos-03.tar.zst
 download_with_retries android12-gsi_05 external_newfs_msdos.tar.zst $DOWNLOADS/external_newfs_msdos-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/newfs_msdos
 tar --zstd -xf $DOWNLOADS/external_newfs_msdos-05.tar.zst -C $DOWNLOADS/aosp/external/newfs_msdos "./newfs_msdos^android_x86_64/out/soong/.intermediates/external/newfs_msdos/newfs_msdos/android_x86_64/newfs_msdos"
+rm -rf external_newfs_msdos*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_noto-fonts.tar.zst $DOWNLOADS/external_noto-fonts-01.tar.zst
@@ -1533,6 +1633,7 @@ tar --zstd -xf $DOWNLOADS/external_noto-fonts-01.tar.zst -C $DOWNLOADS/aosp/exte
 tar --zstd -xf $DOWNLOADS/external_noto-fonts-01.tar.zst -C $DOWNLOADS/aosp/external/noto-fonts "./other/NotoSerifTibetan-VF.ttf^android_x86_64/out/soong/.intermediates/external/noto-fonts/other/NotoSerifTibetan-VF.ttf/android_x86_64/NotoSerifTibetan-VF.ttf"
 tar --zstd -xf $DOWNLOADS/external_noto-fonts-01.tar.zst -C $DOWNLOADS/aosp/external/noto-fonts "./other/NotoSansAhom-Regular.otf^android_x86_64/out/soong/.intermediates/external/noto-fonts/other/NotoSansAhom-Regular.otf/android_x86_64/NotoSansAhom-Regular.otf"
 tar --zstd -xf $DOWNLOADS/external_noto-fonts-01.tar.zst -C $DOWNLOADS/aosp/external/noto-fonts "./other/NotoSerifYezidi-VF.ttf^android_x86_64/out/soong/.intermediates/external/noto-fonts/other/NotoSerifYezidi-VF.ttf/android_x86_64/NotoSerifYezidi-VF.ttf"
+rm -rf external_noto-fonts*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_oj-libjdwp.tar.zst $DOWNLOADS/external_oj-libjdwp-01.tar.zst
@@ -1545,11 +1646,13 @@ tar --zstd -xf $DOWNLOADS/external_oj-libjdwp-05.tar.zst -C $DOWNLOADS/aosp/exte
 tar --zstd -xf $DOWNLOADS/external_oj-libjdwp-05.tar.zst -C $DOWNLOADS/aosp/external/oj-libjdwp "./libjdwp^android_x86_x86_64_shared_apex31/out/soong/.intermediates/external/oj-libjdwp/libjdwp/android_x86_x86_64_shared_apex31/libjdwp.so"
 tar --zstd -xf $DOWNLOADS/external_oj-libjdwp-05.tar.zst -C $DOWNLOADS/aosp/external/oj-libjdwp "./libdt_socket^android_x86_64_shared_apex31/out/soong/.intermediates/external/oj-libjdwp/libdt_socket/android_x86_64_shared_apex31/libdt_socket.so"
 tar --zstd -xf $DOWNLOADS/external_oj-libjdwp-05.tar.zst -C $DOWNLOADS/aosp/external/oj-libjdwp "./libdt_socket^android_x86_x86_64_shared_apex31/out/soong/.intermediates/external/oj-libjdwp/libdt_socket/android_x86_x86_64_shared_apex31/libdt_socket.so"
+rm -rf external_oj-libjdwp*.tar.zst
 
 
 download_with_retries android12-gsi_11 external_okhttp.tar.zst $DOWNLOADS/external_okhttp-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/okhttp
 tar --zstd -xf $DOWNLOADS/external_okhttp-11.tar.zst -C $DOWNLOADS/aosp/external/okhttp "./okhttp^android_common_apex31/out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/javac/okhttp.jar" "./okhttp^android_common_apex31/out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/turbine-combined/okhttp.jar"
+rm -rf external_okhttp*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_one-true-awk.tar.zst $DOWNLOADS/external_one-true-awk-03.tar.zst
@@ -1557,6 +1660,7 @@ download_with_retries android12-gsi_04 external_one-true-awk.tar.zst $DOWNLOADS/
 mkdir -p $DOWNLOADS/aosp/external/one-true-awk
 tar --zstd -xf $DOWNLOADS/external_one-true-awk-04.tar.zst -C $DOWNLOADS/aosp/external/one-true-awk "./awk^android_x86_64/out/soong/.intermediates/external/one-true-awk/awk/android_x86_64/awk"
 tar --zstd -xf $DOWNLOADS/external_one-true-awk-04.tar.zst -C $DOWNLOADS/aosp/external/one-true-awk "./awk_vendor^android_vendor.31_x86_64/out/soong/.intermediates/external/one-true-awk/awk_vendor/android_vendor.31_x86_64/awk"
+rm -rf external_one-true-awk*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_parameter-framework.tar.zst $DOWNLOADS/external_parameter-framework-01.tar.zst
@@ -1566,6 +1670,7 @@ tar --zstd -xf $DOWNLOADS/external_parameter-framework-05.tar.zst -C $DOWNLOADS/
 tar --zstd -xf $DOWNLOADS/external_parameter-framework-05.tar.zst -C $DOWNLOADS/aosp/external/parameter-framework "./libparameter^android_x86_x86_64_shared/out/soong/.intermediates/external/parameter-framework/libparameter/android_x86_x86_64_shared/libparameter.so"
 tar --zstd -xf $DOWNLOADS/external_parameter-framework-05.tar.zst -C $DOWNLOADS/aosp/external/parameter-framework "./libremote-processor^android_x86_64_shared/out/soong/.intermediates/external/parameter-framework/libremote-processor/android_x86_64_shared/libremote-processor.so"
 tar --zstd -xf $DOWNLOADS/external_parameter-framework-05.tar.zst -C $DOWNLOADS/aosp/external/parameter-framework "./libremote-processor^android_x86_x86_64_shared/out/soong/.intermediates/external/parameter-framework/libremote-processor/android_x86_x86_64_shared/libremote-processor.so"
+rm -rf external_parameter-framework*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_pcre.tar.zst $DOWNLOADS/external_pcre-01.tar.zst
@@ -1577,6 +1682,7 @@ tar --zstd -xf $DOWNLOADS/external_pcre-04.tar.zst -C $DOWNLOADS/aosp/external/p
 tar --zstd -xf $DOWNLOADS/external_pcre-04.tar.zst -C $DOWNLOADS/aosp/external/pcre "./libpcre2^android_x86_64_shared/out/soong/.intermediates/external/pcre/libpcre2/android_x86_64_shared/libpcre2.so"
 tar --zstd -xf $DOWNLOADS/external_pcre-04.tar.zst -C $DOWNLOADS/aosp/external/pcre "./libpcre2^android_x86_x86_64_shared/out/soong/.intermediates/external/pcre/libpcre2/android_x86_x86_64_shared/libpcre2.so"
 tar --zstd -xf $DOWNLOADS/external_pcre-01.tar.zst -C $DOWNLOADS/aosp/external/pcre "./libpcre2^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libpcre2.so"
+rm -rf external_pcre*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_pdfium.tar.zst $DOWNLOADS/external_pdfium-01.tar.zst
@@ -1584,6 +1690,7 @@ download_with_retries android12-gsi_07 external_pdfium.tar.zst $DOWNLOADS/extern
 mkdir -p $DOWNLOADS/aosp/external/pdfium
 tar --zstd -xf $DOWNLOADS/external_pdfium-07.tar.zst -C $DOWNLOADS/aosp/external/pdfium "./libpdfium^android_x86_64_shared/out/soong/.intermediates/external/pdfium/libpdfium/android_x86_64_shared/libpdfium.so"
 tar --zstd -xf $DOWNLOADS/external_pdfium-07.tar.zst -C $DOWNLOADS/aosp/external/pdfium "./libpdfium^android_x86_x86_64_shared/out/soong/.intermediates/external/pdfium/libpdfium/android_x86_x86_64_shared/libpdfium.so"
+rm -rf external_pdfium*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_perfetto.tar.zst $DOWNLOADS/external_perfetto-01.tar.zst
@@ -1606,6 +1713,7 @@ tar --zstd -xf $DOWNLOADS/external_perfetto-06.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_perfetto-08.tar.zst -C $DOWNLOADS/aosp/external/perfetto "./traced_perf^android_x86_64/out/soong/.intermediates/external/perfetto/traced_perf/android_x86_64/traced_perf"
 tar --zstd -xf $DOWNLOADS/external_perfetto-06.tar.zst -C $DOWNLOADS/aosp/external/perfetto "./traced_probes^android_x86_64/out/soong/.intermediates/external/perfetto/traced_probes/android_x86_64/traced_probes"
 tar --zstd -xf $DOWNLOADS/external_perfetto-06.tar.zst -C $DOWNLOADS/aosp/external/perfetto "./trigger_perfetto^android_x86_64/out/soong/.intermediates/external/perfetto/trigger_perfetto/android_x86_64/trigger_perfetto"
+rm -rf external_perfetto*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_piex.tar.zst $DOWNLOADS/external_piex-01.tar.zst
@@ -1617,6 +1725,7 @@ tar --zstd -xf $DOWNLOADS/external_piex-06.tar.zst -C $DOWNLOADS/aosp/external/p
 tar --zstd -xf $DOWNLOADS/external_piex-06.tar.zst -C $DOWNLOADS/aosp/external/piex "./libpiex^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/piex/libpiex/android_vendor.31_x86_x86_64_shared/libpiex.so"
 tar --zstd -xf $DOWNLOADS/external_piex-05.tar.zst -C $DOWNLOADS/aosp/external/piex "./libpiex^android_x86_64_shared/out/soong/.intermediates/external/piex/libpiex/android_x86_64_shared/libpiex.so"
 tar --zstd -xf $DOWNLOADS/external_piex-05.tar.zst -C $DOWNLOADS/aosp/external/piex "./libpiex^android_x86_x86_64_shared/out/soong/.intermediates/external/piex/libpiex/android_x86_x86_64_shared/libpiex.so"
+rm -rf external_piex*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_ppp.tar.zst $DOWNLOADS/external_ppp-05.tar.zst
@@ -1625,6 +1734,7 @@ mkdir -p $DOWNLOADS/aosp/external/ppp
 tar --zstd -xf $DOWNLOADS/external_ppp-08.tar.zst -C $DOWNLOADS/aosp/external/ppp "./pppd/pppd^android_x86_64/out/soong/.intermediates/external/ppp/pppd/pppd/android_x86_64/pppd"
 tar --zstd -xf $DOWNLOADS/external_ppp-05.tar.zst -C $DOWNLOADS/aosp/external/ppp "./pppd/pppol2tp-android^android_x86_64_shared/out/soong/.intermediates/external/ppp/pppd/pppol2tp-android/android_x86_64_shared/pppol2tp-android.so"
 tar --zstd -xf $DOWNLOADS/external_ppp-05.tar.zst -C $DOWNLOADS/aosp/external/ppp "./pppd/pppopptp-android^android_x86_64_shared/out/soong/.intermediates/external/ppp/pppd/pppopptp-android/android_x86_64_shared/pppopptp-android.so"
+rm -rf external_ppp*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_protobuf.tar.zst $DOWNLOADS/external_protobuf-01.tar.zst
@@ -1649,36 +1759,42 @@ tar --zstd -xf $DOWNLOADS/external_protobuf-06.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_protobuf-06.tar.zst -C $DOWNLOADS/aosp/external/protobuf "./libprotobuf-cpp-full^android_x86_x86_64_shared/out/soong/.intermediates/external/protobuf/libprotobuf-cpp-full/android_x86_x86_64_shared/libprotobuf-cpp-full.so"
 tar --zstd -xf $DOWNLOADS/external_protobuf-03.tar.zst -C $DOWNLOADS/aosp/external/protobuf "./aprotoc^linux_glibc_x86_64/out/soong/host/linux-x86/bin/aprotoc"
 tar --zstd -xf $DOWNLOADS/external_protobuf-13.tar.zst -C $DOWNLOADS/aosp/external/protobuf "./libprotobuf-java-lite^android_common/out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common/javac/libprotobuf-java-lite.jar" "./libprotobuf-java-lite^android_common/out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common/turbine-combined/libprotobuf-java-lite.jar"
+rm -rf external_protobuf*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_roboto-fonts.tar.zst $DOWNLOADS/external_roboto-fonts-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/roboto-fonts
 tar --zstd -xf $DOWNLOADS/external_roboto-fonts-01.tar.zst -C $DOWNLOADS/aosp/external/roboto-fonts "./Roboto-Regular.ttf^android_x86_64/out/soong/.intermediates/external/roboto-fonts/Roboto-Regular.ttf/android_x86_64/Roboto-Regular.ttf"
 tar --zstd -xf $DOWNLOADS/external_roboto-fonts-01.tar.zst -C $DOWNLOADS/aosp/external/roboto-fonts "./RobotoStatic-Regular.ttf^android_x86_64/out/soong/.intermediates/external/roboto-fonts/RobotoStatic-Regular.ttf/android_x86_64/RobotoStatic-Regular.ttf"
+rm -rf external_roboto-fonts*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_android_log-sys.tar.zst $DOWNLOADS/external_rust_crates_android_log-sys-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_android_log-sys.tar.zst $DOWNLOADS/external_rust_crates_android_log-sys-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/android_log-sys
 tar --zstd -xf $DOWNLOADS/external_rust_crates_android_log-sys-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/android_log-sys "./libandroid_log_sys^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/android_log-sys/libandroid_log_sys/android_x86_64_dylib/libandroid_log_sys.dylib.so" "./libandroid_log_sys^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/android_log-sys/libandroid_log_sys/android_x86_64_dylib/stripped/libandroid_log_sys.dylib.so"
+rm -rf external_rust_crates_android_log-sys*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_rust_crates_android_logger.tar.zst $DOWNLOADS/external_rust_crates_android_logger-05.tar.zst
 download_with_retries android12-gsi_10 external_rust_crates_android_logger.tar.zst $DOWNLOADS/external_rust_crates_android_logger-10.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/android_logger
 tar --zstd -xf $DOWNLOADS/external_rust_crates_android_logger-10.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/android_logger "./libandroid_logger^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/android_logger/libandroid_logger/android_x86_64_dylib/libandroid_logger.dylib.so" "./libandroid_logger^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/android_logger/libandroid_logger/android_x86_64_dylib/stripped/libandroid_logger.dylib.so"
+rm -rf external_rust_crates_android_logger*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_anyhow.tar.zst $DOWNLOADS/external_rust_crates_anyhow-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_anyhow.tar.zst $DOWNLOADS/external_rust_crates_anyhow-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/anyhow
 tar --zstd -xf $DOWNLOADS/external_rust_crates_anyhow-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/anyhow "./libanyhow^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/anyhow/libanyhow/android_x86_64_dylib/libanyhow.dylib.so" "./libanyhow^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/anyhow/libanyhow/android_x86_64_dylib/stripped/libanyhow.dylib.so"
+rm -rf external_rust_crates_anyhow*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_async-task.tar.zst $DOWNLOADS/external_rust_crates_async-task-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_async-task.tar.zst $DOWNLOADS/external_rust_crates_async-task-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/async-task
 tar --zstd -xf $DOWNLOADS/external_rust_crates_async-task-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/async-task "./libasync_task^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/async-task/libasync_task/android_x86_64_dylib/libasync_task.dylib.so" "./libasync_task^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/async-task/libasync_task/android_x86_64_dylib/stripped/libasync_task.dylib.so"
+rm -rf external_rust_crates_async-task*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_bitflags.tar.zst $DOWNLOADS/external_rust_crates_bitflags-01.tar.zst
@@ -1686,11 +1802,13 @@ download_with_retries android12-gsi_02 external_rust_crates_bitflags.tar.zst $DO
 download_with_retries android12-gsi_07 external_rust_crates_bitflags.tar.zst $DOWNLOADS/external_rust_crates_bitflags-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/bitflags
 tar --zstd -xf $DOWNLOADS/external_rust_crates_bitflags-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/bitflags "./libbitflags^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/bitflags/libbitflags/android_x86_64_dylib/libbitflags.dylib.so" "./libbitflags^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/bitflags/libbitflags/android_x86_64_dylib/stripped/libbitflags.dylib.so"
+rm -rf external_rust_crates_bitflags*.tar.zst
 
 
 download_with_retries android12-gsi_07 external_rust_crates_byteorder.tar.zst $DOWNLOADS/external_rust_crates_byteorder-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/byteorder
 tar --zstd -xf $DOWNLOADS/external_rust_crates_byteorder-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/byteorder "./libbyteorder^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/byteorder/libbyteorder/android_x86_64_dylib/libbyteorder.dylib.so" "./libbyteorder^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/byteorder/libbyteorder/android_x86_64_dylib/stripped/libbyteorder.dylib.so"
+rm -rf external_rust_crates_byteorder*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_cfg-if.tar.zst $DOWNLOADS/external_rust_crates_cfg-if-01.tar.zst
@@ -1698,22 +1816,26 @@ download_with_retries android12-gsi_02 external_rust_crates_cfg-if.tar.zst $DOWN
 download_with_retries android12-gsi_07 external_rust_crates_cfg-if.tar.zst $DOWNLOADS/external_rust_crates_cfg-if-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/cfg-if
 tar --zstd -xf $DOWNLOADS/external_rust_crates_cfg-if-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/cfg-if "./libcfg_if^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/cfg-if/libcfg_if/android_x86_64_dylib/libcfg_if.dylib.so" "./libcfg_if^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/cfg-if/libcfg_if/android_x86_64_dylib/stripped/libcfg_if.dylib.so"
+rm -rf external_rust_crates_cfg-if*.tar.zst
 
 
 download_with_retries android12-gsi_09 external_rust_crates_chrono.tar.zst $DOWNLOADS/external_rust_crates_chrono-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/chrono
 tar --zstd -xf $DOWNLOADS/external_rust_crates_chrono-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/chrono "./libchrono^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/chrono/libchrono/android_x86_64_dylib/libchrono.dylib.so" "./libchrono^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/chrono/libchrono/android_x86_64_dylib/stripped/libchrono.dylib.so"
+rm -rf external_rust_crates_chrono*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_clap.tar.zst $DOWNLOADS/external_rust_crates_clap-02.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_clap.tar.zst $DOWNLOADS/external_rust_crates_clap-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/clap
 tar --zstd -xf $DOWNLOADS/external_rust_crates_clap-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/clap "./libclap^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/clap/libclap/android_x86_64_dylib/libclap.dylib.so" "./libclap^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/clap/libclap/android_x86_64_dylib/stripped/libclap.dylib.so"
+rm -rf external_rust_crates_clap*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_rust_crates_crc32fast.tar.zst $DOWNLOADS/external_rust_crates_crc32fast-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/crc32fast
 tar --zstd -xf $DOWNLOADS/external_rust_crates_crc32fast-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/crc32fast "./libcrc32fast^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/crc32fast/libcrc32fast/android_x86_64_dylib/libcrc32fast.dylib.so" "./libcrc32fast^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/crc32fast/libcrc32fast/android_x86_64_dylib/stripped/libcrc32fast.dylib.so"
+rm -rf external_rust_crates_crc32fast*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_env_logger.tar.zst $DOWNLOADS/external_rust_crates_env_logger-03.tar.zst
@@ -1721,65 +1843,76 @@ download_with_retries android12-gsi_04 external_rust_crates_env_logger.tar.zst $
 download_with_retries android12-gsi_09 external_rust_crates_env_logger.tar.zst $DOWNLOADS/external_rust_crates_env_logger-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/env_logger
 tar --zstd -xf $DOWNLOADS/external_rust_crates_env_logger-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/env_logger "./libenv_logger^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/env_logger/libenv_logger/android_x86_64_dylib/libenv_logger.dylib.so" "./libenv_logger^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/env_logger/libenv_logger/android_x86_64_dylib/stripped/libenv_logger.dylib.so"
+rm -rf external_rust_crates_env_logger*.tar.zst
 
 
 download_with_retries android12-gsi_09 external_rust_crates_flate2.tar.zst $DOWNLOADS/external_rust_crates_flate2-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/flate2
 tar --zstd -xf $DOWNLOADS/external_rust_crates_flate2-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/flate2 "./libflate2^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/flate2/libflate2/android_x86_64_dylib/libflate2.dylib.so" "./libflate2^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/flate2/libflate2/android_x86_64_dylib/stripped/libflate2.dylib.so"
+rm -rf external_rust_crates_flate2*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_rust_crates_futures.tar.zst $DOWNLOADS/external_rust_crates_futures-08.tar.zst
 download_with_retries android12-gsi_11 external_rust_crates_futures.tar.zst $DOWNLOADS/external_rust_crates_futures-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-11.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures "./libfutures^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures/libfutures/android_x86_64_dylib/libfutures.dylib.so" "./libfutures^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures/libfutures/android_x86_64_dylib/stripped/libfutures.dylib.so"
+rm -rf external_rust_crates_futures*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_futures-channel.tar.zst $DOWNLOADS/external_rust_crates_futures-channel-03.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_futures-channel.tar.zst $DOWNLOADS/external_rust_crates_futures-channel-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-channel
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-channel-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-channel "./libfutures_channel^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_dylib/libfutures_channel.dylib.so" "./libfutures_channel^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_dylib/stripped/libfutures_channel.dylib.so"
+rm -rf external_rust_crates_futures-channel*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_futures-core.tar.zst $DOWNLOADS/external_rust_crates_futures-core-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_futures-core.tar.zst $DOWNLOADS/external_rust_crates_futures-core-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-core
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-core-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-core "./libfutures_core^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-core/libfutures_core/android_x86_64_dylib/libfutures_core.dylib.so" "./libfutures_core^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-core/libfutures_core/android_x86_64_dylib/stripped/libfutures_core.dylib.so"
+rm -rf external_rust_crates_futures-core*.tar.zst
 
 
 download_with_retries android12-gsi_07 external_rust_crates_futures-executor.tar.zst $DOWNLOADS/external_rust_crates_futures-executor-07.tar.zst
 download_with_retries android12-gsi_10 external_rust_crates_futures-executor.tar.zst $DOWNLOADS/external_rust_crates_futures-executor-10.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-executor
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-executor-10.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-executor "./libfutures_executor^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-executor/libfutures_executor/android_x86_64_dylib/libfutures_executor.dylib.so" "./libfutures_executor^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-executor/libfutures_executor/android_x86_64_dylib/stripped/libfutures_executor.dylib.so"
+rm -rf external_rust_crates_futures-executor*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_futures-io.tar.zst $DOWNLOADS/external_rust_crates_futures-io-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_futures-io.tar.zst $DOWNLOADS/external_rust_crates_futures-io-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-io
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-io-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-io "./libfutures_io^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-io/libfutures_io/android_x86_64_dylib/libfutures_io.dylib.so" "./libfutures_io^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-io/libfutures_io/android_x86_64_dylib/stripped/libfutures_io.dylib.so"
+rm -rf external_rust_crates_futures-io*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_futures-sink.tar.zst $DOWNLOADS/external_rust_crates_futures-sink-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_futures-sink.tar.zst $DOWNLOADS/external_rust_crates_futures-sink-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-sink
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-sink-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-sink "./libfutures_sink^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-sink/libfutures_sink/android_x86_64_dylib/libfutures_sink.dylib.so" "./libfutures_sink^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-sink/libfutures_sink/android_x86_64_dylib/stripped/libfutures_sink.dylib.so"
+rm -rf external_rust_crates_futures-sink*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_futures-task.tar.zst $DOWNLOADS/external_rust_crates_futures-task-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_futures-task.tar.zst $DOWNLOADS/external_rust_crates_futures-task-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-task
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-task-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-task "./libfutures_task^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-task/libfutures_task/android_x86_64_dylib/libfutures_task.dylib.so" "./libfutures_task^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-task/libfutures_task/android_x86_64_dylib/stripped/libfutures_task.dylib.so"
+rm -rf external_rust_crates_futures-task*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_rust_crates_futures-util.tar.zst $DOWNLOADS/external_rust_crates_futures-util-06.tar.zst
 download_with_retries android12-gsi_09 external_rust_crates_futures-util.tar.zst $DOWNLOADS/external_rust_crates_futures-util-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/futures-util
 tar --zstd -xf $DOWNLOADS/external_rust_crates_futures-util-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/futures-util "./libfutures_util^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-util/libfutures_util/android_x86_64_dylib/libfutures_util.dylib.so" "./libfutures_util^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/futures-util/libfutures_util/android_x86_64_dylib/stripped/libfutures_util.dylib.so"
+rm -rf external_rust_crates_futures-util*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_getrandom.tar.zst $DOWNLOADS/external_rust_crates_getrandom-03.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_getrandom.tar.zst $DOWNLOADS/external_rust_crates_getrandom-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/getrandom
 tar --zstd -xf $DOWNLOADS/external_rust_crates_getrandom-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/getrandom "./libgetrandom^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/libgetrandom.dylib.so" "./libgetrandom^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/stripped/libgetrandom.dylib.so"
+rm -rf external_rust_crates_getrandom*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_grpcio-sys.tar.zst $DOWNLOADS/external_rust_crates_grpcio-sys-01.tar.zst
@@ -1788,18 +1921,21 @@ download_with_retries android12-gsi_07 external_rust_crates_grpcio-sys.tar.zst $
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/grpcio-sys
 tar --zstd -xf $DOWNLOADS/external_rust_crates_grpcio-sys-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/grpcio-sys "./libgrpc_wrap^android_x86_64_shared/out/soong/.intermediates/external/rust/crates/grpcio-sys/libgrpc_wrap/android_x86_64_shared/libgrpc_wrap.so"
 tar --zstd -xf $DOWNLOADS/external_rust_crates_grpcio-sys-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/grpcio-sys "./libgrpc_wrap^android_x86_x86_64_shared/out/soong/.intermediates/external/rust/crates/grpcio-sys/libgrpc_wrap/android_x86_x86_64_shared/libgrpc_wrap.so"
+rm -rf external_rust_crates_grpcio-sys*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_intrusive-collections.tar.zst $DOWNLOADS/external_rust_crates_intrusive-collections-03.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_intrusive-collections.tar.zst $DOWNLOADS/external_rust_crates_intrusive-collections-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/intrusive-collections
 tar --zstd -xf $DOWNLOADS/external_rust_crates_intrusive-collections-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/intrusive-collections "./libintrusive_collections^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/intrusive-collections/libintrusive_collections/android_x86_64_dylib/libintrusive_collections.dylib.so" "./libintrusive_collections^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/intrusive-collections/libintrusive_collections/android_x86_64_dylib/stripped/libintrusive_collections.dylib.so"
+rm -rf external_rust_crates_intrusive-collections*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_itoa.tar.zst $DOWNLOADS/external_rust_crates_itoa-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_itoa.tar.zst $DOWNLOADS/external_rust_crates_itoa-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/itoa
 tar --zstd -xf $DOWNLOADS/external_rust_crates_itoa-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/itoa "./libitoa^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/itoa/libitoa/android_x86_64_dylib/libitoa.dylib.so" "./libitoa^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/itoa/libitoa/android_x86_64_dylib/stripped/libitoa.dylib.so"
+rm -rf external_rust_crates_itoa*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_lazy_static.tar.zst $DOWNLOADS/external_rust_crates_lazy_static-01.tar.zst
@@ -1807,6 +1943,7 @@ download_with_retries android12-gsi_02 external_rust_crates_lazy_static.tar.zst 
 download_with_retries android12-gsi_07 external_rust_crates_lazy_static.tar.zst $DOWNLOADS/external_rust_crates_lazy_static-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/lazy_static
 tar --zstd -xf $DOWNLOADS/external_rust_crates_lazy_static-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/lazy_static "./liblazy_static^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/lazy_static/liblazy_static/android_x86_64_dylib/liblazy_static.dylib.so" "./liblazy_static^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/lazy_static/liblazy_static/android_x86_64_dylib/stripped/liblazy_static.dylib.so"
+rm -rf external_rust_crates_lazy_static*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_libc.tar.zst $DOWNLOADS/external_rust_crates_libc-01.tar.zst
@@ -1814,12 +1951,14 @@ download_with_retries android12-gsi_02 external_rust_crates_libc.tar.zst $DOWNLO
 download_with_retries android12-gsi_07 external_rust_crates_libc.tar.zst $DOWNLOADS/external_rust_crates_libc-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/libc
 tar --zstd -xf $DOWNLOADS/external_rust_crates_libc-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/libc "./liblibc^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/libc/liblibc/android_x86_64_dylib/liblibc.dylib.so" "./liblibc^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/libc/liblibc/android_x86_64_dylib/stripped/liblibc.dylib.so"
+rm -rf external_rust_crates_libc*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_rust_crates_libz-sys.tar.zst $DOWNLOADS/external_rust_crates_libz-sys-05.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_libz-sys.tar.zst $DOWNLOADS/external_rust_crates_libz-sys-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/libz-sys
 tar --zstd -xf $DOWNLOADS/external_rust_crates_libz-sys-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/libz-sys "./liblibz_sys^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/libz-sys/liblibz_sys/android_x86_64_dylib/liblibz_sys.dylib.so" "./liblibz_sys^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/libz-sys/liblibz_sys/android_x86_64_dylib/stripped/liblibz_sys.dylib.so"
+rm -rf external_rust_crates_libz-sys*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_log.tar.zst $DOWNLOADS/external_rust_crates_log-02.tar.zst
@@ -1827,11 +1966,13 @@ download_with_retries android12-gsi_03 external_rust_crates_log.tar.zst $DOWNLOA
 download_with_retries android12-gsi_08 external_rust_crates_log.tar.zst $DOWNLOADS/external_rust_crates_log-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/log
 tar --zstd -xf $DOWNLOADS/external_rust_crates_log-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/log "./liblog_rust^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/liblog.dylib.so" "./liblog_rust^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/stripped/liblog.dylib.so"
+rm -rf external_rust_crates_log*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_rust_crates_macaddr.tar.zst $DOWNLOADS/external_rust_crates_macaddr-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/macaddr
 tar --zstd -xf $DOWNLOADS/external_rust_crates_macaddr-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/macaddr "./libmacaddr^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/macaddr/libmacaddr/android_x86_64_dylib/libmacaddr.dylib.so" "./libmacaddr^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/macaddr/libmacaddr/android_x86_64_dylib/stripped/libmacaddr.dylib.so"
+rm -rf external_rust_crates_macaddr*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_memchr.tar.zst $DOWNLOADS/external_rust_crates_memchr-01.tar.zst
@@ -1839,134 +1980,157 @@ download_with_retries android12-gsi_02 external_rust_crates_memchr.tar.zst $DOWN
 download_with_retries android12-gsi_07 external_rust_crates_memchr.tar.zst $DOWNLOADS/external_rust_crates_memchr-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/memchr
 tar --zstd -xf $DOWNLOADS/external_rust_crates_memchr-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/memchr "./libmemchr^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/memchr/libmemchr/android_x86_64_dylib/libmemchr.dylib.so" "./libmemchr^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/memchr/libmemchr/android_x86_64_dylib/stripped/libmemchr.dylib.so"
+rm -rf external_rust_crates_memchr*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_memoffset.tar.zst $DOWNLOADS/external_rust_crates_memoffset-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_memoffset.tar.zst $DOWNLOADS/external_rust_crates_memoffset-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/memoffset
 tar --zstd -xf $DOWNLOADS/external_rust_crates_memoffset-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/memoffset "./libmemoffset^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/memoffset/libmemoffset/android_x86_64_dylib/libmemoffset.dylib.so" "./libmemoffset^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/memoffset/libmemoffset/android_x86_64_dylib/stripped/libmemoffset.dylib.so"
+rm -rf external_rust_crates_memoffset*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_nix.tar.zst $DOWNLOADS/external_rust_crates_nix-03.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_nix.tar.zst $DOWNLOADS/external_rust_crates_nix-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/nix
 tar --zstd -xf $DOWNLOADS/external_rust_crates_nix-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/nix "./libnix^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/nix/libnix/android_x86_64_dylib/libnix.dylib.so" "./libnix^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/nix/libnix/android_x86_64_dylib/stripped/libnix.dylib.so"
+rm -rf external_rust_crates_nix*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_rust_crates_num-integer.tar.zst $DOWNLOADS/external_rust_crates_num-integer-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/num-integer
 tar --zstd -xf $DOWNLOADS/external_rust_crates_num-integer-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/num-integer "./libnum_integer^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num-integer/libnum_integer/android_x86_64_dylib/libnum_integer.dylib.so" "./libnum_integer^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num-integer/libnum_integer/android_x86_64_dylib/stripped/libnum_integer.dylib.so"
+rm -rf external_rust_crates_num-integer*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_num-traits.tar.zst $DOWNLOADS/external_rust_crates_num-traits-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_num-traits.tar.zst $DOWNLOADS/external_rust_crates_num-traits-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/num-traits
 tar --zstd -xf $DOWNLOADS/external_rust_crates_num-traits-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/num-traits "./libnum_traits^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num-traits/libnum_traits/android_x86_64_dylib/libnum_traits.dylib.so" "./libnum_traits^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num-traits/libnum_traits/android_x86_64_dylib/stripped/libnum_traits.dylib.so"
+rm -rf external_rust_crates_num-traits*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_num_cpus.tar.zst $DOWNLOADS/external_rust_crates_num_cpus-03.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_num_cpus.tar.zst $DOWNLOADS/external_rust_crates_num_cpus-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/num_cpus
 tar --zstd -xf $DOWNLOADS/external_rust_crates_num_cpus-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/num_cpus "./libnum_cpus^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num_cpus/libnum_cpus/android_x86_64_dylib/libnum_cpus.dylib.so" "./libnum_cpus^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/num_cpus/libnum_cpus/android_x86_64_dylib/stripped/libnum_cpus.dylib.so"
+rm -rf external_rust_crates_num_cpus*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_pin-project-lite.tar.zst $DOWNLOADS/external_rust_crates_pin-project-lite-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_pin-project-lite.tar.zst $DOWNLOADS/external_rust_crates_pin-project-lite-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/pin-project-lite
 tar --zstd -xf $DOWNLOADS/external_rust_crates_pin-project-lite-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/pin-project-lite "./libpin_project_lite^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/pin-project-lite/libpin_project_lite/android_x86_64_dylib/libpin_project_lite.dylib.so" "./libpin_project_lite^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/pin-project-lite/libpin_project_lite/android_x86_64_dylib/stripped/libpin_project_lite.dylib.so"
+rm -rf external_rust_crates_pin-project-lite*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_pin-utils.tar.zst $DOWNLOADS/external_rust_crates_pin-utils-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_pin-utils.tar.zst $DOWNLOADS/external_rust_crates_pin-utils-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/pin-utils
 tar --zstd -xf $DOWNLOADS/external_rust_crates_pin-utils-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/pin-utils "./libpin_utils^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/pin-utils/libpin_utils/android_x86_64_dylib/libpin_utils.dylib.so" "./libpin_utils^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/pin-utils/libpin_utils/android_x86_64_dylib/stripped/libpin_utils.dylib.so"
+rm -rf external_rust_crates_pin-utils*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_ppv-lite86.tar.zst $DOWNLOADS/external_rust_crates_ppv-lite86-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_ppv-lite86.tar.zst $DOWNLOADS/external_rust_crates_ppv-lite86-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/ppv-lite86
 tar --zstd -xf $DOWNLOADS/external_rust_crates_ppv-lite86-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/ppv-lite86 "./libppv_lite86^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/ppv-lite86/libppv_lite86/android_x86_64_dylib/libppv_lite86.dylib.so" "./libppv_lite86^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/ppv-lite86/libppv_lite86/android_x86_64_dylib/stripped/libppv_lite86.dylib.so"
+rm -rf external_rust_crates_ppv-lite86*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_rust_crates_proc-macro-nested.tar.zst $DOWNLOADS/external_rust_crates_proc-macro-nested-03.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_proc-macro-nested.tar.zst $DOWNLOADS/external_rust_crates_proc-macro-nested-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/proc-macro-nested
 tar --zstd -xf $DOWNLOADS/external_rust_crates_proc-macro-nested-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/proc-macro-nested "./libproc_macro_nested^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/proc-macro-nested/libproc_macro_nested/android_x86_64_dylib/libproc_macro_nested.dylib.so" "./libproc_macro_nested^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/proc-macro-nested/libproc_macro_nested/android_x86_64_dylib/stripped/libproc_macro_nested.dylib.so"
+rm -rf external_rust_crates_proc-macro-nested*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_rust_crates_rand.tar.zst $DOWNLOADS/external_rust_crates_rand-06.tar.zst
 download_with_retries android12-gsi_11 external_rust_crates_rand.tar.zst $DOWNLOADS/external_rust_crates_rand-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/rand
 tar --zstd -xf $DOWNLOADS/external_rust_crates_rand-11.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/rand "./librand^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand/librand/android_x86_64_dylib/librand.dylib.so" "./librand^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand/librand/android_x86_64_dylib/stripped/librand.dylib.so"
+rm -rf external_rust_crates_rand*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_rust_crates_rand_chacha.tar.zst $DOWNLOADS/external_rust_crates_rand_chacha-05.tar.zst
 download_with_retries android12-gsi_10 external_rust_crates_rand_chacha.tar.zst $DOWNLOADS/external_rust_crates_rand_chacha-10.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/rand_chacha
 tar --zstd -xf $DOWNLOADS/external_rust_crates_rand_chacha-10.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/rand_chacha "./librand_chacha^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand_chacha/librand_chacha/android_x86_64_dylib/librand_chacha.dylib.so" "./librand_chacha^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand_chacha/librand_chacha/android_x86_64_dylib/stripped/librand_chacha.dylib.so"
+rm -rf external_rust_crates_rand_chacha*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_rust_crates_rand_core.tar.zst $DOWNLOADS/external_rust_crates_rand_core-04.tar.zst
 download_with_retries android12-gsi_09 external_rust_crates_rand_core.tar.zst $DOWNLOADS/external_rust_crates_rand_core-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/rand_core
 tar --zstd -xf $DOWNLOADS/external_rust_crates_rand_core-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/rand_core "./librand_core^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand_core/librand_core/android_x86_64_dylib/librand_core.dylib.so" "./librand_core^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/rand_core/librand_core/android_x86_64_dylib/stripped/librand_core.dylib.so"
+rm -rf external_rust_crates_rand_core*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_ryu.tar.zst $DOWNLOADS/external_rust_crates_ryu-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_ryu.tar.zst $DOWNLOADS/external_rust_crates_ryu-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/ryu
 tar --zstd -xf $DOWNLOADS/external_rust_crates_ryu-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/ryu "./libryu^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/ryu/libryu/android_x86_64_dylib/libryu.dylib.so" "./libryu^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/ryu/libryu/android_x86_64_dylib/stripped/libryu.dylib.so"
+rm -rf external_rust_crates_ryu*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_rust_crates_serde.tar.zst $DOWNLOADS/external_rust_crates_serde-06.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_serde.tar.zst $DOWNLOADS/external_rust_crates_serde-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/serde
 tar --zstd -xf $DOWNLOADS/external_rust_crates_serde-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/serde "./libserde^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/serde/libserde/android_x86_64_dylib/libserde.dylib.so" "./libserde^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/serde/libserde/android_x86_64_dylib/stripped/libserde.dylib.so"
+rm -rf external_rust_crates_serde*.tar.zst
 
 
 download_with_retries android12-gsi_07 external_rust_crates_serde_json.tar.zst $DOWNLOADS/external_rust_crates_serde_json-07.tar.zst
 download_with_retries android12-gsi_08 external_rust_crates_serde_json.tar.zst $DOWNLOADS/external_rust_crates_serde_json-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/serde_json
 tar --zstd -xf $DOWNLOADS/external_rust_crates_serde_json-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/serde_json "./libserde_json^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/serde_json/libserde_json/android_x86_64_dylib/libserde_json.dylib.so" "./libserde_json^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/serde_json/libserde_json/android_x86_64_dylib/stripped/libserde_json.dylib.so"
+rm -rf external_rust_crates_serde_json*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_slab.tar.zst $DOWNLOADS/external_rust_crates_slab-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_slab.tar.zst $DOWNLOADS/external_rust_crates_slab-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/slab
 tar --zstd -xf $DOWNLOADS/external_rust_crates_slab-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/slab "./libslab^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/slab/libslab/android_x86_64_dylib/libslab.dylib.so" "./libslab^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/slab/libslab/android_x86_64_dylib/stripped/libslab.dylib.so"
+rm -rf external_rust_crates_slab*.tar.zst
 
 
 download_with_retries android12-gsi_02 external_rust_crates_smallvec.tar.zst $DOWNLOADS/external_rust_crates_smallvec-02.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_smallvec.tar.zst $DOWNLOADS/external_rust_crates_smallvec-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/smallvec
 tar --zstd -xf $DOWNLOADS/external_rust_crates_smallvec-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/smallvec "./libsmallvec^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/smallvec/libsmallvec/android_x86_64_dylib/libsmallvec.dylib.so" "./libsmallvec^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/smallvec/libsmallvec/android_x86_64_dylib/stripped/libsmallvec.dylib.so"
+rm -rf external_rust_crates_smallvec*.tar.zst
 
 
 download_with_retries android12-gsi_09 external_rust_crates_structopt.tar.zst $DOWNLOADS/external_rust_crates_structopt-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/structopt
 tar --zstd -xf $DOWNLOADS/external_rust_crates_structopt-09.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/structopt "./libstructopt^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/structopt/libstructopt/android_x86_64_dylib/libstructopt.dylib.so" "./libstructopt^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/structopt/libstructopt/android_x86_64_dylib/stripped/libstructopt.dylib.so"
+rm -rf external_rust_crates_structopt*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_rust_crates_textwrap.tar.zst $DOWNLOADS/external_rust_crates_textwrap-01.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_textwrap.tar.zst $DOWNLOADS/external_rust_crates_textwrap-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/textwrap
 tar --zstd -xf $DOWNLOADS/external_rust_crates_textwrap-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/textwrap "./libtextwrap^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/textwrap/libtextwrap/android_x86_64_dylib/libtextwrap.dylib.so" "./libtextwrap^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/textwrap/libtextwrap/android_x86_64_dylib/stripped/libtextwrap.dylib.so"
+rm -rf external_rust_crates_textwrap*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_rust_crates_thiserror.tar.zst $DOWNLOADS/external_rust_crates_thiserror-06.tar.zst
 download_with_retries android12-gsi_07 external_rust_crates_thiserror.tar.zst $DOWNLOADS/external_rust_crates_thiserror-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/thiserror
 tar --zstd -xf $DOWNLOADS/external_rust_crates_thiserror-07.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/thiserror "./libthiserror^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/thiserror/libthiserror/android_x86_64_dylib/libthiserror.dylib.so" "./libthiserror^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/thiserror/libthiserror/android_x86_64_dylib/stripped/libthiserror.dylib.so"
+rm -rf external_rust_crates_thiserror*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_rust_crates_uuid.tar.zst $DOWNLOADS/external_rust_crates_uuid-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/uuid
 tar --zstd -xf $DOWNLOADS/external_rust_crates_uuid-08.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/uuid "./libuuid^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/uuid/libuuid/android_x86_64_dylib/libuuid.dylib.so" "./libuuid^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/uuid/libuuid/android_x86_64_dylib/stripped/libuuid.dylib.so"
+rm -rf external_rust_crates_uuid*.tar.zst
 
 
 download_with_retries android12-gsi_10 external_rust_crates_zip.tar.zst $DOWNLOADS/external_rust_crates_zip-10.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/rust/crates/zip
 tar --zstd -xf $DOWNLOADS/external_rust_crates_zip-10.tar.zst -C $DOWNLOADS/aosp/external/rust/crates/zip "./libzip^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/zip/libzip/android_x86_64_dylib/libzip.dylib.so" "./libzip^android_x86_64_dylib/out/soong/.intermediates/external/rust/crates/zip/libzip/android_x86_64_dylib/stripped/libzip.dylib.so"
+rm -rf external_rust_crates_zip*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_selinux.tar.zst $DOWNLOADS/external_selinux-01.tar.zst
@@ -1986,12 +2150,14 @@ tar --zstd -xf $DOWNLOADS/external_selinux-02.tar.zst -C $DOWNLOADS/aosp/externa
 tar --zstd -xf $DOWNLOADS/external_selinux-02.tar.zst -C $DOWNLOADS/aosp/external/selinux "./libselinux/sefcontext_compile^linux_glibc_x86_64/out/soong/host/linux-x86/bin/sefcontext_compile"
 tar --zstd -xf $DOWNLOADS/external_selinux-04.tar.zst -C $DOWNLOADS/aosp/external/selinux "./secilc/secilc^android_x86_64/out/soong/.intermediates/external/selinux/secilc/secilc/android_x86_64/secilc"
 tar --zstd -xf $DOWNLOADS/external_selinux-01.tar.zst -C $DOWNLOADS/aosp/external/selinux "./secilc/secilc^linux_glibc_x86_64/out/soong/host/linux-x86/bin/secilc"
+rm -rf external_selinux*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_sonic.tar.zst $DOWNLOADS/external_sonic-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/sonic
 tar --zstd -xf $DOWNLOADS/external_sonic-05.tar.zst -C $DOWNLOADS/aosp/external/sonic "./libsonic^android_x86_64_shared/out/soong/.intermediates/external/sonic/libsonic/android_x86_64_shared/libsonic.so"
 tar --zstd -xf $DOWNLOADS/external_sonic-05.tar.zst -C $DOWNLOADS/aosp/external/sonic "./libsonic^android_x86_x86_64_shared/out/soong/.intermediates/external/sonic/libsonic/android_x86_x86_64_shared/libsonic.so"
+rm -rf external_sonic*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_sonivox.tar.zst $DOWNLOADS/external_sonivox-01.tar.zst
@@ -1999,6 +2165,7 @@ download_with_retries android12-gsi_06 external_sonivox.tar.zst $DOWNLOADS/exter
 mkdir -p $DOWNLOADS/aosp/external/sonivox
 tar --zstd -xf $DOWNLOADS/external_sonivox-06.tar.zst -C $DOWNLOADS/aosp/external/sonivox "./arm-wt-22k/libsonivox^android_x86_64_shared_cfi/out/soong/.intermediates/external/sonivox/arm-wt-22k/libsonivox/android_x86_64_shared_cfi/libsonivox.so"
 tar --zstd -xf $DOWNLOADS/external_sonivox-06.tar.zst -C $DOWNLOADS/aosp/external/sonivox "./arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi/out/soong/.intermediates/external/sonivox/arm-wt-22k/libsonivox/android_x86_x86_64_shared_cfi/libsonivox.so"
+rm -rf external_sonivox*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_speex.tar.zst $DOWNLOADS/external_speex-05.tar.zst
@@ -2008,6 +2175,7 @@ tar --zstd -xf $DOWNLOADS/external_speex-06.tar.zst -C $DOWNLOADS/aosp/external/
 tar --zstd -xf $DOWNLOADS/external_speex-06.tar.zst -C $DOWNLOADS/aosp/external/speex "./libspeexresampler^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/speex/libspeexresampler/android_vendor.31_x86_x86_64_shared/libspeexresampler.so"
 tar --zstd -xf $DOWNLOADS/external_speex-05.tar.zst -C $DOWNLOADS/aosp/external/speex "./libspeexresampler^android_x86_64_shared/out/soong/.intermediates/external/speex/libspeexresampler/android_x86_64_shared/libspeexresampler.so"
 tar --zstd -xf $DOWNLOADS/external_speex-05.tar.zst -C $DOWNLOADS/aosp/external/speex "./libspeexresampler^android_x86_x86_64_shared/out/soong/.intermediates/external/speex/libspeexresampler/android_x86_x86_64_shared/libspeexresampler.so"
+rm -rf external_speex*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_sqlite.tar.zst $DOWNLOADS/external_sqlite-01.tar.zst
@@ -2021,11 +2189,13 @@ tar --zstd -xf $DOWNLOADS/external_sqlite-06.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_sqlite-06.tar.zst -C $DOWNLOADS/aosp/external/sqlite "./dist/libsqlite^android_x86_x86_64_shared/out/soong/.intermediates/external/sqlite/dist/libsqlite/android_x86_x86_64_shared/libsqlite.so"
 tar --zstd -xf $DOWNLOADS/external_sqlite-04.tar.zst -C $DOWNLOADS/aosp/external/sqlite "./dist/libsqlite^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libsqlite.so"
 tar --zstd -xf $DOWNLOADS/external_sqlite-08.tar.zst -C $DOWNLOADS/aosp/external/sqlite "./dist/sqlite3^android_x86_64/out/soong/.intermediates/external/sqlite/dist/sqlite3/android_x86_64/sqlite3"
+rm -rf external_sqlite*.tar.zst
 
 
 download_with_retries android12-gsi_05 external_strace.tar.zst $DOWNLOADS/external_strace-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/strace
 tar --zstd -xf $DOWNLOADS/external_strace-05.tar.zst -C $DOWNLOADS/aosp/external/strace "./strace^android_x86_64/out/soong/.intermediates/external/strace/strace/android_x86_64/strace"
+rm -rf external_strace*.tar.zst
 
 
 download_with_retries android12-gsi_03 external_swiftshader.tar.zst $DOWNLOADS/external_swiftshader-03.tar.zst
@@ -2034,11 +2204,13 @@ download_with_retries android12-gsi_10 external_swiftshader.tar.zst $DOWNLOADS/e
 mkdir -p $DOWNLOADS/aosp/external/swiftshader
 tar --zstd -xf $DOWNLOADS/external_swiftshader-10.tar.zst -C $DOWNLOADS/aosp/external/swiftshader "./src/vulkan.pastel^android_vendor.31_x86_64_shared/out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_64_shared/vulkan.pastel.so"
 tar --zstd -xf $DOWNLOADS/external_swiftshader-10.tar.zst -C $DOWNLOADS/aosp/external/swiftshader "./src/vulkan.pastel^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_x86_64_shared/vulkan.pastel.so"
+rm -rf external_swiftshader*.tar.zst
 
 
 download_with_retries android12-gsi_06 external_tcpdump.tar.zst $DOWNLOADS/external_tcpdump-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/tcpdump
 tar --zstd -xf $DOWNLOADS/external_tcpdump-06.tar.zst -C $DOWNLOADS/aosp/external/tcpdump "./tcpdump^android_x86_64/out/soong/.intermediates/external/tcpdump/tcpdump/android_x86_64/tcpdump"
+rm -rf external_tcpdump*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_tinyalsa.tar.zst $DOWNLOADS/external_tinyalsa-01.tar.zst
@@ -2055,6 +2227,7 @@ tar --zstd -xf $DOWNLOADS/external_tinyalsa-05.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_tinyalsa-05.tar.zst -C $DOWNLOADS/aosp/external/tinyalsa "./tinymix^android_x86_64/out/soong/.intermediates/external/tinyalsa/tinymix/android_x86_64/tinymix"
 tar --zstd -xf $DOWNLOADS/external_tinyalsa-05.tar.zst -C $DOWNLOADS/aosp/external/tinyalsa "./tinyhostless^android_x86_64/out/soong/.intermediates/external/tinyalsa/tinyhostless/android_x86_64/tinyhostless"
 tar --zstd -xf $DOWNLOADS/external_tinyalsa-05.tar.zst -C $DOWNLOADS/aosp/external/tinyalsa "./tinypcminfo^android_x86_64/out/soong/.intermediates/external/tinyalsa/tinypcminfo/android_x86_64/tinypcminfo"
+rm -rf external_tinyalsa*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_tinyxml2.tar.zst $DOWNLOADS/external_tinyxml2-01.tar.zst
@@ -2067,6 +2240,7 @@ tar --zstd -xf $DOWNLOADS/external_tinyxml2-06.tar.zst -C $DOWNLOADS/aosp/extern
 tar --zstd -xf $DOWNLOADS/external_tinyxml2-06.tar.zst -C $DOWNLOADS/aosp/external/tinyxml2 "./libtinyxml2^android_x86_64_shared/out/soong/.intermediates/external/tinyxml2/libtinyxml2/android_x86_64_shared/libtinyxml2.so"
 tar --zstd -xf $DOWNLOADS/external_tinyxml2-06.tar.zst -C $DOWNLOADS/aosp/external/tinyxml2 "./libtinyxml2^android_x86_x86_64_shared/out/soong/.intermediates/external/tinyxml2/libtinyxml2/android_x86_x86_64_shared/libtinyxml2.so"
 tar --zstd -xf $DOWNLOADS/external_tinyxml2-04.tar.zst -C $DOWNLOADS/aosp/external/tinyxml2 "./libtinyxml2^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libtinyxml2.so"
+rm -rf external_tinyxml2*.tar.zst
 
 
 download_with_retries android12-gsi_04 external_toybox.tar.zst $DOWNLOADS/external_toybox-04.tar.zst
@@ -2076,6 +2250,7 @@ tar --zstd -xf $DOWNLOADS/external_toybox-08.tar.zst -C $DOWNLOADS/aosp/external
 tar --zstd -xf $DOWNLOADS/external_toybox-08.tar.zst -C $DOWNLOADS/aosp/external/toybox "./toybox^android_x86_64/out/soong/.intermediates/external/toybox/toybox/android_x86_64/toybox"
 tar --zstd -xf $DOWNLOADS/external_toybox-04.tar.zst -C $DOWNLOADS/aosp/external/toybox "./toybox^linux_glibc_x86_64/out/soong/host/linux-x86/bin/toybox"
 tar --zstd -xf $DOWNLOADS/external_toybox-08.tar.zst -C $DOWNLOADS/aosp/external/toybox "./toybox_vendor^android_vendor.31_x86_64/out/soong/.intermediates/external/toybox/toybox_vendor/android_vendor.31_x86_64/toybox_vendor"
+rm -rf external_toybox*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_tremolo.tar.zst $DOWNLOADS/external_tremolo-01.tar.zst
@@ -2083,21 +2258,25 @@ download_with_retries android12-gsi_04 external_tremolo.tar.zst $DOWNLOADS/exter
 download_with_retries android12-gsi_06 external_tremolo.tar.zst $DOWNLOADS/external_tremolo-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/tremolo
 tar --zstd -xf $DOWNLOADS/external_tremolo-06.tar.zst -C $DOWNLOADS/aosp/external/tremolo "./libvorbisidec^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_shared/libvorbisidec.so"
+rm -rf external_tremolo*.tar.zst
 
 
 download_with_retries android12-gsi_07 external_turbine.tar.zst $DOWNLOADS/external_turbine-07.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/turbine
 tar --zstd -xf $DOWNLOADS/external_turbine-07.tar.zst -C $DOWNLOADS/aosp/external/turbine "./turbine^linux_glibc_common/out/soong/host/linux-x86/framework/turbine.jar"
+rm -rf external_turbine*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_volley.tar.zst $DOWNLOADS/external_volley-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/volley
 tar --zstd -xf $DOWNLOADS/external_volley-08.tar.zst -C $DOWNLOADS/aosp/external/volley "./volley^android_common/out/soong/.intermediates/external/volley/volley/android_common/javac/volley.jar" "./volley^android_common/out/soong/.intermediates/external/volley/volley/android_common/turbine-combined/volley.jar"
+rm -rf external_volley*.tar.zst
 
 
 download_with_retries android12-gsi_08 external_xmp_toolkit.tar.zst $DOWNLOADS/external_xmp_toolkit-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/external/xmp_toolkit
 tar --zstd -xf $DOWNLOADS/external_xmp_toolkit-08.tar.zst -C $DOWNLOADS/aosp/external/xmp_toolkit "./XMPCore/xmp_toolkit^android_common/out/soong/.intermediates/external/xmp_toolkit/XMPCore/xmp_toolkit/android_common/javac/xmp_toolkit.jar" "./XMPCore/xmp_toolkit^android_common/out/soong/.intermediates/external/xmp_toolkit/XMPCore/xmp_toolkit/android_common/turbine-combined/xmp_toolkit.jar"
+rm -rf external_xmp_toolkit*.tar.zst
 
 
 download_with_retries android12-gsi_01 external_zlib.tar.zst $DOWNLOADS/external_zlib-01.tar.zst
@@ -2145,6 +2324,7 @@ tar --zstd -xf $DOWNLOADS/external_zlib-03.tar.zst -C $DOWNLOADS/aosp/external/z
 tar --zstd -xf $DOWNLOADS/external_zlib-03.tar.zst -C $DOWNLOADS/aosp/external/zlib "./libz.ndk^android_x86_x86_64_sdk_shared_31/out/soong/.intermediates/external/zlib/libz.ndk/android_x86_x86_64_sdk_shared_31/libz.so"
 tar --zstd -xf $DOWNLOADS/external_zlib-03.tar.zst -C $DOWNLOADS/aosp/external/zlib "./libz.ndk^android_x86_x86_64_sdk_shared_REL/out/soong/.intermediates/external/zlib/libz.ndk/android_x86_x86_64_sdk_shared_REL/libz.so"
 tar --zstd -xf $DOWNLOADS/external_zlib-03.tar.zst -C $DOWNLOADS/aosp/external/zlib "./libz.ndk^android_x86_x86_64_sdk_shared_current/out/soong/.intermediates/external/zlib/libz.ndk/android_x86_x86_64_sdk_shared_current/libz.so"
+rm -rf external_zlib*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_av.tar.zst $DOWNLOADS/frameworks_av-01.tar.zst
@@ -2535,6 +2715,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_av-08.tar.zst -C $DOWNLOADS/aosp/frameworks
 tar --zstd -xf $DOWNLOADS/frameworks_av-07.tar.zst -C $DOWNLOADS/aosp/frameworks/av "./services/minijail/libavservices_minijail^android_x86_64_shared/out/soong/.intermediates/frameworks/av/services/minijail/libavservices_minijail/android_x86_64_shared/libavservices_minijail.so"
 tar --zstd -xf $DOWNLOADS/frameworks_av-07.tar.zst -C $DOWNLOADS/aosp/frameworks/av "./services/minijail/libavservices_minijail^android_x86_64_shared_apex29/out/soong/.intermediates/frameworks/av/services/minijail/libavservices_minijail/android_x86_64_shared_apex29/libavservices_minijail.so"
 tar --zstd -xf $DOWNLOADS/frameworks_av-11.tar.zst -C $DOWNLOADS/aosp/frameworks/av "./services/oboeservice/libaaudioservice^android_x86_64_shared/out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so"
+rm -rf frameworks_av*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_base.tar.zst $DOWNLOADS/frameworks_base-01.tar.zst
@@ -2852,6 +3033,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_base-06.tar.zst -C $DOWNLOADS/aosp/framewor
 tar --zstd -xf $DOWNLOADS/frameworks_base-24.tar.zst -C $DOWNLOADS/aosp/frameworks/base "./tools/lock_agent/lockagent^android_common/out/soong/.intermediates/frameworks/base/tools/lock_agent/lockagent/android_common/dex/lockagent.jar" "./tools/lock_agent/lockagent^android_common/out/soong/.intermediates/frameworks/base/tools/lock_agent/lockagent/android_common/dexpreopt/dexpreopt.config" "./tools/lock_agent/lockagent^android_common/out/soong/.intermediates/frameworks/base/tools/lock_agent/lockagent/android_common/javac/lockagent.jar" "./tools/lock_agent/lockagent^android_common/out/soong/.intermediates/frameworks/base/tools/lock_agent/lockagent/android_common/turbine-combined/lockagent.jar"
 tar --zstd -xf $DOWNLOADS/frameworks_base-06.tar.zst -C $DOWNLOADS/aosp/frameworks/base "./tools/lock_agent/lockagent_crasher^android_x86_64/out/soong/.intermediates/frameworks/base/tools/lock_agent/lockagent_crasher/android_x86_64/lockagent_crasher"
 tar --zstd -xf $DOWNLOADS/frameworks_base-01.tar.zst -C $DOWNLOADS/aosp/frameworks/base "./tools/lock_agent/start_with_lockagent^android_x86_64/out/soong/.intermediates/frameworks/base/tools/lock_agent/start_with_lockagent/android_x86_64/start_with_lockagent"
+rm -rf frameworks_base*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_compile_libbcc.tar.zst $DOWNLOADS/frameworks_compile_libbcc-01.tar.zst
@@ -2866,12 +3048,14 @@ tar --zstd -xf $DOWNLOADS/frameworks_compile_libbcc-06.tar.zst -C $DOWNLOADS/aos
 tar --zstd -xf $DOWNLOADS/frameworks_compile_libbcc-06.tar.zst -C $DOWNLOADS/aosp/frameworks/compile/libbcc "./lib/libbcc^android_x86_64_shared/out/soong/.intermediates/frameworks/compile/libbcc/lib/libbcc/android_x86_64_shared/libbcc.so"
 tar --zstd -xf $DOWNLOADS/frameworks_compile_libbcc-07.tar.zst -C $DOWNLOADS/aosp/frameworks/compile/libbcc "./tools/bcc/bcc^android_x86_64/out/soong/.intermediates/frameworks/compile/libbcc/tools/bcc/bcc/android_x86_64/bcc"
 tar --zstd -xf $DOWNLOADS/frameworks_compile_libbcc-04.tar.zst -C $DOWNLOADS/aosp/frameworks/compile/libbcc "./tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64/out/soong/host/linux-x86/bin/bcc_strip_attr"
+rm -rf frameworks_compile_libbcc*.tar.zst
 
 
 download_with_retries android12-gsi_04 frameworks_compile_mclinker.tar.zst $DOWNLOADS/frameworks_compile_mclinker-04.tar.zst
 download_with_retries android12-gsi_06 frameworks_compile_mclinker.tar.zst $DOWNLOADS/frameworks_compile_mclinker-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/compile/mclinker
 tar --zstd -xf $DOWNLOADS/frameworks_compile_mclinker-06.tar.zst -C $DOWNLOADS/aosp/frameworks/compile/mclinker "./tools/mcld/ld.mc^android_x86_64/out/soong/.intermediates/frameworks/compile/mclinker/tools/mcld/ld.mc/android_x86_64/ld.mc"
+rm -rf frameworks_compile_mclinker*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_ex.tar.zst $DOWNLOADS/frameworks_ex-01.tar.zst
@@ -2887,6 +3071,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_ex-08.tar.zst -C $DOWNLOADS/aosp/frameworks
 tar --zstd -xf $DOWNLOADS/frameworks_ex-08.tar.zst -C $DOWNLOADS/aosp/frameworks/ex "./framesequence/android-common-framesequence^android_common/out/soong/.intermediates/frameworks/ex/framesequence/android-common-framesequence/android_common/javac/android-common-framesequence.jar" "./framesequence/android-common-framesequence^android_common/out/soong/.intermediates/frameworks/ex/framesequence/android-common-framesequence/android_common/turbine-combined/android-common-framesequence.jar"
 tar --zstd -xf $DOWNLOADS/frameworks_ex-15.tar.zst -C $DOWNLOADS/aosp/frameworks/ex "./framesequence/jni/libframesequence^android_x86_64_shared/out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/libframesequence.so"
 tar --zstd -xf $DOWNLOADS/frameworks_ex-15.tar.zst -C $DOWNLOADS/aosp/frameworks/ex "./framesequence/jni/libframesequence^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/libframesequence.so"
+rm -rf frameworks_ex*.tar.zst
 
 
 download_with_retries android12-gsi_04 frameworks_hardware_interfaces.tar.zst $DOWNLOADS/frameworks_hardware_interfaces-04.tar.zst
@@ -2913,6 +3098,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_hardware_interfaces-09.tar.zst -C $DOWNLOAD
 tar --zstd -xf $DOWNLOADS/frameworks_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/frameworks/hardware/interfaces "./stats/1.0/android.frameworks.stats@1.0^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0/android_x86_x86_64_shared/android.frameworks.stats@1.0.so"
 tar --zstd -xf $DOWNLOADS/frameworks_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/frameworks/hardware/interfaces "./stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_64_shared/out/soong/.intermediates/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform/android_x86_64_shared/android.frameworks.stats-V1-ndk_platform.so"
 tar --zstd -xf $DOWNLOADS/frameworks_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/frameworks/hardware/interfaces "./stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform/android_x86_x86_64_shared/android.frameworks.stats-V1-ndk_platform.so"
+rm -rf frameworks_hardware_interfaces*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_minikin.tar.zst $DOWNLOADS/frameworks_minikin-01.tar.zst
@@ -2920,6 +3106,7 @@ download_with_retries android12-gsi_09 frameworks_minikin.tar.zst $DOWNLOADS/fra
 mkdir -p $DOWNLOADS/aosp/frameworks/minikin
 tar --zstd -xf $DOWNLOADS/frameworks_minikin-09.tar.zst -C $DOWNLOADS/aosp/frameworks/minikin "./libs/minikin/libminikin^android_x86_64_shared/out/soong/.intermediates/frameworks/minikin/libs/minikin/libminikin/android_x86_64_shared/libminikin.so"
 tar --zstd -xf $DOWNLOADS/frameworks_minikin-09.tar.zst -C $DOWNLOADS/aosp/frameworks/minikin "./libs/minikin/libminikin^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/minikin/libs/minikin/libminikin/android_x86_x86_64_shared/libminikin.so"
+rm -rf frameworks_minikin*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_native.tar.zst $DOWNLOADS/frameworks_native-01.tar.zst
@@ -3256,26 +3443,31 @@ tar --zstd -xf $DOWNLOADS/frameworks_native-03.tar.zst -C $DOWNLOADS/aosp/framew
 tar --zstd -xf $DOWNLOADS/frameworks_native-10.tar.zst -C $DOWNLOADS/aosp/frameworks/native "./vulkan/libvulkan/libvulkan^android_x86_64_shared/out/soong/.intermediates/frameworks/native/vulkan/libvulkan/libvulkan/android_x86_64_shared/libvulkan.so"
 tar --zstd -xf $DOWNLOADS/frameworks_native-10.tar.zst -C $DOWNLOADS/aosp/frameworks/native "./vulkan/libvulkan/libvulkan^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/native/vulkan/libvulkan/libvulkan/android_x86_x86_64_shared/libvulkan.so"
 tar --zstd -xf $DOWNLOADS/frameworks_native-10.tar.zst -C $DOWNLOADS/aosp/frameworks/native "./vulkan/vkjson/libvkjson^android_x86_64_shared/out/soong/.intermediates/frameworks/native/vulkan/vkjson/libvkjson/android_x86_64_shared/libvkjson.so"
+rm -rf frameworks_native*.tar.zst
 
 
 download_with_retries android12-gsi_08 frameworks_opt_calendar.tar.zst $DOWNLOADS/frameworks_opt_calendar-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/calendar
 tar --zstd -xf $DOWNLOADS/frameworks_opt_calendar-08.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/calendar "./calendar-common^android_common/out/soong/.intermediates/frameworks/opt/calendar/calendar-common/android_common/javac/calendar-common.jar" "./calendar-common^android_common/out/soong/.intermediates/frameworks/opt/calendar/calendar-common/android_common/turbine-combined/calendar-common.jar"
+rm -rf frameworks_opt_calendar*.tar.zst
 
 
 download_with_retries android12-gsi_23 frameworks_opt_chips.tar.zst $DOWNLOADS/frameworks_opt_chips-23.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/chips
 tar --zstd -xf $DOWNLOADS/frameworks_opt_chips-23.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/chips "./libchips^android_common/out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/combined/libchips.jar" "./libchips^android_common/out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/extra_packages" "./libchips^android_common/out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/manifest_merger/AndroidManifest.xml" "./libchips^android_common/out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/package-res.apk" "./libchips^android_common/out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/turbine-combined/libchips.jar"
+rm -rf frameworks_opt_chips*.tar.zst
 
 
 download_with_retries android12-gsi_08 frameworks_opt_colorpicker.tar.zst $DOWNLOADS/frameworks_opt_colorpicker-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/colorpicker
 tar --zstd -xf $DOWNLOADS/frameworks_opt_colorpicker-08.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/colorpicker "./colorpicker^android_common/out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/extra_packages" "./colorpicker^android_common/out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/javac/colorpicker.jar" "./colorpicker^android_common/out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/manifest_fixer/AndroidManifest.xml" "./colorpicker^android_common/out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/package-res.apk" "./colorpicker^android_common/out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/turbine-combined/colorpicker.jar"
+rm -rf frameworks_opt_colorpicker*.tar.zst
 
 
 download_with_retries android12-gsi_33 frameworks_opt_net_ethernet.tar.zst $DOWNLOADS/frameworks_opt_net_ethernet-33.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/net/ethernet
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_ethernet-33.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/ethernet "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/aligned/ethernet-service.jar" "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/dexpreopt.config" "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.odex" "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.vdex" "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/javac/ethernet-service.jar" "./ethernet-service^android_common/out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/turbine-combined/ethernet-service.jar"
+rm -rf frameworks_opt_net_ethernet*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_opt_net_ims.tar.zst $DOWNLOADS/frameworks_opt_net_ims-01.tar.zst
@@ -3285,6 +3477,7 @@ mkdir -p $DOWNLOADS/aosp/frameworks/opt/net/ims
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_ims-01.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/ims "./ims-common^android_common/out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/dexpreopt/dexpreopt.config"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_ims-26.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/ims "./ims-common^android_common/out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar" "./ims-common^android_common/out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_ims-29.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/ims "./ims-common^android_common/out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/hiddenapi/ims-common.jar"
+rm -rf frameworks_opt_net_ims*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_opt_net_voip.tar.zst $DOWNLOADS/frameworks_opt_net_voip-01.tar.zst
@@ -3298,6 +3491,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_opt_net_voip-25.tar.zst -C $DOWNLOADS/aosp/
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_voip-29.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/voip "./voip-common^android_common/out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/hiddenapi/voip-common.jar"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_voip-15.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/voip "./src/jni/rtp/librtp_jni^android_x86_64_shared/out/soong/.intermediates/frameworks/opt/net/voip/src/jni/rtp/librtp_jni/android_x86_64_shared/librtp_jni.so"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_voip-15.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/voip "./src/jni/rtp/librtp_jni^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/opt/net/voip/src/jni/rtp/librtp_jni/android_x86_x86_64_shared/librtp_jni.so"
+rm -rf frameworks_opt_net_voip*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_opt_net_wifi.tar.zst $DOWNLOADS/frameworks_opt_net_wifi-01.tar.zst
@@ -3308,11 +3502,13 @@ mkdir -p $DOWNLOADS/aosp/frameworks/opt/net/wifi
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_wifi-07.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/wifi "./libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_64_shared/out/soong/.intermediates/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface/android_vendor.31_x86_64_shared/libwifi-system-iface.so"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_wifi-07.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/wifi "./libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface/android_vendor.31_x86_x86_64_shared/libwifi-system-iface.so"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_net_wifi-07.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/net/wifi "./libwifi_system_iface/libwifi-system-iface^android_x86_64_shared/out/soong/.intermediates/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface/android_x86_64_shared/libwifi-system-iface.so"
+rm -rf frameworks_opt_net_wifi*.tar.zst
 
 
 download_with_retries android12-gsi_24 frameworks_opt_photoviewer.tar.zst $DOWNLOADS/frameworks_opt_photoviewer-24.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/photoviewer
 tar --zstd -xf $DOWNLOADS/frameworks_opt_photoviewer-24.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/photoviewer "./libphotoviewer^android_common/out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/combined/libphotoviewer.jar" "./libphotoviewer^android_common/out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/extra_packages" "./libphotoviewer^android_common/out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/manifest_merger/AndroidManifest.xml" "./libphotoviewer^android_common/out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/package-res.apk" "./libphotoviewer^android_common/out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/turbine-combined/libphotoviewer.jar"
+rm -rf frameworks_opt_photoviewer*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_opt_telephony.tar.zst $DOWNLOADS/frameworks_opt_telephony-01.tar.zst
@@ -3326,16 +3522,19 @@ mkdir -p $DOWNLOADS/aosp/frameworks/opt/telephony
 tar --zstd -xf $DOWNLOADS/frameworks_opt_telephony-01.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/telephony "./telephony-common^android_common/out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dexpreopt/dexpreopt.config"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_telephony-27.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/telephony "./telephony-common^android_common/out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-jarjar/telephony-common.jar" "./telephony-common^android_common/out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/withres/telephony-common.jar"
 tar --zstd -xf $DOWNLOADS/frameworks_opt_telephony-29.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/telephony "./telephony-common^android_common/out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/hiddenapi/telephony-common.jar"
+rm -rf frameworks_opt_telephony*.tar.zst
 
 
 download_with_retries android12-gsi_08 frameworks_opt_timezonepicker.tar.zst $DOWNLOADS/frameworks_opt_timezonepicker-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/timezonepicker
 tar --zstd -xf $DOWNLOADS/frameworks_opt_timezonepicker-08.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/timezonepicker "./android-opt-timezonepicker^android_common/out/soong/.intermediates/frameworks/opt/timezonepicker/android-opt-timezonepicker/android_common/javac/android-opt-timezonepicker.jar" "./android-opt-timezonepicker^android_common/out/soong/.intermediates/frameworks/opt/timezonepicker/android-opt-timezonepicker/android_common/turbine-combined/android-opt-timezonepicker.jar"
+rm -rf frameworks_opt_timezonepicker*.tar.zst
 
 
 download_with_retries android12-gsi_08 frameworks_opt_vcard.tar.zst $DOWNLOADS/frameworks_opt_vcard-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/frameworks/opt/vcard
 tar --zstd -xf $DOWNLOADS/frameworks_opt_vcard-08.tar.zst -C $DOWNLOADS/aosp/frameworks/opt/vcard "./com.android.vcard^android_common/out/soong/.intermediates/frameworks/opt/vcard/com.android.vcard/android_common/javac/com.android.vcard.jar" "./com.android.vcard^android_common/out/soong/.intermediates/frameworks/opt/vcard/com.android.vcard/android_common/turbine-combined/com.android.vcard.jar"
+rm -rf frameworks_opt_vcard*.tar.zst
 
 
 download_with_retries android12-gsi_04 frameworks_proto_logging.tar.zst $DOWNLOADS/frameworks_proto_logging-04.tar.zst
@@ -3347,6 +3546,7 @@ download_with_retries android12-gsi_23 frameworks_proto_logging.tar.zst $DOWNLOA
 mkdir -p $DOWNLOADS/aosp/frameworks/proto_logging
 tar --zstd -xf $DOWNLOADS/frameworks_proto_logging-08.tar.zst -C $DOWNLOADS/aosp/frameworks/proto_logging "./stats/stats_log_api_gen/libstatslog^android_x86_64_shared/out/soong/.intermediates/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog/android_x86_64_shared/libstatslog.so"
 tar --zstd -xf $DOWNLOADS/frameworks_proto_logging-08.tar.zst -C $DOWNLOADS/aosp/frameworks/proto_logging "./stats/stats_log_api_gen/libstatslog^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog/android_x86_x86_64_shared/libstatslog.so"
+rm -rf frameworks_proto_logging*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_rs.tar.zst $DOWNLOADS/frameworks_rs-01.tar.zst
@@ -3375,6 +3575,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_rs-09.tar.zst -C $DOWNLOADS/aosp/frameworks
 tar --zstd -xf $DOWNLOADS/frameworks_rs-09.tar.zst -C $DOWNLOADS/aosp/frameworks/rs "./cpu_ref/libRSCpuRef^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_vendor.31_x86_x86_64_shared/libRSCpuRef.so"
 tar --zstd -xf $DOWNLOADS/frameworks_rs-14.tar.zst -C $DOWNLOADS/aosp/frameworks/rs "./cpu_ref/libRSCpuRef^android_x86_64_shared/out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_64_shared/libRSCpuRef.so"
 tar --zstd -xf $DOWNLOADS/frameworks_rs-14.tar.zst -C $DOWNLOADS/aosp/frameworks/rs "./cpu_ref/libRSCpuRef^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_x86_64_shared/libRSCpuRef.so"
+rm -rf frameworks_rs*.tar.zst
 
 
 download_with_retries android12-gsi_01 frameworks_wilhelm.tar.zst $DOWNLOADS/frameworks_wilhelm-01.tar.zst
@@ -3449,6 +3650,7 @@ tar --zstd -xf $DOWNLOADS/frameworks_wilhelm-16.tar.zst -C $DOWNLOADS/aosp/frame
 tar --zstd -xf $DOWNLOADS/frameworks_wilhelm-16.tar.zst -C $DOWNLOADS/aosp/frameworks/wilhelm "./src/libOpenMAXAL^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/wilhelm/src/libOpenMAXAL/android_x86_x86_64_shared/libOpenMAXAL.so"
 tar --zstd -xf $DOWNLOADS/frameworks_wilhelm-16.tar.zst -C $DOWNLOADS/aosp/frameworks/wilhelm "./src/libwilhelm^android_x86_64_shared/out/soong/.intermediates/frameworks/wilhelm/src/libwilhelm/android_x86_64_shared/libwilhelm.so"
 tar --zstd -xf $DOWNLOADS/frameworks_wilhelm-16.tar.zst -C $DOWNLOADS/aosp/frameworks/wilhelm "./src/libwilhelm^android_x86_x86_64_shared/out/soong/.intermediates/frameworks/wilhelm/src/libwilhelm/android_x86_x86_64_shared/libwilhelm.so"
+rm -rf frameworks_wilhelm*.tar.zst
 
 
 download_with_retries android12-gsi_03 hardware_google_camera.tar.zst $DOWNLOADS/hardware_google_camera-03.tar.zst
@@ -3464,6 +3666,7 @@ tar --zstd -xf $DOWNLOADS/hardware_google_camera-08.tar.zst -C $DOWNLOADS/aosp/h
 tar --zstd -xf $DOWNLOADS/hardware_google_camera-08.tar.zst -C $DOWNLOADS/aosp/hardware/google/camera "./common/profiler/lib_profiler^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/google/camera/common/profiler/lib_profiler/android_vendor.31_x86_x86_64_shared/lib_profiler.so"
 tar --zstd -xf $DOWNLOADS/hardware_google_camera-11.tar.zst -C $DOWNLOADS/aosp/hardware/google/camera "./devices/EmulatedCamera/hwl/libgooglecamerahwl_impl^android_vendor.31_x86_64_shared/out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_64_shared/libgooglecamerahwl_impl.so"
 tar --zstd -xf $DOWNLOADS/hardware_google_camera-11.tar.zst -C $DOWNLOADS/aosp/hardware/google/camera "./devices/EmulatedCamera/hwl/libgooglecamerahwl_impl^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_x86_64_shared/libgooglecamerahwl_impl.so"
+rm -rf hardware_google_camera*.tar.zst
 
 
 download_with_retries android12-gsi_01 hardware_interfaces.tar.zst $DOWNLOADS/hardware_interfaces-01.tar.zst
@@ -4072,6 +4275,7 @@ tar --zstd -xf $DOWNLOADS/hardware_interfaces-06.tar.zst -C $DOWNLOADS/aosp/hard
 tar --zstd -xf $DOWNLOADS/hardware_interfaces-07.tar.zst -C $DOWNLOADS/aosp/hardware/interfaces "./weaver/aidl/default/android.hardware.weaver-service.example^android_vendor.31_x86_64/out/soong/.intermediates/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example/android_vendor.31_x86_64/android.hardware.weaver-service.example"
 tar --zstd -xf $DOWNLOADS/hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/hardware/interfaces "./wifi/1.0/android.hardware.wifi@1.0^android_x86_64_shared/out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0/android_x86_64_shared/android.hardware.wifi@1.0.so"
 tar --zstd -xf $DOWNLOADS/hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/hardware/interfaces "./wifi/1.0/android.hardware.wifi@1.0^android_x86_x86_64_shared/out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0/android_x86_x86_64_shared/android.hardware.wifi@1.0.so"
+rm -rf hardware_interfaces*.tar.zst
 
 
 download_with_retries android12-gsi_06 hardware_libhardware.tar.zst $DOWNLOADS/hardware_libhardware-06.tar.zst
@@ -4095,6 +4299,7 @@ tar --zstd -xf $DOWNLOADS/hardware_libhardware-06.tar.zst -C $DOWNLOADS/aosp/har
 tar --zstd -xf $DOWNLOADS/hardware_libhardware-06.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware "./modules/power/power.default^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/libhardware/modules/power/power.default/android_vendor.31_x86_x86_64_shared/power.default.so"
 tar --zstd -xf $DOWNLOADS/hardware_libhardware-06.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware "./modules/vibrator/vibrator.default^android_vendor.31_x86_64_shared/out/soong/.intermediates/hardware/libhardware/modules/vibrator/vibrator.default/android_vendor.31_x86_64_shared/vibrator.default.so"
 tar --zstd -xf $DOWNLOADS/hardware_libhardware-06.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware "./modules/vibrator/vibrator.default^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/libhardware/modules/vibrator/vibrator.default/android_vendor.31_x86_x86_64_shared/vibrator.default.so"
+rm -rf hardware_libhardware*.tar.zst
 
 
 download_with_retries android12-gsi_09 hardware_libhardware_legacy.tar.zst $DOWNLOADS/hardware_libhardware_legacy-09.tar.zst
@@ -4108,6 +4313,7 @@ tar --zstd -xf $DOWNLOADS/hardware_libhardware_legacy-10.tar.zst -C $DOWNLOADS/a
 tar --zstd -xf $DOWNLOADS/hardware_libhardware_legacy-10.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware_legacy "./libhardware_legacy^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/libhardware_legacy/libhardware_legacy/android_vendor.31_x86_x86_64_shared/libhardware_legacy.so" "./libhardware_legacy^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/libhardware_legacy/libhardware_legacy/android_vendor.31_x86_x86_64_shared/libhardware_legacy.so.toc"
 tar --zstd -xf $DOWNLOADS/hardware_libhardware_legacy-10.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware_legacy "./libhardware_legacy^android_x86_64_shared/out/soong/.intermediates/hardware/libhardware_legacy/libhardware_legacy/android_x86_64_shared/libhardware_legacy.so"
 tar --zstd -xf $DOWNLOADS/hardware_libhardware_legacy-10.tar.zst -C $DOWNLOADS/aosp/hardware/libhardware_legacy "./libhardware_legacy^android_x86_x86_64_shared/out/soong/.intermediates/hardware/libhardware_legacy/libhardware_legacy/android_x86_x86_64_shared/libhardware_legacy.so"
+rm -rf hardware_libhardware_legacy*.tar.zst
 
 
 download_with_retries android12-gsi_06 hardware_ril.tar.zst $DOWNLOADS/hardware_ril-06.tar.zst
@@ -4117,6 +4323,7 @@ tar --zstd -xf $DOWNLOADS/hardware_ril-06.tar.zst -C $DOWNLOADS/aosp/hardware/ri
 tar --zstd -xf $DOWNLOADS/hardware_ril-06.tar.zst -C $DOWNLOADS/aosp/hardware/ril "./librilutils/librilutils^android_vendor.31_x86_64_static/out/soong/.intermediates/hardware/ril/librilutils/librilutils/android_vendor.31_x86_64_static/gen/proto/hardware/ril/librilutils/proto/sap-api.pb.h"
 tar --zstd -xf $DOWNLOADS/hardware_ril-06.tar.zst -C $DOWNLOADS/aosp/hardware/ril "./librilutils/librilutils^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/ril/librilutils/librilutils/android_vendor.31_x86_x86_64_shared/librilutils.so" "./librilutils/librilutils^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/hardware/ril/librilutils/librilutils/android_vendor.31_x86_x86_64_shared/librilutils.so.toc"
 tar --zstd -xf $DOWNLOADS/hardware_ril-06.tar.zst -C $DOWNLOADS/aosp/hardware/ril "./librilutils/librilutils^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/hardware/ril/librilutils/librilutils/android_vendor.31_x86_x86_64_static/gen/proto/hardware/ril/librilutils/proto/sap-api.pb.h"
+rm -rf hardware_ril*.tar.zst
 
 
 download_with_retries android12-gsi_03 libcore.tar.zst $DOWNLOADS/libcore-03.tar.zst
@@ -4138,6 +4345,7 @@ tar --zstd -xf $DOWNLOADS/libcore-05.tar.zst -C $DOWNLOADS/aosp/libcore "./liban
 tar --zstd -xf $DOWNLOADS/libcore-05.tar.zst -C $DOWNLOADS/aosp/libcore "./libandroidio^android_x86_x86_64_shared_apex31/out/soong/.intermediates/libcore/libandroidio/android_x86_x86_64_shared_apex31/libandroidio.so"
 tar --zstd -xf $DOWNLOADS/libcore-12.tar.zst -C $DOWNLOADS/aosp/libcore "./mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs/android_common/turbine-combined/legacy.core.platform.api.stubs.jar"
 tar --zstd -xf $DOWNLOADS/libcore-12.tar.zst -C $DOWNLOADS/aosp/libcore "./mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar" "./mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/lib/modules" "./mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/release"
+rm -rf libcore*.tar.zst
 
 
 download_with_retries android12-gsi_01 libnativehelper.tar.zst $DOWNLOADS/libnativehelper-01.tar.zst
@@ -4150,6 +4358,7 @@ tar --zstd -xf $DOWNLOADS/libnativehelper-04.tar.zst -C $DOWNLOADS/aosp/libnativ
 tar --zstd -xf $DOWNLOADS/libnativehelper-04.tar.zst -C $DOWNLOADS/aosp/libnativehelper "./libnativehelper^android_x86_x86_64_shared_apex31/out/soong/.intermediates/libnativehelper/libnativehelper/android_x86_x86_64_shared_apex31/libnativehelper.so"
 tar --zstd -xf $DOWNLOADS/libnativehelper-06.tar.zst -C $DOWNLOADS/aosp/libnativehelper "./libnativehelper_compat_libc++^android_x86_64_sdk_shared/out/soong/.intermediates/libnativehelper/libnativehelper_compat_libc++/android_x86_64_sdk_shared/unstripped/libnativehelper_compat_libc++.so"
 tar --zstd -xf $DOWNLOADS/libnativehelper-06.tar.zst -C $DOWNLOADS/aosp/libnativehelper "./libnativehelper_compat_libc++^android_x86_64_sdk_shared_apex30/out/soong/.intermediates/libnativehelper/libnativehelper_compat_libc++/android_x86_64_sdk_shared_apex30/unstripped/libnativehelper_compat_libc++.so"
+rm -rf libnativehelper*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_Bluetooth.tar.zst $DOWNLOADS/packages_apps_Bluetooth-06.tar.zst
@@ -4159,16 +4368,19 @@ download_with_retries android12-gsi_32 packages_apps_Bluetooth.tar.zst $DOWNLOAD
 mkdir -p $DOWNLOADS/aosp/packages/apps/Bluetooth
 tar --zstd -xf $DOWNLOADS/packages_apps_Bluetooth-09.tar.zst -C $DOWNLOADS/aosp/packages/apps/Bluetooth "./libbluetooth_jni^android_x86_64_shared/out/soong/.intermediates/packages/apps/Bluetooth/libbluetooth_jni/android_x86_64_shared/libbluetooth_jni.so"
 tar --zstd -xf $DOWNLOADS/packages_apps_Bluetooth-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Bluetooth "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/Bluetooth.apk" "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/combined/Bluetooth.jar" "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/dexpreopt.config" "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.odex" "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.vdex" "./Bluetooth^android_common/out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/package-res.apk"
+rm -rf packages_apps_Bluetooth*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Browser2.tar.zst $DOWNLOADS/packages_apps_Browser2-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Browser2
 tar --zstd -xf $DOWNLOADS/packages_apps_Browser2-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Browser2 "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/Browser2.apk" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/dexpreopt/dexpreopt.config" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/dexpreopt/oat/x86_64/package.odex" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/dexpreopt/oat/x86_64/package.vdex" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/javac/Browser2.jar" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/package-res.apk" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/proguard_dictionary" "./Browser2^android_common/out/soong/.intermediates/packages/apps/Browser2/Browser2/android_common/proguard_usage.zip"
+rm -rf packages_apps_Browser2*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_CarrierConfig.tar.zst $DOWNLOADS/packages_apps_CarrierConfig-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/CarrierConfig
 tar --zstd -xf $DOWNLOADS/packages_apps_CarrierConfig-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/CarrierConfig "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/CarrierConfig.apk" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/dexpreopt/dexpreopt.config" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/dexpreopt/oat/x86_64/package.odex" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/dexpreopt/oat/x86_64/package.vdex" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/javac/CarrierConfig.jar" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/package-res.apk" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/proguard_dictionary" "./CarrierConfig^android_common/out/soong/.intermediates/packages/apps/CarrierConfig/CarrierConfig/android_common/proguard_usage.zip"
+rm -rf packages_apps_CarrierConfig*.tar.zst
 
 
 download_with_retries android12-gsi_25 packages_apps_CellBroadcastReceiver.tar.zst $DOWNLOADS/packages_apps_CellBroadcastReceiver-25.tar.zst
@@ -4178,21 +4390,25 @@ mkdir -p $DOWNLOADS/aosp/packages/apps/CellBroadcastReceiver
 tar --zstd -xf $DOWNLOADS/packages_apps_CellBroadcastReceiver-25.tar.zst -C $DOWNLOADS/aosp/packages/apps/CellBroadcastReceiver "./CellBroadcastApp^android_common_apex30/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/CellBroadcastApp/android_common_apex30/CellBroadcastApp.apk"
 tar --zstd -xf $DOWNLOADS/packages_apps_CellBroadcastReceiver-26.tar.zst -C $DOWNLOADS/aosp/packages/apps/CellBroadcastReceiver "./apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast/android_common_com.android.cellbroadcast_image/apex_manifest.pb" "./apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast/android_common_com.android.cellbroadcast_image/apex_pubkey" "./apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast/android_common_com.android.cellbroadcast_image/com.android.cellbroadcast.capex"
 tar --zstd -xf $DOWNLOADS/packages_apps_CellBroadcastReceiver-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/CellBroadcastReceiver "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/CellBroadcastLegacyApp.apk" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/combined/CellBroadcastLegacyApp.jar" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/dexpreopt/dexpreopt.config" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/dexpreopt/oat/x86_64/package.odex" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/dexpreopt/oat/x86_64/package.vdex" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/package-res.apk" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/proguard_dictionary" "./legacy/CellBroadcastLegacyApp^android_common/out/soong/.intermediates/packages/apps/CellBroadcastReceiver/legacy/CellBroadcastLegacyApp/android_common/proguard_usage.zip"
+rm -rf packages_apps_CellBroadcastReceiver*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_CertInstaller.tar.zst $DOWNLOADS/packages_apps_CertInstaller-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/CertInstaller
 tar --zstd -xf $DOWNLOADS/packages_apps_CertInstaller-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/CertInstaller "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/CertInstaller.apk" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/combined/CertInstaller.jar" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/dexpreopt/dexpreopt.config" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/dexpreopt/oat/x86_64/package.odex" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/dexpreopt/oat/x86_64/package.vdex" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/package-res.apk" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/proguard_dictionary" "./CertInstaller^android_common/out/soong/.intermediates/packages/apps/CertInstaller/CertInstaller/android_common/proguard_usage.zip"
+rm -rf packages_apps_CertInstaller*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Contacts.tar.zst $DOWNLOADS/packages_apps_Contacts-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Contacts
 tar --zstd -xf $DOWNLOADS/packages_apps_Contacts-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Contacts "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/Contacts.apk" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/dexpreopt/dexpreopt.config" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/dexpreopt/oat/x86_64/package.odex" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/dexpreopt/oat/x86_64/package.vdex" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/package-res.apk" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/proguard_dictionary" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/proguard_usage.zip" "./Contacts^android_common/out/soong/.intermediates/packages/apps/Contacts/Contacts/android_common/withres/Contacts.jar"
+rm -rf packages_apps_Contacts*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_DeskClock.tar.zst $DOWNLOADS/packages_apps_DeskClock-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/DeskClock
 tar --zstd -xf $DOWNLOADS/packages_apps_DeskClock-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/DeskClock "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/DeskClock.apk" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/combined/DeskClock.jar" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/dexpreopt/dexpreopt.config" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/dexpreopt/oat/x86_64/package.odex" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/dexpreopt/oat/x86_64/package.vdex" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/package-res.apk" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/proguard_dictionary" "./DeskClock^android_common/out/soong/.intermediates/packages/apps/DeskClock/DeskClock/android_common/proguard_usage.zip"
+rm -rf packages_apps_DeskClock*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_DocumentsUI.tar.zst $DOWNLOADS/packages_apps_DocumentsUI-06.tar.zst
@@ -4200,6 +4416,7 @@ download_with_retries android12-gsi_32 packages_apps_DocumentsUI.tar.zst $DOWNLO
 mkdir -p $DOWNLOADS/aosp/packages/apps/DocumentsUI
 tar --zstd -xf $DOWNLOADS/packages_apps_DocumentsUI-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/DocumentsUI "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/DocumentsUI.apk" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/combined/DocumentsUI.jar" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/dexpreopt/dexpreopt.config" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/dexpreopt/oat/x86_64/package.odex" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/dexpreopt/oat/x86_64/package.vdex" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/package-res.apk" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/proguard_dictionary" "./DocumentsUI^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_apps_DocumentsUI-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/DocumentsUI "./documents-ui-compat-config^android_common/out/soong/.intermediates/packages/apps/DocumentsUI/documents-ui-compat-config/android_common/documents-ui-compat-config.xml"
+rm -rf packages_apps_DocumentsUI*.tar.zst
 
 
 download_with_retries android12-gsi_25 packages_apps_EmergencyInfo.tar.zst $DOWNLOADS/packages_apps_EmergencyInfo-25.tar.zst
@@ -4207,6 +4424,7 @@ download_with_retries android12-gsi_27 packages_apps_EmergencyInfo.tar.zst $DOWN
 download_with_retries android12-gsi_32 packages_apps_EmergencyInfo.tar.zst $DOWNLOADS/packages_apps_EmergencyInfo-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/EmergencyInfo
 tar --zstd -xf $DOWNLOADS/packages_apps_EmergencyInfo-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/EmergencyInfo "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/EmergencyInfo.apk" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/combined/EmergencyInfo.jar" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/dexpreopt/dexpreopt.config" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/dexpreopt/oat/x86_64/package.odex" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/dexpreopt/oat/x86_64/package.vdex" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/package-res.apk" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/proguard_dictionary" "./EmergencyInfo^android_common/out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo/android_common/proguard_usage.zip"
+rm -rf packages_apps_EmergencyInfo*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_Gallery2.tar.zst $DOWNLOADS/packages_apps_Gallery2-06.tar.zst
@@ -4219,11 +4437,13 @@ tar --zstd -xf $DOWNLOADS/packages_apps_Gallery2-32.tar.zst -C $DOWNLOADS/aosp/p
 tar --zstd -xf $DOWNLOADS/packages_apps_Gallery2-11.tar.zst -C $DOWNLOADS/aosp/packages/apps/Gallery2 "./jni/libjni_eglfence^android_x86_64_shared/out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/libjni_eglfence.so"
 tar --zstd -xf $DOWNLOADS/packages_apps_Gallery2-15.tar.zst -C $DOWNLOADS/aosp/packages/apps/Gallery2 "./jni/libjni_filtershow_filters^android_x86_64_shared/out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/libjni_filtershow_filters.so"
 tar --zstd -xf $DOWNLOADS/packages_apps_Gallery2-06.tar.zst -C $DOWNLOADS/aosp/packages/apps/Gallery2 "./jni_jpegstream/libjni_jpegstream^android_x86_64_shared/out/soong/.intermediates/packages/apps/Gallery2/jni_jpegstream/libjni_jpegstream/android_x86_64_shared/libjni_jpegstream.so"
+rm -rf packages_apps_Gallery2*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_HTMLViewer.tar.zst $DOWNLOADS/packages_apps_HTMLViewer-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/HTMLViewer
 tar --zstd -xf $DOWNLOADS/packages_apps_HTMLViewer-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/HTMLViewer "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/HTMLViewer.apk" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/dexpreopt/dexpreopt.config" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/dexpreopt/oat/x86_64/package.odex" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/dexpreopt/oat/x86_64/package.vdex" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/javac/HTMLViewer.jar" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/package-res.apk" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/proguard_dictionary" "./HTMLViewer^android_common/out/soong/.intermediates/packages/apps/HTMLViewer/HTMLViewer/android_common/proguard_usage.zip"
+rm -rf packages_apps_HTMLViewer*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_ImsServiceEntitlement.tar.zst $DOWNLOADS/packages_apps_ImsServiceEntitlement-06.tar.zst
@@ -4231,39 +4451,46 @@ download_with_retries android12-gsi_26 packages_apps_ImsServiceEntitlement.tar.z
 download_with_retries android12-gsi_32 packages_apps_ImsServiceEntitlement.tar.zst $DOWNLOADS/packages_apps_ImsServiceEntitlement-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/ImsServiceEntitlement
 tar --zstd -xf $DOWNLOADS/packages_apps_ImsServiceEntitlement-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/ImsServiceEntitlement "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/ImsServiceEntitlement.apk" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/combined/ImsServiceEntitlement.jar" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/dexpreopt.config" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/oat/x86_64/package.odex" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/oat/x86_64/package.vdex" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/package-res.apk" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/proguard_dictionary" "./ImsServiceEntitlement^android_common/out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/proguard_usage.zip"
+rm -rf packages_apps_ImsServiceEntitlement*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_KeyChain.tar.zst $DOWNLOADS/packages_apps_KeyChain-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/KeyChain
 tar --zstd -xf $DOWNLOADS/packages_apps_KeyChain-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/KeyChain "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/KeyChain.apk" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/combined/KeyChain.jar" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/dexpreopt/dexpreopt.config" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/dexpreopt/oat/x86_64/package.odex" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/dexpreopt/oat/x86_64/package.vdex" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/package-res.apk" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/proguard_dictionary" "./KeyChain^android_common/out/soong/.intermediates/packages/apps/KeyChain/KeyChain/android_common/proguard_usage.zip"
+rm -rf packages_apps_KeyChain*.tar.zst
 
 
 download_with_retries android12-gsi_23 packages_apps_Launcher3.tar.zst $DOWNLOADS/packages_apps_Launcher3-23.tar.zst
 download_with_retries android12-gsi_24 packages_apps_Launcher3.tar.zst $DOWNLOADS/packages_apps_Launcher3-24.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Launcher3
 tar --zstd -xf $DOWNLOADS/packages_apps_Launcher3-24.tar.zst -C $DOWNLOADS/aosp/packages/apps/Launcher3 "./Launcher3CommonDepsLib^android_common/out/soong/.intermediates/packages/apps/Launcher3/Launcher3CommonDepsLib/android_common/combined/Launcher3CommonDepsLib.jar" "./Launcher3CommonDepsLib^android_common/out/soong/.intermediates/packages/apps/Launcher3/Launcher3CommonDepsLib/android_common/extra_packages" "./Launcher3CommonDepsLib^android_common/out/soong/.intermediates/packages/apps/Launcher3/Launcher3CommonDepsLib/android_common/manifest_merger/AndroidManifest.xml" "./Launcher3CommonDepsLib^android_common/out/soong/.intermediates/packages/apps/Launcher3/Launcher3CommonDepsLib/android_common/package-res.apk" "./Launcher3CommonDepsLib^android_common/out/soong/.intermediates/packages/apps/Launcher3/Launcher3CommonDepsLib/android_common/turbine-combined/Launcher3CommonDepsLib.jar"
+rm -rf packages_apps_Launcher3*.tar.zst
 
 
 download_with_retries android12-gsi_25 packages_apps_ManagedProvisioning.tar.zst $DOWNLOADS/packages_apps_ManagedProvisioning-25.tar.zst
 download_with_retries android12-gsi_32 packages_apps_ManagedProvisioning.tar.zst $DOWNLOADS/packages_apps_ManagedProvisioning-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/ManagedProvisioning
 tar --zstd -xf $DOWNLOADS/packages_apps_ManagedProvisioning-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/ManagedProvisioning "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/ManagedProvisioning.apk" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/combined/ManagedProvisioning.jar" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/dexpreopt/dexpreopt.config" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/dexpreopt/oat/x86_64/package.odex" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/dexpreopt/oat/x86_64/package.vdex" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/package-res.apk" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/proguard_dictionary" "./ManagedProvisioning^android_common/out/soong/.intermediates/packages/apps/ManagedProvisioning/ManagedProvisioning/android_common/proguard_usage.zip"
+rm -rf packages_apps_ManagedProvisioning*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_Messaging.tar.zst $DOWNLOADS/packages_apps_Messaging-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Messaging
 tar --zstd -xf $DOWNLOADS/packages_apps_Messaging-06.tar.zst -C $DOWNLOADS/aosp/packages/apps/Messaging "./jni/libgiftranscode^android_x86_64_shared/out/soong/.intermediates/packages/apps/Messaging/jni/libgiftranscode/android_x86_64_shared/libgiftranscode.so"
 tar --zstd -xf $DOWNLOADS/packages_apps_Messaging-06.tar.zst -C $DOWNLOADS/aosp/packages/apps/Messaging "./jni/libgiftranscode^android_x86_x86_64_shared/out/soong/.intermediates/packages/apps/Messaging/jni/libgiftranscode/android_x86_x86_64_shared/libgiftranscode.so"
+rm -rf packages_apps_Messaging*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Music.tar.zst $DOWNLOADS/packages_apps_Music-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Music
 tar --zstd -xf $DOWNLOADS/packages_apps_Music-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Music "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/Music.apk" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/dexpreopt.config" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/oat/x86_64/package.odex" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/oat/x86_64/package.vdex" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/javac/Music.jar" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/package-res.apk" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/proguard_dictionary" "./Music^android_common/out/soong/.intermediates/packages/apps/Music/Music/android_common/proguard_usage.zip"
+rm -rf packages_apps_Music*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_MusicFX.tar.zst $DOWNLOADS/packages_apps_MusicFX-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/MusicFX
 tar --zstd -xf $DOWNLOADS/packages_apps_MusicFX-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/MusicFX "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/MusicFX.apk" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/dexpreopt/dexpreopt.config" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/dexpreopt/oat/x86_64/package.odex" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/dexpreopt/oat/x86_64/package.vdex" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/javac/MusicFX.jar" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/package-res.apk" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/proguard_dictionary" "./MusicFX^android_common/out/soong/.intermediates/packages/apps/MusicFX/MusicFX/android_common/proguard_usage.zip"
+rm -rf packages_apps_MusicFX*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_Nfc.tar.zst $DOWNLOADS/packages_apps_Nfc-06.tar.zst
@@ -4272,32 +4499,38 @@ download_with_retries android12-gsi_32 packages_apps_Nfc.tar.zst $DOWNLOADS/pack
 mkdir -p $DOWNLOADS/aosp/packages/apps/Nfc
 tar --zstd -xf $DOWNLOADS/packages_apps_Nfc-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Nfc "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/NfcNci.apk" "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/combined/NfcNci.jar" "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/dexpreopt.config" "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/oat/x86_64/package.odex" "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/oat/x86_64/package.vdex" "./NfcNci^android_common/out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/package-res.apk"
 tar --zstd -xf $DOWNLOADS/packages_apps_Nfc-11.tar.zst -C $DOWNLOADS/aosp/packages/apps/Nfc "./nci/jni/libnfc_nci_jni^android_x86_64_shared/out/soong/.intermediates/packages/apps/Nfc/nci/jni/libnfc_nci_jni/android_x86_64_shared/libnfc_nci_jni.so"
+rm -rf packages_apps_Nfc*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_OneTimeInitializer.tar.zst $DOWNLOADS/packages_apps_OneTimeInitializer-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/OneTimeInitializer
 tar --zstd -xf $DOWNLOADS/packages_apps_OneTimeInitializer-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/OneTimeInitializer "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/OneTimeInitializer.apk" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/combined/OneTimeInitializer.jar" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/dexpreopt/dexpreopt.config" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/dexpreopt/oat/x86_64/package.odex" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/dexpreopt/oat/x86_64/package.vdex" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/package-res.apk" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/proguard_dictionary" "./OneTimeInitializer^android_common/out/soong/.intermediates/packages/apps/OneTimeInitializer/OneTimeInitializer/android_common/proguard_usage.zip"
+rm -rf packages_apps_OneTimeInitializer*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Provision.tar.zst $DOWNLOADS/packages_apps_Provision-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Provision
 tar --zstd -xf $DOWNLOADS/packages_apps_Provision-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Provision "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/Provision.apk" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/dexpreopt.config" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/oat/x86_64/package.odex" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/oat/x86_64/package.vdex" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/javac/Provision.jar" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/package-res.apk" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/proguard_dictionary" "./Provision^android_common/out/soong/.intermediates/packages/apps/Provision/Provision/android_common/proguard_usage.zip"
+rm -rf packages_apps_Provision*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_QuickSearchBox.tar.zst $DOWNLOADS/packages_apps_QuickSearchBox-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/QuickSearchBox
 tar --zstd -xf $DOWNLOADS/packages_apps_QuickSearchBox-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/QuickSearchBox "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/QuickSearchBox.apk" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/combined/QuickSearchBox.jar" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/dexpreopt/dexpreopt.config" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/dexpreopt/oat/x86_64/package.odex" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/dexpreopt/oat/x86_64/package.vdex" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/package-res.apk" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/proguard_dictionary" "./QuickSearchBox^android_common/out/soong/.intermediates/packages/apps/QuickSearchBox/QuickSearchBox/android_common/proguard_usage.zip"
+rm -rf packages_apps_QuickSearchBox*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_RemoteProvisioner.tar.zst $DOWNLOADS/packages_apps_RemoteProvisioner-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/RemoteProvisioner
 tar --zstd -xf $DOWNLOADS/packages_apps_RemoteProvisioner-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/RemoteProvisioner "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/RemoteProvisioner.apk" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/combined/RemoteProvisioner.jar" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/dexpreopt.config" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/oat/x86_64/package.odex" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/oat/x86_64/package.vdex" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/package-res.apk" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/proguard_dictionary" "./RemoteProvisioner^android_common/out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/proguard_usage.zip"
+rm -rf packages_apps_RemoteProvisioner*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_SecureElement.tar.zst $DOWNLOADS/packages_apps_SecureElement-06.tar.zst
 download_with_retries android12-gsi_32 packages_apps_SecureElement.tar.zst $DOWNLOADS/packages_apps_SecureElement-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/SecureElement
 tar --zstd -xf $DOWNLOADS/packages_apps_SecureElement-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/SecureElement "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/SecureElement.apk" "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/combined/SecureElement.jar" "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/dexpreopt/dexpreopt.config" "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/dexpreopt/oat/x86_64/package.odex" "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/dexpreopt/oat/x86_64/package.vdex" "./SecureElement^android_common/out/soong/.intermediates/packages/apps/SecureElement/SecureElement/android_common/package-res.apk"
+rm -rf packages_apps_SecureElement*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_apps_Settings.tar.zst $DOWNLOADS/packages_apps_Settings-06.tar.zst
@@ -4308,37 +4541,44 @@ download_with_retries android12-gsi_32 packages_apps_Settings.tar.zst $DOWNLOADS
 mkdir -p $DOWNLOADS/aosp/packages/apps/Settings
 tar --zstd -xf $DOWNLOADS/packages_apps_Settings-28.tar.zst -C $DOWNLOADS/aosp/packages/apps/Settings "./settings-platform-compat-config^android_common/out/soong/.intermediates/packages/apps/Settings/settings-platform-compat-config/android_common/settings-platform-compat-config.xml"
 tar --zstd -xf $DOWNLOADS/packages_apps_Settings-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Settings "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/Settings.apk" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/combined/Settings.jar" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/dexpreopt/dexpreopt.config" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/dexpreopt/oat/x86_64/package.odex" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/dexpreopt/oat/x86_64/package.vdex" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/package-res.apk" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/proguard_dictionary" "./Settings^android_common/out/soong/.intermediates/packages/apps/Settings/Settings/android_common/proguard_usage.zip"
+rm -rf packages_apps_Settings*.tar.zst
 
 
 download_with_retries android12-gsi_24 packages_apps_SettingsIntelligence.tar.zst $DOWNLOADS/packages_apps_SettingsIntelligence-24.tar.zst
 download_with_retries android12-gsi_32 packages_apps_SettingsIntelligence.tar.zst $DOWNLOADS/packages_apps_SettingsIntelligence-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/SettingsIntelligence
 tar --zstd -xf $DOWNLOADS/packages_apps_SettingsIntelligence-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/SettingsIntelligence "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/SettingsIntelligence.apk" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/combined/SettingsIntelligence.jar" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/dexpreopt/dexpreopt.config" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/dexpreopt/oat/x86_64/package.odex" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/dexpreopt/oat/x86_64/package.vdex" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/package-res.apk" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/proguard_dictionary" "./SettingsIntelligence^android_common/out/soong/.intermediates/packages/apps/SettingsIntelligence/SettingsIntelligence/android_common/proguard_usage.zip"
+rm -rf packages_apps_SettingsIntelligence*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Stk.tar.zst $DOWNLOADS/packages_apps_Stk-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Stk
 tar --zstd -xf $DOWNLOADS/packages_apps_Stk-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Stk "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/Stk.apk" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/combined/Stk.jar" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/dexpreopt/dexpreopt.config" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/dexpreopt/oat/x86_64/package.odex" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/dexpreopt/oat/x86_64/package.vdex" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/package-res.apk" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/proguard_dictionary" "./Stk^android_common/out/soong/.intermediates/packages/apps/Stk/Stk/android_common/proguard_usage.zip"
+rm -rf packages_apps_Stk*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_StorageManager.tar.zst $DOWNLOADS/packages_apps_StorageManager-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/StorageManager
 tar --zstd -xf $DOWNLOADS/packages_apps_StorageManager-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/StorageManager "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/StorageManager.apk" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/combined/StorageManager.jar" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/dexpreopt/dexpreopt.config" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/dexpreopt/oat/x86_64/package.odex" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/dexpreopt/oat/x86_64/package.vdex" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/package-res.apk" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/proguard_dictionary" "./StorageManager^android_common/out/soong/.intermediates/packages/apps/StorageManager/StorageManager/android_common/proguard_usage.zip"
+rm -rf packages_apps_StorageManager*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Tag.tar.zst $DOWNLOADS/packages_apps_Tag-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Tag
 tar --zstd -xf $DOWNLOADS/packages_apps_Tag-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Tag "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/Tag.apk" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/combined/Tag.jar" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/dexpreopt/dexpreopt.config" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/dexpreopt/oat/x86_64/package.odex" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/dexpreopt/oat/x86_64/package.vdex" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/package-res.apk" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/proguard_dictionary" "./Tag^android_common/out/soong/.intermediates/packages/apps/Tag/Tag/android_common/proguard_usage.zip"
+rm -rf packages_apps_Tag*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_Traceur.tar.zst $DOWNLOADS/packages_apps_Traceur-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/Traceur
 tar --zstd -xf $DOWNLOADS/packages_apps_Traceur-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/Traceur "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/Traceur.apk" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/combined/Traceur.jar" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/dexpreopt/dexpreopt.config" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/dexpreopt/oat/x86_64/package.odex" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/dexpreopt/oat/x86_64/package.vdex" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/package-res.apk" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/proguard_dictionary" "./Traceur^android_common/out/soong/.intermediates/packages/apps/Traceur/Traceur/android_common/proguard_usage.zip"
+rm -rf packages_apps_Traceur*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_apps_WallpaperPicker.tar.zst $DOWNLOADS/packages_apps_WallpaperPicker-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/apps/WallpaperPicker
 tar --zstd -xf $DOWNLOADS/packages_apps_WallpaperPicker-32.tar.zst -C $DOWNLOADS/aosp/packages/apps/WallpaperPicker "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/WallpaperPicker.apk" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/combined/WallpaperPicker.jar" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/dexpreopt/dexpreopt.config" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/dexpreopt/oat/x86_64/package.odex" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/dexpreopt/oat/x86_64/package.vdex" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/package-res.apk" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/proguard_dictionary" "./WallpaperPicker^android_common/out/soong/.intermediates/packages/apps/WallpaperPicker/WallpaperPicker/android_common/proguard_usage.zip"
+rm -rf packages_apps_WallpaperPicker*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_inputmethods_LatinIME.tar.zst $DOWNLOADS/packages_inputmethods_LatinIME-01.tar.zst
@@ -4348,17 +4588,20 @@ download_with_retries android12-gsi_32 packages_inputmethods_LatinIME.tar.zst $D
 mkdir -p $DOWNLOADS/aosp/packages/inputmethods/LatinIME
 tar --zstd -xf $DOWNLOADS/packages_inputmethods_LatinIME-32.tar.zst -C $DOWNLOADS/aosp/packages/inputmethods/LatinIME "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/LatinIME.apk" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/combined/LatinIME.jar" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/dexpreopt.config" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/oat/x86_64/package.odex" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/oat/x86_64/package.vdex" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/package-res.apk" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/proguard_dictionary" "./java/LatinIME^android_common/out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_inputmethods_LatinIME-04.tar.zst -C $DOWNLOADS/aosp/packages/inputmethods/LatinIME "./native/jni/libjni_latinime^android_x86_64_shared/out/soong/.intermediates/packages/inputmethods/LatinIME/native/jni/libjni_latinime/android_x86_64_shared/libjni_latinime.so"
+rm -rf packages_inputmethods_LatinIME*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_modules_CaptivePortalLogin.tar.zst $DOWNLOADS/packages_modules_CaptivePortalLogin-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/CaptivePortalLogin
 tar --zstd -xf $DOWNLOADS/packages_modules_CaptivePortalLogin-32.tar.zst -C $DOWNLOADS/aosp/packages/modules/CaptivePortalLogin "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/CaptivePortalLogin.apk" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/combined/CaptivePortalLogin.jar" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/dexpreopt/dexpreopt.config" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/dexpreopt/oat/x86_64/package.odex" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/dexpreopt/oat/x86_64/package.vdex" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/package-res.apk" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/proguard_dictionary" "./CaptivePortalLogin^android_common/out/soong/.intermediates/packages/modules/CaptivePortalLogin/CaptivePortalLogin/android_common/proguard_usage.zip"
+rm -rf packages_modules_CaptivePortalLogin*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_modules_CellBroadcastService.tar.zst $DOWNLOADS/packages_modules_CellBroadcastService-06.tar.zst
 download_with_retries android12-gsi_25 packages_modules_CellBroadcastService.tar.zst $DOWNLOADS/packages_modules_CellBroadcastService-25.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/CellBroadcastService
 tar --zstd -xf $DOWNLOADS/packages_modules_CellBroadcastService-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/CellBroadcastService "./CellBroadcastServiceModule^android_common_apex30/out/soong/.intermediates/packages/modules/CellBroadcastService/CellBroadcastServiceModule/android_common_apex30/CellBroadcastServiceModule.apk"
+rm -rf packages_modules_CellBroadcastService*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_Connectivity.tar.zst $DOWNLOADS/packages_modules_Connectivity-01.tar.zst
@@ -4386,6 +4629,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_Connectivity-24.tar.zst -C $DOWNLOADS
 tar --zstd -xf $DOWNLOADS/packages_modules_Connectivity-04.tar.zst -C $DOWNLOADS/aosp/packages/modules/Connectivity "./service/libservice-connectivity^android_x86_64_shared_apex30/out/soong/.intermediates/packages/modules/Connectivity/service/libservice-connectivity/android_x86_64_shared_apex30/libservice-connectivity.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_Connectivity-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/Connectivity "./service/service-connectivity^android_common_apex30/out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/aligned/service-connectivity.jar" "./service/service-connectivity^android_common_apex30/out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/jarjar/service-connectivity.jar" "./service/service-connectivity^android_common_apex30/out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/turbine-jarjar/service-connectivity.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_Connectivity-08.tar.zst -C $DOWNLOADS/aosp/packages/modules/Connectivity "./service/ServiceConnectivityResources/ServiceConnectivityResources^android_common_apex30/out/soong/.intermediates/packages/modules/Connectivity/service/ServiceConnectivityResources/ServiceConnectivityResources/android_common_apex30/ServiceConnectivityResources.apk"
+rm -rf packages_modules_Connectivity*.tar.zst
 
 
 download_with_retries android12-gsi_03 packages_modules_DnsResolver.tar.zst $DOWNLOADS/packages_modules_DnsResolver-03.tar.zst
@@ -4399,6 +4643,7 @@ mkdir -p $DOWNLOADS/aosp/packages/modules/DnsResolver
 tar --zstd -xf $DOWNLOADS/packages_modules_DnsResolver-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/DnsResolver "./libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv/out/soong/.intermediates/packages/modules/DnsResolver/libnetd_resolv/android_x86_64_shared_cfi_com.android.resolv/libnetd_resolv.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_DnsResolver-10.tar.zst -C $DOWNLOADS/aosp/packages/modules/DnsResolver "./dnsresolver_aidl_interface-V7-cpp^android_x86_64_shared/out/soong/.intermediates/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp/android_x86_64_shared/dnsresolver_aidl_interface-V7-cpp.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_DnsResolver-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/DnsResolver "./apex/com.android.resolv^android_common_cfi_com.android.resolv_image/out/soong/.intermediates/packages/modules/DnsResolver/apex/com.android.resolv/android_common_cfi_com.android.resolv_image/apex_manifest.pb" "./apex/com.android.resolv^android_common_cfi_com.android.resolv_image/out/soong/.intermediates/packages/modules/DnsResolver/apex/com.android.resolv/android_common_cfi_com.android.resolv_image/apex_pubkey" "./apex/com.android.resolv^android_common_cfi_com.android.resolv_image/out/soong/.intermediates/packages/modules/DnsResolver/apex/com.android.resolv/android_common_cfi_com.android.resolv_image/com.android.resolv.capex"
+rm -rf packages_modules_DnsResolver*.tar.zst
 
 
 download_with_retries android12-gsi_05 packages_modules_ExtServices.tar.zst $DOWNLOADS/packages_modules_ExtServices-05.tar.zst
@@ -4409,6 +4654,7 @@ mkdir -p $DOWNLOADS/aosp/packages/modules/ExtServices
 tar --zstd -xf $DOWNLOADS/packages_modules_ExtServices-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/ExtServices "./ExtServices^android_common_apex30/out/soong/.intermediates/packages/modules/ExtServices/ExtServices/android_common_apex30/ExtServices.apk"
 tar --zstd -xf $DOWNLOADS/packages_modules_ExtServices-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/ExtServices "./apex/com.android.extservices^android_common_com.android.extservices_image/out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/apex_manifest.pb" "./apex/com.android.extservices^android_common_com.android.extservices_image/out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/apex_pubkey" "./apex/com.android.extservices^android_common_com.android.extservices_image/out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/com.android.extservices.capex"
 tar --zstd -xf $DOWNLOADS/packages_modules_ExtServices-07.tar.zst -C $DOWNLOADS/aosp/packages/modules/ExtServices "./jni/libextservices_jni^android_x86_64_sdk_shared_apex30/out/soong/.intermediates/packages/modules/ExtServices/jni/libextservices_jni/android_x86_64_sdk_shared_apex30/unstripped/libextservices_jni.so"
+rm -rf packages_modules_ExtServices*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_IPsec.tar.zst $DOWNLOADS/packages_modules_IPsec-01.tar.zst
@@ -4421,16 +4667,19 @@ tar --zstd -xf $DOWNLOADS/packages_modules_IPsec-01.tar.zst -C $DOWNLOADS/aosp/p
 tar --zstd -xf $DOWNLOADS/packages_modules_IPsec-20.tar.zst -C $DOWNLOADS/aosp/packages/modules/IPsec "./android.net.ipsec.ike^android_common_com.android.ipsec/out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/jarjar/android.net.ipsec.ike.jar" "./android.net.ipsec.ike^android_common_com.android.ipsec/out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine-jarjar/android.net.ipsec.ike.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_IPsec-23.tar.zst -C $DOWNLOADS/aosp/packages/modules/IPsec "./apex/com.android.ipsec^android_common_com.android.ipsec_image/out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec/android_common_com.android.ipsec_image/apex_manifest.pb" "./apex/com.android.ipsec^android_common_com.android.ipsec_image/out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec/android_common_com.android.ipsec_image/apex_pubkey" "./apex/com.android.ipsec^android_common_com.android.ipsec_image/out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec/android_common_com.android.ipsec_image/com.android.ipsec.capex"
 tar --zstd -xf $DOWNLOADS/packages_modules_IPsec-23.tar.zst -C $DOWNLOADS/aosp/packages/modules/IPsec "./apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec/out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/bootclasspath.pb" "./apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec/out/soong/.intermediates/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment/android_common_com.android.ipsec/hiddenapi-modular/encoded/android.net.ipsec.ike.jar"
+rm -rf packages_modules_IPsec*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_modules_ModuleMetadata.tar.zst $DOWNLOADS/packages_modules_ModuleMetadata-06.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/ModuleMetadata
 tar --zstd -xf $DOWNLOADS/packages_modules_ModuleMetadata-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/ModuleMetadata "./ModuleMetadata^android_common/out/soong/.intermediates/packages/modules/ModuleMetadata/ModuleMetadata/android_common/ModuleMetadata.apk" "./ModuleMetadata^android_common/out/soong/.intermediates/packages/modules/ModuleMetadata/ModuleMetadata/android_common/javac/ModuleMetadata.jar" "./ModuleMetadata^android_common/out/soong/.intermediates/packages/modules/ModuleMetadata/ModuleMetadata/android_common/package-res.apk"
+rm -rf packages_modules_ModuleMetadata*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_modules_NetworkPermissionConfig.tar.zst $DOWNLOADS/packages_modules_NetworkPermissionConfig-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/NetworkPermissionConfig
 tar --zstd -xf $DOWNLOADS/packages_modules_NetworkPermissionConfig-32.tar.zst -C $DOWNLOADS/aosp/packages/modules/NetworkPermissionConfig "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/NetworkPermissionConfig.apk" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/dexpreopt.config" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/oat/x86_64/package.odex" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/oat/x86_64/package.vdex" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/javac/NetworkPermissionConfig.jar" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/package-res.apk" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/proguard_dictionary" "./NetworkPermissionConfig^android_common/out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/proguard_usage.zip"
+rm -rf packages_modules_NetworkPermissionConfig*.tar.zst
 
 
 download_with_retries android12-gsi_04 packages_modules_NetworkStack.tar.zst $DOWNLOADS/packages_modules_NetworkStack-04.tar.zst
@@ -4444,6 +4693,7 @@ download_with_retries android12-gsi_32 packages_modules_NetworkStack.tar.zst $DO
 mkdir -p $DOWNLOADS/aosp/packages/modules/NetworkStack
 tar --zstd -xf $DOWNLOADS/packages_modules_NetworkStack-32.tar.zst -C $DOWNLOADS/aosp/packages/modules/NetworkStack "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/NetworkStack.apk" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/dexpreopt.config" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/oat/x86_64/package.odex" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/oat/x86_64/package.vdex" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/jarjar/NetworkStack.jar" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/package-res.apk" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/proguard_dictionary" "./NetworkStack^android_common/out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_modules_NetworkStack-07.tar.zst -C $DOWNLOADS/aosp/packages/modules/NetworkStack "./libnetworkstackutilsjni^android_x86_64_sdk_shared/out/soong/.intermediates/packages/modules/NetworkStack/libnetworkstackutilsjni/android_x86_64_sdk_shared/unstripped/libnetworkstackutilsjni.so"
+rm -rf packages_modules_NetworkStack*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_NeuralNetworks.tar.zst $DOWNLOADS/packages_modules_NeuralNetworks-01.tar.zst
@@ -4485,6 +4735,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_NeuralNetworks-03.tar.zst -C $DOWNLOA
 tar --zstd -xf $DOWNLOADS/packages_modules_NeuralNetworks-03.tar.zst -C $DOWNLOADS/aosp/packages/modules/NeuralNetworks "./runtime/libneuralnetworks.ndk^android_x86_x86_64_sdk_shared_current/out/soong/.intermediates/packages/modules/NeuralNetworks/runtime/libneuralnetworks.ndk/android_x86_x86_64_sdk_shared_current/libneuralnetworks.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_NeuralNetworks-09.tar.zst -C $DOWNLOADS/aosp/packages/modules/NeuralNetworks "./runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_64_shared/out/soong/.intermediates/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo/android_x86_64_shared/libneuralnetworks_packageinfo.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_NeuralNetworks-09.tar.zst -C $DOWNLOADS/aosp/packages/modules/NeuralNetworks "./runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_x86_64_shared/out/soong/.intermediates/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo/android_x86_x86_64_shared/libneuralnetworks_packageinfo.so"
+rm -rf packages_modules_NeuralNetworks*.tar.zst
 
 
 download_with_retries android12-gsi_04 packages_modules_Permission.tar.zst $DOWNLOADS/packages_modules_Permission-04.tar.zst
@@ -4503,12 +4754,14 @@ tar --zstd -xf $DOWNLOADS/packages_modules_Permission-27.tar.zst -C $DOWNLOADS/a
 tar --zstd -xf $DOWNLOADS/packages_modules_Permission-19.tar.zst -C $DOWNLOADS/aosp/packages/modules/Permission "./framework-s/framework-permission-s^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/jarjar/framework-permission-s.jar" "./framework-s/framework-permission-s^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-jarjar/framework-permission-s.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_Permission-18.tar.zst -C $DOWNLOADS/aosp/packages/modules/Permission "./framework/framework-permission^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/javac/framework-permission.jar" "./framework/framework-permission^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/turbine-combined/framework-permission.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_Permission-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/Permission "./service/service-permission^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/aligned/service-permission.jar" "./service/service-permission^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/jarjar/service-permission.jar" "./service/service-permission^android_common_apex30/out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/turbine-jarjar/service-permission.jar"
+rm -rf packages_modules_Permission*.tar.zst
 
 
 download_with_retries android12-gsi_15 packages_modules_RuntimeI18n.tar.zst $DOWNLOADS/packages_modules_RuntimeI18n-15.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/RuntimeI18n
 tar --zstd -xf $DOWNLOADS/packages_modules_RuntimeI18n-15.tar.zst -C $DOWNLOADS/aosp/packages/modules/RuntimeI18n "./apex/com.android.i18n^android_common_com.android.i18n_image/out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/apex_manifest.pb" "./apex/com.android.i18n^android_common_com.android.i18n_image/out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/apex_pubkey" "./apex/com.android.i18n^android_common_com.android.i18n_image/out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/com.android.i18n.apex"
 tar --zstd -xf $DOWNLOADS/packages_modules_RuntimeI18n-15.tar.zst -C $DOWNLOADS/aosp/packages/modules/RuntimeI18n "./apex/i18n-bootclasspath-fragment^android_common_apex10000/out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/bootclasspath.pb" "./apex/i18n-bootclasspath-fragment^android_common_apex10000/out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/hiddenapi-modular/encoded/core-icu4j.jar"
+rm -rf packages_modules_RuntimeI18n*.tar.zst
 
 
 download_with_retries android12-gsi_05 packages_modules_Scheduling.tar.zst $DOWNLOADS/packages_modules_Scheduling-05.tar.zst
@@ -4522,6 +4775,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_Scheduling-23.tar.zst -C $DOWNLOADS/a
 tar --zstd -xf $DOWNLOADS/packages_modules_Scheduling-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/Scheduling "./apex/com.android.scheduling^android_common_com.android.scheduling_image/out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_manifest.pb" "./apex/com.android.scheduling^android_common_com.android.scheduling_image/out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_pubkey" "./apex/com.android.scheduling^android_common_com.android.scheduling_image/out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/com.android.scheduling.apex"
 tar --zstd -xf $DOWNLOADS/packages_modules_Scheduling-19.tar.zst -C $DOWNLOADS/aosp/packages/modules/Scheduling "./framework/framework-scheduling^android_common_apex10000/out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/javac/framework-scheduling.jar" "./framework/framework-scheduling^android_common_apex10000/out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine-combined/framework-scheduling.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_Scheduling-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/Scheduling "./service/service-scheduling^android_common_apex10000/out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/aligned/service-scheduling.jar" "./service/service-scheduling^android_common_apex10000/out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/jarjar/service-scheduling.jar" "./service/service-scheduling^android_common_apex10000/out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/turbine-jarjar/service-scheduling.jar"
+rm -rf packages_modules_Scheduling*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_SdkExtensions.tar.zst $DOWNLOADS/packages_modules_SdkExtensions-01.tar.zst
@@ -4537,6 +4791,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_SdkExtensions-05.tar.zst -C $DOWNLOAD
 tar --zstd -xf $DOWNLOADS/packages_modules_SdkExtensions-01.tar.zst -C $DOWNLOADS/aosp/packages/modules/SdkExtensions "./derive_sdk/derive_sdk.rc^android_x86_64/out/soong/.intermediates/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc/android_x86_64/derive_sdk.rc"
 tar --zstd -xf $DOWNLOADS/packages_modules_SdkExtensions-19.tar.zst -C $DOWNLOADS/aosp/packages/modules/SdkExtensions "./framework/framework-sdkextensions^android_common_apex30/out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/jarjar/framework-sdkextensions.jar" "./framework/framework-sdkextensions^android_common_apex30/out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine-jarjar/framework-sdkextensions.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_SdkExtensions-05.tar.zst -C $DOWNLOADS/aosp/packages/modules/SdkExtensions "./gen_sdk/extensions_db^android_x86_64/out/soong/.intermediates/packages/modules/SdkExtensions/gen_sdk/extensions_db/android_x86_64/extensions_db.pb"
+rm -rf packages_modules_SdkExtensions*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_StatsD.tar.zst $DOWNLOADS/packages_modules_StatsD-01.tar.zst
@@ -4564,6 +4819,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_StatsD-04.tar.zst -C $DOWNLOADS/aosp/
 tar --zstd -xf $DOWNLOADS/packages_modules_StatsD-04.tar.zst -C $DOWNLOADS/aosp/packages/modules/StatsD "./lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30/out/soong/.intermediates/packages/modules/StatsD/lib/libstatssocket/libstatssocket/android_x86_x86_64_shared_apex30/libstatssocket.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_StatsD-25.tar.zst -C $DOWNLOADS/aosp/packages/modules/StatsD "./service/service-statsd^android_common_apex30/out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/aligned/service-statsd.jar" "./service/service-statsd^android_common_apex30/out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/combined/service-statsd.jar" "./service/service-statsd^android_common_apex30/out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/turbine-combined/service-statsd.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_StatsD-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/StatsD "./statsd/statsd^android_x86_64_com.android.os.statsd/out/soong/.intermediates/packages/modules/StatsD/statsd/statsd/android_x86_64_com.android.os.statsd/statsd"
+rm -rf packages_modules_StatsD*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_Virtualization.tar.zst $DOWNLOADS/packages_modules_Virtualization-01.tar.zst
@@ -4601,6 +4857,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_Virtualization-07.tar.zst -C $DOWNLOA
 tar --zstd -xf $DOWNLOADS/packages_modules_Virtualization-09.tar.zst -C $DOWNLOADS/aosp/packages/modules/Virtualization "./virtmanager/virtmanager^android_x86_64_apex10000/out/soong/.intermediates/packages/modules/Virtualization/virtmanager/virtmanager/android_x86_64_apex10000/stripped/virtmanager"
 tar --zstd -xf $DOWNLOADS/packages_modules_Virtualization-09.tar.zst -C $DOWNLOADS/aosp/packages/modules/Virtualization "./virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000/out/soong/.intermediates/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust/android_x86_64_dylib_apex10000/stripped/libandroid_system_virtmanager.dylib.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_Virtualization-10.tar.zst -C $DOWNLOADS/aosp/packages/modules/Virtualization "./vm/vm^android_x86_64_apex10000/out/soong/.intermediates/packages/modules/Virtualization/vm/vm/android_x86_64_apex10000/stripped/vm"
+rm -rf packages_modules_Virtualization*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_Wifi.tar.zst $DOWNLOADS/packages_modules_Wifi-01.tar.zst
@@ -4620,6 +4877,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_Wifi-21.tar.zst -C $DOWNLOADS/aosp/pa
 tar --zstd -xf $DOWNLOADS/packages_modules_Wifi-26.tar.zst -C $DOWNLOADS/aosp/packages/modules/Wifi "./service/service-wifi^android_common_apex30/out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/aligned/service-wifi.jar" "./service/service-wifi^android_common_apex30/out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/jarjar/service-wifi.jar" "./service/service-wifi^android_common_apex30/out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/turbine-jarjar/service-wifi.jar"
 tar --zstd -xf $DOWNLOADS/packages_modules_Wifi-01.tar.zst -C $DOWNLOADS/aosp/packages/modules/Wifi "./service/wifi.rc^android_x86_64/out/soong/.intermediates/packages/modules/Wifi/service/wifi.rc/android_x86_64/wifi.rc"
 tar --zstd -xf $DOWNLOADS/packages_modules_Wifi-23.tar.zst -C $DOWNLOADS/aosp/packages/modules/Wifi "./service/ServiceWifiResources/ServiceWifiResources^android_common_apex30/out/soong/.intermediates/packages/modules/Wifi/service/ServiceWifiResources/ServiceWifiResources/android_common_apex30/ServiceWifiResources.apk"
+rm -rf packages_modules_Wifi*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_modules_adb.tar.zst $DOWNLOADS/packages_modules_adb-01.tar.zst
@@ -4650,6 +4908,7 @@ tar --zstd -xf $DOWNLOADS/packages_modules_adb-05.tar.zst -C $DOWNLOADS/aosp/pac
 tar --zstd -xf $DOWNLOADS/packages_modules_adb-05.tar.zst -C $DOWNLOADS/aosp/packages/modules/adb "./pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_apex10000/out/soong/.intermediates/packages/modules/adb/pairing_connection/libadb_pairing_connection/android_x86_x86_64_shared_apex10000/libadb_pairing_connection.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_adb-07.tar.zst -C $DOWNLOADS/aosp/packages/modules/adb "./proto/libadb_protos^android_recovery_x86_64_shared/out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_recovery_x86_64_shared/libadb_protos.so"
 tar --zstd -xf $DOWNLOADS/packages_modules_adb-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/adb "./proto/libadb_protos^android_x86_64_shared_apex10000/out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_64_shared_apex10000/libadb_protos.so"
+rm -rf packages_modules_adb*.tar.zst
 
 
 download_with_retries android12-gsi_04 packages_modules_common.tar.zst $DOWNLOADS/packages_modules_common-04.tar.zst
@@ -4657,6 +4916,7 @@ download_with_retries android12-gsi_05 packages_modules_common.tar.zst $DOWNLOAD
 download_with_retries android12-gsi_08 packages_modules_common.tar.zst $DOWNLOADS/packages_modules_common-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/modules/common
 tar --zstd -xf $DOWNLOADS/packages_modules_common-05.tar.zst -C $DOWNLOADS/aosp/packages/modules/common "./tools/current_sdkinfo^android_x86_64/out/soong/.intermediates/packages/modules/common/tools/current_sdkinfo/android_x86_64/sdkinfo.pb"
+rm -rf packages_modules_common*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_modules_vndk.tar.zst $DOWNLOADS/packages_modules_vndk-06.tar.zst
@@ -4666,38 +4926,45 @@ tar --zstd -xf $DOWNLOADS/packages_modules_vndk-12.tar.zst -C $DOWNLOADS/aosp/pa
 tar --zstd -xf $DOWNLOADS/packages_modules_vndk-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/vndk "./apex/com.android.vndk.v30^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v30/android_common_image/apex_manifest.pb" "./apex/com.android.vndk.v30^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v30/android_common_image/apex_pubkey" "./apex/com.android.vndk.v30^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v30/android_common_image/com.android.vndk.v30.apex"
 tar --zstd -xf $DOWNLOADS/packages_modules_vndk-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/vndk "./apex/com.android.vndk.v29^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v29/android_common_image/apex_manifest.pb" "./apex/com.android.vndk.v29^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v29/android_common_image/apex_pubkey" "./apex/com.android.vndk.v29^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v29/android_common_image/com.android.vndk.v29.apex"
 tar --zstd -xf $DOWNLOADS/packages_modules_vndk-06.tar.zst -C $DOWNLOADS/aosp/packages/modules/vndk "./apex/com.android.vndk.v28^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v28/android_common_image/apex_manifest.pb" "./apex/com.android.vndk.v28^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v28/android_common_image/apex_pubkey" "./apex/com.android.vndk.v28^android_common_image/out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.v28/android_common_image/com.android.vndk.v28.apex"
+rm -rf packages_modules_vndk*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_BlockedNumberProvider.tar.zst $DOWNLOADS/packages_providers_BlockedNumberProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/BlockedNumberProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_BlockedNumberProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/BlockedNumberProvider "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/BlockedNumberProvider.apk" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/combined/BlockedNumberProvider.jar" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/dexpreopt/dexpreopt.config" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/package-res.apk" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/proguard_dictionary" "./BlockedNumberProvider^android_common/out/soong/.intermediates/packages/providers/BlockedNumberProvider/BlockedNumberProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_BlockedNumberProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_BookmarkProvider.tar.zst $DOWNLOADS/packages_providers_BookmarkProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/BookmarkProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_BookmarkProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/BookmarkProvider "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/BookmarkProvider.apk" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/dexpreopt/dexpreopt.config" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/javac/BookmarkProvider.jar" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/package-res.apk" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/proguard_dictionary" "./BookmarkProvider^android_common/out/soong/.intermediates/packages/providers/BookmarkProvider/BookmarkProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_BookmarkProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_CalendarProvider.tar.zst $DOWNLOADS/packages_providers_CalendarProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/CalendarProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_CalendarProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/CalendarProvider "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/CalendarProvider.apk" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/combined/CalendarProvider.jar" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/dexpreopt/dexpreopt.config" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/package-res.apk" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/proguard_dictionary" "./CalendarProvider^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/CalendarProvider/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_providers_CalendarProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/CalendarProvider "./calendar-provider-compat-config^android_common/out/soong/.intermediates/packages/providers/CalendarProvider/calendar-provider-compat-config/android_common/calendar-provider-compat-config.xml"
+rm -rf packages_providers_CalendarProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_CallLogProvider.tar.zst $DOWNLOADS/packages_providers_CallLogProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/CallLogProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_CallLogProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/CallLogProvider "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/CallLogBackup.apk" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/dexpreopt.config" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/oat/x86_64/package.odex" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/oat/x86_64/package.vdex" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/javac/CallLogBackup.jar" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/package-res.apk" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/proguard_dictionary" "./CallLogBackup^android_common/out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/proguard_usage.zip"
+rm -rf packages_providers_CallLogProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_ContactsProvider.tar.zst $DOWNLOADS/packages_providers_ContactsProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/ContactsProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_ContactsProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/ContactsProvider "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/ContactsProvider.apk" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/combined/ContactsProvider.jar" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/dexpreopt/dexpreopt.config" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/package-res.apk" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/proguard_dictionary" "./ContactsProvider^android_common/out/soong/.intermediates/packages/providers/ContactsProvider/ContactsProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_ContactsProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_DownloadProvider.tar.zst $DOWNLOADS/packages_providers_DownloadProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/DownloadProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_DownloadProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/DownloadProvider "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/DownloadProvider.apk" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/combined/DownloadProvider.jar" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/dexpreopt/dexpreopt.config" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/package-res.apk" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/proguard_dictionary" "./DownloadProvider^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/DownloadProvider/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_providers_DownloadProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/DownloadProvider "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/DownloadProviderUi.apk" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/dexpreopt/dexpreopt.config" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/dexpreopt/oat/x86_64/package.odex" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/dexpreopt/oat/x86_64/package.vdex" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/javac/DownloadProviderUi.jar" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/package-res.apk" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/proguard_dictionary" "./ui/DownloadProviderUi^android_common/out/soong/.intermediates/packages/providers/DownloadProvider/ui/DownloadProviderUi/android_common/proguard_usage.zip"
+rm -rf packages_providers_DownloadProvider*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_providers_MediaProvider.tar.zst $DOWNLOADS/packages_providers_MediaProvider-01.tar.zst
@@ -4716,37 +4983,44 @@ tar --zstd -xf $DOWNLOADS/packages_providers_MediaProvider-20.tar.zst -C $DOWNLO
 tar --zstd -xf $DOWNLOADS/packages_providers_MediaProvider-20.tar.zst -C $DOWNLOADS/aosp/packages/providers/MediaProvider "./apex/framework/framework-mediaprovider^android_common_apex30/out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/javac/framework-mediaprovider.jar" "./apex/framework/framework-mediaprovider^android_common_apex30/out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/turbine-combined/framework-mediaprovider.jar"
 tar --zstd -xf $DOWNLOADS/packages_providers_MediaProvider-07.tar.zst -C $DOWNLOADS/aosp/packages/providers/MediaProvider "./jni/libfuse_jni^android_x86_64_sdk_shared_apex30/out/soong/.intermediates/packages/providers/MediaProvider/jni/libfuse_jni/android_x86_64_sdk_shared_apex30/unstripped/libfuse_jni.so"
 tar --zstd -xf $DOWNLOADS/packages_providers_MediaProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/MediaProvider "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/MediaProviderLegacy.apk" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/combined/MediaProviderLegacy.jar" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/dexpreopt/dexpreopt.config" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/dexpreopt/oat/x86_64/package.odex" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/dexpreopt/oat/x86_64/package.vdex" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/package-res.apk" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/proguard_dictionary" "./legacy/MediaProviderLegacy^android_common/out/soong/.intermediates/packages/providers/MediaProvider/legacy/MediaProviderLegacy/android_common/proguard_usage.zip"
+rm -rf packages_providers_MediaProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_PartnerBookmarksProvider.tar.zst $DOWNLOADS/packages_providers_PartnerBookmarksProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/PartnerBookmarksProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_PartnerBookmarksProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/PartnerBookmarksProvider "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/PartnerBookmarksProvider.apk" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/combined/PartnerBookmarksProvider.jar" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/dexpreopt.config" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/package-res.apk" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/proguard_dictionary" "./PartnerBookmarksProvider^android_common/out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_PartnerBookmarksProvider*.tar.zst
 
 
 download_with_retries android12-gsi_13 packages_providers_TelephonyProvider.tar.zst $DOWNLOADS/packages_providers_TelephonyProvider-13.tar.zst
 download_with_retries android12-gsi_32 packages_providers_TelephonyProvider.tar.zst $DOWNLOADS/packages_providers_TelephonyProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/TelephonyProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_TelephonyProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/TelephonyProvider "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/TelephonyProvider.apk" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/combined/TelephonyProvider.jar" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/dexpreopt/dexpreopt.config" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/package-res.apk" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/proguard_dictionary" "./TelephonyProvider^android_common/out/soong/.intermediates/packages/providers/TelephonyProvider/TelephonyProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_TelephonyProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_providers_UserDictionaryProvider.tar.zst $DOWNLOADS/packages_providers_UserDictionaryProvider-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/providers/UserDictionaryProvider
 tar --zstd -xf $DOWNLOADS/packages_providers_UserDictionaryProvider-32.tar.zst -C $DOWNLOADS/aosp/packages/providers/UserDictionaryProvider "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/UserDictionaryProvider.apk" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/dexpreopt/dexpreopt.config" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/dexpreopt/oat/x86_64/package.odex" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/dexpreopt/oat/x86_64/package.vdex" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/javac/UserDictionaryProvider.jar" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/package-res.apk" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/proguard_dictionary" "./UserDictionaryProvider^android_common/out/soong/.intermediates/packages/providers/UserDictionaryProvider/UserDictionaryProvider/android_common/proguard_usage.zip"
+rm -rf packages_providers_UserDictionaryProvider*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_screensavers_Basic.tar.zst $DOWNLOADS/packages_screensavers_Basic-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/screensavers/Basic
 tar --zstd -xf $DOWNLOADS/packages_screensavers_Basic-32.tar.zst -C $DOWNLOADS/aosp/packages/screensavers/Basic "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/BasicDreams.apk" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/dexpreopt/dexpreopt.config" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/dexpreopt/oat/x86_64/package.odex" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/dexpreopt/oat/x86_64/package.vdex" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/javac/BasicDreams.jar" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/package-res.apk" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/proguard_dictionary" "./BasicDreams^android_common/out/soong/.intermediates/packages/screensavers/Basic/BasicDreams/android_common/proguard_usage.zip"
+rm -rf packages_screensavers_Basic*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_screensavers_PhotoTable.tar.zst $DOWNLOADS/packages_screensavers_PhotoTable-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/screensavers/PhotoTable
 tar --zstd -xf $DOWNLOADS/packages_screensavers_PhotoTable-32.tar.zst -C $DOWNLOADS/aosp/packages/screensavers/PhotoTable "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/PhotoTable.apk" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/dexpreopt/dexpreopt.config" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/dexpreopt/oat/x86_64/package.odex" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/dexpreopt/oat/x86_64/package.vdex" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/javac/PhotoTable.jar" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/package-res.apk" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/proguard_dictionary" "./PhotoTable^android_common/out/soong/.intermediates/packages/screensavers/PhotoTable/PhotoTable/android_common/proguard_usage.zip"
+rm -rf packages_screensavers_PhotoTable*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_services_AlternativeNetworkAccess.tar.zst $DOWNLOADS/packages_services_AlternativeNetworkAccess-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/services/AlternativeNetworkAccess
 tar --zstd -xf $DOWNLOADS/packages_services_AlternativeNetworkAccess-32.tar.zst -C $DOWNLOADS/aosp/packages/services/AlternativeNetworkAccess "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/ONS.apk" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/dexpreopt.config" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/oat/x86_64/package.odex" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/oat/x86_64/package.vdex" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/javac/ONS.jar" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/package-res.apk" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/proguard_dictionary" "./ONS^android_common/out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/proguard_usage.zip"
+rm -rf packages_services_AlternativeNetworkAccess*.tar.zst
 
 
 download_with_retries android12-gsi_07 packages_services_BuiltInPrintService.tar.zst $DOWNLOADS/packages_services_BuiltInPrintService-07.tar.zst
@@ -4754,28 +5028,33 @@ download_with_retries android12-gsi_32 packages_services_BuiltInPrintService.tar
 mkdir -p $DOWNLOADS/aosp/packages/services/BuiltInPrintService
 tar --zstd -xf $DOWNLOADS/packages_services_BuiltInPrintService-32.tar.zst -C $DOWNLOADS/aosp/packages/services/BuiltInPrintService "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/BuiltInPrintService.apk" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/dexpreopt/dexpreopt.config" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/dexpreopt/oat/x86_64/package.odex" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/dexpreopt/oat/x86_64/package.vdex" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/javac/BuiltInPrintService.jar" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/package-res.apk" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/proguard_dictionary" "./BuiltInPrintService^android_common/out/soong/.intermediates/packages/services/BuiltInPrintService/BuiltInPrintService/android_common/proguard_usage.zip"
 tar --zstd -xf $DOWNLOADS/packages_services_BuiltInPrintService-07.tar.zst -C $DOWNLOADS/aosp/packages/services/BuiltInPrintService "./jni/libwfds^android_x86_64_shared/out/soong/.intermediates/packages/services/BuiltInPrintService/jni/libwfds/android_x86_64_shared/libwfds.so"
+rm -rf packages_services_BuiltInPrintService*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_services_Mms.tar.zst $DOWNLOADS/packages_services_Mms-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/services/Mms
 tar --zstd -xf $DOWNLOADS/packages_services_Mms-32.tar.zst -C $DOWNLOADS/aosp/packages/services/Mms "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/MmsService.apk" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/dexpreopt.config" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/oat/x86_64/package.odex" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/oat/x86_64/package.vdex" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/javac/MmsService.jar" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/package-res.apk" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/proguard_dictionary" "./MmsService^android_common/out/soong/.intermediates/packages/services/Mms/MmsService/android_common/proguard_usage.zip"
+rm -rf packages_services_Mms*.tar.zst
 
 
 download_with_retries android12-gsi_32 packages_services_Mtp.tar.zst $DOWNLOADS/packages_services_Mtp-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/services/Mtp
 tar --zstd -xf $DOWNLOADS/packages_services_Mtp-32.tar.zst -C $DOWNLOADS/aosp/packages/services/Mtp "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/MtpService.apk" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/combined/MtpService.jar" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/dexpreopt.config" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/oat/x86_64/package.odex" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/oat/x86_64/package.vdex" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/package-res.apk" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/proguard_dictionary" "./MtpService^android_common/out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/proguard_usage.zip"
+rm -rf packages_services_Mtp*.tar.zst
 
 
 download_with_retries android12-gsi_06 packages_services_Telecomm.tar.zst $DOWNLOADS/packages_services_Telecomm-06.tar.zst
 download_with_retries android12-gsi_32 packages_services_Telecomm.tar.zst $DOWNLOADS/packages_services_Telecomm-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/services/Telecomm
 tar --zstd -xf $DOWNLOADS/packages_services_Telecomm-32.tar.zst -C $DOWNLOADS/aosp/packages/services/Telecomm "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/Telecom.apk" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/combined/Telecom.jar" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/dexpreopt/dexpreopt.config" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/dexpreopt/oat/x86_64/package.odex" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/dexpreopt/oat/x86_64/package.vdex" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/package-res.apk" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/proguard_dictionary" "./Telecom^android_common/out/soong/.intermediates/packages/services/Telecomm/Telecom/android_common/proguard_usage.zip"
+rm -rf packages_services_Telecomm*.tar.zst
 
 
 download_with_retries android12-gsi_23 packages_services_Telephony.tar.zst $DOWNLOADS/packages_services_Telephony-23.tar.zst
 download_with_retries android12-gsi_32 packages_services_Telephony.tar.zst $DOWNLOADS/packages_services_Telephony-32.tar.zst
 mkdir -p $DOWNLOADS/aosp/packages/services/Telephony
 tar --zstd -xf $DOWNLOADS/packages_services_Telephony-32.tar.zst -C $DOWNLOADS/aosp/packages/services/Telephony "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/TeleService.apk" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/dexpreopt/dexpreopt.config" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/dexpreopt/oat/x86_64/package.odex" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/dexpreopt/oat/x86_64/package.vdex" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/jarjar/TeleService.jar" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/package-res.apk" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/proguard_dictionary" "./TeleService^android_common/out/soong/.intermediates/packages/services/Telephony/TeleService/android_common/proguard_usage.zip"
+rm -rf packages_services_Telephony*.tar.zst
 
 
 download_with_retries android12-gsi_01 packages_wallpapers_LivePicker.tar.zst $DOWNLOADS/packages_wallpapers_LivePicker-01.tar.zst
@@ -4783,6 +5062,7 @@ download_with_retries android12-gsi_32 packages_wallpapers_LivePicker.tar.zst $D
 mkdir -p $DOWNLOADS/aosp/packages/wallpapers/LivePicker
 tar --zstd -xf $DOWNLOADS/packages_wallpapers_LivePicker-01.tar.zst -C $DOWNLOADS/aosp/packages/wallpapers/LivePicker "./android.software.live_wallpaper.xml^android_x86_64/out/soong/.intermediates/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml/android_x86_64/android.software.live_wallpaper.xml"
 tar --zstd -xf $DOWNLOADS/packages_wallpapers_LivePicker-32.tar.zst -C $DOWNLOADS/aosp/packages/wallpapers/LivePicker "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/LiveWallpapersPicker.apk" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/combined/LiveWallpapersPicker.jar" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/dexpreopt/dexpreopt.config" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/dexpreopt/oat/x86_64/package.odex" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/dexpreopt/oat/x86_64/package.vdex" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/package-res.apk" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/proguard_dictionary" "./LiveWallpapersPicker^android_common/out/soong/.intermediates/packages/wallpapers/LivePicker/LiveWallpapersPicker/android_common/proguard_usage.zip"
+rm -rf packages_wallpapers_LivePicker*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_build-tools.tar.zst $DOWNLOADS/prebuilts_build-tools-01.tar.zst
@@ -4790,6 +5070,7 @@ mkdir -p $DOWNLOADS/aosp/prebuilts/build-tools
 tar --zstd -xf $DOWNLOADS/prebuilts_build-tools-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/build-tools "./bison^linux_glibc_x86_64/out/soong/.intermediates/prebuilts/build-tools/bison/linux_glibc_x86_64/bison"
 tar --zstd -xf $DOWNLOADS/prebuilts_build-tools-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/build-tools "./flex^linux_glibc_x86_64/out/soong/.intermediates/prebuilts/build-tools/flex/linux_glibc_x86_64/flex"
 tar --zstd -xf $DOWNLOADS/prebuilts_build-tools-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/build-tools "./m4^linux_glibc_x86_64/out/soong/.intermediates/prebuilts/build-tools/m4/linux_glibc_x86_64/m4"
+rm -rf prebuilts_build-tools*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_clang_host_linux-x86.tar.zst $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst
@@ -4803,12 +5084,14 @@ tar --zstd -xf $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst -C $DOWNLOAD
 tar --zstd -xf $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/clang/host/linux-x86 "./libclang_rt.scudo-x86_64-android^android_vendor.31_x86_64_shared/out/soong/.intermediates/prebuilts/clang/host/linux-x86/libclang_rt.scudo-x86_64-android/android_vendor.31_x86_64_shared/libclang_rt.scudo-x86_64-android.so"
 tar --zstd -xf $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/clang/host/linux-x86 "./libclang_rt.scudo_minimal-i686-android^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/prebuilts/clang/host/linux-x86/libclang_rt.scudo_minimal-i686-android/android_vendor.31_x86_x86_64_shared/libclang_rt.scudo_minimal-i686-android.so"
 tar --zstd -xf $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/clang/host/linux-x86 "./libclang_rt.scudo_minimal-x86_64-android^android_vendor.31_x86_64_shared/out/soong/.intermediates/prebuilts/clang/host/linux-x86/libclang_rt.scudo_minimal-x86_64-android/android_vendor.31_x86_64_shared/libclang_rt.scudo_minimal-x86_64-android.so"
+rm -rf prebuilts_clang_host_linux-x86*.tar.zst
 
 
 download_with_retries android12-gsi_03 prebuilts_manifest-merger.tar.zst $DOWNLOADS/prebuilts_manifest-merger-03.tar.zst
 download_with_retries android12-gsi_04 prebuilts_manifest-merger.tar.zst $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/prebuilts/manifest-merger
 tar --zstd -xf $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst -C $DOWNLOADS/aosp/prebuilts/manifest-merger "./manifest-merger^linux_glibc_x86_64/out/soong/host/linux-x86/bin/manifest-merger"
+rm -rf prebuilts_manifest-merger*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_misc.tar.zst $DOWNLOADS/prebuilts_misc-01.tar.zst
@@ -4816,6 +5099,7 @@ download_with_retries android12-gsi_03 prebuilts_misc.tar.zst $DOWNLOADS/prebuil
 mkdir -p $DOWNLOADS/aosp/prebuilts/misc
 tar --zstd -xf $DOWNLOADS/prebuilts_misc-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/misc "./gdbserver/gdbserver^android_x86_64/out/soong/.intermediates/prebuilts/misc/gdbserver/gdbserver/android_x86_64/gdbserver64"
 tar --zstd -xf $DOWNLOADS/prebuilts_misc-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/misc "./gdbserver/gdbserver^android_x86_x86_64/out/soong/.intermediates/prebuilts/misc/gdbserver/gdbserver/android_x86_x86_64/gdbserver"
+rm -rf prebuilts_misc*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_ndk.tar.zst $DOWNLOADS/prebuilts_ndk-01.tar.zst
@@ -4823,12 +5107,14 @@ download_with_retries android12-gsi_04 prebuilts_ndk.tar.zst $DOWNLOADS/prebuilt
 mkdir -p $DOWNLOADS/aosp/prebuilts/ndk
 tar --zstd -xf $DOWNLOADS/prebuilts_ndk-04.tar.zst -C $DOWNLOADS/aosp/prebuilts/ndk "./cpufeatures^android_vendor.31_x86_64_static/out/soong/.intermediates/prebuilts/ndk/cpufeatures/android_vendor.31_x86_64_static/cpufeatures.a"
 tar --zstd -xf $DOWNLOADS/prebuilts_ndk-04.tar.zst -C $DOWNLOADS/aosp/prebuilts/ndk "./cpufeatures^android_vendor.31_x86_x86_64_static/out/soong/.intermediates/prebuilts/ndk/cpufeatures/android_vendor.31_x86_x86_64_static/cpufeatures.a"
+rm -rf prebuilts_ndk*.tar.zst
 
 
 download_with_retries android12-gsi_03 prebuilts_r8.tar.zst $DOWNLOADS/prebuilts_r8-03.tar.zst
 mkdir -p $DOWNLOADS/aosp/prebuilts/r8
 tar --zstd -xf $DOWNLOADS/prebuilts_r8-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/r8 "./d8^linux_glibc_x86_64/out/soong/host/linux-x86/bin/d8"
 tar --zstd -xf $DOWNLOADS/prebuilts_r8-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/r8 "./r8-compat-proguard^linux_glibc_x86_64/out/soong/host/linux-x86/bin/r8-compat-proguard"
+rm -rf prebuilts_r8*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_rust.tar.zst $DOWNLOADS/prebuilts_rust-01.tar.zst
@@ -4838,6 +5124,7 @@ tar --zstd -xf $DOWNLOADS/prebuilts_rust-06.tar.zst -C $DOWNLOADS/aosp/prebuilts
 tar --zstd -xf $DOWNLOADS/prebuilts_rust-06.tar.zst -C $DOWNLOADS/aosp/prebuilts/rust "./libterm^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libterm/android_x86_64_dylib/libterm.dylib.so" "./libterm^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libterm/android_x86_64_dylib/stripped/libterm.dylib.so"
 tar --zstd -xf $DOWNLOADS/prebuilts_rust-06.tar.zst -C $DOWNLOADS/aosp/prebuilts/rust "./libgetopts^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libgetopts/android_x86_64_dylib/libgetopts.dylib.so" "./libgetopts^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libgetopts/android_x86_64_dylib/stripped/libgetopts.dylib.so"
 tar --zstd -xf $DOWNLOADS/prebuilts_rust-06.tar.zst -C $DOWNLOADS/aosp/prebuilts/rust "./libtest^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libtest/android_x86_64_dylib/libtest.dylib.so" "./libtest^android_x86_64_dylib/out/soong/.intermediates/prebuilts/rust/libtest/android_x86_64_dylib/stripped/libtest.dylib.so"
+rm -rf prebuilts_rust*.tar.zst
 
 
 download_with_retries android12-gsi_03 prebuilts_sdk.tar.zst $DOWNLOADS/prebuilts_sdk-03.tar.zst
@@ -4940,12 +5227,14 @@ tar --zstd -xf $DOWNLOADS/prebuilts_sdk-23.tar.zst -C $DOWNLOADS/aosp/prebuilts/
 tar --zstd -xf $DOWNLOADS/prebuilts_sdk-07.tar.zst -C $DOWNLOADS/aosp/prebuilts/sdk "./current/support/android-versionedparcelable-nodeps^android_common/out/soong/.intermediates/prebuilts/sdk/current/support/android-versionedparcelable-nodeps/android_common/aar/proguard.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_sdk-23.tar.zst -C $DOWNLOADS/aosp/prebuilts/sdk "./current/support/android-support-viewpager-nodeps^android_common/out/soong/.intermediates/prebuilts/sdk/current/support/android-support-viewpager-nodeps/android_common/aar/proguard.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_sdk-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/sdk "./tools/prebuilt_libLLVM_android^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libLLVM_android.so"
+rm -rf prebuilts_sdk*.tar.zst
 
 
 download_with_retries android12-gsi_03 prebuilts_tools.tar.zst $DOWNLOADS/prebuilts_tools-03.tar.zst
 download_with_retries android12-gsi_04 prebuilts_tools.tar.zst $DOWNLOADS/prebuilts_tools-04.tar.zst
 mkdir -p $DOWNLOADS/aosp/prebuilts/tools
 tar --zstd -xf $DOWNLOADS/prebuilts_tools-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/tools "./common/m2/javapoet-prebuilt-jar^linux_glibc_common/out/soong/.intermediates/prebuilts/tools/common/m2/javapoet-prebuilt-jar/linux_glibc_common/combined/javapoet-prebuilt-jar.jar"
+rm -rf prebuilts_tools*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_vndk_v28.tar.zst $DOWNLOADS/prebuilts_vndk_v28-01.tar.zst
@@ -4955,6 +5244,7 @@ tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v28-01.tar.zst -C $DOWNLOADS/aosp/prebu
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v28-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v28 "./vndksp.libraries.28.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v28/vndksp.libraries.28.txt/android_x86_64/vndksp.libraries.28.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v28-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v28 "./vndkcore.libraries.28.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v28/vndkcore.libraries.28.txt/android_x86_64/vndkcore.libraries.28.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v28-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v28 "./vndkprivate.libraries.28.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v28/vndkprivate.libraries.28.txt/android_x86_64/vndkprivate.libraries.28.txt"
+rm -rf prebuilts_vndk_v28*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_vndk_v29.tar.zst $DOWNLOADS/prebuilts_vndk_v29-01.tar.zst
@@ -4964,6 +5254,7 @@ tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v29-01.tar.zst -C $DOWNLOADS/aosp/prebu
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v29-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v29 "./vndksp.libraries.29.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v29/vndksp.libraries.29.txt/android_x86_64/vndksp.libraries.29.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v29-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v29 "./vndkcore.libraries.29.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v29/vndkcore.libraries.29.txt/android_x86_64/vndkcore.libraries.29.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v29-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v29 "./vndkprivate.libraries.29.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v29/vndkprivate.libraries.29.txt/android_x86_64/vndkprivate.libraries.29.txt"
+rm -rf prebuilts_vndk_v29*.tar.zst
 
 
 download_with_retries android12-gsi_01 prebuilts_vndk_v30.tar.zst $DOWNLOADS/prebuilts_vndk_v30-01.tar.zst
@@ -4973,6 +5264,7 @@ tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v30-01.tar.zst -C $DOWNLOADS/aosp/prebu
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v30-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v30 "./vndksp.libraries.30.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v30/vndksp.libraries.30.txt/android_x86_64/vndksp.libraries.30.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v30-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v30 "./vndkcore.libraries.30.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v30/vndkcore.libraries.30.txt/android_x86_64/vndkcore.libraries.30.txt"
 tar --zstd -xf $DOWNLOADS/prebuilts_vndk_v30-01.tar.zst -C $DOWNLOADS/aosp/prebuilts/vndk/v30 "./vndkprivate.libraries.30.txt^android_x86_64/out/soong/.intermediates/prebuilts/vndk/v30/vndkprivate.libraries.30.txt/android_x86_64/vndkprivate.libraries.30.txt"
+rm -rf prebuilts_vndk_v30*.tar.zst
 
 
 download_with_retries android12-gsi_01 singletons.tar.zst $DOWNLOADS/singletons-01.tar.zst
@@ -4991,6 +5283,7 @@ tar --zstd -xf $DOWNLOADS/singletons-01.tar.zst -C $DOWNLOADS/aosp/singletons ".
 tar --zstd -xf $DOWNLOADS/singletons-01.tar.zst -C $DOWNLOADS/aosp/singletons "./vndkprivate_libraries_txt^/out/soong/.intermediates/packages/modules/vndk/vndkprivate.libraries.txt/vndkprivate.libraries.31.txt"
 tar --zstd -xf $DOWNLOADS/singletons-01.tar.zst -C $DOWNLOADS/aosp/singletons "./vndkproduct_libraries_txt^/out/soong/.intermediates/packages/modules/vndk/vndkproduct.libraries.txt/vndkproduct.libraries.31.txt"
 tar --zstd -xf $DOWNLOADS/singletons-01.tar.zst -C $DOWNLOADS/aosp/singletons "./vndksp_libraries_txt^/out/soong/.intermediates/packages/modules/vndk/vndksp.libraries.txt/vndksp.libraries.31.txt"
+rm -rf singletons*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_apex.tar.zst $DOWNLOADS/system_apex-01.tar.zst
@@ -5008,6 +5301,7 @@ tar --zstd -xf $DOWNLOADS/system_apex-09.tar.zst -C $DOWNLOADS/aosp/system/apex 
 tar --zstd -xf $DOWNLOADS/system_apex-06.tar.zst -C $DOWNLOADS/aosp/system/apex "./apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static/out/soong/.intermediates/system/apex/apexd/sysprop/libcom.android.sysprop.apex/android_x86_64_static/gen/sysprop/include/ApexProperties.sysprop.h" "./apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static/out/soong/.intermediates/system/apex/apexd/sysprop/libcom.android.sysprop.apex/android_x86_64_static/gen/sysprop/public/include/ApexProperties.sysprop.h" "./apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static/out/soong/.intermediates/system/apex/apexd/sysprop/libcom.android.sysprop.apex/android_x86_64_static/libcom.android.sysprop.apex.a"
 tar --zstd -xf $DOWNLOADS/system_apex-01.tar.zst -C $DOWNLOADS/aosp/system/apex "./shim/com.android.apex.cts.shim.v1_prebuilt^android_common_com.android.apex.cts.shim.v1_prebuilt/out/soong/.intermediates/system/apex/shim/com.android.apex.cts.shim.v1_prebuilt/android_common_com.android.apex.cts.shim.v1_prebuilt/com.android.apex.cts.shim.apex"
 tar --zstd -xf $DOWNLOADS/system_apex-05.tar.zst -C $DOWNLOADS/aosp/system/apex "./tools/deapexer^linux_glibc_x86_64_PY3/out/soong/host/linux-x86/bin/deapexer"
+rm -rf system_apex*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_bpf.tar.zst $DOWNLOADS/system_bpf-01.tar.zst
@@ -5016,11 +5310,13 @@ mkdir -p $DOWNLOADS/aosp/system/bpf
 tar --zstd -xf $DOWNLOADS/system_bpf-08.tar.zst -C $DOWNLOADS/aosp/system/bpf "./bpfloader/bpfloader^android_x86_64/out/soong/.intermediates/system/bpf/bpfloader/bpfloader/android_x86_64/bpfloader"
 tar --zstd -xf $DOWNLOADS/system_bpf-08.tar.zst -C $DOWNLOADS/aosp/system/bpf "./libbpf_android/libbpf_android^android_x86_64_shared/out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_shared/libbpf_android.so"
 tar --zstd -xf $DOWNLOADS/system_bpf-08.tar.zst -C $DOWNLOADS/aosp/system/bpf "./libbpf_android/libbpf_android^android_x86_x86_64_shared/out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_x86_64_shared/libbpf_android.so"
+rm -rf system_bpf*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_bpfprogs.tar.zst $DOWNLOADS/system_bpfprogs-01.tar.zst
 mkdir -p $DOWNLOADS/aosp/system/bpfprogs
 tar --zstd -xf $DOWNLOADS/system_bpfprogs-01.tar.zst -C $DOWNLOADS/aosp/system/bpfprogs "./time_in_state.o^android_common/out/soong/.intermediates/system/bpfprogs/time_in_state.o/android_common/obj/system/bpfprogs/time_in_state.o"
+rm -rf system_bpfprogs*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_bt.tar.zst $DOWNLOADS/system_bt-01.tar.zst
@@ -5045,6 +5341,7 @@ tar --zstd -xf $DOWNLOADS/system_bt-01.tar.zst -C $DOWNLOADS/aosp/system/bt "./c
 tar --zstd -xf $DOWNLOADS/system_bt-11.tar.zst -C $DOWNLOADS/aosp/system/bt "./main/libbluetooth^android_x86_64_shared/out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_64_shared/libbluetooth.so"
 tar --zstd -xf $DOWNLOADS/system_bt-11.tar.zst -C $DOWNLOADS/aosp/system/bt "./main/libbluetooth^android_x86_x86_64_shared/out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_x86_64_shared/libbluetooth.so"
 tar --zstd -xf $DOWNLOADS/system_bt-10.tar.zst -C $DOWNLOADS/aosp/system/bt "./vendor_libs/linux/interface/android.hardware.bluetooth@1.1-service.btlinux^android_vendor.31_x86_64/out/soong/.intermediates/system/bt/vendor_libs/linux/interface/android.hardware.bluetooth@1.1-service.btlinux/android_vendor.31_x86_64/android.hardware.bluetooth@1.1-service.btlinux"
+rm -rf system_bt*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_ca-certificates.tar.zst $DOWNLOADS/system_ca-certificates-01.tar.zst
@@ -5240,6 +5537,7 @@ tar --zstd -xf $DOWNLOADS/system_ca-certificates-01.tar.zst -C $DOWNLOADS/aosp/s
 tar --zstd -xf $DOWNLOADS/system_ca-certificates-01.tar.zst -C $DOWNLOADS/aosp/system/ca-certificates "./wfa_certs/target-cacert-wifi-21125ccd.0^android_x86_64/out/soong/.intermediates/system/ca-certificates/wfa_certs/target-cacert-wifi-21125ccd.0/android_x86_64/21125ccd.0"
 tar --zstd -xf $DOWNLOADS/system_ca-certificates-01.tar.zst -C $DOWNLOADS/aosp/system/ca-certificates "./wfa_certs/target-cacert-wifi-674b5f5b.0^android_x86_64/out/soong/.intermediates/system/ca-certificates/wfa_certs/target-cacert-wifi-674b5f5b.0/android_x86_64/674b5f5b.0"
 tar --zstd -xf $DOWNLOADS/system_ca-certificates-01.tar.zst -C $DOWNLOADS/aosp/system/ca-certificates "./wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64/out/soong/.intermediates/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0/android_x86_64/ea93cb5b.0"
+rm -rf system_ca-certificates*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_connectivity_wificond.tar.zst $DOWNLOADS/system_connectivity_wificond-01.tar.zst
@@ -5247,6 +5545,7 @@ download_with_retries android12-gsi_09 system_connectivity_wificond.tar.zst $DOW
 download_with_retries android12-gsi_11 system_connectivity_wificond.tar.zst $DOWNLOADS/system_connectivity_wificond-11.tar.zst
 mkdir -p $DOWNLOADS/aosp/system/connectivity/wificond
 tar --zstd -xf $DOWNLOADS/system_connectivity_wificond-11.tar.zst -C $DOWNLOADS/aosp/system/connectivity/wificond "./wificond^android_x86_64/out/soong/.intermediates/system/connectivity/wificond/wificond/android_x86_64/wificond"
+rm -rf system_connectivity_wificond*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_core.tar.zst $DOWNLOADS/system_core-01.tar.zst
@@ -5436,6 +5735,7 @@ tar --zstd -xf $DOWNLOADS/system_core-07.tar.zst -C $DOWNLOADS/aosp/system/core 
 tar --zstd -xf $DOWNLOADS/system_core-10.tar.zst -C $DOWNLOADS/aosp/system/core "./usbd/usbd^android_x86_64/out/soong/.intermediates/system/core/usbd/usbd/android_x86_64/usbd"
 tar --zstd -xf $DOWNLOADS/system_core-07.tar.zst -C $DOWNLOADS/aosp/system/core "./watchdogd/watchdogd^android_recovery_x86_64/out/soong/.intermediates/system/core/watchdogd/watchdogd/android_recovery_x86_64/watchdogd"
 tar --zstd -xf $DOWNLOADS/system_core-07.tar.zst -C $DOWNLOADS/aosp/system/core "./watchdogd/watchdogd^android_x86_64/out/soong/.intermediates/system/core/watchdogd/watchdogd/android_x86_64/watchdogd"
+rm -rf system_core*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_extras.tar.zst $DOWNLOADS/system_extras-01.tar.zst
@@ -5495,6 +5795,7 @@ tar --zstd -xf $DOWNLOADS/system_extras-04.tar.zst -C $DOWNLOADS/aosp/system/ext
 tar --zstd -xf $DOWNLOADS/system_extras-04.tar.zst -C $DOWNLOADS/aosp/system/extras "./verity/boot_signer^linux_glibc_x86_64/out/soong/host/linux-x86/bin/boot_signer"
 tar --zstd -xf $DOWNLOADS/system_extras-03.tar.zst -C $DOWNLOADS/aosp/system/extras "./verity/fec/fec^linux_glibc_x86/out/soong/host/linux-x86/bin/fec32"
 tar --zstd -xf $DOWNLOADS/system_extras-03.tar.zst -C $DOWNLOADS/aosp/system/extras "./verity/fec/fec^linux_glibc_x86_64/out/soong/host/linux-x86/bin/fec"
+rm -rf system_extras*.tar.zst
 
 
 download_with_retries android12-gsi_03 system_gatekeeper.tar.zst $DOWNLOADS/system_gatekeeper-03.tar.zst
@@ -5505,6 +5806,7 @@ tar --zstd -xf $DOWNLOADS/system_gatekeeper-06.tar.zst -C $DOWNLOADS/aosp/system
 tar --zstd -xf $DOWNLOADS/system_gatekeeper-06.tar.zst -C $DOWNLOADS/aosp/system/gatekeeper "./libgatekeeper^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/system/gatekeeper/libgatekeeper/android_vendor.31_x86_x86_64_shared/libgatekeeper.so"
 tar --zstd -xf $DOWNLOADS/system_gatekeeper-05.tar.zst -C $DOWNLOADS/aosp/system/gatekeeper "./libgatekeeper^android_x86_64_shared/out/soong/.intermediates/system/gatekeeper/libgatekeeper/android_x86_64_shared/libgatekeeper.so"
 tar --zstd -xf $DOWNLOADS/system_gatekeeper-05.tar.zst -C $DOWNLOADS/aosp/system/gatekeeper "./libgatekeeper^android_x86_x86_64_shared/out/soong/.intermediates/system/gatekeeper/libgatekeeper/android_x86_x86_64_shared/libgatekeeper.so"
+rm -rf system_gatekeeper*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_gsid.tar.zst $DOWNLOADS/system_gsid-01.tar.zst
@@ -5519,6 +5821,7 @@ tar --zstd -xf $DOWNLOADS/system_gsid-07.tar.zst -C $DOWNLOADS/aosp/system/gsid 
 tar --zstd -xf $DOWNLOADS/system_gsid-07.tar.zst -C $DOWNLOADS/aosp/system/gsid "./libgsi^android_x86_64_shared/out/soong/.intermediates/system/gsid/libgsi/android_x86_64_shared/libgsi.so"
 tar --zstd -xf $DOWNLOADS/system_gsid-01.tar.zst -C $DOWNLOADS/aosp/system/gsid "./libgsi^android_x86_64_static/out/soong/.intermediates/system/gsid/libgsi/android_x86_64_static/libgsi.a"
 tar --zstd -xf $DOWNLOADS/system_gsid-11.tar.zst -C $DOWNLOADS/aosp/system/gsid "./gsid^android_x86_64/out/soong/.intermediates/system/gsid/gsid/android_x86_64/gsid"
+rm -rf system_gsid*.tar.zst
 
 
 download_with_retries android12-gsi_04 system_hardware_interfaces.tar.zst $DOWNLOADS/system_hardware_interfaces-04.tar.zst
@@ -5550,12 +5853,14 @@ tar --zstd -xf $DOWNLOADS/system_hardware_interfaces-09.tar.zst -C $DOWNLOADS/ao
 tar --zstd -xf $DOWNLOADS/system_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/system/hardware/interfaces "./suspend/aidl/android.system.suspend.control.internal-cpp^android_x86_x86_64_shared/out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp/android_x86_x86_64_shared/android.system.suspend.control.internal-cpp.so"
 tar --zstd -xf $DOWNLOADS/system_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/system/hardware/interfaces "./wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_vendor.31_x86_64_shared/out/soong/.intermediates/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0/android_vendor.31_x86_64_shared/android.system.wifi.keystore@1.0.so"
 tar --zstd -xf $DOWNLOADS/system_hardware_interfaces-09.tar.zst -C $DOWNLOADS/aosp/system/hardware/interfaces "./wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_x86_64_shared/out/soong/.intermediates/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0/android_x86_64_shared/android.system.wifi.keystore@1.0.so"
+rm -rf system_hardware_interfaces*.tar.zst
 
 
 download_with_retries android12-gsi_05 system_hwservicemanager.tar.zst $DOWNLOADS/system_hwservicemanager-05.tar.zst
 download_with_retries android12-gsi_09 system_hwservicemanager.tar.zst $DOWNLOADS/system_hwservicemanager-09.tar.zst
 mkdir -p $DOWNLOADS/aosp/system/hwservicemanager
 tar --zstd -xf $DOWNLOADS/system_hwservicemanager-09.tar.zst -C $DOWNLOADS/aosp/system/hwservicemanager "./hwservicemanager^android_x86_64/out/soong/.intermediates/system/hwservicemanager/hwservicemanager/android_x86_64/hwservicemanager"
+rm -rf system_hwservicemanager*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_incremental_delivery.tar.zst $DOWNLOADS/system_incremental_delivery-01.tar.zst
@@ -5566,6 +5871,7 @@ tar --zstd -xf $DOWNLOADS/system_incremental_delivery-08.tar.zst -C $DOWNLOADS/a
 tar --zstd -xf $DOWNLOADS/system_incremental_delivery-08.tar.zst -C $DOWNLOADS/aosp/system/incremental_delivery "./incfs/libincfs^android_x86_x86_64_shared/out/soong/.intermediates/system/incremental_delivery/incfs/libincfs/android_x86_x86_64_shared/libincfs.so"
 tar --zstd -xf $DOWNLOADS/system_incremental_delivery-08.tar.zst -C $DOWNLOADS/aosp/system/incremental_delivery "./libdataloader/libdataloader^android_x86_64_shared/out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_shared/libdataloader.so"
 tar --zstd -xf $DOWNLOADS/system_incremental_delivery-08.tar.zst -C $DOWNLOADS/aosp/system/incremental_delivery "./libdataloader/libdataloader^android_x86_x86_64_shared/out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_x86_64_shared/libdataloader.so"
+rm -rf system_incremental_delivery*.tar.zst
 
 
 download_with_retries android12-gsi_09 system_iorap.tar.zst $DOWNLOADS/system_iorap-09.tar.zst
@@ -5575,6 +5881,7 @@ tar --zstd -xf $DOWNLOADS/system_iorap-09.tar.zst -C $DOWNLOADS/aosp/system/iora
 tar --zstd -xf $DOWNLOADS/system_iorap-09.tar.zst -C $DOWNLOADS/aosp/system/iorap "./iorap.cmd.compiler^android_x86_64/out/soong/.intermediates/system/iorap/iorap.cmd.compiler/android_x86_64/iorap.cmd.compiler"
 tar --zstd -xf $DOWNLOADS/system_iorap-09.tar.zst -C $DOWNLOADS/aosp/system/iorap "./iorap.prefetcherd^android_x86_64/out/soong/.intermediates/system/iorap/iorap.prefetcherd/android_x86_64/iorap.prefetcherd"
 tar --zstd -xf $DOWNLOADS/system_iorap-09.tar.zst -C $DOWNLOADS/aosp/system/iorap "./iorap.cmd.maintenance^android_x86_64/out/soong/.intermediates/system/iorap/iorap.cmd.maintenance/android_x86_64/iorap.cmd.maintenance"
+rm -rf system_iorap*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_keymaster.tar.zst $DOWNLOADS/system_keymaster-01.tar.zst
@@ -5600,12 +5907,14 @@ tar --zstd -xf $DOWNLOADS/system_keymaster-08.tar.zst -C $DOWNLOADS/aosp/system/
 tar --zstd -xf $DOWNLOADS/system_keymaster-08.tar.zst -C $DOWNLOADS/aosp/system/keymaster "./libcppcose_rkp^android_x86_64_shared/out/soong/.intermediates/system/keymaster/libcppcose_rkp/android_x86_64_shared/libcppcose_rkp.so"
 tar --zstd -xf $DOWNLOADS/system_keymaster-06.tar.zst -C $DOWNLOADS/aosp/system/keymaster "./libkeymaster_messages^android_vendor.31_x86_64_shared/out/soong/.intermediates/system/keymaster/libkeymaster_messages/android_vendor.31_x86_64_shared/libkeymaster_messages.so"
 tar --zstd -xf $DOWNLOADS/system_keymaster-05.tar.zst -C $DOWNLOADS/aosp/system/keymaster "./libkeymaster_messages^android_x86_64_shared/out/soong/.intermediates/system/keymaster/libkeymaster_messages/android_x86_64_shared/libkeymaster_messages.so"
+rm -rf system_keymaster*.tar.zst
 
 
 download_with_retries android12-gsi_08 system_libartpalette.tar.zst $DOWNLOADS/system_libartpalette-08.tar.zst
 mkdir -p $DOWNLOADS/aosp/system/libartpalette
 tar --zstd -xf $DOWNLOADS/system_libartpalette-08.tar.zst -C $DOWNLOADS/aosp/system/libartpalette "./libartpalette-system^android_x86_64_shared/out/soong/.intermediates/system/libartpalette/libartpalette-system/android_x86_64_shared/libartpalette-system.so"
 tar --zstd -xf $DOWNLOADS/system_libartpalette-08.tar.zst -C $DOWNLOADS/aosp/system/libartpalette "./libartpalette-system^android_x86_x86_64_shared/out/soong/.intermediates/system/libartpalette/libartpalette-system/android_x86_x86_64_shared/libartpalette-system.so"
+rm -rf system_libartpalette*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libbase.tar.zst $DOWNLOADS/system_libbase-01.tar.zst
@@ -5630,6 +5939,7 @@ tar --zstd -xf $DOWNLOADS/system_libbase-05.tar.zst -C $DOWNLOADS/aosp/system/li
 tar --zstd -xf $DOWNLOADS/system_libbase-05.tar.zst -C $DOWNLOADS/aosp/system/libbase "./libbase^android_x86_x86_64_shared_apex29/out/soong/.intermediates/system/libbase/libbase/android_x86_x86_64_shared_apex29/libbase.so"
 tar --zstd -xf $DOWNLOADS/system_libbase-05.tar.zst -C $DOWNLOADS/aosp/system/libbase "./libbase^android_x86_x86_64_shared_apex31/out/soong/.intermediates/system/libbase/libbase/android_x86_x86_64_shared_apex31/libbase.so"
 tar --zstd -xf $DOWNLOADS/system_libbase-04.tar.zst -C $DOWNLOADS/aosp/system/libbase "./libbase^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libbase.so"
+rm -rf system_libbase*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libfmq.tar.zst $DOWNLOADS/system_libfmq-01.tar.zst
@@ -5642,6 +5952,7 @@ tar --zstd -xf $DOWNLOADS/system_libfmq-08.tar.zst -C $DOWNLOADS/aosp/system/lib
 tar --zstd -xf $DOWNLOADS/system_libfmq-08.tar.zst -C $DOWNLOADS/aosp/system/libfmq "./libfmq^android_x86_64_shared/out/soong/.intermediates/system/libfmq/libfmq/android_x86_64_shared/libfmq.so"
 tar --zstd -xf $DOWNLOADS/system_libfmq-07.tar.zst -C $DOWNLOADS/aosp/system/libfmq "./libfmq^android_x86_64_shared_apex29/out/soong/.intermediates/system/libfmq/libfmq/android_x86_64_shared_apex29/libfmq.so"
 tar --zstd -xf $DOWNLOADS/system_libfmq-08.tar.zst -C $DOWNLOADS/aosp/system/libfmq "./libfmq^android_x86_x86_64_shared/out/soong/.intermediates/system/libfmq/libfmq/android_x86_x86_64_shared/libfmq.so"
+rm -rf system_libfmq*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libhidl.tar.zst $DOWNLOADS/system_libhidl-01.tar.zst
@@ -5712,6 +6023,7 @@ tar --zstd -xf $DOWNLOADS/system_libhidl-08.tar.zst -C $DOWNLOADS/aosp/system/li
 tar --zstd -xf $DOWNLOADS/system_libhidl-08.tar.zst -C $DOWNLOADS/aosp/system/libhidl "./transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_shared/out/soong/.intermediates/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils/android_x86_64_shared/android.hidl.token@1.0-utils.so"
 tar --zstd -xf $DOWNLOADS/system_libhidl-07.tar.zst -C $DOWNLOADS/aosp/system/libhidl "./transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_shared_apex29/out/soong/.intermediates/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils/android_x86_64_shared_apex29/android.hidl.token@1.0-utils.so"
 tar --zstd -xf $DOWNLOADS/system_libhidl-08.tar.zst -C $DOWNLOADS/aosp/system/libhidl "./transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_x86_64_shared/out/soong/.intermediates/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils/android_x86_x86_64_shared/android.hidl.token@1.0-utils.so"
+rm -rf system_libhidl*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libhwbinder.tar.zst $DOWNLOADS/system_libhwbinder-01.tar.zst
@@ -5720,6 +6032,7 @@ download_with_retries android12-gsi_05 system_libhwbinder.tar.zst $DOWNLOADS/sys
 mkdir -p $DOWNLOADS/aosp/system/libhwbinder
 tar --zstd -xf $DOWNLOADS/system_libhwbinder-05.tar.zst -C $DOWNLOADS/aosp/system/libhwbinder "./libhwbinder^android_x86_64_shared/out/soong/.intermediates/system/libhwbinder/libhwbinder/android_x86_64_shared/libhwbinder.so"
 tar --zstd -xf $DOWNLOADS/system_libhwbinder-05.tar.zst -C $DOWNLOADS/aosp/system/libhwbinder "./libhwbinder^android_x86_x86_64_shared/out/soong/.intermediates/system/libhwbinder/libhwbinder/android_x86_x86_64_shared/libhwbinder.so"
+rm -rf system_libhwbinder*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libprocinfo.tar.zst $DOWNLOADS/system_libprocinfo-01.tar.zst
@@ -5732,6 +6045,7 @@ tar --zstd -xf $DOWNLOADS/system_libprocinfo-07.tar.zst -C $DOWNLOADS/aosp/syste
 tar --zstd -xf $DOWNLOADS/system_libprocinfo-07.tar.zst -C $DOWNLOADS/aosp/system/libprocinfo "./libprocinfo^android_x86_64_shared/out/soong/.intermediates/system/libprocinfo/libprocinfo/android_x86_64_shared/libprocinfo.so"
 tar --zstd -xf $DOWNLOADS/system_libprocinfo-01.tar.zst -C $DOWNLOADS/aosp/system/libprocinfo "./libprocinfo^android_x86_64_static/out/soong/.intermediates/system/libprocinfo/libprocinfo/android_x86_64_static/libprocinfo.a"
 tar --zstd -xf $DOWNLOADS/system_libprocinfo-07.tar.zst -C $DOWNLOADS/aosp/system/libprocinfo "./libprocinfo^android_x86_x86_64_shared/out/soong/.intermediates/system/libprocinfo/libprocinfo/android_x86_x86_64_shared/libprocinfo.so"
+rm -rf system_libprocinfo*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libvintf.tar.zst $DOWNLOADS/system_libvintf-01.tar.zst
@@ -5743,6 +6057,7 @@ tar --zstd -xf $DOWNLOADS/system_libvintf-06.tar.zst -C $DOWNLOADS/aosp/system/l
 tar --zstd -xf $DOWNLOADS/system_libvintf-08.tar.zst -C $DOWNLOADS/aosp/system/libvintf "./libvintf^android_x86_64_shared/out/soong/.intermediates/system/libvintf/libvintf/android_x86_64_shared/libvintf.so"
 tar --zstd -xf $DOWNLOADS/system_libvintf-08.tar.zst -C $DOWNLOADS/aosp/system/libvintf "./libvintf^android_x86_x86_64_shared/out/soong/.intermediates/system/libvintf/libvintf/android_x86_x86_64_shared/libvintf.so"
 tar --zstd -xf $DOWNLOADS/system_libvintf-06.tar.zst -C $DOWNLOADS/aosp/system/libvintf "./libvintf^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libvintf.so"
+rm -rf system_libvintf*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_libziparchive.tar.zst $DOWNLOADS/system_libziparchive-01.tar.zst
@@ -5760,6 +6075,7 @@ tar --zstd -xf $DOWNLOADS/system_libziparchive-07.tar.zst -C $DOWNLOADS/aosp/sys
 tar --zstd -xf $DOWNLOADS/system_libziparchive-06.tar.zst -C $DOWNLOADS/aosp/system/libziparchive "./libziparchive^android_x86_x86_64_shared_apex31/out/soong/.intermediates/system/libziparchive/libziparchive/android_x86_x86_64_shared_apex31/libziparchive.so"
 tar --zstd -xf $DOWNLOADS/system_libziparchive-07.tar.zst -C $DOWNLOADS/aosp/system/libziparchive "./ziptool^android_recovery_x86_64/out/soong/.intermediates/system/libziparchive/ziptool/android_recovery_x86_64/ziptool"
 tar --zstd -xf $DOWNLOADS/system_libziparchive-07.tar.zst -C $DOWNLOADS/aosp/system/libziparchive "./ziptool^android_x86_64/out/soong/.intermediates/system/libziparchive/ziptool/android_x86_64/ziptool"
+rm -rf system_libziparchive*.tar.zst
 
 
 download_with_retries android12-gsi_05 system_linkerconfig.tar.zst $DOWNLOADS/system_linkerconfig-05.tar.zst
@@ -5768,6 +6084,7 @@ mkdir -p $DOWNLOADS/aosp/system/linkerconfig
 tar --zstd -xf $DOWNLOADS/system_linkerconfig-06.tar.zst -C $DOWNLOADS/aosp/system/linkerconfig "./linkerconfig^android_x86_64/out/soong/.intermediates/system/linkerconfig/linkerconfig/android_x86_64/linkerconfig"
 tar --zstd -xf $DOWNLOADS/system_linkerconfig-06.tar.zst -C $DOWNLOADS/aosp/system/linkerconfig "./linkerconfig^android_x86_64_apex10000/out/soong/.intermediates/system/linkerconfig/linkerconfig/android_x86_64_apex10000/linkerconfig"
 tar --zstd -xf $DOWNLOADS/system_linkerconfig-06.tar.zst -C $DOWNLOADS/aosp/system/linkerconfig "./ld.config.recovery.txt^android_recovery_x86_64/out/soong/.intermediates/system/linkerconfig/ld.config.recovery.txt/android_recovery_x86_64/ld.config.txt"
+rm -rf system_linkerconfig*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_logging.tar.zst $DOWNLOADS/system_logging-01.tar.zst
@@ -5827,6 +6144,7 @@ tar --zstd -xf $DOWNLOADS/system_logging-01.tar.zst -C $DOWNLOADS/aosp/system/lo
 tar --zstd -xf $DOWNLOADS/system_logging-08.tar.zst -C $DOWNLOADS/aosp/system/logging "./logwrapper/liblogwrap^android_x86_x86_64_shared/out/soong/.intermediates/system/logging/logwrapper/liblogwrap/android_x86_x86_64_shared/liblogwrap.so"
 tar --zstd -xf $DOWNLOADS/system_logging-08.tar.zst -C $DOWNLOADS/aosp/system/logging "./logwrapper/logwrapper^android_x86_64/out/soong/.intermediates/system/logging/logwrapper/logwrapper/android_x86_64/logwrapper"
 tar --zstd -xf $DOWNLOADS/system_logging-08.tar.zst -C $DOWNLOADS/aosp/system/logging "./logwrapper/logwrapper_vendor^android_vendor.31_x86_64/out/soong/.intermediates/system/logging/logwrapper/logwrapper_vendor/android_vendor.31_x86_64/logwrapper"
+rm -rf system_logging*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_media.tar.zst $DOWNLOADS/system_media-01.tar.zst
@@ -5849,6 +6167,7 @@ tar --zstd -xf $DOWNLOADS/system_media-08.tar.zst -C $DOWNLOADS/aosp/system/medi
 tar --zstd -xf $DOWNLOADS/system_media-08.tar.zst -C $DOWNLOADS/aosp/system/media "./radio/libradio_metadata^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/system/media/radio/libradio_metadata/android_vendor.31_x86_x86_64_shared/libradio_metadata.so"
 tar --zstd -xf $DOWNLOADS/system_media-08.tar.zst -C $DOWNLOADS/aosp/system/media "./radio/libradio_metadata^android_x86_64_shared/out/soong/.intermediates/system/media/radio/libradio_metadata/android_x86_64_shared/libradio_metadata.so"
 tar --zstd -xf $DOWNLOADS/system_media-08.tar.zst -C $DOWNLOADS/aosp/system/media "./radio/libradio_metadata^android_x86_x86_64_shared/out/soong/.intermediates/system/media/radio/libradio_metadata/android_x86_x86_64_shared/libradio_metadata.so"
+rm -rf system_media*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_memory_libdmabufheap.tar.zst $DOWNLOADS/system_memory_libdmabufheap-01.tar.zst
@@ -5861,6 +6180,7 @@ tar --zstd -xf $DOWNLOADS/system_memory_libdmabufheap-06.tar.zst -C $DOWNLOADS/a
 tar --zstd -xf $DOWNLOADS/system_memory_libdmabufheap-06.tar.zst -C $DOWNLOADS/aosp/system/memory/libdmabufheap "./libdmabufheap^android_x86_64_shared/out/soong/.intermediates/system/memory/libdmabufheap/libdmabufheap/android_x86_64_shared/libdmabufheap.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libdmabufheap-05.tar.zst -C $DOWNLOADS/aosp/system/memory/libdmabufheap "./libdmabufheap^android_x86_64_shared_apex29/out/soong/.intermediates/system/memory/libdmabufheap/libdmabufheap/android_x86_64_shared_apex29/libdmabufheap.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libdmabufheap-06.tar.zst -C $DOWNLOADS/aosp/system/memory/libdmabufheap "./libdmabufheap^android_x86_x86_64_shared/out/soong/.intermediates/system/memory/libdmabufheap/libdmabufheap/android_x86_x86_64_shared/libdmabufheap.so"
+rm -rf system_memory_libdmabufheap*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_memory_libion.tar.zst $DOWNLOADS/system_memory_libion-01.tar.zst
@@ -5873,6 +6193,7 @@ tar --zstd -xf $DOWNLOADS/system_memory_libion-06.tar.zst -C $DOWNLOADS/aosp/sys
 tar --zstd -xf $DOWNLOADS/system_memory_libion-06.tar.zst -C $DOWNLOADS/aosp/system/memory/libion "./libion^android_x86_64_shared/out/soong/.intermediates/system/memory/libion/libion/android_x86_64_shared/libion.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libion-05.tar.zst -C $DOWNLOADS/aosp/system/memory/libion "./libion^android_x86_64_shared_apex29/out/soong/.intermediates/system/memory/libion/libion/android_x86_64_shared_apex29/libion.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libion-06.tar.zst -C $DOWNLOADS/aosp/system/memory/libion "./libion^android_x86_x86_64_shared/out/soong/.intermediates/system/memory/libion/libion/android_x86_x86_64_shared/libion.so"
+rm -rf system_memory_libion*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_memory_libmeminfo.tar.zst $DOWNLOADS/system_memory_libmeminfo-01.tar.zst
@@ -5887,6 +6208,7 @@ tar --zstd -xf $DOWNLOADS/system_memory_libmeminfo-07.tar.zst -C $DOWNLOADS/aosp
 tar --zstd -xf $DOWNLOADS/system_memory_libmeminfo-08.tar.zst -C $DOWNLOADS/aosp/system/memory/libmeminfo "./tools/librank^android_x86_64/out/soong/.intermediates/system/memory/libmeminfo/tools/librank/android_x86_64/librank"
 tar --zstd -xf $DOWNLOADS/system_memory_libmeminfo-08.tar.zst -C $DOWNLOADS/aosp/system/memory/libmeminfo "./tools/procrank^android_x86_64/out/soong/.intermediates/system/memory/libmeminfo/tools/procrank/android_x86_64/procrank"
 tar --zstd -xf $DOWNLOADS/system_memory_libmeminfo-08.tar.zst -C $DOWNLOADS/aosp/system/memory/libmeminfo "./tools/showmap^android_x86_64/out/soong/.intermediates/system/memory/libmeminfo/tools/showmap/android_x86_64/showmap"
+rm -rf system_memory_libmeminfo*.tar.zst
 
 
 download_with_retries android12-gsi_10 system_memory_libmemtrack.tar.zst $DOWNLOADS/system_memory_libmemtrack-10.tar.zst
@@ -5895,6 +6217,7 @@ tar --zstd -xf $DOWNLOADS/system_memory_libmemtrack-10.tar.zst -C $DOWNLOADS/aos
 tar --zstd -xf $DOWNLOADS/system_memory_libmemtrack-10.tar.zst -C $DOWNLOADS/aosp/system/memory/libmemtrack "./libmemtrack^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/system/memory/libmemtrack/libmemtrack/android_vendor.31_x86_x86_64_shared/libmemtrack.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libmemtrack-10.tar.zst -C $DOWNLOADS/aosp/system/memory/libmemtrack "./libmemtrack^android_x86_64_shared/out/soong/.intermediates/system/memory/libmemtrack/libmemtrack/android_x86_64_shared/libmemtrack.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libmemtrack-10.tar.zst -C $DOWNLOADS/aosp/system/memory/libmemtrack "./libmemtrack^android_x86_x86_64_shared/out/soong/.intermediates/system/memory/libmemtrack/libmemtrack/android_x86_x86_64_shared/libmemtrack.so"
+rm -rf system_memory_libmemtrack*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_memory_libmemunreachable.tar.zst $DOWNLOADS/system_memory_libmemunreachable-01.tar.zst
@@ -5902,6 +6225,7 @@ download_with_retries android12-gsi_07 system_memory_libmemunreachable.tar.zst $
 mkdir -p $DOWNLOADS/aosp/system/memory/libmemunreachable
 tar --zstd -xf $DOWNLOADS/system_memory_libmemunreachable-07.tar.zst -C $DOWNLOADS/aosp/system/memory/libmemunreachable "./libmemunreachable^android_x86_64_shared/out/soong/.intermediates/system/memory/libmemunreachable/libmemunreachable/android_x86_64_shared/libmemunreachable.so"
 tar --zstd -xf $DOWNLOADS/system_memory_libmemunreachable-07.tar.zst -C $DOWNLOADS/aosp/system/memory/libmemunreachable "./libmemunreachable^android_x86_x86_64_shared/out/soong/.intermediates/system/memory/libmemunreachable/libmemunreachable/android_x86_x86_64_shared/libmemunreachable.so"
+rm -rf system_memory_libmemunreachable*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_memory_lmkd.tar.zst $DOWNLOADS/system_memory_lmkd-01.tar.zst
@@ -5911,6 +6235,7 @@ mkdir -p $DOWNLOADS/aosp/system/memory/lmkd
 tar --zstd -xf $DOWNLOADS/system_memory_lmkd-08.tar.zst -C $DOWNLOADS/aosp/system/memory/lmkd "./lmkd^android_x86_64/out/soong/.intermediates/system/memory/lmkd/lmkd/android_x86_64/lmkd"
 tar --zstd -xf $DOWNLOADS/system_memory_lmkd-06.tar.zst -C $DOWNLOADS/aosp/system/memory/lmkd "./libpsi/libpsi^android_x86_64_shared/out/soong/.intermediates/system/memory/lmkd/libpsi/libpsi/android_x86_64_shared/libpsi.so"
 tar --zstd -xf $DOWNLOADS/system_memory_lmkd-06.tar.zst -C $DOWNLOADS/aosp/system/memory/lmkd "./libpsi/libpsi^android_x86_x86_64_shared/out/soong/.intermediates/system/memory/lmkd/libpsi/libpsi/android_x86_x86_64_shared/libpsi.so"
+rm -rf system_memory_lmkd*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_netd.tar.zst $DOWNLOADS/system_netd-01.tar.zst
@@ -5937,6 +6262,7 @@ tar --zstd -xf $DOWNLOADS/system_netd-10.tar.zst -C $DOWNLOADS/aosp/system/netd 
 tar --zstd -xf $DOWNLOADS/system_netd-11.tar.zst -C $DOWNLOADS/aosp/system/netd "./server/ndc^android_x86_64_cfi/out/soong/.intermediates/system/netd/server/ndc/android_x86_64_cfi/ndc"
 tar --zstd -xf $DOWNLOADS/system_netd-09.tar.zst -C $DOWNLOADS/aosp/system/netd "./server/netd_aidl_interface-V6-cpp^android_x86_64_shared/out/soong/.intermediates/system/netd/server/netd_aidl_interface-V6-cpp/android_x86_64_shared/netd_aidl_interface-V6-cpp.so"
 tar --zstd -xf $DOWNLOADS/system_netd-09.tar.zst -C $DOWNLOADS/aosp/system/netd "./server/netd_aidl_interface-V7-cpp^android_x86_64_shared/out/soong/.intermediates/system/netd/server/netd_aidl_interface-V7-cpp/android_x86_64_shared/netd_aidl_interface-V7-cpp.so"
+rm -rf system_netd*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_nfc.tar.zst $DOWNLOADS/system_nfc-01.tar.zst
@@ -5944,6 +6270,7 @@ download_with_retries android12-gsi_10 system_nfc.tar.zst $DOWNLOADS/system_nfc-
 mkdir -p $DOWNLOADS/aosp/system/nfc
 tar --zstd -xf $DOWNLOADS/system_nfc-01.tar.zst -C $DOWNLOADS/aosp/system/nfc "./conf/libnfc-nci.conf-default^android_x86_64/out/soong/.intermediates/system/nfc/conf/libnfc-nci.conf-default/android_x86_64/libnfc-nci.conf"
 tar --zstd -xf $DOWNLOADS/system_nfc-10.tar.zst -C $DOWNLOADS/aosp/system/nfc "./src/libnfc-nci^android_x86_64_shared/out/soong/.intermediates/system/nfc/src/libnfc-nci/android_x86_64_shared/libnfc-nci.so"
+rm -rf system_nfc*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_security.tar.zst $DOWNLOADS/system_security-01.tar.zst
@@ -5978,6 +6305,7 @@ tar --zstd -xf $DOWNLOADS/system_security-11.tar.zst -C $DOWNLOADS/aosp/system/s
 tar --zstd -xf $DOWNLOADS/system_security-11.tar.zst -C $DOWNLOADS/aosp/system/security "./keystore2/src/km_compat/libkm_compat_service^android_x86_64_shared/out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat_service/android_x86_64_shared/libkm_compat_service.so"
 tar --zstd -xf $DOWNLOADS/system_security-09.tar.zst -C $DOWNLOADS/aosp/system/security "./keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared/out/soong/.intermediates/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp/android_x86_64_shared/libkeystore2_vintf_cpp.so"
 tar --zstd -xf $DOWNLOADS/system_security-11.tar.zst -C $DOWNLOADS/aosp/system/security "./ondevice-signing/odsign^android_x86_64/out/soong/.intermediates/system/security/ondevice-signing/odsign/android_x86_64/odsign"
+rm -rf system_security*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_sepolicy.tar.zst $DOWNLOADS/system_sepolicy-01.tar.zst
@@ -6043,6 +6371,7 @@ tar --zstd -xf $DOWNLOADS/system_sepolicy-03.tar.zst -C $DOWNLOADS/aosp/system/s
 tar --zstd -xf $DOWNLOADS/system_sepolicy-02.tar.zst -C $DOWNLOADS/aosp/system/sepolicy "./tools/version_policy^linux_glibc_x86_64/out/soong/host/linux-x86/bin/version_policy"
 tar --zstd -xf $DOWNLOADS/system_sepolicy-03.tar.zst -C $DOWNLOADS/aosp/system/sepolicy "./tools/insertkeys.py^linux_glibc_x86_64/out/soong/host/linux-x86/bin/insertkeys.py"
 tar --zstd -xf $DOWNLOADS/system_sepolicy-02.tar.zst -C $DOWNLOADS/aosp/system/sepolicy "./tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64/out/soong/host/linux-x86/bin/sepolicy-analyze"
+rm -rf system_sepolicy*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_server_configurable_flags.tar.zst $DOWNLOADS/system_server_configurable_flags-01.tar.zst
@@ -6051,6 +6380,7 @@ mkdir -p $DOWNLOADS/aosp/system/server_configurable_flags
 tar --zstd -xf $DOWNLOADS/system_server_configurable_flags-08.tar.zst -C $DOWNLOADS/aosp/system/server_configurable_flags "./disaster_recovery/flags_health_check^android_x86_64/out/soong/.intermediates/system/server_configurable_flags/disaster_recovery/flags_health_check/android_x86_64/flags_health_check"
 tar --zstd -xf $DOWNLOADS/system_server_configurable_flags-08.tar.zst -C $DOWNLOADS/aosp/system/server_configurable_flags "./libflags/server_configurable_flags^android_x86_64_shared/out/soong/.intermediates/system/server_configurable_flags/libflags/server_configurable_flags/android_x86_64_shared/server_configurable_flags.so"
 tar --zstd -xf $DOWNLOADS/system_server_configurable_flags-08.tar.zst -C $DOWNLOADS/aosp/system/server_configurable_flags "./libflags/server_configurable_flags^android_x86_x86_64_shared/out/soong/.intermediates/system/server_configurable_flags/libflags/server_configurable_flags/android_x86_x86_64_shared/server_configurable_flags.so"
+rm -rf system_server_configurable_flags*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_timezone.tar.zst $DOWNLOADS/system_timezone-01.tar.zst
@@ -6067,6 +6397,7 @@ tar --zstd -xf $DOWNLOADS/system_timezone-01.tar.zst -C $DOWNLOADS/aosp/system/t
 tar --zstd -xf $DOWNLOADS/system_timezone-01.tar.zst -C $DOWNLOADS/aosp/system/timezone "./output_data/iana/tzdata^android_x86_64/out/soong/.intermediates/system/timezone/output_data/iana/tzdata/android_x86_64/tzdata"
 tar --zstd -xf $DOWNLOADS/system_timezone-01.tar.zst -C $DOWNLOADS/aosp/system/timezone "./output_data/version/tz_version^android_x86_64/out/soong/.intermediates/system/timezone/output_data/version/tz_version/android_x86_64/tz_version"
 tar --zstd -xf $DOWNLOADS/system_timezone-08.tar.zst -C $DOWNLOADS/aosp/system/timezone "./tzdatacheck/tzdatacheck^android_x86_64/out/soong/.intermediates/system/timezone/tzdatacheck/tzdatacheck/android_x86_64/tzdatacheck"
+rm -rf system_timezone*.tar.zst
 
 
 download_with_retries android12-gsi_03 system_tools_aidl.tar.zst $DOWNLOADS/system_tools_aidl-03.tar.zst
@@ -6074,6 +6405,7 @@ download_with_retries android12-gsi_09 system_tools_aidl.tar.zst $DOWNLOADS/syst
 mkdir -p $DOWNLOADS/aosp/system/tools/aidl
 tar --zstd -xf $DOWNLOADS/system_tools_aidl-03.tar.zst -C $DOWNLOADS/aosp/system/tools/aidl "./aidl^linux_glibc_x86_64/out/soong/host/linux-x86/bin/aidl"
 tar --zstd -xf $DOWNLOADS/system_tools_aidl-09.tar.zst -C $DOWNLOADS/aosp/system/tools/aidl "./tests/lazy_test/aidl_lazy_test_server^android_x86_64/out/soong/.intermediates/system/tools/aidl/tests/lazy_test/aidl_lazy_test_server/android_x86_64/aidl_lazy_test_server"
+rm -rf system_tools_aidl*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_tools_hidl.tar.zst $DOWNLOADS/system_tools_hidl-01.tar.zst
@@ -6090,6 +6422,7 @@ tar --zstd -xf $DOWNLOADS/system_tools_hidl-07.tar.zst -C $DOWNLOADS/aosp/system
 tar --zstd -xf $DOWNLOADS/system_tools_hidl-07.tar.zst -C $DOWNLOADS/aosp/system/tools/hidl "./utils/libhidl-gen-utils^android_x86_64_shared/out/soong/.intermediates/system/tools/hidl/utils/libhidl-gen-utils/android_x86_64_shared/libhidl-gen-utils.so"
 tar --zstd -xf $DOWNLOADS/system_tools_hidl-07.tar.zst -C $DOWNLOADS/aosp/system/tools/hidl "./utils/libhidl-gen-utils^android_x86_x86_64_shared/out/soong/.intermediates/system/tools/hidl/utils/libhidl-gen-utils/android_x86_x86_64_shared/libhidl-gen-utils.so"
 tar --zstd -xf $DOWNLOADS/system_tools_hidl-05.tar.zst -C $DOWNLOADS/aosp/system/tools/hidl "./utils/libhidl-gen-utils^linux_glibc_x86_64_shared/out/soong/host/linux-x86/lib64/libhidl-gen-utils.so"
+rm -rf system_tools_hidl*.tar.zst
 
 
 download_with_retries android12-gsi_04 system_tools_mkbootimg.tar.zst $DOWNLOADS/system_tools_mkbootimg-04.tar.zst
@@ -6099,6 +6432,7 @@ mkdir -p $DOWNLOADS/aosp/system/tools/mkbootimg
 tar --zstd -xf $DOWNLOADS/system_tools_mkbootimg-06.tar.zst -C $DOWNLOADS/aosp/system/tools/mkbootimg "./libmkbootimg_abi_check^android_vendor.31_x86_64_shared/out/soong/.intermediates/system/tools/mkbootimg/libmkbootimg_abi_check/android_vendor.31_x86_64_shared/libmkbootimg_abi_check.so"
 tar --zstd -xf $DOWNLOADS/system_tools_mkbootimg-06.tar.zst -C $DOWNLOADS/aosp/system/tools/mkbootimg "./libmkbootimg_abi_check^android_vendor.31_x86_x86_64_shared/out/soong/.intermediates/system/tools/mkbootimg/libmkbootimg_abi_check/android_vendor.31_x86_x86_64_shared/libmkbootimg_abi_check.so"
 tar --zstd -xf $DOWNLOADS/system_tools_mkbootimg-05.tar.zst -C $DOWNLOADS/aosp/system/tools/mkbootimg "./unpack_bootimg^linux_glibc_x86_64_PY3/out/soong/host/linux-x86/bin/unpack_bootimg"
+rm -rf system_tools_mkbootimg*.tar.zst
 
 
 download_with_retries android12-gsi_01 system_unwinding.tar.zst $DOWNLOADS/system_unwinding-01.tar.zst
@@ -6126,6 +6460,7 @@ tar --zstd -xf $DOWNLOADS/system_unwinding-01.tar.zst -C $DOWNLOADS/aosp/system/
 tar --zstd -xf $DOWNLOADS/system_unwinding-07.tar.zst -C $DOWNLOADS/aosp/system/unwinding "./libunwindstack/unwind_info^android_x86_64/out/soong/.intermediates/system/unwinding/libunwindstack/unwind_info/android_x86_64/unwind_info"
 tar --zstd -xf $DOWNLOADS/system_unwinding-07.tar.zst -C $DOWNLOADS/aosp/system/unwinding "./libunwindstack/unwind_symbols^android_x86_64/out/soong/.intermediates/system/unwinding/libunwindstack/unwind_symbols/android_x86_64/unwind_symbols"
 tar --zstd -xf $DOWNLOADS/system_unwinding-07.tar.zst -C $DOWNLOADS/aosp/system/unwinding "./libunwindstack/unwind_reg_info^android_x86_64/out/soong/.intermediates/system/unwinding/libunwindstack/unwind_reg_info/android_x86_64/unwind_reg_info"
+rm -rf system_unwinding*.tar.zst
 
 
 download_with_retries android12-gsi_04 system_update_engine.tar.zst $DOWNLOADS/system_update_engine-04.tar.zst
@@ -6140,6 +6475,7 @@ tar --zstd -xf $DOWNLOADS/system_update_engine-11.tar.zst -C $DOWNLOADS/aosp/sys
 tar --zstd -xf $DOWNLOADS/system_update_engine-10.tar.zst -C $DOWNLOADS/aosp/system/update_engine "./update_engine_sideload^android_recovery_x86_64/out/soong/.intermediates/system/update_engine/update_engine_sideload/android_recovery_x86_64/update_engine_sideload"
 tar --zstd -xf $DOWNLOADS/system_update_engine-10.tar.zst -C $DOWNLOADS/aosp/system/update_engine "./update_engine_client^android_x86_64/out/soong/.intermediates/system/update_engine/update_engine_client/android_x86_64/update_engine_client"
 tar --zstd -xf $DOWNLOADS/system_update_engine-09.tar.zst -C $DOWNLOADS/aosp/system/update_engine "./stable/libupdate_engine_stable-V1-cpp^android_x86_64_shared/out/soong/.intermediates/system/update_engine/stable/libupdate_engine_stable-V1-cpp/android_x86_64_shared/libupdate_engine_stable-V1-cpp.so"
+rm -rf system_update_engine*.tar.zst
 
 
 download_with_retries android12-gsi_07 system_vold.tar.zst $DOWNLOADS/system_vold-07.tar.zst
@@ -6151,15 +6487,21 @@ tar --zstd -xf $DOWNLOADS/system_vold-10.tar.zst -C $DOWNLOADS/aosp/system/vold 
 tar --zstd -xf $DOWNLOADS/system_vold-12.tar.zst -C $DOWNLOADS/aosp/system/vold "./wait_for_keymaster^android_x86_64/out/soong/.intermediates/system/vold/wait_for_keymaster/android_x86_64/wait_for_keymaster"
 tar --zstd -xf $DOWNLOADS/system_vold-07.tar.zst -C $DOWNLOADS/aosp/system/vold "./secdiscard^android_x86_64/out/soong/.intermediates/system/vold/secdiscard/android_x86_64/secdiscard"
 tar --zstd -xf $DOWNLOADS/system_vold-10.tar.zst -C $DOWNLOADS/aosp/system/vold "./vold_prepare_subdirs^android_x86_64/out/soong/.intermediates/system/vold/vold_prepare_subdirs/android_x86_64/vold_prepare_subdirs"
+rm -rf system_vold*.tar.zst
 
 
 download_with_retries android12-gsi_01 tools_dexter.tar.zst $DOWNLOADS/tools_dexter-01.tar.zst
 download_with_retries android12-gsi_05 tools_dexter.tar.zst $DOWNLOADS/tools_dexter-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/tools/dexter
 tar --zstd -xf $DOWNLOADS/tools_dexter-05.tar.zst -C $DOWNLOADS/aosp/tools/dexter "./slicer/slicer^android_x86_64_shared/out/soong/.intermediates/tools/dexter/slicer/slicer/android_x86_64_shared/slicer.so"
+rm -rf tools_dexter*.tar.zst
 
 
 download_with_retries android12-gsi_05 tools_security.tar.zst $DOWNLOADS/tools_security-05.tar.zst
 mkdir -p $DOWNLOADS/aosp/tools/security
 tar --zstd -xf $DOWNLOADS/tools_security-05.tar.zst -C $DOWNLOADS/aosp/tools/security "./sanitizer-status/sanitizer-status^android_x86_64/out/soong/.intermediates/tools/security/sanitizer-status/sanitizer-status/android_x86_64/sanitizer-status"
+rm -rf tools_security*.tar.zst
 
+
+du -ah -d1 $DOWNLOADS/aosp
+tar -cf soong_outputs.tar.zst --use-compress-program zstdmt -C $DOWNLOADS/aosp/ .
