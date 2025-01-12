@@ -6505,3 +6505,5 @@ rm -rf tools_security*.tar.zst
 
 du -ah -d1 $DOWNLOADS/aosp
 tar -cf soong_outputs.tar.zst --use-compress-program zstdmt -C $DOWNLOADS/aosp/ .
+du -ah -d1 | sort -h
+df -h

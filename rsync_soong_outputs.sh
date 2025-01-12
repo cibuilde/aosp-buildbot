@@ -2972,18 +2972,10 @@ rsync -a -r $DOWNLOADS/aosp/frameworks/av/services/oboeservice/libaaudioservice^
 rm -rf $DOWNLOADS/aosp/frameworks/av/services/oboeservice/libaaudioservice^android_x86_64_shared
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/framework-minus-apex^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/framework^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/framework^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/framework-platform-compat-config^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/framework-platform-compat-config^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/ext^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/ext^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/ext^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/ext^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/ext^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/ext^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/android_stubs_current^android_common .
@@ -3014,12 +3006,6 @@ rsync -a -r $DOWNLOADS/aosp/frameworks/base/apex/media/service/service-media-s^a
 rm -rf $DOWNLOADS/aosp/frameworks/base/apex/media/service/service-media-s^android_common_apex29
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/boot/platform-systemserverclasspath^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/boot/platform-systemserverclasspath^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/boot/platform-bootclasspath^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/cmds/abx/abx^android_common .
@@ -3162,10 +3148,6 @@ rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/androidfw/libandroidfw^android_
 rm -rf $DOWNLOADS/aosp/frameworks/base/libs/androidfw/libandroidfw^android_x86_64_shared
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/androidfw/libandroidfw^android_x86_x86_64_shared .
 rm -rf $DOWNLOADS/aosp/frameworks/base/libs/androidfw/libandroidfw^android_x86_x86_64_shared
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/base/libs/hwui/framework-graphics^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/base/libs/hwui/libhwui^android_x86_64_shared .
@@ -4272,14 +4254,6 @@ rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/ethernet/ethernet-service^android
 rm -rf $DOWNLOADS/aosp/frameworks/opt/net/ethernet/ethernet-service^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/net/ims/ims-common^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/opt/net/voip/voip-common^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/voip/src/jni/rtp/librtp_jni^android_x86_64_shared .
@@ -4294,10 +4268,6 @@ rsync -a -r $DOWNLOADS/aosp/frameworks/opt/net/wifi/libwifi_system_iface/libwifi
 rm -rf $DOWNLOADS/aosp/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_shared
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/photoviewer/libphotoviewer^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/opt/photoviewer/libphotoviewer^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common
-rsync -a -r $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common .
-rm -rf $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common .
 rm -rf $DOWNLOADS/aosp/frameworks/opt/telephony/telephony-common^android_common
 rsync -a -r $DOWNLOADS/aosp/frameworks/opt/timezonepicker/android-opt-timezonepicker^android_common .
@@ -6476,8 +6446,6 @@ rsync -a -r $DOWNLOADS/aosp/singletons/ndk^ .
 rm -rf $DOWNLOADS/aosp/singletons/ndk^
 rsync -a -r $DOWNLOADS/aosp/singletons/sdk^ .
 rm -rf $DOWNLOADS/aosp/singletons/sdk^
-rsync -a -r $DOWNLOADS/aosp/singletons/sdk^ .
-rm -rf $DOWNLOADS/aosp/singletons/sdk^
 rsync -a -r $DOWNLOADS/aosp/singletons/vndkcore_libraries_txt^ .
 rm -rf $DOWNLOADS/aosp/singletons/vndkcore_libraries_txt^
 rsync -a -r $DOWNLOADS/aosp/singletons/vndkcorevariant_libraries_txt^ .
@@ -7546,10 +7514,6 @@ rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/allocator/1.0/utils/libhidl
 rm -rf $DOWNLOADS/aosp/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_shared
 rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared .
 rm -rf $DOWNLOADS/aosp/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared
-rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common .
-rm -rf $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
-rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common .
-rm -rf $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
 rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common .
 rm -rf $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
 rsync -a -r $DOWNLOADS/aosp/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^ .
