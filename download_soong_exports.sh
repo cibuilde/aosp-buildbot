@@ -3,6 +3,7 @@ DOWNLOADS=$GITHUB_WORKSPACE/downloads
 mkdir -p $DOWNLOADS
 mkdir -p $GITHUB_WORKSPACE/aosp/
 
+source $GITHUB_WORKSPACE/envsetup.sh
 
 download_with_retries android12-gsi_01 art.tar.zst $DOWNLOADS/art-01.tar.zst
 download_with_retries android12-gsi_03 art.tar.zst $DOWNLOADS/art-03.tar.zst
