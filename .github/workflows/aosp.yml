@@ -15,6 +15,10 @@ jobs:
     - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
     - uses: actions/cache@v4
       with:
+        path: cache/soong_outputs.tar.zst
+        key: soong_outputs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/bionic.tar.zst
         key: bionic@${{ env.branch }}
     - uses: actions/cache@v4
@@ -333,4 +337,5 @@ jobs:
       with:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
-    - run: bash kati/build_kati.sh
+    - run: bash kati/kati_clone.sh
+    - run: bash kati/kati_download.sh
