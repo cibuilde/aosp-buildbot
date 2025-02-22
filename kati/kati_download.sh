@@ -1,5 +1,6 @@
 
 set -e
+
 CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
 DOWNLOADS=$GITHUB_WORKSPACE/downloads
@@ -2767,4 +2768,13 @@ else
   du -ah -d1 | sort -h
   df -h
 fi
+
+sudo rm -rf /usr/local/.ghcup
+sudo rm -rf /usr/local/lib/android/sdk
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf /usr/local/share/powershell
+sudo rm -rf /usr/local/share/chromium
+sudo rm -rf /usr/local/share/swift
+sudo rm -rf /opt/hostedtoolcache
+df -h
 
