@@ -1,5 +1,6 @@
 
 set -e
+source $GITHUB_WORKSPACE/envsetup.sh
 mkdir -p kati
 tar xf $GITHUB_WORKSPACE/kati.tar.zst -C kati
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
