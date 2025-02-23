@@ -5,7 +5,7 @@ mkdir -p kati
 tar xf $GITHUB_WORKSPACE/kati.tar.zst -C kati
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 android12-gsi "/clang-r416183b1" "/clang-r416183b" "/soong"
-tree -aA -d2 prebuilts/clang/host/
+tree -a --charset=ascii -L 2 prebuilts/clang/host/
 
 CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
@@ -46,7 +46,7 @@ function rsync_image_dirs() {
 echo "building out/soong/androidmk/external/auto/common/auto_common.ninja"
 
 prepare_building
-tree -aA -d2 prebuilts/clang/host/
+tree -a --charset=ascii -L 2 prebuilts/clang/host/
 
 
 
