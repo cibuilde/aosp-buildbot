@@ -1,1 +1,3 @@
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libprotobuf-cpp-lite_intermediates/libprotobuf-cpp-lite.a
+out/target/product/vsoc_x86_64/vendor/lib/libprotobuf-cpp-lite-3.9.1.so
+out/target/product/vsoc_x86_64/vendor/lib64/libprotobuf-cpp-lite-3.9.1.so

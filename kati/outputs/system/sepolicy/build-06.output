@@ -1,5 +1,4 @@
 out/target/product/vsoc_x86_64/obj/ETC/file_contexts.bin_intermediates/file_contexts.bin
-out/target/product/vsoc_x86_64/obj/ETC/sepolicy_intermediates/sepolicy
 out/target/product/vsoc_x86_64/odm/etc/selinux/precompiled_sepolicy
 out/target/product/vsoc_x86_64/vendor/etc/selinux/selinux_denial_metadata
 out/target/product/vsoc_x86_64/vendor/etc/selinux/vendor_sepolicy.cil

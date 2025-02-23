@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/obj/EXECUTABLES/boringssl_self_test_vendor_intermediates/boringssl_self_test64
+out/target/product/vsoc_x86_64/obj_x86/EXECUTABLES/boringssl_self_test_vendor_intermediates/boringssl_self_test32

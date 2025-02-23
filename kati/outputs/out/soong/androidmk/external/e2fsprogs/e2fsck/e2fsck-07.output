@@ -1,1 +1,2 @@
 out/host/linux-x86/bin/e2fsck
+out/target/product/vsoc_x86_64/obj/EXECUTABLES/e2fsck_intermediates/e2fsck

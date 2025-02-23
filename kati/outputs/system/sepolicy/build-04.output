@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/obj/ETC/sepolicy_intermediates/sepolicy
+out/target/product/vsoc_x86_64/obj/ETC/vendor_sepolicy.cil_intermediates/vendor_sepolicy.cil
+out/target/product/vsoc_x86_64/obj/FAKE/sepolicy_neverallows_intermediates/sepolicy_neverallows

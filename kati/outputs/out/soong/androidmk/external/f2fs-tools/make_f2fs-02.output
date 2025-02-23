@@ -1,1 +1,2 @@
 out/host/linux-x86/bin/make_f2fs
+out/target/product/vsoc_x86_64/obj/EXECUTABLES/make_f2fs_intermediates/make_f2fs

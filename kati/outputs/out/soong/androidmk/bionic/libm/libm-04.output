@@ -1,12 +1,3 @@
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so.toc
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm_intermediates/libm.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm_intermediates/libm.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libm_intermediates/libm.so.toc
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so.toc
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libm_intermediates/libm.so
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libm_intermediates/libm.so
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libm_intermediates/libm.so.toc
 out/target/product/vsoc_x86_64/recovery/root/system/lib64/libm.so

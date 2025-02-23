@@ -1,7 +1,3 @@
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libcutils_intermediates/libcutils.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libcutils_intermediates/libcutils.so.toc
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libcutils_intermediates/libcutils.so
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libcutils_intermediates/libcutils.so.toc
 out/target/product/vsoc_x86_64/recovery/root/system/lib64/libcutils.so
-out/target/product/vsoc_x86_64/system/lib/libcutils.so
-out/target/product/vsoc_x86_64/system/lib64/libcutils.so

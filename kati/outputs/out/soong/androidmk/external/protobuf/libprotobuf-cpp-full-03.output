@@ -1,4 +1,2 @@
 out/target/product/vsoc_x86_64/system/lib/libprotobuf-cpp-full.so
 out/target/product/vsoc_x86_64/system/lib64/libprotobuf-cpp-full.so
-out/target/product/vsoc_x86_64/vendor/lib/libprotobuf-cpp-full-3.9.1.so
-out/target/product/vsoc_x86_64/vendor/lib64/libprotobuf-cpp-full-3.9.1.so

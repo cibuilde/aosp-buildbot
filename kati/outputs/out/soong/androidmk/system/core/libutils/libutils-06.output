@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libutils_intermediates/libutils.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libutils_intermediates/libutils.so
+out/target/product/vsoc_x86_64/system/lib/libutils.so
+out/target/product/vsoc_x86_64/system/lib64/libutils.so

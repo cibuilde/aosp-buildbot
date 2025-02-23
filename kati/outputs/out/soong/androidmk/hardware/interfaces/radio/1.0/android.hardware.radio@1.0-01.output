@@ -2,3 +2,5 @@ out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/android.hardware.radio@1.0.v
 out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/android.hardware.radio@1.0.vendor_intermediates/android.hardware.radio@1.0.vendor.so.toc
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/android.hardware.radio@1.0.vendor_intermediates/android.hardware.radio@1.0.vendor.so
 out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/android.hardware.radio@1.0.vendor_intermediates/android.hardware.radio@1.0.vendor.so.toc
+out/target/product/vsoc_x86_64/vendor/lib/android.hardware.radio@1.0.so
+out/target/product/vsoc_x86_64/vendor/lib64/android.hardware.radio@1.0.so

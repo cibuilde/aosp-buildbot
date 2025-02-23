@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/apex/art_boot_images/javalib/x86/boot.art
+out/target/product/vsoc_x86_64/apex/art_boot_images/javalib/x86_64/boot.art
+out/target/product/vsoc_x86_64/system/framework/x86/boot-framework.art
+out/target/product/vsoc_x86_64/system/framework/x86_64/boot-framework.art

@@ -1,1 +1,10 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so.toc
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc_intermediates/libc.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc_intermediates/libc.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc_intermediates/libc.so.toc
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libc_intermediates/libc.a
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc_intermediates/libc.so

@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libcuttlefish_utils.vendor_intermediates/libcuttlefish_utils.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libcuttlefish_utils.vendor_intermediates/libcuttlefish_utils.vendor.so
+out/target/product/vsoc_x86_64/vendor/lib/libcuttlefish_utils.so
+out/target/product/vsoc_x86_64/vendor/lib64/libcuttlefish_utils.so

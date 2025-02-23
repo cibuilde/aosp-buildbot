@@ -1,5 +1,1 @@
-out/target/product/vsoc_x86_64/obj/ETC/dexpreopt_bootjar.art_x86_64_intermediates/boot.art
-out/target/product/vsoc_x86_64/obj/ETC/dexpreopt_bootjar.art_x86_intermediates/boot.art
-out/target/product/vsoc_x86_64/obj/ETC/dexpreopt_bootjar.boot_x86_64_intermediates/boot-framework.art
-out/target/product/vsoc_x86_64/obj/ETC/dexpreopt_bootjar.boot_x86_intermediates/boot-framework.art
 out/target/product/vsoc_x86_64/obj/ETC/vendor_manifest.xml_intermediates/manifest.xml

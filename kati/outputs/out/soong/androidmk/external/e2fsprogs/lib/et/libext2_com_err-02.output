@@ -1,0 +1,2 @@
+out/host/linux-x86/lib64/libext2_com_err-host.so
+out/target/product/vsoc_x86_64/system/lib64/libext2_com_err.so

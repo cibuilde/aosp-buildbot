@@ -1,1 +1,2 @@
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libkeyutils_intermediates/libkeyutils.a
+out/target/product/vsoc_x86_64/system/lib64/libkeyutils.so

@@ -1,4 +1,2 @@
 out/target/product/vsoc_x86_64/recovery/root/system/lib64/libz.so
-out/target/product/vsoc_x86_64/system/lib/libz.so
-out/target/product/vsoc_x86_64/system/lib64/libz.so
 out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/lib64/libz.so

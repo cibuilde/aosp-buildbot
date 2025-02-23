@@ -1,8 +1,5 @@
 out/host/linux-x86/lib64/libbase.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.so
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.so.toc
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.a
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.so
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.so.toc
 out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libbase.vendor_intermediates/libbase.vendor.a
+out/target/product/vsoc_x86_64/system/lib/libbase.so
+out/target/product/vsoc_x86_64/system/lib64/libbase.so

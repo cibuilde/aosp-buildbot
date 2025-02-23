@@ -1,1 +1,13 @@
 out/host/linux-x86/lib/libc++.so
+out/host/linux-x86/lib64/libc++.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so.toc
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++_intermediates/libc++.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++_intermediates/libc++.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libc++_intermediates/libc++.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libc++_intermediates/libc++.so
+out/target/product/vsoc_x86_64/system/lib/libc++.so
+out/target/product/vsoc_x86_64/system/lib64/libc++.so

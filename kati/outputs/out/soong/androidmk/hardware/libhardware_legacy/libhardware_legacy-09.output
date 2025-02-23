@@ -1,4 +1,2 @@
-out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libhardware_legacy_intermediates/libhardware_legacy.so
-out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libhardware_legacy_intermediates/libhardware_legacy.so
 out/target/product/vsoc_x86_64/system/lib/libhardware_legacy.so
 out/target/product/vsoc_x86_64/system/lib64/libhardware_legacy.so
