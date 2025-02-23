@@ -10,11 +10,11 @@ CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
 DOWNLOADS=$GITHUB_WORKSPACE/downloads
 SOONG_OUTPUTS="$DOWNLOADS/aosp"
-mkdir -p $SOONG_OUTPUTS/
-echo "Cache hit: Extracting $CACHE_FILE to $SOONG_OUTPUTS"
-mkdir -p "$SOONG_OUTPUTS"
-tar xf "$CACHE_FILE" -C "$SOONG_OUTPUTS"
-gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $CACHE_FILE --clobber
+#mkdir -p $SOONG_OUTPUTS/
+#echo "Cache hit: Extracting $CACHE_FILE to $SOONG_OUTPUTS"
+#mkdir -p "$SOONG_OUTPUTS"
+#tar xf "$CACHE_FILE" -C "$SOONG_OUTPUTS"
+du -ah -d1 $SOONG_OUTPUTS
 ls -la $SOONG_OUTPUTS/external/auto/common/auto_common^linux_glibc_common
 
 mkdir -p $GITHUB_WORKSPACE/images/
