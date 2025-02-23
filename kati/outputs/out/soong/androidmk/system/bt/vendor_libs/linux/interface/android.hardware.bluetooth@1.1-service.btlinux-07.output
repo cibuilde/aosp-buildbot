@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.bluetooth@1.1-service.btlinux
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.bluetooth@1.1-service.btlinux.rc

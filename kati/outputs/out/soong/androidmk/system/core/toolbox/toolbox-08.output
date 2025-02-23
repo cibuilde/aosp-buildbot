@@ -1,0 +1,14 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/getevent
+out/target/product/vsoc_x86_64/recovery/root/system/bin/getprop
+out/target/product/vsoc_x86_64/recovery/root/system/bin/modprobe
+out/target/product/vsoc_x86_64/recovery/root/system/bin/setprop
+out/target/product/vsoc_x86_64/recovery/root/system/bin/start
+out/target/product/vsoc_x86_64/recovery/root/system/bin/stop
+out/target/product/vsoc_x86_64/recovery/root/system/bin/toolbox
+out/target/product/vsoc_x86_64/system/bin/getevent
+out/target/product/vsoc_x86_64/system/bin/getprop
+out/target/product/vsoc_x86_64/system/bin/modprobe
+out/target/product/vsoc_x86_64/system/bin/setprop
+out/target/product/vsoc_x86_64/system/bin/start
+out/target/product/vsoc_x86_64/system/bin/stop
+out/target/product/vsoc_x86_64/system/bin/toolbox

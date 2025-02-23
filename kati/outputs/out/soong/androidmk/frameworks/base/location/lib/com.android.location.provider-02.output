@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/com.android.location.provider.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.location.provider.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.location.provider.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.location.provider.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.location.provider.vdex

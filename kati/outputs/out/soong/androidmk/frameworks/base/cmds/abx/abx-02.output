@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/abx
+out/target/product/vsoc_x86_64/system/framework/abx.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/abx.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/abx.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/abx.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/abx.vdex

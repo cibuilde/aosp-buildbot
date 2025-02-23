@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/libprotobuf-cpp-lite.so
+out/target/product/vsoc_x86_64/system/lib/libprotobuf-cpp-lite.so
+out/target/product/vsoc_x86_64/system/lib64/libprotobuf-cpp-lite.so
+out/target/product/vsoc_x86_64/vendor/lib/libprotobuf-cpp-lite-3.9.1.so
+out/target/product/vsoc_x86_64/vendor/lib64/libprotobuf-cpp-lite-3.9.1.so

@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/app/ExtShared/ExtShared.apk
+out/target/product/vsoc_x86_64/system_other/system/app/ExtShared/oat/x86_64/ExtShared.odex
+out/target/product/vsoc_x86_64/system_other/system/app/ExtShared/oat/x86_64/ExtShared.vdex

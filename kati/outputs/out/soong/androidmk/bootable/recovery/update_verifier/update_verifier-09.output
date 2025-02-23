@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/update_verifier
+out/target/product/vsoc_x86_64/system/etc/init/update_verifier.rc

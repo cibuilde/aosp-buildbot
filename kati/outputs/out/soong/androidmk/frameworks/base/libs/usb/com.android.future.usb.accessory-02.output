@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/com.android.future.usb.accessory.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.future.usb.accessory.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.future.usb.accessory.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.future.usb.accessory.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.future.usb.accessory.vdex

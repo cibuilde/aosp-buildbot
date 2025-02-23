@@ -1,0 +1,10 @@
+out/target/product/vsoc_x86_64/system/lib/libclcore.bc
+out/target/product/vsoc_x86_64/system/lib/libclcore_debug.bc
+out/target/product/vsoc_x86_64/system/lib/libclcore_debug_g.bc
+out/target/product/vsoc_x86_64/system/lib/libclcore_g.bc
+out/target/product/vsoc_x86_64/system/lib/libclcore_x86.bc
+out/target/product/vsoc_x86_64/system/lib64/libclcore.bc
+out/target/product/vsoc_x86_64/system/lib64/libclcore_debug.bc
+out/target/product/vsoc_x86_64/system/lib64/libclcore_debug_g.bc
+out/target/product/vsoc_x86_64/system/lib64/libclcore_g.bc
+out/target/product/vsoc_x86_64/system/lib64/libclcore_x86.bc

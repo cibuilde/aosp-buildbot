@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/hw/android.hidl.allocator@1.0-service
+out/target/product/vsoc_x86_64/system/etc/init/android.hidl.allocator@1.0-service.rc
+out/target/product/vsoc_x86_64/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml

@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/product/app/LatinIME/LatinIME.apk
+out/target/product/vsoc_x86_64/product/app/LatinIME/lib/x86_64/libjni_latinime.so
+out/target/product/vsoc_x86_64/product/app/LatinIME/oat/x86_64/LatinIME.odex
+out/target/product/vsoc_x86_64/product/app/LatinIME/oat/x86_64/LatinIME.vdex

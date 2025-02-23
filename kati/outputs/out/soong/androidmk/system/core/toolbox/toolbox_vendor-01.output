@@ -1,0 +1,7 @@
+out/target/product/vsoc_x86_64/vendor/bin/getevent
+out/target/product/vsoc_x86_64/vendor/bin/getprop
+out/target/product/vsoc_x86_64/vendor/bin/modprobe
+out/target/product/vsoc_x86_64/vendor/bin/setprop
+out/target/product/vsoc_x86_64/vendor/bin/start
+out/target/product/vsoc_x86_64/vendor/bin/stop
+out/target/product/vsoc_x86_64/vendor/bin/toolbox

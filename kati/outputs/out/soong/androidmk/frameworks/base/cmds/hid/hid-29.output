@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/hid
+out/target/product/vsoc_x86_64/system/framework/hid.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/hid.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/hid.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/hid.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/hid.vdex

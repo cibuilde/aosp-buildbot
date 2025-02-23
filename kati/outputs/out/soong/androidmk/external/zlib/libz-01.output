@@ -1,0 +1,6 @@
+out/host/linux-x86/lib64/libz-host.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libz.vendor_intermediates/libz.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libz.vendor_intermediates/libz.vendor.so.toc
+out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libz_intermediates/libz.a
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libz.vendor_intermediates/libz.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libz.vendor_intermediates/libz.vendor.so.toc

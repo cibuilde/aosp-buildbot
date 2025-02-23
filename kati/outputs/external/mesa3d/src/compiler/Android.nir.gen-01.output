@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_builder_opcodes.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_intrinsics.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_opcodes.h

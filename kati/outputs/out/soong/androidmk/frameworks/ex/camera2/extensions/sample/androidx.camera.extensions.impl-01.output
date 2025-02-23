@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/vendor/framework/androidx.camera.extensions.impl.jar
+out/target/product/vsoc_x86_64/vendor/framework/oat/x86/androidx.camera.extensions.impl.odex
+out/target/product/vsoc_x86_64/vendor/framework/oat/x86/androidx.camera.extensions.impl.vdex
+out/target/product/vsoc_x86_64/vendor/framework/oat/x86_64/androidx.camera.extensions.impl.odex
+out/target/product/vsoc_x86_64/vendor/framework/oat/x86_64/androidx.camera.extensions.impl.vdex

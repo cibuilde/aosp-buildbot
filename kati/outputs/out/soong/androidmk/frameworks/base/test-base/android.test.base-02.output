@@ -1,0 +1,6 @@
+out/target/common/obj/JAVA_LIBRARIES/android.test.base_intermediates/javalib.jar
+out/target/product/vsoc_x86_64/system/framework/android.test.base.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.base.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.base.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.base.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.base.vdex

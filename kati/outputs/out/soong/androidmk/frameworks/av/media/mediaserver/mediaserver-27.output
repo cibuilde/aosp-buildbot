@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/mediaserver
+out/target/product/vsoc_x86_64/system/etc/init/mediaserver.rc
+out/target/product/vsoc_x86_64/system/etc/vintf/manifest/manifest_media_c2_software.xml

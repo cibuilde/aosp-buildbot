@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system_ext/bin/aidl_lazy_test_server
+out/target/product/vsoc_x86_64/system_ext/etc/init/aidl_lazy_test_server.rc

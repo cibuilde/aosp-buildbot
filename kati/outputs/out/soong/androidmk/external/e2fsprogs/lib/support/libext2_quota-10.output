@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/libext2_quota.so
+out/target/product/vsoc_x86_64/system/lib64/libext2_quota.so
+out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/lib64/libext2_quota.so

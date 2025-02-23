@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/priv-app/BuiltInPrintService/BuiltInPrintService.apk
+out/target/product/vsoc_x86_64/system/priv-app/BuiltInPrintService/lib/x86_64/libcups.so
+out/target/product/vsoc_x86_64/system/priv-app/BuiltInPrintService/lib/x86_64/libwfds.so
+out/target/product/vsoc_x86_64/system_other/system/priv-app/BuiltInPrintService/oat/x86_64/BuiltInPrintService.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/BuiltInPrintService/oat/x86_64/BuiltInPrintService.vdex

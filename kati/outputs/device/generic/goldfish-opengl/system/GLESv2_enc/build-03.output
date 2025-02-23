@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libGLESv2_enc_intermediates/libGLESv2_enc.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libGLESv2_enc_intermediates/libGLESv2_enc.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libGLESv2_enc_intermediates/libGLESv2_enc.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libGLESv2_enc_intermediates/libGLESv2_enc.so.toc
+out/target/product/vsoc_x86_64/vendor/lib/libGLESv2_enc.so
+out/target/product/vsoc_x86_64/vendor/lib64/libGLESv2_enc.so

@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/vr
+out/target/product/vsoc_x86_64/system/framework/oat/x86/vr.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/vr.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/vr.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/vr.vdex
+out/target/product/vsoc_x86_64/system/framework/vr.jar

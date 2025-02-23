@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/system/app/NfcNci/NfcNci.apk
+out/target/product/vsoc_x86_64/system/app/NfcNci/lib/x86_64/libnfc_nci_jni.so
+out/target/product/vsoc_x86_64/system_other/system/app/NfcNci/oat/x86_64/NfcNci.odex
+out/target/product/vsoc_x86_64/system_other/system/app/NfcNci/oat/x86_64/NfcNci.vdex

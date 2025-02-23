@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/product/etc/vintf/manifest.xml
+out/target/product/vsoc_x86_64/system/etc/vintf/manifest.xml
+out/target/product/vsoc_x86_64/system_ext/etc/vintf/manifest.xml
+out/target/product/vsoc_x86_64/vendor/etc/vintf/compatibility_matrix.xml

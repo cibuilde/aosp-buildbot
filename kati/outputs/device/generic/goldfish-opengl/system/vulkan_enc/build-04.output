@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libvulkan_enc_intermediates/libvulkan_enc.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libvulkan_enc_intermediates/libvulkan_enc.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libvulkan_enc_intermediates/libvulkan_enc.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libvulkan_enc_intermediates/libvulkan_enc.so.toc
+out/target/product/vsoc_x86_64/vendor/lib/libvulkan_enc.so
+out/target/product/vsoc_x86_64/vendor/lib64/libvulkan_enc.so

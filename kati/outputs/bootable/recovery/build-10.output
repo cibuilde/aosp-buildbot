@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/fake_packages/recovery_deps-timestamp
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/librecovery_ui_ext.so

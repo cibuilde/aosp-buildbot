@@ -8,11 +8,15 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 permissions: write-all
 jobs:
-  build_kati
+  build_kati:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
     - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/soong_outputs.tar.zst
+        key: soong_outputs@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/bionic.tar.zst
@@ -333,4 +337,6 @@ jobs:
       with:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
-    - run: bash kati/build_kati.sh
+    - run: bash kati/kati_download.sh
+    - run: bash kati/kati_build.sh
+    - run: bash kati/kati_upload.sh

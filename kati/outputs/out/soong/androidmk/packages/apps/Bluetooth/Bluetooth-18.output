@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/system/app/Bluetooth/Bluetooth.apk
+out/target/product/vsoc_x86_64/system/app/Bluetooth/lib/x86_64/libbluetooth_jni.so
+out/target/product/vsoc_x86_64/system_other/system/app/Bluetooth/oat/x86_64/Bluetooth.odex
+out/target/product/vsoc_x86_64/system_other/system/app/Bluetooth/oat/x86_64/Bluetooth.vdex

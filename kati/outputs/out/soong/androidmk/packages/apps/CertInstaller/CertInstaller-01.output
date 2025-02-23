@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/app/CertInstaller/CertInstaller.apk
+out/target/product/vsoc_x86_64/system_other/system/app/CertInstaller/oat/x86_64/CertInstaller.odex
+out/target/product/vsoc_x86_64/system_other/system/app/CertInstaller/oat/x86_64/CertInstaller.vdex

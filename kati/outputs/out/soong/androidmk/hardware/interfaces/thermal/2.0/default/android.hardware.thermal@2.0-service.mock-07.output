@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.thermal@2.0-service.mock
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.thermal@2.0-service.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml

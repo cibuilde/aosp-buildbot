@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/traced
+out/target/product/vsoc_x86_64/system/etc/init/perfetto.rc

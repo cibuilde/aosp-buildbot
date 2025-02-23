@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/com.android.mediadrm.signer.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.mediadrm.signer.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.mediadrm.signer.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.mediadrm.signer.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.mediadrm.signer.vdex

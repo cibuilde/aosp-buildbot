@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/sload_f2fs
+out/target/product/vsoc_x86_64/system/bin/sload_f2fs

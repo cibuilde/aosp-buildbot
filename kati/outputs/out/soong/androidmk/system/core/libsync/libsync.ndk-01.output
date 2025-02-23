@@ -1,0 +1,16 @@
+out/soong/ndk/platforms/android-26/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-26/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-27/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-27/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-28/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-28/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-29/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-29/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-30/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-30/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-31/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-31/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-REL/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-REL/arch-x86_64/usr/lib64/libsync.so
+out/soong/ndk/platforms/android-current/arch-x86/usr/lib/libsync.so
+out/soong/ndk/platforms/android-current/arch-x86_64/usr/lib64/libsync.so

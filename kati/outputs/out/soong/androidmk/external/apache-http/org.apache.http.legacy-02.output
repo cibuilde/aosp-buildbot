@@ -1,0 +1,7 @@
+out/target/common/obj/JAVA_LIBRARIES/org.apache.http.legacy_intermediates/javalib.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/org.apache.http.legacy.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/org.apache.http.legacy.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/org.apache.http.legacy.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/org.apache.http.legacy.vdex
+out/target/product/vsoc_x86_64/system/framework/org.apache.http.legacy.jar
+out/target/product/vsoc_x86_64/system/framework/org.apache.http.legacy.jar.prof

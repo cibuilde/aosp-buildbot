@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.power-service.example
+out/target/product/vsoc_x86_64/vendor/etc/init/power-default.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/power-default.xml

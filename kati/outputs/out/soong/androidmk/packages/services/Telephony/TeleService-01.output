@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/TeleService/TeleService.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/TeleService/oat/x86_64/TeleService.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/TeleService/oat/x86_64/TeleService.vdex

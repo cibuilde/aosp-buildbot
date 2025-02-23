@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/incident-helper-cmd
+out/target/product/vsoc_x86_64/system/framework/incident-helper-cmd.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/incident-helper-cmd.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/incident-helper-cmd.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/incident-helper-cmd.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/incident-helper-cmd.vdex

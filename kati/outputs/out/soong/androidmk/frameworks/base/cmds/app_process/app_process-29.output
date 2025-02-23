@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/app_process
+out/target/product/vsoc_x86_64/system/bin/app_process32
+out/target/product/vsoc_x86_64/system/bin/app_process64

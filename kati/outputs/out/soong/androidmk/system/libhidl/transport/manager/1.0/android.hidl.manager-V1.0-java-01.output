@@ -1,0 +1,6 @@
+out/target/common/obj/JAVA_LIBRARIES/android.hidl.manager-V1.0-java_intermediates/javalib.jar
+out/target/product/vsoc_x86_64/system/framework/android.hidl.manager-V1.0-java.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.hidl.manager-V1.0-java.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.hidl.manager-V1.0-java.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.hidl.manager-V1.0-java.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.hidl.manager-V1.0-java.vdex

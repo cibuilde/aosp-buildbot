@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/rss_hwm_reset
+out/target/product/vsoc_x86_64/system/etc/init/rss_hwm_reset.rc

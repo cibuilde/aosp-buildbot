@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/cameraserver
+out/target/product/vsoc_x86_64/system/etc/init/cameraserver.rc
+out/target/product/vsoc_x86_64/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.2.xml

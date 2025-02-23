@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system_ext/priv-app/SystemUI/SystemUI.apk
+out/target/product/vsoc_x86_64/system_ext/priv-app/SystemUI/oat/x86_64/SystemUI.odex
+out/target/product/vsoc_x86_64/system_ext/priv-app/SystemUI/oat/x86_64/SystemUI.vdex

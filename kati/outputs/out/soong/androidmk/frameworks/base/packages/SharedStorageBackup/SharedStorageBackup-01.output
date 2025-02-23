@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/SharedStorageBackup/oat/x86_64/SharedStorageBackup.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/SharedStorageBackup/oat/x86_64/SharedStorageBackup.vdex

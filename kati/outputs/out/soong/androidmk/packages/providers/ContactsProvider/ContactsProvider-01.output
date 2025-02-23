@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/ContactsProvider/ContactsProvider.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ContactsProvider/oat/x86_64/ContactsProvider.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ContactsProvider/oat/x86_64/ContactsProvider.vdex

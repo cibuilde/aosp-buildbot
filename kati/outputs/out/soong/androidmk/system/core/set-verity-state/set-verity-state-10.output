@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/disable-verity
+out/target/product/vsoc_x86_64/system/bin/enable-verity
+out/target/product/vsoc_x86_64/system/bin/set-verity-state

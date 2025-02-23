@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/llkd
+out/target/product/vsoc_x86_64/system/etc/init/llkd-debuggable.rc
+out/target/product/vsoc_x86_64/system/etc/init/llkd.rc

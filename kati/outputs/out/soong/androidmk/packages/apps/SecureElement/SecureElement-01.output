@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/app/SecureElement/SecureElement.apk
+out/target/product/vsoc_x86_64/system_other/system/app/SecureElement/oat/x86_64/SecureElement.odex
+out/target/product/vsoc_x86_64/system_other/system/app/SecureElement/oat/x86_64/SecureElement.vdex

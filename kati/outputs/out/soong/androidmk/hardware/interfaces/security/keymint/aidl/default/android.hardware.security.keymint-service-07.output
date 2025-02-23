@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.security.keymint-service
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.security.keymint-service.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.security.keymint-service.xml
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.xml
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.xml

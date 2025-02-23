@@ -1,0 +1,6 @@
+out/soong/ndk/platforms/android-31/arch-x86/usr/lib/libicu.so
+out/soong/ndk/platforms/android-31/arch-x86_64/usr/lib64/libicu.so
+out/soong/ndk/platforms/android-REL/arch-x86/usr/lib/libicu.so
+out/soong/ndk/platforms/android-REL/arch-x86_64/usr/lib64/libicu.so
+out/soong/ndk/platforms/android-current/arch-x86/usr/lib/libicu.so
+out/soong/ndk/platforms/android-current/arch-x86_64/usr/lib64/libicu.so

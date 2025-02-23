@@ -1,0 +1,8 @@
+out/target/product/vsoc_x86_64/odm/etc/build.prop
+out/target/product/vsoc_x86_64/odm_dlkm/etc/build.prop
+out/target/product/vsoc_x86_64/product/etc/build.prop
+out/target/product/vsoc_x86_64/ramdisk/system/etc/ramdisk/build.prop
+out/target/product/vsoc_x86_64/system/build.prop
+out/target/product/vsoc_x86_64/system_ext/etc/build.prop
+out/target/product/vsoc_x86_64/vendor/build.prop
+out/target/product/vsoc_x86_64/vendor_dlkm/etc/build.prop

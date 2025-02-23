@@ -1,0 +1,6 @@
+out/soong/ndk/platforms/android-31/arch-x86/usr/lib/libnativehelper.so
+out/soong/ndk/platforms/android-31/arch-x86_64/usr/lib64/libnativehelper.so
+out/soong/ndk/platforms/android-REL/arch-x86/usr/lib/libnativehelper.so
+out/soong/ndk/platforms/android-REL/arch-x86_64/usr/lib64/libnativehelper.so
+out/soong/ndk/platforms/android-current/arch-x86/usr/lib/libnativehelper.so
+out/soong/ndk/platforms/android-current/arch-x86_64/usr/lib64/libnativehelper.so

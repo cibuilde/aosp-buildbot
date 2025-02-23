@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/obj/ETC/system_ext_sepolicy.cil_intermediates/system_ext_sepolicy.cil
+out/target/product/vsoc_x86_64/system_ext/etc/selinux/system_ext_sepolicy.cil

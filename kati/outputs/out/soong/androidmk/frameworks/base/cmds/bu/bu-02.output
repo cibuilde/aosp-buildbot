@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/bu
+out/target/product/vsoc_x86_64/system/framework/bu.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/bu.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/bu.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/bu.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/bu.vdex

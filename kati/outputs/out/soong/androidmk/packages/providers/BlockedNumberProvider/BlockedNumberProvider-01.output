@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/BlockedNumberProvider/oat/x86_64/BlockedNumberProvider.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/BlockedNumberProvider/oat/x86_64/BlockedNumberProvider.vdex

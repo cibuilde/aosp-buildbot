@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.gatekeeper@1.0-service.software
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.gatekeeper@1.0-service.software.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.software.xml

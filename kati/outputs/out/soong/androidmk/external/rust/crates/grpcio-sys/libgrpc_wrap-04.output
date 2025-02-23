@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/lib/libgrpc_wrap.so
+out/target/product/vsoc_x86_64/system/lib64/libgrpc_wrap.so

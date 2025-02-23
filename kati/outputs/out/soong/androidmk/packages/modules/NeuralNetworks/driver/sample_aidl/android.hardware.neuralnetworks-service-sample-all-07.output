@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.neuralnetworks-service-sample-all
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.neuralnetworks-service-sample-all.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.neuralnetworks-service-sample-all.xml

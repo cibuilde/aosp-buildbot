@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/MmsService/MmsService.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/MmsService/oat/x86_64/MmsService.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/MmsService/oat/x86_64/MmsService.vdex

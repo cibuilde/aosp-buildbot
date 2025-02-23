@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/locksettings
+out/target/product/vsoc_x86_64/system/framework/locksettings.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/locksettings.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/locksettings.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/locksettings.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/locksettings.vdex

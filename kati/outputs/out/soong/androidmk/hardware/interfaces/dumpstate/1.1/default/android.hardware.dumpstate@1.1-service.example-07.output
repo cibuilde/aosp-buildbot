@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.dumpstate@1.1-service.example
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.dumpstate@1.1-service.example.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.dumpstate@1.1-service.example.xml

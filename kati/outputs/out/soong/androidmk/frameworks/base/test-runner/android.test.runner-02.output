@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/android.test.runner.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.runner.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.runner.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.runner.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.runner.vdex

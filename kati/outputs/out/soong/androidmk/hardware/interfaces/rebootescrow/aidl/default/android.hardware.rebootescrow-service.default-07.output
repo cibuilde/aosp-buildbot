@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.rebootescrow-service.default
+out/target/product/vsoc_x86_64/vendor/etc/init/rebootescrow-default.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/rebootescrow-default.xml

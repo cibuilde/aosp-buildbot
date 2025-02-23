@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/fake_packages/time_in_state.o-timestamp
+out/target/product/vsoc_x86_64/system/etc/bpf/time_in_state.o

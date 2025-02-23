@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/unzip
+out/target/product/vsoc_x86_64/recovery/root/system/bin/zipinfo
+out/target/product/vsoc_x86_64/recovery/root/system/bin/ziptool
+out/target/product/vsoc_x86_64/system/bin/unzip
+out/target/product/vsoc_x86_64/system/bin/zipinfo
+out/target/product/vsoc_x86_64/system/bin/ziptool

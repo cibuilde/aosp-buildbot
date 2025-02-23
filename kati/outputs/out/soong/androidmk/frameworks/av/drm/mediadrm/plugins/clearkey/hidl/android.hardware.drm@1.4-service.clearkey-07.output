@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.drm@1.4-service.clearkey
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.drm@1.4-service.clearkey.rc

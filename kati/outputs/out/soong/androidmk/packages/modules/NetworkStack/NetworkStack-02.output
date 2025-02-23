@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/NetworkStack/NetworkStack.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/NetworkStack/oat/x86_64/NetworkStack.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/NetworkStack/oat/x86_64/NetworkStack.vdex

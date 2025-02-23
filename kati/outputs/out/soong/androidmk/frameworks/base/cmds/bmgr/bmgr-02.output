@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/bmgr
+out/target/product/vsoc_x86_64/system/framework/bmgr.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/bmgr.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/bmgr.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/bmgr.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/bmgr.vdex

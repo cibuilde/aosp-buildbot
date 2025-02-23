@@ -1,0 +1,6 @@
+out/target/common/obj/JAVA_LIBRARIES/android.test.mock_intermediates/javalib.jar
+out/target/product/vsoc_x86_64/system/framework/android.test.mock.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.mock.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/android.test.mock.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.mock.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/android.test.mock.vdex

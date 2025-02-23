@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.health.storage-service.cuttlefish
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.health.storage-service.cuttlefish.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/manifest_android.hardware.health.storage.cuttlefish.xml

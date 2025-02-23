@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/lib/libnetd_client.so
+out/target/product/vsoc_x86_64/system/lib64/libnetd_client.so

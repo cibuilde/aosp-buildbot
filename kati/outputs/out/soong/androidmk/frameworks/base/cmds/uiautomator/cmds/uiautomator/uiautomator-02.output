@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/uiautomator
+out/target/product/vsoc_x86_64/system/framework/oat/x86/uiautomator.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/uiautomator.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/uiautomator.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/uiautomator.vdex
+out/target/product/vsoc_x86_64/system/framework/uiautomator.jar

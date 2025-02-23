@@ -1,0 +1,15 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so.toc
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl_intermediates/libdl.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl_intermediates/libdl.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libdl_intermediates/libdl.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libdl_intermediates/libdl.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libdl_intermediates/libdl.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libdl_intermediates/libdl.so.toc
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/libdl.so
+out/target/product/vsoc_x86_64/system/lib/bootstrap/libdl.so
+out/target/product/vsoc_x86_64/system/lib64/bootstrap/libdl.so
+out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/lib64/libdl.so

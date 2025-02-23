@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/recovery-refresh
+out/target/product/vsoc_x86_64/system/etc/init/recovery-refresh.rc

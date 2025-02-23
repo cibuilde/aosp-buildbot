@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/product/priv-app/OneTimeInitializer/OneTimeInitializer.apk
+out/target/product/vsoc_x86_64/product/priv-app/OneTimeInitializer/oat/x86_64/OneTimeInitializer.odex
+out/target/product/vsoc_x86_64/product/priv-app/OneTimeInitializer/oat/x86_64/OneTimeInitializer.vdex

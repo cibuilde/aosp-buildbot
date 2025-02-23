@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.audio@6.0-impl.ranchu.xml
+out/target/product/vsoc_x86_64/vendor/lib/hw/android.hardware.audio@6.0-impl.ranchu.so
+out/target/product/vsoc_x86_64/vendor/lib64/hw/android.hardware.audio@6.0-impl.ranchu.so

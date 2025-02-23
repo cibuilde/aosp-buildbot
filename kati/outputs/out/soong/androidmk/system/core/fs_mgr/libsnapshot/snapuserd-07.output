@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/snapuserd
+out/target/product/vsoc_x86_64/recovery/root/system/etc/init/snapuserd.rc
+out/target/product/vsoc_x86_64/system/bin/snapuserd
+out/target/product/vsoc_x86_64/system/etc/init/snapuserd.rc
+out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/bin/snapuserd

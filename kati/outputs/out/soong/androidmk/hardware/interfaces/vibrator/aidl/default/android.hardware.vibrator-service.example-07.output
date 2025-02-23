@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.vibrator-service.example
+out/target/product/vsoc_x86_64/vendor/etc/init/vibrator-default.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/vibrator-default.xml

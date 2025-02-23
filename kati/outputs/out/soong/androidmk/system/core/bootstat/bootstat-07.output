@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/bootstat
+out/target/product/vsoc_x86_64/system/etc/init/bootstat-debug.rc
+out/target/product/vsoc_x86_64/system/etc/init/bootstat.rc

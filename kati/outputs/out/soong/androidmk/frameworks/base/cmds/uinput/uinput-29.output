@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/uinput
+out/target/product/vsoc_x86_64/system/framework/oat/x86/uinput.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/uinput.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/uinput.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/uinput.vdex
+out/target/product/vsoc_x86_64/system/framework/uinput.jar

@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/init
+out/target/product/vsoc_x86_64/recovery/root/system/bin/ueventd
+out/target/product/vsoc_x86_64/system/bin/init
+out/target/product/vsoc_x86_64/system/bin/ueventd

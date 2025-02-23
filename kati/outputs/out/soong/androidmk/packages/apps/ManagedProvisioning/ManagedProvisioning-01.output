@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ManagedProvisioning/oat/x86_64/ManagedProvisioning.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ManagedProvisioning/oat/x86_64/ManagedProvisioning.vdex

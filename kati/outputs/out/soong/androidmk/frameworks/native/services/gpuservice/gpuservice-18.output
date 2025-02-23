@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/gpuservice
+out/target/product/vsoc_x86_64/system/etc/init/gpuservice.rc

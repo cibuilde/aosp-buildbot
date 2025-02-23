@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/system/app/PrintSpooler/PrintSpooler.apk
+out/target/product/vsoc_x86_64/system/app/PrintSpooler/lib/x86_64/libprintspooler_jni.so
+out/target/product/vsoc_x86_64/system_other/system/app/PrintSpooler/oat/x86_64/PrintSpooler.odex
+out/target/product/vsoc_x86_64/system_other/system/app/PrintSpooler/oat/x86_64/PrintSpooler.vdex

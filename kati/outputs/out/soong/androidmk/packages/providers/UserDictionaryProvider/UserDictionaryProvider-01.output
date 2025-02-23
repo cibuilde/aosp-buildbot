@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/UserDictionaryProvider/oat/x86_64/UserDictionaryProvider.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/UserDictionaryProvider/oat/x86_64/UserDictionaryProvider.vdex

@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libexpat.vendor_intermediates/libexpat.vendor.a
+out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libexpat.vendor_intermediates/libexpat.vendor.a
+out/target/product/vsoc_x86_64/system/lib/libexpat.so
+out/target/product/vsoc_x86_64/system/lib64/libexpat.so

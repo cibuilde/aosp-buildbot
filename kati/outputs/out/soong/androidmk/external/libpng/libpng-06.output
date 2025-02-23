@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/libpng.so
+out/target/product/vsoc_x86_64/system/lib/libpng.so
+out/target/product/vsoc_x86_64/system/lib64/libpng.so

@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/blank_screen
+out/target/product/vsoc_x86_64/system/etc/init/blank_screen.rc

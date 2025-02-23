@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libui_intermediates/libui.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libui_intermediates/libui.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libui_intermediates/libui.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libui_intermediates/libui.so.toc
+out/target/product/vsoc_x86_64/system/lib/libui.so
+out/target/product/vsoc_x86_64/system/lib64/libui.so

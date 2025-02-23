@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.biometrics.face-service.example
+out/target/product/vsoc_x86_64/vendor/etc/init/face-default.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/face-default.xml

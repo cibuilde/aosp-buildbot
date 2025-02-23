@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/ip-wrapper-1.0
+out/target/product/vsoc_x86_64/system/bin/ip6tables-wrapper-1.0
+out/target/product/vsoc_x86_64/system/bin/iptables-wrapper-1.0
+out/target/product/vsoc_x86_64/system/bin/ndc-wrapper-1.0
+out/target/product/vsoc_x86_64/system/bin/netutils-wrapper-1.0
+out/target/product/vsoc_x86_64/system/bin/tc-wrapper-1.0

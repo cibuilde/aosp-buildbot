@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/product/app/Gallery2/Gallery2.apk
+out/target/product/vsoc_x86_64/product/app/Gallery2/lib/x86_64/libjni_eglfence.so
+out/target/product/vsoc_x86_64/product/app/Gallery2/lib/x86_64/libjni_filtershow_filters.so
+out/target/product/vsoc_x86_64/product/app/Gallery2/lib/x86_64/libjni_jpegstream.so
+out/target/product/vsoc_x86_64/product/app/Gallery2/oat/x86_64/Gallery2.odex
+out/target/product/vsoc_x86_64/product/app/Gallery2/oat/x86_64/Gallery2.vdex

@@ -1,0 +1,3 @@
+out/host/linux-x86/lib64/libcrypto-host.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libcrypto.vendor_intermediates/libcrypto.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libcrypto.vendor_intermediates/libcrypto.vendor.so.toc

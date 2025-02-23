@@ -1,0 +1,8 @@
+out/host/linux-x86/bin/defrag.f2fs
+out/host/linux-x86/bin/dump.f2fs
+out/host/linux-x86/bin/fsck.f2fs
+out/host/linux-x86/bin/resize.f2fs
+out/target/product/vsoc_x86_64/system/bin/defrag.f2fs
+out/target/product/vsoc_x86_64/system/bin/dump.f2fs
+out/target/product/vsoc_x86_64/system/bin/fsck.f2fs
+out/target/product/vsoc_x86_64/system/bin/resize.f2fs

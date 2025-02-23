@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/com.android.nfc_extras.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.nfc_extras.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.nfc_extras.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.nfc_extras.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.nfc_extras.vdex

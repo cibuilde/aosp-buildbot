@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/vold
+out/target/product/vsoc_x86_64/system/etc/init/vold.rc
+out/target/product/vsoc_x86_64/system/etc/init/wait_for_keymaster.rc

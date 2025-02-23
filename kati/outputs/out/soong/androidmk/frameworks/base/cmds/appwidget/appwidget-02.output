@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/appwidget
+out/target/product/vsoc_x86_64/system/framework/appwidget.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/appwidget.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/appwidget.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/appwidget.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/appwidget.vdex

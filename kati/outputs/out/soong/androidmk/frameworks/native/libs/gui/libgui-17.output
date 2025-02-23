@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libgui_intermediates/libgui.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libgui_intermediates/libgui.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libgui_intermediates/libgui.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libgui_intermediates/libgui.so.toc
+out/target/product/vsoc_x86_64/system/lib/libgui.so
+out/target/product/vsoc_x86_64/system/lib64/libgui.so

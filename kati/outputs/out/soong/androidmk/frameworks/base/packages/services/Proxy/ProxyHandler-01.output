@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/ProxyHandler/ProxyHandler.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ProxyHandler/oat/x86_64/ProxyHandler.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/ProxyHandler/oat/x86_64/ProxyHandler.vdex

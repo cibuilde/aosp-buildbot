@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libril_intermediates/libril.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libril_intermediates/libril.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libril_intermediates/libril.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libril_intermediates/libril.so.toc
+out/target/product/vsoc_x86_64/vendor/lib/libril.so
+out/target/product/vsoc_x86_64/vendor/lib64/libril.so

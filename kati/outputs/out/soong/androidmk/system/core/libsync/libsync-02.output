@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libsync.vendor_intermediates/libsync.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libsync.vendor_intermediates/libsync.vendor.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libsync.vendor_intermediates/libsync.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libsync.vendor_intermediates/libsync.vendor.so.toc
+out/target/product/vsoc_x86_64/system/lib/libsync.so
+out/target/product/vsoc_x86_64/system/lib64/libsync.so

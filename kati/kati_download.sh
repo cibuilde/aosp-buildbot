@@ -158,10 +158,6 @@ else
   mkdir -p $DOWNLOADS/aosp/device/google/cuttlefish
   tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-11.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish ./guest/hals/ril/reference-libril/libril-modem-lib^android_vendor.31_x86_64_shared ./guest/hals/ril/reference-libril/libril-modem-lib^android_vendor.31_x86_x86_64_shared ./guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared ./guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared ./guest/hals/rild/libcuttlefish-rild^android_vendor.31_x86_64 ./guest/services/suspend_blocker/suspend_blocker^android_vendor.31_x86_64
   rm -rf $DOWNLOADS/device_google_cuttlefish-11.tar.zst
-  download_with_retries android12-gsi_15 device_google_cuttlefish.tar.zst $DOWNLOADS/device_google_cuttlefish-15.tar.zst
-  mkdir -p $DOWNLOADS/aosp/device/google/cuttlefish
-  tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-15.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish ./build/cvd-host_package^linux_glibc_x86_64
-  rm -rf $DOWNLOADS/device_google_cuttlefish-15.tar.zst
   download_with_retries android12-gsi_32 device_google_cuttlefish.tar.zst $DOWNLOADS/device_google_cuttlefish-32.tar.zst
   mkdir -p $DOWNLOADS/aosp/device/google/cuttlefish
   tar --zstd -xf $DOWNLOADS/device_google_cuttlefish-32.tar.zst -C $DOWNLOADS/aosp/device/google/cuttlefish ./guest/monitoring/cuttlefish_service/CuttlefishService^android_common
@@ -2777,4 +2773,3 @@ sudo rm -rf /usr/local/share/chromium
 sudo rm -rf /usr/local/share/swift
 sudo rm -rf /opt/hostedtoolcache
 df -h
-

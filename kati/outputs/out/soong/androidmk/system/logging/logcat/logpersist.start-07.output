@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/system/bin/logpersist.cat
+out/target/product/vsoc_x86_64/system/bin/logpersist.start
+out/target/product/vsoc_x86_64/system/bin/logpersist.stop
+out/target/product/vsoc_x86_64/system/etc/init/logcatd.rc

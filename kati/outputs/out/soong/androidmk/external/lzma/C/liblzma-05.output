@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/liblzma.so
+out/target/product/vsoc_x86_64/system/lib/liblzma.so
+out/target/product/vsoc_x86_64/system/lib64/liblzma.so

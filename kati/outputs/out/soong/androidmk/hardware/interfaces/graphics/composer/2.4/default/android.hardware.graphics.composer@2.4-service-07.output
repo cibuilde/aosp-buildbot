@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.graphics.composer@2.4-service
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.graphics.composer@2.4-service.rc

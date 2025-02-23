@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/ip6tables
+out/target/product/vsoc_x86_64/system/bin/ip6tables-restore
+out/target/product/vsoc_x86_64/system/bin/ip6tables-save
+out/target/product/vsoc_x86_64/system/bin/iptables
+out/target/product/vsoc_x86_64/system/bin/iptables-restore
+out/target/product/vsoc_x86_64/system/bin/iptables-save

@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/libcuttlefish-rild
+out/target/product/vsoc_x86_64/vendor/etc/init/rild_cuttlefish.rc

@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/javax.obex.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/javax.obex.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/javax.obex.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/javax.obex.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/javax.obex.vdex

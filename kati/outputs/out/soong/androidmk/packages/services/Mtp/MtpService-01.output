@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/MtpService/MtpService.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/MtpService/oat/x86_64/MtpService.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/MtpService/oat/x86_64/MtpService.vdex

@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/am
+out/target/product/vsoc_x86_64/system/framework/am.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/am.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/am.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/am.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/am.vdex

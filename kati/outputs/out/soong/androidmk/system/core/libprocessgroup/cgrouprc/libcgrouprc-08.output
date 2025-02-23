@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/recovery/root/system/lib64/libcgrouprc.so
+out/target/product/vsoc_x86_64/system/lib/libcgrouprc.so
+out/target/product/vsoc_x86_64/system/lib64/libcgrouprc.so

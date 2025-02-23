@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/product/etc/selinux/product_seapp_contexts
+out/target/product/vsoc_x86_64/system/etc/selinux/plat_seapp_contexts
+out/target/product/vsoc_x86_64/system_ext/etc/selinux/system_ext_seapp_contexts
+out/target/product/vsoc_x86_64/vendor/etc/selinux/vendor_seapp_contexts

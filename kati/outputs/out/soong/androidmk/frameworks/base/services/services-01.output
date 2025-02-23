@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/services.art
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/services.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/services.vdex
+out/target/product/vsoc_x86_64/system/framework/services.jar
+out/target/product/vsoc_x86_64/system/framework/services.jar.bprof
+out/target/product/vsoc_x86_64/system/framework/services.jar.prof

@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/bunzip2
+out/target/product/vsoc_x86_64/system/bin/bzcat
+out/target/product/vsoc_x86_64/system/bin/bzip2

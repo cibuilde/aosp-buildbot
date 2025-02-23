@@ -1,0 +1,8 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/mke2fs
+out/target/product/vsoc_x86_64/recovery/root/system/bin/mkfs.ext2
+out/target/product/vsoc_x86_64/recovery/root/system/bin/mkfs.ext3
+out/target/product/vsoc_x86_64/recovery/root/system/bin/mkfs.ext4
+out/target/product/vsoc_x86_64/system/bin/mke2fs
+out/target/product/vsoc_x86_64/system/bin/mkfs.ext2
+out/target/product/vsoc_x86_64/system/bin/mkfs.ext3
+out/target/product/vsoc_x86_64/system/bin/mkfs.ext4

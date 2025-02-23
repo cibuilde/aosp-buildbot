@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/ir_expression_operation.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/ir_expression_operation_constant.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/ir_expression_operation_strings.h

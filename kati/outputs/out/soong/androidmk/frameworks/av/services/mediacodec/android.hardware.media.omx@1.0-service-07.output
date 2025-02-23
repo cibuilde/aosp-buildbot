@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.media.omx@1.0-service
+out/target/product/vsoc_x86_64/vendor/etc/init/android.hardware.media.omx@1.0-service.rc

@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/bin/atrace
+out/target/product/vsoc_x86_64/system/etc/init/atrace.rc
+out/target/product/vsoc_x86_64/system/etc/init/atrace_userdebug.rc

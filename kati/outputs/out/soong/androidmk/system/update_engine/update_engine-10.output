@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/system/bin/update_engine
+out/target/product/vsoc_x86_64/system/etc/init/update_engine.rc

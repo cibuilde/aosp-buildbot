@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/requestsync
+out/target/product/vsoc_x86_64/system/framework/oat/x86/requestsync.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/requestsync.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/requestsync.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/requestsync.vdex
+out/target/product/vsoc_x86_64/system/framework/requestsync.jar

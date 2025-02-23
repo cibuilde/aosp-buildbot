@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/vendor/bin/boringssl_self_test32
+out/target/product/vsoc_x86_64/vendor/bin/boringssl_self_test64
+out/target/product/vsoc_x86_64/vendor/etc/init/boringssl_self_test.rc

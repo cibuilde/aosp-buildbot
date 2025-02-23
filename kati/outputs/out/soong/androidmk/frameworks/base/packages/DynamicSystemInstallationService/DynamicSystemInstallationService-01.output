@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/DynamicSystemInstallationService/oat/x86_64/DynamicSystemInstallationService.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/DynamicSystemInstallationService/oat/x86_64/DynamicSystemInstallationService.vdex

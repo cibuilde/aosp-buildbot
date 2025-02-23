@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/PackageInstaller/PackageInstaller.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/PackageInstaller/oat/x86_64/PackageInstaller.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/PackageInstaller/oat/x86_64/PackageInstaller.vdex

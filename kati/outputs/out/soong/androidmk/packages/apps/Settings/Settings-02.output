@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system_ext/priv-app/Settings/Settings.apk
+out/target/product/vsoc_x86_64/system_ext/priv-app/Settings/oat/x86_64/Settings.odex
+out/target/product/vsoc_x86_64/system_ext/priv-app/Settings/oat/x86_64/Settings.vdex

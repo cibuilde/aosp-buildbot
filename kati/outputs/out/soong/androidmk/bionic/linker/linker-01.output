@@ -1,0 +1,8 @@
+out/target/product/vsoc_x86_64/recovery/root/system/bin/linker64
+out/target/product/vsoc_x86_64/recovery/root/system/bin/linker_asan64
+out/target/product/vsoc_x86_64/system/bin/bootstrap/linker
+out/target/product/vsoc_x86_64/system/bin/bootstrap/linker64
+out/target/product/vsoc_x86_64/system/bin/bootstrap/linker_asan
+out/target/product/vsoc_x86_64/system/bin/bootstrap/linker_asan64
+out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/bin/linker64
+out/target/product/vsoc_x86_64/vendor_ramdisk/first_stage_ramdisk/system/bin/linker_asan64

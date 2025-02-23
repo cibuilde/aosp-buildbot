@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/android.hardware.gnss-service.example
+out/target/product/vsoc_x86_64/vendor/etc/init/gnss-default.rc
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/gnss-default.xml
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/gnss@2.1-service.xml

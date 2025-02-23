@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/framework/ethernet-service.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/ethernet-service.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/ethernet-service.vdex

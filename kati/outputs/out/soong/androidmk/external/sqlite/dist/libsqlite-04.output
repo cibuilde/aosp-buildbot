@@ -1,0 +1,3 @@
+out/host/linux-x86/lib64/libsqlite.so
+out/target/product/vsoc_x86_64/system/lib/libsqlite.so
+out/target/product/vsoc_x86_64/system/lib64/libsqlite.so

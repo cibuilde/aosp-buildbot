@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/system/lib/libvibrator.so
+out/target/product/vsoc_x86_64/system/lib64/libvibrator.so
+out/target/product/vsoc_x86_64/vendor/lib/libvibrator.so
+out/target/product/vsoc_x86_64/vendor/lib64/libvibrator.so

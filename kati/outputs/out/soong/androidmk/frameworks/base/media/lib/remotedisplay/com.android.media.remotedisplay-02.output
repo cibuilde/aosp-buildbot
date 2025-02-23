@@ -1,0 +1,5 @@
+out/target/product/vsoc_x86_64/system/framework/com.android.media.remotedisplay.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.media.remotedisplay.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/com.android.media.remotedisplay.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.media.remotedisplay.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/com.android.media.remotedisplay.vdex

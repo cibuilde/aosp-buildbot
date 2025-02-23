@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system_ext/bin/hidl_lazy_test_server
+out/target/product/vsoc_x86_64/system_ext/etc/init/hidl_lazy_test_server.rc
+out/target/product/vsoc_x86_64/system_ext/etc/vintf/manifest/hidl_lazy_test_server.xml

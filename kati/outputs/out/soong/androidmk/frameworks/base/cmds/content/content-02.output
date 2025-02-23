@@ -1,0 +1,6 @@
+out/target/product/vsoc_x86_64/system/bin/content
+out/target/product/vsoc_x86_64/system/framework/content.jar
+out/target/product/vsoc_x86_64/system/framework/oat/x86/content.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86/content.vdex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/content.odex
+out/target/product/vsoc_x86_64/system/framework/oat/x86_64/content.vdex

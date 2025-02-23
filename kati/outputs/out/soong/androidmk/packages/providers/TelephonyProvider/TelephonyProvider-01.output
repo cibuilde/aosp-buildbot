@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/TelephonyProvider/TelephonyProvider.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/TelephonyProvider/oat/x86_64/TelephonyProvider.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/TelephonyProvider/oat/x86_64/TelephonyProvider.vdex

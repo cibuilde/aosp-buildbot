@@ -1,0 +1,3 @@
+out/target/product/vsoc_x86_64/system/priv-app/LocalTransport/LocalTransport.apk
+out/target/product/vsoc_x86_64/system_other/system/priv-app/LocalTransport/oat/x86_64/LocalTransport.odex
+out/target/product/vsoc_x86_64/system_other/system/priv-app/LocalTransport/oat/x86_64/LocalTransport.vdex

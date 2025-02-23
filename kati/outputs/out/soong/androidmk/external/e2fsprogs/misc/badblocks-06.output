@@ -1,0 +1,2 @@
+out/host/linux-x86/bin/badblocks
+out/target/product/vsoc_x86_64/system/bin/badblocks
