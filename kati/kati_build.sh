@@ -15,7 +15,7 @@ SOONG_OUTPUTS="$DOWNLOADS/aosp"
 #mkdir -p "$SOONG_OUTPUTS"
 #tar xf "$CACHE_FILE" -C "$SOONG_OUTPUTS"
 du -ah -d1 $SOONG_OUTPUTS
-ls -la $SOONG_OUTPUTS/external/auto/common/auto_common^linux_glibc_common
+tree -aA $SOONG_OUTPUTS/external/auto/common/auto_common^linux_glibc_common
 
 mkdir -p $GITHUB_WORKSPACE/images/
 
@@ -45,7 +45,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/auto/common/auto_common^linux_glibc_common .
-ls -l out/soong/.intermediates/external/auto/common/auto_common
+tree -aA out/soong/
 
 
 prebuilts/build-tools/linux-x86/bin/ninja -f kati/out/soong/androidmk/external/auto/common/auto_common.ninja out/host/common/obj/JAVA_LIBRARIES/auto_common_intermediates/classes.jar
