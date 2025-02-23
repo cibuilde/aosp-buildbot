@@ -104,11 +104,11 @@ else
   rm -rf $DOWNLOADS/build_make-05.tar.zst
   download_with_retries android12-gsi_01 build_soong.tar.zst $DOWNLOADS/build_soong-01.tar.zst
   mkdir -p $DOWNLOADS/aosp/build/soong
-  tar --zstd -xf $DOWNLOADS/build_soong-01.tar.zst -C $DOWNLOADS/aosp/build/soong ./cmd/fileslist/fileslist^linux_glibc_x86_64 ./cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64
+  tar --zstd -xf $DOWNLOADS/build_soong-01.tar.zst -C $DOWNLOADS/aosp/build/soong ./cmd/dep_fixer/dep_fixer^linux_glibc_x86_64 ./cmd/fileslist/fileslist^linux_glibc_x86_64 ./cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64 ./symbol_inject/cmd/symbol_inject^linux_glibc_x86_64
   rm -rf $DOWNLOADS/build_soong-01.tar.zst
   download_with_retries android12-gsi_02 build_soong.tar.zst $DOWNLOADS/build_soong-02.tar.zst
   mkdir -p $DOWNLOADS/aosp/build/soong
-  tar --zstd -xf $DOWNLOADS/build_soong-02.tar.zst -C $DOWNLOADS/aosp/build/soong ./cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64 ./cmd/merge_zips/merge_zips^linux_glibc_x86_64 ./cmd/zip2zip/zip2zip^linux_glibc_x86_64 ./cmd/zipsync/zipsync^linux_glibc_x86_64 ./dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64 ./scripts/construct_context^linux_glibc_x86_64_PY2 ./scripts/manifest_check^linux_glibc_x86_64_PY2 ./scripts/manifest_fixer^linux_glibc_x86_64_PY2 ./zip/cmd/soong_zip^linux_glibc_x86_64
+  tar --zstd -xf $DOWNLOADS/build_soong-02.tar.zst -C $DOWNLOADS/aosp/build/soong ./cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64 ./cmd/merge_zips/merge_zips^linux_glibc_x86_64 ./cmd/sbox/sbox^linux_glibc_x86_64 ./cmd/zip2zip/zip2zip^linux_glibc_x86_64 ./cmd/zipsync/zipsync^linux_glibc_x86_64 ./dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64 ./scripts/construct_context^linux_glibc_x86_64_PY2 ./scripts/manifest_check^linux_glibc_x86_64_PY2 ./scripts/manifest_fixer^linux_glibc_x86_64_PY2 ./zip/cmd/soong_zip^linux_glibc_x86_64
   rm -rf $DOWNLOADS/build_soong-02.tar.zst
   download_with_retries android12-gsi_05 build_soong.tar.zst $DOWNLOADS/build_soong-05.tar.zst
   mkdir -p $DOWNLOADS/aosp/build/soong
@@ -676,7 +676,7 @@ else
   rm -rf $DOWNLOADS/external_libvpx-06.tar.zst
   download_with_retries android12-gsi_04 external_libxml2.tar.zst $DOWNLOADS/external_libxml2-04.tar.zst
   mkdir -p $DOWNLOADS/aosp/external/libxml2
-  tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/external/libxml2 ./libxml2^android_vendor.31_x86_64_shared ./libxml2^android_vendor.31_x86_x86_64_shared ./libxml2^android_x86_64_shared ./libxml2^android_x86_x86_64_shared ./xmllint^linux_glibc_x86_64
+  tar --zstd -xf $DOWNLOADS/external_libxml2-04.tar.zst -C $DOWNLOADS/aosp/external/libxml2 ./libxml2^android_vendor.31_x86_64_shared ./libxml2^android_vendor.31_x86_x86_64_shared ./libxml2^android_x86_64_shared ./libxml2^android_x86_x86_64_shared ./libxml2^linux_glibc_x86_64_shared ./xmllint^linux_glibc_x86_64
   rm -rf $DOWNLOADS/external_libxml2-04.tar.zst
   download_with_retries android12-gsi_04 external_libyuv.tar.zst $DOWNLOADS/external_libyuv-04.tar.zst
   mkdir -p $DOWNLOADS/aosp/external/libyuv
@@ -2160,7 +2160,7 @@ else
   rm -rf $DOWNLOADS/prebuilts_clang_host_linux-x86-01.tar.zst
   download_with_retries android12-gsi_04 prebuilts_manifest-merger.tar.zst $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst
   mkdir -p $DOWNLOADS/aosp/prebuilts/manifest-merger
-  tar --zstd -xf $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst -C $DOWNLOADS/aosp/prebuilts/manifest-merger ./manifest-merger^linux_glibc_x86_64
+  tar --zstd -xf $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst -C $DOWNLOADS/aosp/prebuilts/manifest-merger ./manifest-merger^linux_glibc_common ./manifest-merger^linux_glibc_x86_64
   rm -rf $DOWNLOADS/prebuilts_manifest-merger-04.tar.zst
   download_with_retries android12-gsi_01 prebuilts_misc.tar.zst $DOWNLOADS/prebuilts_misc-01.tar.zst
   mkdir -p $DOWNLOADS/aosp/prebuilts/misc
@@ -2172,7 +2172,7 @@ else
   rm -rf $DOWNLOADS/prebuilts_ndk-04.tar.zst
   download_with_retries android12-gsi_03 prebuilts_r8.tar.zst $DOWNLOADS/prebuilts_r8-03.tar.zst
   mkdir -p $DOWNLOADS/aosp/prebuilts/r8
-  tar --zstd -xf $DOWNLOADS/prebuilts_r8-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/r8 ./d8^linux_glibc_x86_64 ./r8-compat-proguard^linux_glibc_x86_64
+  tar --zstd -xf $DOWNLOADS/prebuilts_r8-03.tar.zst -C $DOWNLOADS/aosp/prebuilts/r8 ./d8^linux_glibc_common ./d8^linux_glibc_x86_64 ./r8-compat-proguard^linux_glibc_common ./r8-compat-proguard^linux_glibc_x86_64
   rm -rf $DOWNLOADS/prebuilts_r8-03.tar.zst
   download_with_retries android12-gsi_06 prebuilts_rust.tar.zst $DOWNLOADS/prebuilts_rust-06.tar.zst
   mkdir -p $DOWNLOADS/aosp/prebuilts/rust

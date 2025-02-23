@@ -134,6 +134,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 
 
@@ -4631,6 +4632,7 @@ clone_project platform/prebuilts/sdk prebuilts/sdk android12-gsi "/current/publi
 
 
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 
@@ -21152,6 +21154,10 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/verity/boot_signer^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/verity/boot_signer^linux_glibc_x86_64/ .
 
@@ -21177,6 +21183,11 @@ prepare_building
 
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21198,6 +21209,8 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21221,6 +21234,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/brotli/brotli^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21243,6 +21257,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/bsdiff/bsdiff^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21264,6 +21279,8 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/selinux/checkpolicy/checkpolicy^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21287,6 +21304,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/kmod/depmod^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21308,6 +21326,8 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/verity/fec/fec^linux_glibc_x86/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/verity/fec/fec^linux_glibc_x86_64/ .
 
@@ -21331,6 +21351,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/img2simg^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21354,6 +21375,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/bootable/recovery/applypatch/imgdiff^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21375,6 +21397,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21398,6 +21421,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/f2fs-tools/make_f2fs^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21419,6 +21443,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/mkbootfs/mkbootfs^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21469,6 +21494,8 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/post_process_props^linux_glibc_x86_64_PY3/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21490,6 +21517,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/simg2img^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21512,6 +21540,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/sdk/tools/prebuilt_libLLVM_android^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21536,6 +21565,7 @@ prepare_building
 
 rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^android_vendor.31_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 
@@ -21557,6 +21587,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21580,6 +21611,7 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/stubdata/build/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21602,6 +21634,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21624,6 +21657,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -21646,6 +21680,7 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/pcre/libpcre2^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2/ .
@@ -21669,6 +21704,7 @@ prepare_building
 clone_depth_platform packages/apps/Browser2
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Browser2/Browser2^android_common/ .
@@ -21700,6 +21736,7 @@ prepare_building
 clone_depth_platform packages/apps/CarrierConfig
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/CarrierConfig/CarrierConfig^android_common/ .
@@ -21732,6 +21769,7 @@ prepare_building
 clone_depth_platform packages/apps/Contacts
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Contacts/Contacts^android_common/ .
@@ -21764,6 +21802,7 @@ prepare_building
 clone_depth_platform packages/apps/DeskClock
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/DeskClock/DeskClock^android_common/ .
@@ -21817,6 +21856,7 @@ prepare_building
 clone_depth_platform packages/apps/EmergencyInfo
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/EmergencyInfo/EmergencyInfo^android_common/ .
@@ -21849,6 +21889,7 @@ prepare_building
 clone_depth_platform packages/apps/ImsServiceEntitlement
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement^android_common/ .
@@ -21881,6 +21922,7 @@ prepare_building
 clone_depth_platform packages/inputmethods/LatinIME
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/inputmethods/LatinIME/java/LatinIME^android_common/ .
@@ -21935,6 +21977,7 @@ prepare_building
 clone_depth_platform packages/modules/ModuleMetadata
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/modules/ModuleMetadata/ModuleMetadata^android_common/ .
@@ -21966,6 +22009,7 @@ prepare_building
 clone_depth_platform packages/apps/Music
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Music/Music^android_common/ .
@@ -22022,6 +22066,7 @@ prepare_building
 clone_depth_platform packages/apps/OneTimeInitializer
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/OneTimeInitializer/OneTimeInitializer^android_common/ .
@@ -22053,6 +22098,7 @@ prepare_building
 clone_depth_platform packages/screensavers/PhotoTable
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/screensavers/PhotoTable/PhotoTable^android_common/ .
@@ -22084,6 +22130,7 @@ prepare_building
 clone_depth_platform packages/apps/Provision
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Provision/Provision^android_common/ .
@@ -22116,6 +22163,7 @@ prepare_building
 clone_depth_platform packages/apps/QuickSearchBox
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/QuickSearchBox/QuickSearchBox^android_common/ .
@@ -22147,6 +22195,7 @@ prepare_building
 clone_depth_platform packages/apps/RemoteProvisioner
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/RemoteProvisioner/RemoteProvisioner^android_common/ .
@@ -22179,6 +22228,7 @@ clone_depth_platform packages/apps/Settings
 clone_depth_platform packages/apps/SettingsIntelligence
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/SettingsIntelligence/SettingsIntelligence^android_common/ .
@@ -22214,7 +22264,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/make/core/generate_enforce_rro/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/make/core/java_common/ .
@@ -22238,6 +22290,7 @@ prepare_building
 clone_depth_platform packages/apps/Settings
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Settings/Settings^android_common/ .
@@ -22271,6 +22324,7 @@ prepare_building
 clone_depth_platform packages/apps/StorageManager
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/StorageManager/StorageManager^android_common/ .
@@ -22303,6 +22357,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/SystemUI/SystemUI^android_common/ .
@@ -22335,6 +22390,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/WallpaperCropper/WallpaperCropper^android_common/ .
@@ -22366,6 +22422,7 @@ prepare_building
 clone_depth_platform packages/apps/WallpaperPicker
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/WallpaperPicker/WallpaperPicker^android_common/ .
@@ -23572,6 +23629,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/DisplayCutoutEmulationCornerOverlay/DisplayCutoutEmulationCornerOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23603,6 +23661,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/DisplayCutoutEmulationDoubleOverlay/DisplayCutoutEmulationDoubleOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23634,6 +23693,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/DisplayCutoutEmulationHoleOverlay/DisplayCutoutEmulationHoleOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23665,6 +23725,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/DisplayCutoutEmulationTallOverlay/DisplayCutoutEmulationTallOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23696,6 +23757,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/DisplayCutoutEmulationWaterfallOverlay/DisplayCutoutEmulationWaterfallOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23749,6 +23811,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/FontNotoSerifSourceOverlay/FontNotoSerifSourceOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23780,6 +23843,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/NavigationBarMode3ButtonOverlay/NavigationBarMode3ButtonOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23811,6 +23875,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/NavigationBarModeGesturalOverlayExtraWideBack/NavigationBarModeGesturalOverlayExtraWideBack^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23842,6 +23907,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/NavigationBarModeGesturalOverlayNarrowBack/NavigationBarModeGesturalOverlayNarrowBack^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23873,6 +23939,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/NavigationBarModeGesturalOverlayWideBack/NavigationBarModeGesturalOverlayWideBack^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23904,6 +23971,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/NavigationBarModeGesturalOverlay/NavigationBarModeGesturalOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -23935,6 +24003,7 @@ prepare_building
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/packages/overlays/OneHandedModeGesturalOverlay/OneHandedModeGesturalOverlay^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -27118,6 +27187,7 @@ rsync -a -r $SOONG_OUTPUTS/art/profman/profman^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
@@ -27128,11 +27198,14 @@ rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_check^linux_glibc_x86_64
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dex_bootjars^/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dexpreopt-soong-config^/ .
@@ -27233,7 +27306,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/compile/libbcc/tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/sdk/tools/prebuilt_libLLVM_android^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/tools/prebuilt_libLLVM_android/ .
@@ -27256,6 +27331,8 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -27326,7 +27403,10 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/toybox/toybox^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz/ .
@@ -27349,11 +27429,13 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^android_vendor.31_x86_64_static/ .
 rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^android_vendor.31_x86_x86_64_static/ .
 rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^android_vendor.31_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog/ .
@@ -27376,6 +27458,8 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto/ .
@@ -27400,6 +27484,8 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -27422,7 +27508,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -27445,7 +27533,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog/ .
@@ -27483,6 +27573,7 @@ rsync -a -r $SOONG_OUTPUTS/art/profman/profman^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
@@ -27493,10 +27584,12 @@ rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_check^linux_glibc_x86_64
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dex_bootjars^/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dexpreopt-soong-config^/ .
@@ -27581,6 +27674,7 @@ rsync -a -r $SOONG_OUTPUTS/art/profman/profman^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
@@ -27591,11 +27685,14 @@ rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_check^linux_glibc_x86_64
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dex_bootjars^/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dexpreopt-soong-config^/ .
@@ -27671,7 +27768,9 @@ rsync -a -r $SOONG_OUTPUTS/art/dex2oat/dex2oatd^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/profman/profman^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
@@ -27682,13 +27781,17 @@ rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_check^linux_glibc_x86_64
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dex_bootjars^/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dexpreopt-soong-config^/ .
@@ -27751,6 +27854,7 @@ prepare_building
 clone_depth device/google/cuttlefish
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
@@ -30184,7 +30288,10 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase/ .
@@ -30207,9 +30314,12 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^android_vendor.31_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase/ .
@@ -30233,7 +30343,11 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz/ .
@@ -30257,6 +30371,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -30280,7 +30397,11 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz/ .
@@ -30304,6 +30425,9 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^android_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^android_x86_x86_64_shared/ .
@@ -30536,8 +30660,11 @@ clone_depth_platform build/soong
 
 
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
@@ -32166,7 +32293,13 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/libsqlite/ .
@@ -32189,7 +32322,13 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/avb/avbtool^linux_glibc_x86_64_PY3/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/libsqlite/ .
@@ -32213,7 +32352,11 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/ext4_utils/blk_alloc_to_base_fs^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils/ .
@@ -32236,6 +32379,12 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/apex/tools/deapexer^linux_glibc_x86_64_PY3/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/debugfs/debugfs_static/ .
@@ -32260,8 +32409,14 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/f2fs-tools/fsck.f2fs^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/f2fs-tools/fsck.f2fs^android_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32286,6 +32441,12 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32309,7 +32470,14 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/erofs-utils/mkfs.erofs^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/pcre/libpcre2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32334,6 +32502,12 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid/ .
@@ -32359,6 +32533,12 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/tools/mkbootimg/unpack_bootimg^linux_glibc_x86_64_PY3/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32412,7 +32592,13 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32437,7 +32623,15 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
@@ -32466,7 +32660,11 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/libprocessgroup/libprocessgroup^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc/ .
@@ -32490,9 +32688,17 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/pcre/libpcre2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libvintf/libvintf^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libvintf/libvintf^android_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libvintf/libvintf^android_x86_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux/ .
@@ -34338,7 +34544,16 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/pcre/libpcre2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/libvintf/assemble_vintf^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/system/libvintf/libvintf^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase/ .
@@ -34362,8 +34577,18 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/misc/badblocks^android_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p/ .
@@ -34391,6 +34616,12 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/releasetools/build_super_image^linux_glibc_x86_64_PY2/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/imgdiff/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk/ .
@@ -34425,7 +34656,18 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libcutils/libcutils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libprocessgroup/libprocessgroup^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/init/host_init_verifier^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite/ .
@@ -34453,7 +34695,16 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/system/extras/partition_tools/lpmake^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp/ .
@@ -34505,6 +34756,7 @@ rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^android_recovery_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^android_vendor_ramdisk_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^android_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl/ .
@@ -34533,6 +34785,7 @@ rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x8
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^android_recovery_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^android_vendor_ramdisk_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^android_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl/ .
@@ -34557,7 +34810,16 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err/ .
@@ -34586,6 +34848,7 @@ rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^android_recovery_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^android_vendor_ramdisk_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl/ .
@@ -36537,7 +36800,18 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p/ .
@@ -36566,8 +36840,19 @@ prepare_building
 
 
 
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/e2fsprogs/misc/tune2fs^android_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p/ .
@@ -41011,6 +41296,12 @@ prepare_building
 
 
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/imgdiff/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk/ .
@@ -57982,6 +58273,7 @@ prepare_building
 clone_depth_platform external/chromium-webview
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/chromium-webview/webview^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
@@ -59452,6 +59744,7 @@ clone_depth_platform packages/apps/Gallery
 clone_depth_platform packages/apps/Gallery2
 
 
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/packages/apps/Gallery2/Gallery2^android_common/ .
@@ -59523,6 +59816,7 @@ rsync -a -r $SOONG_OUTPUTS/art/profman/profman^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $SOONG_OUTPUTS/build/make/tools/signapk/signapk^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
@@ -59533,11 +59827,14 @@ rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_check^linux_glibc_x86_64
 rsync -a -r $SOONG_OUTPUTS/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $SOONG_OUTPUTS/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $SOONG_OUTPUTS/frameworks/base/boot/platform-bootclasspath^android_common/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $SOONG_OUTPUTS/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dex_bootjars^/ .
 rsync -a -r $SOONG_OUTPUTS/singletons/dexpreopt-soong-config^/ .
@@ -59785,6 +60082,10 @@ clone_depth_platform system/memory/lmkd
 
 
 rsync -a -r $SOONG_OUTPUTS/build/soong/cmd/fileslist/fileslist^linux_glibc_x86_64/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $SOONG_OUTPUTS/external/libxml2/libxml2^linux_glibc_x86_64_shared/ .
 rsync -a -r $SOONG_OUTPUTS/external/libxml2/xmllint^linux_glibc_x86_64/ .
 rsync -a -r $SOONG_OUTPUTS/system/core/rootdir/system_linker_config^android_x86_64/ .
 
