@@ -339,7 +339,7 @@ jobs:
         key: system_vold@${{ env.branch }}
     - run: bash kati/kati_download.sh
     - name: Archive soong_outputs.tar.xz
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: soong_outputs.tar.xz
         path: cache/soong_outputs.tar.xz
