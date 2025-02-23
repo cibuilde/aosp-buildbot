@@ -31,15 +31,12 @@ function prepare_building() {
   fi
 }
 function rsync_image_dirs() {
-  [ -d out/target/product/vsoc_x86_64/odm ] && rsync -a -r out/target/product/vsoc_x86_64/odm $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/odm_dlkm ] && rsync -a -r out/target/product/vsoc_x86_64/odm_dlkm $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/product ] && rsync -a -r out/target/product/vsoc_x86_64/product $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/root ] && rsync -a -r out/target/product/vsoc_x86_64/root $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/system ] && rsync -a -r out/target/product/vsoc_x86_64/system $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/system_ext ] && rsync -a -r out/target/product/vsoc_x86_64/system_ext $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/system_other ] && rsync -a -r out/target/product/vsoc_x86_64/system_other $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/vendor ] && rsync -a -r out/target/product/vsoc_x86_64/vendor $GITHUB_WORKSPACE/images/
-  [ -d out/target/product/vsoc_x86_64/vendor_dlkm ] && rsync -a -r out/target/product/vsoc_x86_64/vendor_dlkm $GITHUB_WORKSPACE/images/
+  image_dirs=("odm" "odm_dlkm" "product" "root" "system" "system_ext" "system_other" "vendor" "vendor_dlkm")
+  for image_dir in "${image_dirs[@]}"; do
+      if [ -d "out/target/product/vsoc_x86_64/$image_dir" ]; then
+          rsync -a -r "out/target/product/vsoc_x86_64/$image_dir" "$GITHUB_WORKSPACE/images/"
+      fi
+  done
 }
 
 
