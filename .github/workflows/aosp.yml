@@ -337,10 +337,11 @@ jobs:
       with:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
-    - run: bash kati/kati_clone.sh
     - run: bash kati/kati_download.sh
     - name: Archive soong_outputs.tar.zst
       uses: actions/upload-artifact@v4
       with:
         name: soong_outputs.tar.zst
         path: cache/soong_outputs.tar.zst
+    - run: bash kati/kati_build.sh
+    - run: bash kati/kati_upload.sh

@@ -13,6 +13,10 @@ SOONG_OUTPUTS="$DOWNLOADS/aosp"
 
 mkdir -p $GITHUB_WORKSPACE/images/
 
+mkdir -p $GITHUB_WORKSPACE/.bin
+ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
+export PATH=$GITHUB_WORKSPACE/.bin:$PATH
+
 df -h
 
 function prepare_building() {
