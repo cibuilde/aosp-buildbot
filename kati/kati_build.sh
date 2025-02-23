@@ -10,6 +10,10 @@ CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
 DOWNLOADS=$GITHUB_WORKSPACE/downloads
 SOONG_OUTPUTS="$DOWNLOADS/aosp"
+mkdir -p $SOONG_OUTPUTS/
+echo "Cache hit: Extracting $CACHE_FILE to $SOONG_OUTPUTS"
+mkdir -p "$SOONG_OUTPUTS"
+tar xf "$CACHE_FILE" -C "$SOONG_OUTPUTS"
 
 mkdir -p $GITHUB_WORKSPACE/images/
 
