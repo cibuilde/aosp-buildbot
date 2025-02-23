@@ -5,6 +5,7 @@ mkdir -p kati
 tar xf $GITHUB_WORKSPACE/kati.tar.zst -C kati
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 android12-gsi "/clang-r416183b1" "/clang-r416183b" "/soong"
+tree -aA -d2 prebuilts/clang/host/
 
 CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
@@ -30,9 +31,7 @@ function prepare_building() {
   ln -sf $GITHUB_WORKSPACE/kati kati
 
   mkdir -p prebuilts/ && ln -sf $GITHUB_WORKSPACE/prebuilts/build-tools prebuilts/
-  if [ ! -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
-    mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-  fi
+  mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/
 }
 function rsync_image_dirs() {
   image_dirs=("odm" "odm_dlkm" "product" "root" "system" "system_ext" "system_other" "vendor" "vendor_dlkm")
@@ -47,6 +46,7 @@ function rsync_image_dirs() {
 echo "building out/soong/androidmk/external/auto/common/auto_common.ninja"
 
 prepare_building
+tree -aA -d2 prebuilts/clang/host/
 
 
 
