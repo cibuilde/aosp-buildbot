@@ -67,6 +67,38 @@ jobs:
         key: external_boringssl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_brotli.tar.zst
+        key: external_brotli@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_chromium-webview.tar.zst
+        key: external_chromium-webview@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_clang.tar.zst
+        key: external_clang@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_compiler-rt.tar.zst
+        key: external_compiler-rt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_e2fsprogs.tar.zst
+        key: external_e2fsprogs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_expat.tar.zst
+        key: external_expat@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_fec.tar.zst
+        key: external_fec@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_fmtlib.tar.zst
+        key: external_fmtlib@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_hyphenation-patterns.tar.zst
         key: external_hyphenation-patterns@${{ env.branch }}
     - uses: actions/cache@v4
@@ -77,6 +109,38 @@ jobs:
       with:
         path: cache/external_ipsec-tools.tar.zst
         key: external_ipsec-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcap.tar.zst
+        key: external_libcap@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcxx.tar.zst
+        key: external_libcxx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcxxabi.tar.zst
+        key: external_libcxxabi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libdrm.tar.zst
+        key: external_libdrm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libjpeg-turbo.tar.zst
+        key: external_libjpeg-turbo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libnl.tar.zst
+        key: external_libnl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libyuv.tar.zst
+        key: external_libyuv@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lzma.tar.zst
+        key: external_lzma@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_mdnsresponder.tar.zst
@@ -95,12 +159,40 @@ jobs:
         key: external_mtpd@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_nanopb-c.tar.zst
+        key: external_nanopb-c@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_pcre.tar.zst
+        key: external_pcre@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_perfetto.tar.zst
         key: external_perfetto@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_selinux.tar.zst
+        key: external_selinux@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_skia.tar.zst
+        key: external_skia@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_vulkan-headers.tar.zst
+        key: external_vulkan-headers@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_wpa_supplicant_8.tar.zst
         key: external_wpa_supplicant_8@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zlib.tar.zst
+        key: external_zlib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_zxing.tar.zst
@@ -151,6 +243,10 @@ jobs:
         key: hardware_google_camera@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/hardware_google_pixel.tar.zst
+        key: hardware_google_pixel@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/hardware_google_pixel-sepolicy.tar.zst
         key: hardware_google_pixel-sepolicy@${{ env.branch }}
     - uses: actions/cache@v4
@@ -161,6 +257,10 @@ jobs:
       with:
         path: cache/hardware_libhardware.tar.zst
         key: hardware_libhardware@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_libhardware_legacy.tar.zst
+        key: hardware_libhardware_legacy@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_ril.tar.zst
@@ -175,6 +275,14 @@ jobs:
         key: kernel_prebuilts_common-modules_virtual-device_5.10_x86-64@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/libnativehelper.tar.zst
+        key: libnativehelper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Browser2.tar.zst
+        key: packages_apps_Browser2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_apps_Calendar.tar.zst
         key: packages_apps_Calendar@${{ env.branch }}
     - uses: actions/cache@v4
@@ -183,8 +291,36 @@ jobs:
         key: packages_apps_Camera2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_apps_CarrierConfig.tar.zst
+        key: packages_apps_CarrierConfig@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Contacts.tar.zst
+        key: packages_apps_Contacts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_DeskClock.tar.zst
+        key: packages_apps_DeskClock@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_apps_Dialer.tar.zst
         key: packages_apps_Dialer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_EmergencyInfo.tar.zst
+        key: packages_apps_EmergencyInfo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Gallery.tar.zst
+        key: packages_apps_Gallery@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Gallery2.tar.zst
+        key: packages_apps_Gallery2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_ImsServiceEntitlement.tar.zst
+        key: packages_apps_ImsServiceEntitlement@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_apps_Launcher3.tar.zst
@@ -195,8 +331,36 @@ jobs:
         key: packages_apps_Messaging@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_apps_Music.tar.zst
+        key: packages_apps_Music@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_OneTimeInitializer.tar.zst
+        key: packages_apps_OneTimeInitializer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Provision.tar.zst
+        key: packages_apps_Provision@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_QuickSearchBox.tar.zst
+        key: packages_apps_QuickSearchBox@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_RemoteProvisioner.tar.zst
+        key: packages_apps_RemoteProvisioner@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_apps_Settings.tar.zst
         key: packages_apps_Settings@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_SettingsIntelligence.tar.zst
+        key: packages_apps_SettingsIntelligence@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_StorageManager.tar.zst
+        key: packages_apps_StorageManager@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_apps_TimeZoneUpdater.tar.zst
@@ -207,8 +371,24 @@ jobs:
         key: packages_apps_TvSettings@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_apps_WallpaperPicker.tar.zst
+        key: packages_apps_WallpaperPicker@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_inputmethods_LatinIME.tar.zst
+        key: packages_inputmethods_LatinIME@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_ModuleMetadata.tar.zst
+        key: packages_modules_ModuleMetadata@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_NeuralNetworks.tar.zst
         key: packages_modules_NeuralNetworks@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_screensavers_PhotoTable.tar.zst
+        key: packages_screensavers_PhotoTable@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_services_Car.tar.zst
@@ -221,6 +401,14 @@ jobs:
       with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
+        key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_jdk_jdk8.tar.zst
@@ -291,16 +479,40 @@ jobs:
         key: system_hwservicemanager@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_incremental_delivery.tar.zst
+        key: system_incremental_delivery@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_iorap.tar.zst
         key: system_iorap@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libbase.tar.zst
+        key: system_libbase@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libfmq.tar.zst
+        key: system_libfmq@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhidl.tar.zst
         key: system_libhidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_libhwbinder.tar.zst
+        key: system_libhwbinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libprocinfo.tar.zst
+        key: system_libprocinfo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_logging.tar.zst
         key: system_logging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_media.tar.zst
+        key: system_media@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_memory_lmkd.tar.zst
@@ -331,12 +543,14 @@ jobs:
         key: system_tools_hidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_unwinding.tar.zst
+        key: system_unwinding@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_update_engine.tar.zst
         key: system_update_engine@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
-    - run: bash kati/kati_download.sh
-    - run: bash kati/kati_build.sh
-    - run: bash kati/kati_upload.sh
+    - run: bash kati/kati_clone.sh

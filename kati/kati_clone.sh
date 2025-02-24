@@ -17,15 +17,38 @@ clone_depth device/sample
 clone_depth_platform external/android-clat
 clone_depth_platform external/avb
 clone_depth_platform external/boringssl
+clone_depth_platform external/brotli
+clone_depth_platform external/chromium-webview
+clone_depth_platform external/clang
+clone_depth_platform external/compiler-rt
+clone_depth_platform external/e2fsprogs
+clone_depth_platform external/expat
+clone_depth_platform external/fec
+clone_depth_platform external/fmtlib
 clone_depth_platform external/hyphenation-patterns
 clone_depth_platform external/icu
 clone_depth_platform external/ipsec-tools
+clone_depth_platform external/libcap
+clone_depth_platform external/libcxx
+clone_depth_platform external/libcxxabi
+clone_depth_platform external/libdrm
+clone_depth_platform external/libjpeg-turbo
+clone_depth_platform external/libnl
+clone_depth_platform external/libyuv
+clone_depth_platform external/lzma
 clone_depth_platform external/mdnsresponder
 clone_depth_platform external/mesa3d
 clone_depth_platform external/minigbm
 clone_depth_platform external/mtpd
+clone_depth_platform external/nanopb-c
+clone_depth_platform external/pcre
 clone_depth_platform external/perfetto
+clone_depth_platform external/protobuf
+clone_depth_platform external/selinux
+clone_depth_platform external/skia
+clone_depth_platform external/vulkan-headers
 clone_depth_platform external/wpa_supplicant_8
+clone_depth_platform external/zlib
 clone_depth_platform external/zxing
 clone_depth_platform frameworks/av
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
@@ -38,22 +61,46 @@ clone_depth_platform frameworks/opt/telephony
 clone_depth_platform frameworks/opt/timezonepicker
 clone_depth_platform frameworks/rs
 clone_depth_platform hardware/google/camera
+clone_depth_platform hardware/google/pixel
 clone_depth_platform hardware/google/pixel-sepolicy
 clone_depth_platform hardware/interfaces
 clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_project kernel/prebuilts/5.10/x86-64 kernel/prebuilts/5.10/x86_64 android12-gsi "/kernel-5.10"
 clone_depth kernel/prebuilts/common-modules/virtual-device/5.10/x86-64
+clone_depth_platform libnativehelper
+clone_depth_platform packages/apps/Browser2
 clone_depth_platform packages/apps/Calendar
 clone_depth_platform packages/apps/Camera2
+clone_depth_platform packages/apps/CarrierConfig
+clone_depth_platform packages/apps/Contacts
+clone_depth_platform packages/apps/DeskClock
 clone_depth_platform packages/apps/Dialer
+clone_depth_platform packages/apps/EmergencyInfo
+clone_depth_platform packages/apps/Gallery
+clone_depth_platform packages/apps/Gallery2
+clone_depth_platform packages/apps/ImsServiceEntitlement
 clone_depth_platform packages/apps/Launcher3
 clone_depth_platform packages/apps/Messaging
+clone_depth_platform packages/apps/Music
+clone_depth_platform packages/apps/OneTimeInitializer
+clone_depth_platform packages/apps/Provision
+clone_depth_platform packages/apps/QuickSearchBox
+clone_depth_platform packages/apps/RemoteProvisioner
 clone_depth_platform packages/apps/Settings
+clone_depth_platform packages/apps/SettingsIntelligence
+clone_depth_platform packages/apps/StorageManager
 clone_depth_platform packages/apps/TimeZoneUpdater
 clone_depth_platform packages/apps/TvSettings
+clone_depth_platform packages/apps/WallpaperPicker
+clone_depth_platform packages/inputmethods/LatinIME
+clone_depth_platform packages/modules/ModuleMetadata
 clone_depth_platform packages/modules/NeuralNetworks
+clone_depth_platform packages/screensavers/PhotoTable
 clone_depth_platform packages/services/Car
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_project platform/prebuilts/jdk/jdk8 prebuilts/jdk/jdk8 android12-gsi "/linux-x86"
 clone_depth_platform prebuilts/maven_repo/bumptech
 clone_depth_platform prebuilts/ndk
@@ -71,9 +118,15 @@ clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata
 clone_depth_platform system/gsid
 clone_depth_platform system/hardware/interfaces
 clone_depth_platform system/hwservicemanager
+clone_depth_platform system/incremental_delivery
 clone_depth_platform system/iorap
+clone_depth_platform system/libbase
+clone_depth_platform system/libfmq
 clone_depth_platform system/libhidl
+clone_depth_platform system/libhwbinder
+clone_depth_platform system/libprocinfo
 clone_depth_platform system/logging
+clone_depth_platform system/media
 clone_depth_platform system/memory/lmkd
 clone_depth_platform system/netd
 clone_depth_platform system/security
@@ -81,6 +134,7 @@ clone_depth_platform system/sepolicy
 clone_depth_platform system/server_configurable_flags
 clone_depth_platform system/tools/aidl
 clone_depth_platform system/tools/hidl
+clone_depth_platform system/unwinding
 clone_depth_platform system/update_engine
 clone_depth_platform system/vold
 
@@ -133,6 +187,38 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.zst" ]; then
   echo "Compressing external/boringssl -> external_boringssl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_boringssl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/boringssl .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_brotli.tar.zst" ]; then
+  echo "Compressing external/brotli -> external_brotli.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_brotli.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/brotli .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_chromium-webview.tar.zst" ]; then
+  echo "Compressing external/chromium-webview -> external_chromium-webview.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_chromium-webview.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/chromium-webview .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_clang.tar.zst" ]; then
+  echo "Compressing external/clang -> external_clang.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_clang.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/clang .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_compiler-rt.tar.zst" ]; then
+  echo "Compressing external/compiler-rt -> external_compiler-rt.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_compiler-rt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/compiler-rt .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_e2fsprogs.tar.zst" ]; then
+  echo "Compressing external/e2fsprogs -> external_e2fsprogs.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_e2fsprogs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/e2fsprogs .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_expat.tar.zst" ]; then
+  echo "Compressing external/expat -> external_expat.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_expat.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/expat .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_fec.tar.zst" ]; then
+  echo "Compressing external/fec -> external_fec.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_fec.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fec .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
+  echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_hyphenation-patterns.tar.zst" ]; then
   echo "Compressing external/hyphenation-patterns -> external_hyphenation-patterns.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_hyphenation-patterns.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/hyphenation-patterns .
@@ -144,6 +230,38 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_ipsec-tools.tar.zst" ]; then
   echo "Compressing external/ipsec-tools -> external_ipsec-tools.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_ipsec-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/ipsec-tools .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcap.tar.zst" ]; then
+  echo "Compressing external/libcap -> external_libcap.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcap.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcap .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
+  echo "Compressing external/libcxx -> external_libcxx.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
+  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libdrm.tar.zst" ]; then
+  echo "Compressing external/libdrm -> external_libdrm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libdrm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libdrm .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst" ]; then
+  echo "Compressing external/libjpeg-turbo -> external_libjpeg-turbo.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libjpeg-turbo .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libnl.tar.zst" ]; then
+  echo "Compressing external/libnl -> external_libnl.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libnl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libnl .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libyuv.tar.zst" ]; then
+  echo "Compressing external/libyuv -> external_libyuv.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libyuv.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libyuv .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_lzma.tar.zst" ]; then
+  echo "Compressing external/lzma -> external_lzma.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_lzma.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/lzma .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_mdnsresponder.tar.zst" ]; then
   echo "Compressing external/mdnsresponder -> external_mdnsresponder.tar.zst"
@@ -161,13 +279,41 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_mtpd.tar.zst" ]; then
   echo "Compressing external/mtpd -> external_mtpd.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_mtpd.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/mtpd .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_nanopb-c.tar.zst" ]; then
+  echo "Compressing external/nanopb-c -> external_nanopb-c.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_nanopb-c.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/nanopb-c .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_pcre.tar.zst" ]; then
+  echo "Compressing external/pcre -> external_pcre.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_pcre.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/pcre .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_perfetto.tar.zst" ]; then
   echo "Compressing external/perfetto -> external_perfetto.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_perfetto.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/perfetto .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
+  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_selinux.tar.zst" ]; then
+  echo "Compressing external/selinux -> external_selinux.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_selinux.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/selinux .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_skia.tar.zst" ]; then
+  echo "Compressing external/skia -> external_skia.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_skia.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/skia .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst" ]; then
+  echo "Compressing external/vulkan-headers -> external_vulkan-headers.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/vulkan-headers .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_wpa_supplicant_8.tar.zst" ]; then
   echo "Compressing external/wpa_supplicant_8 -> external_wpa_supplicant_8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_wpa_supplicant_8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/wpa_supplicant_8 .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
+  echo "Compressing external/zlib -> external_zlib.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zxing.tar.zst" ]; then
   echo "Compressing external/zxing -> external_zxing.tar.zst"
@@ -217,6 +363,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_camera.tar.zst" ]; then
   echo "Compressing hardware/google/camera -> hardware_google_camera.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_google_camera.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/camera .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_pixel.tar.zst" ]; then
+  echo "Compressing hardware/google/pixel -> hardware_google_pixel.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_google_pixel.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/pixel .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_pixel-sepolicy.tar.zst" ]; then
   echo "Compressing hardware/google/pixel-sepolicy -> hardware_google_pixel-sepolicy.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_google_pixel-sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/pixel-sepolicy .
@@ -228,6 +378,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
   echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst" ]; then
+  echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
@@ -241,6 +395,14 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/kernel_prebuilts_common-modules_virtual-devic
   echo "Compressing kernel/prebuilts/common-modules/virtual-device/5.10/x86-64 -> kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/kernel/prebuilts/common-modules/virtual-device/5.10/x86-64 .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
+  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Browser2.tar.zst" ]; then
+  echo "Compressing packages/apps/Browser2 -> packages_apps_Browser2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Browser2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Browser2 .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Calendar.tar.zst" ]; then
   echo "Compressing packages/apps/Calendar -> packages_apps_Calendar.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Calendar.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Calendar .
@@ -249,9 +411,37 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Camera2.tar.zst" ]; then
   echo "Compressing packages/apps/Camera2 -> packages_apps_Camera2.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Camera2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Camera2 .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_CarrierConfig.tar.zst" ]; then
+  echo "Compressing packages/apps/CarrierConfig -> packages_apps_CarrierConfig.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_CarrierConfig.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/CarrierConfig .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Contacts.tar.zst" ]; then
+  echo "Compressing packages/apps/Contacts -> packages_apps_Contacts.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Contacts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Contacts .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_DeskClock.tar.zst" ]; then
+  echo "Compressing packages/apps/DeskClock -> packages_apps_DeskClock.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_DeskClock.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/DeskClock .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Dialer.tar.zst" ]; then
   echo "Compressing packages/apps/Dialer -> packages_apps_Dialer.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Dialer.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Dialer .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_EmergencyInfo.tar.zst" ]; then
+  echo "Compressing packages/apps/EmergencyInfo -> packages_apps_EmergencyInfo.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_EmergencyInfo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/EmergencyInfo .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Gallery.tar.zst" ]; then
+  echo "Compressing packages/apps/Gallery -> packages_apps_Gallery.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Gallery.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Gallery .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Gallery2.tar.zst" ]; then
+  echo "Compressing packages/apps/Gallery2 -> packages_apps_Gallery2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Gallery2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Gallery2 .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_ImsServiceEntitlement.tar.zst" ]; then
+  echo "Compressing packages/apps/ImsServiceEntitlement -> packages_apps_ImsServiceEntitlement.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_ImsServiceEntitlement.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/ImsServiceEntitlement .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Launcher3.tar.zst" ]; then
   echo "Compressing packages/apps/Launcher3 -> packages_apps_Launcher3.tar.zst"
@@ -261,9 +451,37 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Messaging.tar.zst" ]; then
   echo "Compressing packages/apps/Messaging -> packages_apps_Messaging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Messaging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Messaging .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Music.tar.zst" ]; then
+  echo "Compressing packages/apps/Music -> packages_apps_Music.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Music.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Music .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_OneTimeInitializer.tar.zst" ]; then
+  echo "Compressing packages/apps/OneTimeInitializer -> packages_apps_OneTimeInitializer.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_OneTimeInitializer.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/OneTimeInitializer .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Provision.tar.zst" ]; then
+  echo "Compressing packages/apps/Provision -> packages_apps_Provision.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Provision.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Provision .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_QuickSearchBox.tar.zst" ]; then
+  echo "Compressing packages/apps/QuickSearchBox -> packages_apps_QuickSearchBox.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_QuickSearchBox.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/QuickSearchBox .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_RemoteProvisioner.tar.zst" ]; then
+  echo "Compressing packages/apps/RemoteProvisioner -> packages_apps_RemoteProvisioner.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_RemoteProvisioner.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/RemoteProvisioner .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Settings.tar.zst" ]; then
   echo "Compressing packages/apps/Settings -> packages_apps_Settings.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Settings.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Settings .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_SettingsIntelligence.tar.zst" ]; then
+  echo "Compressing packages/apps/SettingsIntelligence -> packages_apps_SettingsIntelligence.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_SettingsIntelligence.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/SettingsIntelligence .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_StorageManager.tar.zst" ]; then
+  echo "Compressing packages/apps/StorageManager -> packages_apps_StorageManager.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_StorageManager.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/StorageManager .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_TimeZoneUpdater.tar.zst" ]; then
   echo "Compressing packages/apps/TimeZoneUpdater -> packages_apps_TimeZoneUpdater.tar.zst"
@@ -273,9 +491,25 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_TvSettings.tar.zst" ]; then
   echo "Compressing packages/apps/TvSettings -> packages_apps_TvSettings.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_TvSettings.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/TvSettings .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_WallpaperPicker.tar.zst" ]; then
+  echo "Compressing packages/apps/WallpaperPicker -> packages_apps_WallpaperPicker.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_apps_WallpaperPicker.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/WallpaperPicker .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_inputmethods_LatinIME.tar.zst" ]; then
+  echo "Compressing packages/inputmethods/LatinIME -> packages_inputmethods_LatinIME.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_inputmethods_LatinIME.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/inputmethods/LatinIME .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_ModuleMetadata.tar.zst" ]; then
+  echo "Compressing packages/modules/ModuleMetadata -> packages_modules_ModuleMetadata.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_ModuleMetadata.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/ModuleMetadata .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst" ]; then
   echo "Compressing packages/modules/NeuralNetworks -> packages_modules_NeuralNetworks.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NeuralNetworks .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_screensavers_PhotoTable.tar.zst" ]; then
+  echo "Compressing packages/screensavers/PhotoTable -> packages_screensavers_PhotoTable.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_screensavers_PhotoTable.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/screensavers/PhotoTable .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_services_Car.tar.zst" ]; then
   echo "Compressing packages/services/Car -> packages_services_Car.tar.zst"
@@ -288,6 +522,14 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86 .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
+  echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11 .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk8 -> prebuilts_jdk_jdk8.tar.zst"
@@ -357,17 +599,41 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_hwservicemanager.tar.zst" ]; then
   echo "Compressing system/hwservicemanager -> system_hwservicemanager.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_hwservicemanager.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/hwservicemanager .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.zst" ]; then
+  echo "Compressing system/incremental_delivery -> system_incremental_delivery.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/incremental_delivery .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_iorap.tar.zst" ]; then
   echo "Compressing system/iorap -> system_iorap.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_iorap.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/iorap .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
+  echo "Compressing system/libbase -> system_libbase.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libfmq.tar.zst" ]; then
+  echo "Compressing system/libfmq -> system_libfmq.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libfmq.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libfmq .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_libhidl.tar.zst" ]; then
   echo "Compressing system/libhidl -> system_libhidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_libhidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libhidl .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libhwbinder.tar.zst" ]; then
+  echo "Compressing system/libhwbinder -> system_libhwbinder.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libhwbinder.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libhwbinder .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libprocinfo.tar.zst" ]; then
+  echo "Compressing system/libprocinfo -> system_libprocinfo.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libprocinfo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libprocinfo .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
+  echo "Compressing system/media -> system_media.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_memory_lmkd.tar.zst" ]; then
   echo "Compressing system/memory/lmkd -> system_memory_lmkd.tar.zst"
@@ -396,6 +662,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst" ]; then
   echo "Compressing system/tools/hidl -> system_tools_hidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/hidl .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
+  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_update_engine.tar.zst" ]; then
   echo "Compressing system/update_engine -> system_update_engine.tar.zst"
