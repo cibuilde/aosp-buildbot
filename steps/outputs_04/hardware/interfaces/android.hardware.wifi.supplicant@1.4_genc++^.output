@@ -1,0 +1,8 @@
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantP2pIfaceAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantP2pIfaceCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantStaIfaceAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantStaIfaceCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantStaNetworkAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/SupplicantStaNetworkCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++/gen/android/hardware/wifi/supplicant/1.4/types.cpp

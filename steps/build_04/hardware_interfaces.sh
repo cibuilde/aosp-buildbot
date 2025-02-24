@@ -4458,6 +4458,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.wifi.supplicant@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.wifi.supplicant-V1.1-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.1-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^
@@ -4469,6 +4481,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.wifi.supplicant-V1.2-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.2-java_gen_java,
@@ -4482,6 +4506,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.wifi.supplicant@1.2_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.2_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.2_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.2_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.wifi.supplicant-V1.3-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.3-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^
@@ -4494,6 +4530,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.wifi.supplicant@1.3_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.3_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.3_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.3_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.wifi.supplicant-V1.4-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.4-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^
@@ -4505,6 +4553,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.4_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.4_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.4_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.4_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4_genc++_headers^/addition_copy_files.output
 
 
 rm -rf out
