@@ -553,4 +553,6 @@ jobs:
       with:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
-    - run: bash kati/kati_clone.sh
+    - run: bash kati/kati_download.sh
+    - run: bash kati/kati_build.sh
+    - run: bash kati/kati_upload.sh
