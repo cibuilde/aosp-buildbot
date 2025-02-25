@@ -5,7 +5,7 @@ CACHE_FILE="$GITHUB_WORKSPACE/cache/soong_outputs.tar.zst"
 GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-`pwd`}
 DOWNLOADS=$GITHUB_WORKSPACE/downloads
 SOONG_OUTPUTS="$DOWNLOADS/aosp"
-mkdir -p $DOWNLOADS
+mkdir -p $$GITHUB_WORKSPACE/cache
 mkdir -p $SOONG_OUTPUTS/
 if [ -f "$CACHE_FILE" ]; then
   echo "Cache hit: Extracting $CACHE_FILE to $SOONG_OUTPUTS"
