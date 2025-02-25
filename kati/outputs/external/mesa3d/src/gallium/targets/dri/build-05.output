@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/vendor/lib/dri/gallium_dri.so
+out/target/product/vsoc_x86_64/vendor/lib/dri/virtio_gpu_dri.so
+out/target/product/vsoc_x86_64/vendor/lib64/dri/gallium_dri.so
+out/target/product/vsoc_x86_64/vendor/lib64/dri/virtio_gpu_dri.so

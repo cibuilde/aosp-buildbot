@@ -1,0 +1,4 @@
+out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_dri_common_intermediates/libmesa_dri_common.a
+out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_megadriver_stub_intermediates/libmesa_megadriver_stub.a
+out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libmesa_dri_common_intermediates/libmesa_dri_common.a
+out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libmesa_megadriver_stub_intermediates/libmesa_megadriver_stub.a

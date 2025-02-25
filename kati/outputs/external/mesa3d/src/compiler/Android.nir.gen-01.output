@@ -1,3 +1,10 @@
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_builder_opcodes.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_constant_expressions.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_intrinsics.c
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_intrinsics.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_opcodes.c
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_opcodes.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/nir/nir_opt_algebraic.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/spirv/spirv_info.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/spirv/vtn_gather_types.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_nir_intermediates/spirv/vtn_generator_ids.h

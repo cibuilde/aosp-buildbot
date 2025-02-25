@@ -1,2 +1,6 @@
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libhardware.vendor_intermediates/libhardware.vendor.so
+out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libhardware.vendor_intermediates/libhardware.vendor.so.toc
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libhardware.vendor_intermediates/libhardware.vendor.so
+out/target/product/vsoc_x86_64/obj_x86/SHARED_LIBRARIES/libhardware.vendor_intermediates/libhardware.vendor.so.toc
 out/target/product/vsoc_x86_64/system/lib/libhardware.so
 out/target/product/vsoc_x86_64/system/lib64/libhardware.so

@@ -1,4 +1,2 @@
-out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libpanfrost_lib_intermediates/libpanfrost_lib.a
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libpanfrost_lib_intermediates/panfrost/lib/midgard_pack.h
-out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libpanfrost_lib_intermediates/libpanfrost_lib.a
 out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libpanfrost_lib_intermediates/panfrost/lib/midgard_pack.h

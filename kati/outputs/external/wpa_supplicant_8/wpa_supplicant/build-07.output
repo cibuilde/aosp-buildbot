@@ -1,0 +1,2 @@
+out/target/product/vsoc_x86_64/vendor/bin/hw/wpa_supplicant
+out/target/product/vsoc_x86_64/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
