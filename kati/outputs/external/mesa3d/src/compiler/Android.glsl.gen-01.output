@@ -1,6 +1,7 @@
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/float64_glsl.h
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glcpp/glcpp-lex.c
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glcpp/glcpp-parse.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glcpp/glcpp-parse.h
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glsl_lexer.cpp
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glsl_parser.cpp
 out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_glsl_intermediates/glsl/glsl_parser.h
