@@ -1,2 +1,4 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_intel_perf_intermediates/perf/gen_perf_metrics.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_intel_perf_intermediates/perf/gen_perf_metrics.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_intel_perf_intermediates/libmesa_intel_perf.a
 out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libmesa_intel_perf_intermediates/libmesa_intel_perf.a

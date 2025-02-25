@@ -1,3 +1,16 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/dummy.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen11_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen12_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen45_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen4_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen5_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen6_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen75_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen7_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen8_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen9_pack.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/genX_bits.h
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/genX_xml.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_genxml_intermediates/dummy.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen11_pack.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_genxml_intermediates/genxml/gen12_pack.h

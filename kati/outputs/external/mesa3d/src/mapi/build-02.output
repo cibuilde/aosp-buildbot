@@ -1,3 +1,4 @@
+out/target/product/vsoc_x86_64/gen/SHARED_LIBRARIES/libglapi_intermediates/shared-glapi/glapi_mapi_tmp.h
 out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libglapi_intermediates/libglapi.so
 out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libglapi_intermediates/libglapi.so.toc
 out/target/product/vsoc_x86_64/obj/SHARED_LIBRARIES/libglapi_intermediates/shared-glapi/glapi_mapi_tmp.h

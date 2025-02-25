@@ -1,3 +1,5 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_gallium_intermediates/indices/u_indices_gen.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_gallium_intermediates/indices/u_unfilled_gen.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_gallium_intermediates/indices/u_indices_gen.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_gallium_intermediates/indices/u_unfilled_gen.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_gallium_intermediates/libmesa_gallium.a

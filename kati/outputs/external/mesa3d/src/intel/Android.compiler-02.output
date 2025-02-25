@@ -1,2 +1,3 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_intel_compiler_intermediates/compiler/brw_nir_trig_workarounds.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_intel_compiler_intermediates/libmesa_intel_compiler.a
 out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libmesa_intel_compiler_intermediates/libmesa_intel_compiler.a

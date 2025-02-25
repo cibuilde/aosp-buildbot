@@ -1,3 +1,5 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_program_intermediates/program/program_parse.tab.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libmesa_program_intermediates/program/program_parse.tab.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_program_intermediates/program/program_parse.tab.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_program_intermediates/program/program_parse.tab.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libmesa_program_intermediates/program_lexer.c

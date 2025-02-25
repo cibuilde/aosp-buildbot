@@ -1,2 +1,7 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/ir3/ir3_lexer.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/ir3/ir3_nir_imul.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/ir3/ir3_nir_trig.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/ir3/ir3_parser.c
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/ir3/ir3_parser.h
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/libfreedreno_ir3.a
 out/target/product/vsoc_x86_64/obj_x86/STATIC_LIBRARIES/libfreedreno_ir3_intermediates/libfreedreno_ir3.a

@@ -1,3 +1,4 @@
+out/target/product/vsoc_x86_64/gen/STATIC_LIBRARIES/libpanfrost_midgard_intermediates/midgard_nir_algebraic.c
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libpanfrost_midgard_disasm_intermediates/libpanfrost_midgard_disasm.a
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libpanfrost_midgard_intermediates/libpanfrost_midgard.a
 out/target/product/vsoc_x86_64/obj/STATIC_LIBRARIES/libpanfrost_midgard_intermediates/midgard_nir_algebraic.c
