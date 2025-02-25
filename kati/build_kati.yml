@@ -560,6 +560,7 @@ jobs:
         name: soong_outputs.tar.zst
         path: cache/soong_outputs.tar.zst
   build_kati:
+    needs: cache_kati
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
