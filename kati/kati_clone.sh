@@ -12,7 +12,7 @@ clone_depth_platform build/soong
 clone_depth device/generic/goldfish
 clone_depth device/generic/goldfish-opengl
 clone_depth device/google/cuttlefish
-clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage" "/scripts/extract-vmlinux" "/scripts/extract-ikconfig"
+clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/qemu_x86_64/u-boot.rom" "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage" "/scripts/extract-vmlinux" "/scripts/extract-ikconfig"
 clone_depth device/sample
 clone_depth_platform external/android-clat
 clone_depth_platform external/avb
