@@ -656,31 +656,31 @@ tar -cf tools_security.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPAC
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati tools_security.tar.zst --clobber
 
 cd $GITHUB_WORKSPACE/
-tar -cf $GITHUB_WORKSPACE/odm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ odm
+tar -cf $GITHUB_WORKSPACE/odm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images odm
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/odm.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/odm_dlkm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ odm_dlkm
+tar -cf $GITHUB_WORKSPACE/odm_dlkm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images odm_dlkm
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/odm_dlkm.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/product.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ product
+tar -cf $GITHUB_WORKSPACE/product.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images product
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/product.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/root.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ root
+tar -cf $GITHUB_WORKSPACE/root.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images root
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/root.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/system.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ system
+tar -cf $GITHUB_WORKSPACE/system.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images system
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/system.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/system_ext.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ system_ext
+tar -cf $GITHUB_WORKSPACE/system_ext.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images system_ext
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/system_ext.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/system_other.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ system_other
+tar -cf $GITHUB_WORKSPACE/system_other.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images system_other
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/system_other.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/vendor.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ vendor
+tar -cf $GITHUB_WORKSPACE/vendor.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images vendor
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/vendor.tar.zst --clobber
 
-tar -cf $GITHUB_WORKSPACE/vendor_dlkm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ vendor_dlkm
+tar -cf $GITHUB_WORKSPACE/vendor_dlkm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/images vendor_dlkm
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_kati $GITHUB_WORKSPACE/vendor_dlkm.tar.zst --clobber
 
 du -ah -d1 *.tar.zst | sort -h
